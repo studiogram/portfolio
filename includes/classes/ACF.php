@@ -18,50 +18,7 @@ if (!class_exists('STUDIOGRAM\ACF')) :
             add_filter('tiny_mce_before_init', [$this, 'set_custom_wysiwyg_colors']);
             add_filter('tiny_mce_plugins', [$this, 'remove_colorpicker_plugin']);
             add_filter('acf/load_field/name=form', [$this, 'populate_gravity_forms']);
-            add_filter('acf/prepare_field', [$this, 'translate_category_conditions']);
             add_action('admin_enqueue_scripts', [$this, 'enqueue_admin_styles']);
-            add_filter('pll_copy_post_metas', [$this, 'unsync_metas'], 10, 1);
-        }
-
-        /* Keep these ACF fields independent per language despite Polylang's
-           custom-field synchronization (layout/disposition still syncs). */
-        public function unsync_metas($keys)
-        {
-            return array_values(array_diff($keys, ['category_title', '_category_title']));
-        }
-
-        /* Rewrites the FR category term ids in header-post conditional logic to the
-           current language's term, so the fields show on translated posts too. */
-        const CATEGORY_FIELD_KEY = 'field_6a1ff804f266f';
-
-        public function translate_category_conditions($field)
-        {
-            if (empty($field['conditional_logic']) || !is_array($field['conditional_logic'])) {
-                return $field;
-            }
-            if (!function_exists('pll_get_term') || !function_exists('pll_current_language')) {
-                return $field;
-            }
-            $lang = pll_current_language();
-            if (!$lang) {
-                return $field;
-            }
-            foreach ($field['conditional_logic'] as $gi => $group) {
-                foreach ($group as $ri => $rule) {
-                    if (($rule['field'] ?? '') !== self::CATEGORY_FIELD_KEY) {
-                        continue;
-                    }
-                    $term_id = (int) ($rule['value'] ?? 0);
-                    if (!$term_id) {
-                        continue;
-                    }
-                    $translated = pll_get_term($term_id, $lang);
-                    if ($translated) {
-                        $field['conditional_logic'][$gi][$ri]['value'] = (string) $translated;
-                    }
-                }
-            }
-            return $field;
         }
 
         public function mark_spacer_paragraphs($value)

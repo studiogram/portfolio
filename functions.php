@@ -23,3 +23,8 @@ new \STUDIOGRAM\Users();
 new \STUDIOGRAM\Analytics();
 new \STUDIOGRAM\Seo();
 new \STUDIOGRAM\Performance();
+
+// Polylang integration — only when the plugin is active.
+if (defined('POLYLANG_VERSION') || function_exists('pll_default_language')) {
+    new \STUDIOGRAM\Multilingual();
+}
