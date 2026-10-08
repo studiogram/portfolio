@@ -4,13 +4,7 @@ namespace STUDIOGRAM;
 
 if (!defined('ABSPATH')) exit;
 
-/**
- * Custom post types — STARTER EXAMPLE.
- *
- * Edit register() per project: add/remove CPTs via register_cpt(), and
- * optionally relabel the built-in "post" type via rename_post_type() instead
- * of adding a near-duplicate CPT (keeps native URLs, feeds and REST).
- */
+
 if (!class_exists('STUDIOGRAM\PostTypes')) :
     class PostTypes
     {
@@ -18,15 +12,38 @@ if (!class_exists('STUDIOGRAM\PostTypes')) :
         {
             add_action('init', [$this, 'register'], 5);
             add_action('after_switch_theme', 'flush_rewrite_rules');
+            add_filter('custom_menu_order', '__return_true');
+            add_filter('menu_order', [$this, 'reorder_menu']);
         }
 
         public function register()
         {
-            // Example CPT — rename/remove per project.
-            $this->register_cpt('projets', 'Projets', 'Projet', 'dashicons-portfolio', 20);
+            $this->rename_post_type('Projets', 'Projet', 'dashicons-portfolio');
+            unregister_taxonomy_for_object_type('post_tag', 'post');
+            $this->register_cpt('notes', 'Notes', 'Note', 'dashicons-editor-paste-text', 21);
+            $this->register_cpt('labo', 'Labo', 'Labo', 'dashicons-smiley', 22);
+        }
 
-            // Or relabel the built-in post type instead of a new CPT:
-            // $this->rename_post_type('Projets', 'Projet', 'dashicons-portfolio');
+        /**
+         * Group Pages, Projets, Notes, Labo contiguously at Pages' slot.
+         */
+        public function reorder_menu($menu_order)
+        {
+            $group = [
+                'edit.php?post_type=page', // Pages
+                'edit.php',                // Projets (built-in post)
+                'edit.php?post_type=notes',
+                'edit.php?post_type=labo',
+            ];
+            $out = [];
+            foreach ($menu_order as $item) {
+                if ($item === 'edit.php?post_type=page') {
+                    array_push($out, ...$group);
+                } elseif (!in_array($item, $group, true)) {
+                    $out[] = $item;
+                }
+            }
+            return $out;
         }
 
         /**
