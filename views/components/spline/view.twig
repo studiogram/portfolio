@@ -1,0 +1,4 @@
+<div data-component="spline" class="{% if fixed %} fixed {% else %} absolute {% endif %} inset-0 h-full w-full">
+	{% include 'views/partials/grid/view.twig' %}
+	<canvas data-url="{{ url }}" class="w-full opacity-0 transition-opacity duration-700 ease-out"></canvas>
+</div>

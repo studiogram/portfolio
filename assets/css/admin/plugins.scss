@@ -1,0 +1,78 @@
+// RGPD
+#moove_form_checker_wrap {
+    .nav-tab-wrapper {
+        .nav-tab-white,
+        .gdpr-cc-addon {
+            display: none !important;
+        }
+    }
+
+    .moove-plugins-info-boxes {
+        display: none !important;
+    }
+}
+
+//Post Types Order
+#cpt_info_box {
+    display: none !important;
+}
+
+// WP Rocket
+#rocket_post_exclude {
+    display: none !important;
+}
+
+// Polylang
+#ml_box {
+    .inside {
+        & > div,
+        & > p {
+            display: none;
+        }
+
+        #post-translations {
+            display: block !important;
+
+            & > p {
+                display: none;
+            }
+        }
+    }
+}
+
+// ACF
+.acf-postbox {
+    .postbox-header {
+        display: none;
+    }
+}
+
+.acf-row {
+    border-bottom: 2px solid var(--wp--preset--color--primary);
+}
+
+.acf-switch-off {
+    color: var(--wp--preset--color--dark);
+}
+
+.mce-container {
+    iframe {
+        height: 120px !important;
+    }
+}
+
+.acf-fields > .acf-field {
+    padding: 16px 16px 80px;
+}
+
+.acf-true-false:has(.acf-switch) label {
+    justify-items: start !important;
+}
+
+// Yoast
+.wpseo-metabox-menu,
+.wpseo-meta-section,
+.wpseo-meta-section-react,
+.wpseo-metabox-content {
+    max-width: none !important;
+}

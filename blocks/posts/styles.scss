@@ -1,0 +1,32 @@
+@use "mixins" as *;
+
+[data-block-type="posts"] {
+    overflow: hidden;
+
+    header {
+        h2,
+        h3,
+        h4 {
+            font-weight: 700 !important;
+        }
+    }
+
+    .prev,
+    .next {
+        border-color: var(--wp--preset--color--dark);
+    }
+
+    .swiper-slide {
+        height: auto;
+    }
+
+    .swiper-wrapper {
+        align-items: flex-start;
+        transition-property: height, transform;
+
+        @include md {
+            align-items: stretch;
+            transition-property: transform;
+        }
+    }
+}

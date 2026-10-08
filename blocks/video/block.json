@@ -1,0 +1,21 @@
+{
+    "name": "studiogram/video",
+    "title": "Vidéo",
+    "category": "studiogram",
+    "icon": "format-video",
+    "keywords": ["video", "youtube"],
+    "acf": {
+        "mode": "preview"
+    },
+    "script": "file:../../dist/blocks/video/scripts.min.js",
+    "style": "file:../../dist/blocks/video/styles.min.css",
+    "supports": {
+        "mode": false,
+        "color": {
+            "background": false,
+            "heading": false,
+            "link": false,
+            "text": false
+        }
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "name": "studiogram/posts",
+    "title": "Articles",
+    "category": "studiogram",
+    "icon": "media-document",
+    "keywords": ["posts", "articles", "actualités"],
+    "script": "file:../../dist/blocks/posts/scripts.min.js",
+    "style": "file:../../dist/blocks/posts/styles.min.css",
+    "acf": {
+        "mode": "preview"
+    },
+    "supports": {
+        "mode": false,
+        "color": {
+            "background": false,
+            "heading": false,
+            "link": false,
+            "text": false
+        }
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image": true
+            }
+        }
+    }
+}

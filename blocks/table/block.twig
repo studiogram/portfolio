@@ -1,0 +1,26 @@
+<section {{ block_id }} data-block-type="table" data-block-id="{{ block.id }}" class="{% if fields.space.espace %}mb-8!{% endif %}">
+	{% set header = fields.lines|first %}
+	{% set body = fields.lines|slice(1) %}
+	<div class="content-grid content-grid--{{ fields.space.large }}">
+		<table class="text-left">
+			{% if header %}
+				<thead>
+					<tr>
+						{% for column in header.columns %}
+							<th scope="col">{{ column.text }}</th>
+						{% endfor %}
+					</tr>
+				</thead>
+			{% endif %}
+			<tbody>
+				{% for line in body %}
+					<tr>
+						{% for column in line.columns %}
+							<td>{{ column.text }}</td>
+						{% endfor %}
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+</section>

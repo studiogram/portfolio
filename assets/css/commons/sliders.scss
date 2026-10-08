@@ -1,0 +1,124 @@
+.studiogram,
+.editor-styles-wrapper {
+    .prev,
+    .next {
+        cursor: pointer;
+        width: 42px;
+        height: 42px;
+        padding: 0.5rem;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-width: 1px;
+
+        svg {
+            height: 1rem;
+            width: auto;
+        }
+    }
+
+    .swiper {
+        overflow: visible;
+        padding: 0 1.25rem;
+        cursor: grab;
+
+        &:active {
+            cursor: grabbing;
+        }
+
+        @media (min-width: theme("screens.md")) {
+            padding: 0rem;
+        }
+
+        &.swiper--hidden {
+            overflow: hidden !important;
+        }
+
+        .swiper-wrapper {
+            will-change: transform;
+            overflow: visible !important;
+        }
+
+        .swiper-slide {
+            height: auto;
+        }
+
+        & + .swiper-pagination,
+        .swiper-pagination {
+            position: relative;
+            margin-top: 0.5rem;
+
+            .swiper-pagination-bullet {
+                width: 0.75rem;
+                height: 0.75rem;
+                border-radius: 50%;
+                margin: 0 0.35rem;
+                background: var(--wp--preset--color--medium);
+                opacity: 1;
+
+                &-active {
+                    background: var(--wp--preset--color--primary);
+                }
+            }
+        }
+    }
+
+    .slider {
+        position: relative;
+        margin-bottom: 3rem;
+
+        .swiper-button-disabled {
+            opacity: 0.2;
+        }
+
+        .next,
+        .prev {
+            width: 10px;
+            height: 18px;
+            position: absolute;
+            top: calc(50% - 9px);
+            cursor: pointer;
+        }
+
+        .next {
+            right: -1rem;
+        }
+
+        .prev {
+            left: -1rem;
+        }
+
+        @media (min-width: theme("screens.md")) {
+            .next {
+                right: -2.5rem;
+            }
+
+            .prev {
+                left: -2.5rem;
+            }
+        }
+
+        .swiper-pagination {
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            gap: 0.75rem;
+            top: calc(100% + 2rem);
+            width: 100%;
+
+            .swiper-pagination-bullet {
+                opacity: 0.45;
+                width: 0.75rem;
+                height: 0.75rem;
+                border-radius: 50%;
+                transition: 0.25s;
+                cursor: pointer;
+
+                &.swiper-pagination-bullet-active {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}

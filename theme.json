@@ -1,0 +1,31 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/theme.json",
+    "version": 3,
+    "settings": {
+        "color": {
+            "palette": [
+                { "color": "#111111", "name": "Dark", "slug": "dark" },
+                { "color": "#2563EB", "name": "Blue", "slug": "blue" },
+                { "color": "#93C5FD", "name": "Light blue", "slug": "lightblue" },
+                { "color": "#DBEAFE", "name": "Lighter blue", "slug": "lighterblue" },
+                { "color": "#7C3AED", "name": "Purple", "slug": "purple" },
+                { "color": "#EA580C", "name": "Orange", "slug": "orange" },
+                { "color": "#15803D", "name": "Green", "slug": "green" },
+                { "color": "#BBF7D0", "name": "Light green", "slug": "lightgreen" },
+                { "color": "#E5E5E5", "name": "Grey", "slug": "grey" },
+                { "color": "#A3A3A3", "name": "Dark grey", "slug": "darkgrey" },
+                { "color": "#F5F5F5", "name": "Light grey", "slug": "lightgrey" },
+                { "color": "#FFFFFF", "name": "White", "slug": "white" }
+            ],
+            "background": true,
+            "text": true,
+            "link": true,
+            "heading": false,
+            "defaultPalette": false,
+            "custom": false,
+            "gradients": [],
+            "customGradient": false,
+            "defaultGradients": false
+        }
+    }
+}

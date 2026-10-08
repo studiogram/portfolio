@@ -1,0 +1,22 @@
+body.wp-admin {
+    #adminmenu {
+        #toplevel_page_studiogramsecurity a {
+            background: red;
+        }
+        .wp-not-current-submenu .wp-submenu {
+            min-width: 200px;
+        }
+    }
+    .term-parent-wrap,
+    .term-description-wrap {
+        display: none;
+    }
+    .inline-edit-row fieldset .timestamp-wrap,
+    .inline-edit-row fieldset label span.input-text-wrap {
+        display: flex;
+    }
+}
+
+html.wp-toolbar {
+    padding-top: 0px;
+}

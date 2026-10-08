@@ -1,0 +1,7 @@
+@use "mixins" as *;
+
+#footer {
+    position: relative;
+    background: var(--wp--preset--color--dark);
+    color: var(--wp--preset--color--white);
+}

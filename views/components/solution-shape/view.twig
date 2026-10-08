@@ -1,0 +1,23 @@
+{# Solution decorative shape. The path + its exact radialGradient are embedded in
+   a self-contained data-URI SVG used as background-image, so the url(#id) paint
+   reference resolves *inside* that SVG — admin-safe (inline SVGs in the page fail
+   because the fragment resolves against the admin URL) and pixel-identical to the
+   Figma export. Colours are baked as hex (a data-URI has no access to CSS vars).
+   Params: shape (a-e), color (accent slug), dark (core slug), class. #}
+{% set dims = { 'a': [828.68, 676.84], 'b': [762, 652], 'c': [732, 748], 'd': [625, 771], 'e': [593, 350] } %}
+{% set grads = {
+    'a': 'cx=%2224.42%22%20cy=%22362.77%22%20r=%22683.72%22%20gradientUnits=%22userSpaceOnUse%22',
+    'b': 'cx=%220%22%20cy=%220%22%20r=%221%22%20gradientUnits=%22userSpaceOnUse%22%20gradientTransform=%22matrix(511.086%20450.22%20-287.754%20799.645%20100.49%2041.773)%22',
+    'c': 'cx=%220%22%20cy=%220%22%20r=%221%22%20gradientUnits=%22userSpaceOnUse%22%20gradientTransform=%22matrix(490.965%20516.51%20-276.425%20917.385%2096.534%2047.9236)%22',
+    'd': 'cx=%220%22%20cy=%220%22%20r=%221%22%20gradientUnits=%22userSpaceOnUse%22%20gradientTransform=%22matrix(419.198%20532.392%20-236.019%20945.593%2082.4232%2049.3972)%22',
+    'e': 'cx=%220%22%20cy=%220%22%20r=%221%22%20gradientUnits=%22userSpaceOnUse%22%20gradientTransform=%22translate(423.123%20528.863)%20rotate(30)%20scale(451.898)%22'
+} %}
+{% set hex = { 'dark': '030E21', 'blue': '00394C', 'lightblue': '9BD7EB', 'purple': '453989', 'orange': 'E26643', 'green': '015C52', 'lightgreen': 'ADE0DA', 'white': 'FFFFFF' } %}
+{% set s = shape in ['a', 'b', 'c', 'd', 'e'] ? shape : 'a' %}
+{% set dim = dims[s] %}
+{% set d = include('views/svg/shapes/paths-solution/' ~ s ~ '.twig')|trim|replace({' ': '%20'}) %}
+{% set base = hex[dark|default('dark')] %}
+{% set accent = hex[color|default('green')] %}
+{% set svg = "%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20" ~ dim[0] ~ "%20" ~ dim[1] ~ "%22%20preserveAspectRatio=%22none%22%3E%3Cdefs%3E%3CradialGradient%20id=%22g%22%20" ~ grads[s] ~ "%3E%3Cstop%20offset=%22.048%22%20stop-color=%22%23" ~ base ~ "%22/%3E%3Cstop%20offset=%221%22%20stop-color=%22%23" ~ accent ~ "%22/%3E%3C/radialGradient%3E%3C/defs%3E%3Cpath%20fill=%22url(%23g)%22%20d=%22" ~ d ~ "%22/%3E%3C/svg%3E" %}
+{% set style = 'aspect-ratio: ' ~ dim[0] ~ ' / ' ~ dim[1] ~ "; background: url('data:image/svg+xml," ~ svg ~ "') center / 100% 100% no-repeat;" %}
+<div class="{{ class }}" style="{{ style|raw }}"></div>

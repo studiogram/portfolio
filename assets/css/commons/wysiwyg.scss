@@ -1,0 +1,36 @@
+.studiogram,
+.editor-styles-wrapper {
+    .wysiwyg {
+        u,
+        [style*="underline"] {
+            text-decoration: none !important;
+            background-image: linear-gradient(currentColor, currentColor);
+            background-repeat: no-repeat;
+            background-position: 0 90%;
+            background-size: var(--underline, 0%) 8px;
+            box-decoration-break: clone;
+            -webkit-box-decoration-break: clone;
+            padding-bottom: 2px;
+        }
+
+        [style*="underline"][style*="color"] {
+            -webkit-text-fill-color: var(--color);
+        }
+
+        .is-spacer {
+            height: 0;
+            margin: 0;
+        }
+    }
+}
+
+// Editor has no scroll animation (GSAP not loaded); show underline fully so
+// it is visible in the block editor.
+.editor-styles-wrapper {
+    .wysiwyg {
+        u,
+        [style*="underline"] {
+            --underline: 100%;
+        }
+    }
+}

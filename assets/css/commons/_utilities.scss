@@ -1,0 +1,16 @@
+// Plain-CSS transform helpers.
+// Tailwind v4's -translate-*/translate-* utilities depend on --tw-* custom
+// properties + @property initialisation, which don't apply reliably inside the
+// block-editor iframe — so absolute centering silently breaks in admin. These
+// var-free classes are safe drop-ins wherever that bites.
+.translate-y-center {
+    transform: translateY(-50%);
+}
+
+.translate-x-center {
+    transform: translateX(-50%);
+}
+
+.translate-center {
+    transform: translate(-50%, -50%);
+}

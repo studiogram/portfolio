@@ -1,0 +1,22 @@
+{% if prev_post or next_post %}
+	<nav class="px-10 lg:px-20 mt-32">
+		<ul class="bg-primary text-lighter flex px-6! lg:px-12! py-6! rounded--top">
+			{% if prev_post %}
+				<li class="w-1/2 text-start py-2 border-r-2 border-lighter">
+					<a href="{{ prev_post.link }}" class="pagination__prev flex gap-4 lg:gap-6 items-center justify-start px-4">
+						<img class="w-4!" src="{{ theme.link }}/dist/images/prev.svg" alt="Précédent"/>
+						<span>{{ prev_post.title }}</span>
+					</a>
+				</li>
+			{% endif %}
+			{% if next_post %}
+				<li class="w-1/2 text-end py-2">
+					<a href="{{ next_post.link }}" class="pagination__next flex gap-4 lg:gap-6 items-center justify-end px-4">
+						<span>{{ next_post.title }}</span>
+						<img class="w-4!" src="{{ theme.link }}/dist/images/next.svg" alt="Suivant"/>
+					</a>
+				</li>
+			{% endif %}
+		</ul>
+	</nav>
+{% endif %}

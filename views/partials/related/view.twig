@@ -1,0 +1,19 @@
+{% if posts is not empty %}
+	<section data-block-type="related">
+		<div class="col-span-12 lg:col-span-22 lg:col-start-2">
+			{% if content.texts.more %}
+				<header class="wysiwyg mb-8! text-center">
+					<h3 class="text-md">
+						<u>{{ content.texts.more }}</u>
+					</h3>
+				</header>
+			{% endif %}
+
+			<ul class="flex flex-wrap justify-center gap-4">
+				{% for post in posts %}
+					<li class="w-full lg:w-[calc((100%-2rem)/3)]">{{ include('views/components/post-card/view.twig', { id: post.id }) }}</li>
+				{% endfor %}
+			</ul>
+		</div>
+	</section>
+{% endif %}

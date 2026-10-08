@@ -1,0 +1,91 @@
+@use "mixins" as *;
+
+.quote__figure {
+    position: relative;
+}
+
+.quote__figure img {
+    width: 100% !important;
+    height: auto !important;
+}
+
+.quote__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    // One wysiwyg (first paragraph large, rest normal) flowing into two balanced
+    // columns on desktop, framed by the quote-mark SVGs.
+    .quote__citation {
+        // .wysiwyg is display:flex (gap:1rem); flex disables multicol, so force
+        // block and recreate the 1rem spacing with margins between children.
+        position: relative;
+        display: block !important;
+        padding-top: rem(32);
+        padding-left: rem(0);
+
+        > * + * {
+            margin-top: rem(16);
+        }
+
+        @include lg {
+            columns: 2;
+            column-gap: rem(40);
+        }
+
+        // No break-inside:avoid — a single long paragraph must be allowed to split
+        // across the two columns, otherwise it all stays in column one.
+
+        &::before,
+        &::after {
+            content: "";
+            display: block;
+            width: rem(24);
+            height: rem(24);
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+
+        &::before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-image: url("../../dist/images/quote-top.svg");
+            background-position: left center;
+        }
+
+        &::after {
+            margin-top: rem(8);
+            margin-left: auto;
+            background-image: url("../../dist/images/quote-bottom.svg");
+            background-position: right center;
+        }
+    }
+
+    &--hastitle {
+        .quote__citation {
+            padding-top: rem(0);
+            padding-left: rem(42);
+
+            &::after {
+                background-position: left center;
+            }
+        }
+    }
+}
+
+// Author: short rule above the name.
+.quote__author {
+    display: flex;
+    flex-direction: column;
+    gap: rem(2);
+    margin-top: rem(32);
+    font-size: rem(14);
+
+    &::before {
+        content: "";
+        width: rem(32);
+        margin-bottom: rem(12);
+        border-top: 2px solid currentColor;
+    }
+}

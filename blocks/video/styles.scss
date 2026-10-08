@@ -1,0 +1,58 @@
+[data-block-type="video"] {
+    .plyr,
+    .plyr--video {
+        // Plyr defaults .plyr--video to background:#000, which shows as a black
+        // frame/letterbox around the video.
+        background: transparent !important;
+    }
+
+    .plyr {
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+
+        button {
+            width: 65px;
+            height: 65px;
+            opacity: 1;
+        }
+
+        .plyr__control--overlaid {
+            opacity: 1 !important;
+            background: var(--wp--preset--color--black) !important;
+            color: white !important;
+
+            svg {
+                fill: white !important;
+            }
+        }
+    }
+
+    .plyr--full-ui input[type="range"] {
+        color: var(--wp--preset--color--black);
+    }
+
+    .plyr__control--overlaid,
+    .plyr__video-wrapper {
+        background: transparent !important;
+    }
+
+    .plyr--video .plyr__control.plyr__tab-focus,
+    .plyr--video .plyr__control:hover,
+    .plyr--video .plyr__control[aria-expanded="true"] {
+        background: transparent !important;
+    }
+
+    .plyr__control.plyr__tab-focus {
+        box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.5);
+    }
+
+    .plyr__poster {
+        background-size: cover;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+}

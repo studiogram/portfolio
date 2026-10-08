@@ -1,0 +1,43 @@
+<section {{ block_id }} data-block-type="posts" data-block-id="{{ block.id }}" class="rounded-4xl bg-grey text-dark overflow-hidden">
+	<header class="col-span-12 lg:col-span-22 lg:col-start-2 flex flex-wrap lg:flex-nowrap gap-8 items-stretch mt-12 mb-4">
+		<div class="flex-1 w-full flex flex-col gap-4 mb-4">
+			<div class="flex gap-4 items-stretch">
+				<div class="py-2">
+					<span class="text-xld">{{ content.texts.oneflux ?? 'Articles' }}</span>
+				</div>
+
+				<div class="h-full flex justify-center items-start! pl-4 border-l border-dark w-full font-bold wysiwyg text-start [&_h2]:text-l!">
+
+					{{fields.introduction.title}}
+				</div>
+			</div>
+
+			<div class="text-m wysiwyg">
+				{{fields.introduction.text}}
+			</div>
+		</div>
+
+		<div class="w-full lg:w-auto flex flex-nowrap items-center gap-4">
+			<div class="flex gap-2">
+				<div class="prev">{{ include('views/svg/prev.twig') }}</div>
+				<div class="next">{{ include('views/svg/next.twig') }}</div>
+			</div>
+
+			{% if fields.introduction.show_button %}
+				{{ include('views/components/button/view.twig', { button: fields.introduction.button.btn }) }}
+			{% endif %}
+		</div>
+	</header>
+
+	<div class="col-span-12 lg:col-span-24 pb-16 ">
+		<div class="swiper px-0!">
+			<div class="swiper-wrapper">
+				{% for post in posts_list %}
+					<div class="swiper-slide h-auto!">
+						{{ include('views/components/post-card/view.twig', { id: post.id }) }}
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,27 @@
+{
+    "name": "studiogram/spacer",
+    "title": "Espace",
+    "category": "studiogram",
+    "icon": "editor-expand",
+    "keywords": ["espace"],
+    "acf": {
+        "mode": "preview"
+    },
+    "supports": {
+        "mode": false,
+        "color": {
+            "background": false,
+            "heading": false,
+            "link": false,
+            "text": false
+        }
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image": true
+            }
+        }
+    }
+}

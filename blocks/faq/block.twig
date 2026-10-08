@@ -1,0 +1,23 @@
+<section {{ block_id }} data-block-type="faq" data-block-id="{{ block.id }}">
+	{% if faq_schema %}
+		<script type="application/ld+json">{{ faq_schema|raw }}</script>
+	{% endif %}
+	<div class="col-span-12 col-start-1 {% if fields.dynamic %} lg:col-start-3 lg:col-span-20 {% else %} lg:col-start-6 lg:col-span-14{% endif %} ">
+		{{ include('views/components/introduction/view.twig', { intro: fields.intro.introduction }) }}
+	</div>
+
+	<ul class="col-span-12 col-start-1 {% if fields.dynamic %} lg:col-start-3 lg:col-span-20 {% else %} lg:col-start-6 lg:col-span-14{% endif %} min-w-0 flex flex-col gap-4" {% if fields.dynamic %} data-dynamic="true" {% endif %}>
+		{% for faq in fields.questions %}
+			<li data-scroll="from-left" class="faq | py-8 px-7 rounded-4xl bg-grey text-dark max-w-full">
+				<span class="faq__bg | rounded-4xl bg-grey"></span>
+				<p class="faq__question | text-cta flex gap-4 justify-start items-center px-1">
+					<span class="shrink-0 w-2">{% include 'views/svg/faq.twig' %}</span>
+					{{ faq.question }}
+				</p>
+				<div class="faq__answer">
+					{{ faq.text }}
+				</div>
+			</li>
+		{% endfor %}
+	</ul>
+</section>

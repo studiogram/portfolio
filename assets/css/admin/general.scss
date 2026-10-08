@@ -1,0 +1,67 @@
+body.login,
+body.wp-admin {
+    input,
+    textarea {
+        outline: 0 !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+    }
+
+    .mce-toolbar .mce-listbox button,
+    .mce-toolbar .mce-btn button,
+    .qt-dfw {
+        margin-top: 0 !important;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    input[type="radio"],
+    input[type="checkbox"],
+    input[type="number"],
+    input[type="url"],
+    textarea {
+        margin-bottom: 0 !important;
+        margin-top: 0 !important;
+    }
+
+    input[type="submit"],
+    button[type="submit"],
+    .button-primary,
+    .acf-osm-above .leaflet-control-geocoder > .leaflet-control-geocoder-icon {
+        background: var(--colors_buttons_background) !important;
+        color: var(--colors_buttons_texts) !important;
+        border: 0 !important;
+    }
+
+    .acf-button {
+        border: 1px solid var(--colors_buttons_background) !important;
+        background: transparent !important;
+        color: var(--colors_buttons_background) !important;
+    }
+
+    .acf-url i {
+        top: 10px;
+    }
+
+    label {
+        display: block !important;
+    }
+
+    #collapse-button {
+        display: none !important;
+    }
+
+    .button {
+        padding: 0.5rem 1rem !important;
+        margin: 0 !important;
+    }
+
+    .button {
+        display: inline-block;
+        border-radius: 1em !important;
+        font-size: 1.075rem !important;
+        line-height: 1rem !important;
+        min-height: auto !important;
+    }
+}

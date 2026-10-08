@@ -1,0 +1,29 @@
+{
+    "name": "studiogram/faq",
+    "title": "FAQ",
+    "category": "studiogram",
+    "icon": "list-view",
+    "keywords": ["faq"],
+    "acf": {
+        "mode": "preview"
+    },
+    "script": "file:../../dist/blocks/faq/scripts.min.js",
+    "style": "file:../../dist/blocks/faq/styles.min.css",
+    "supports": {
+        "mode": false,
+        "color": {
+            "background": false,
+            "heading": false,
+            "link": false,
+            "text": false
+        }
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image": true
+            }
+        }
+    }
+}

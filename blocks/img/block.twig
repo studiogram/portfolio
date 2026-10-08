@@ -1,0 +1,7 @@
+<section {{ block_id }} data-block-type="img" data-block-id="{{ block.id }}" class="{% if fields.space.espace %}mb-8!{% endif %}">
+	<div class="content-grid content-grid--{{fields.space.large}}">
+		{% if fields.image %}
+			{{ include('views/components/reveal-image/view.twig', { image: fields.image, blend: fields.multiply ? theme : null, class: '' }) }}
+		{% endif %}
+	</div>
+</section>

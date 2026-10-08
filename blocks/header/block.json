@@ -1,0 +1,34 @@
+{
+    "name": "studiogram/header",
+    "title": "Header",
+    "category": "headers",
+    "icon": "cover-image",
+    "keywords": [
+        "hero",
+        "banner",
+        "header",
+        "en-tête"
+    ],
+    "acf": {
+        "mode": "preview"
+    },
+    "script": "file:../../dist/blocks/header/scripts.min.js",
+    "style": "file:../../dist/blocks/header/styles.min.css",
+    "supports": {
+        "mode": false,
+        "color": {
+            "background": false,
+            "heading": false,
+            "link": false,
+            "text": false
+        }
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image": true
+            }
+        }
+    }
+}

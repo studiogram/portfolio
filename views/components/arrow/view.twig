@@ -1,0 +1,3 @@
+{% set rotations = { left: 'rotate-45', right: '-rotate-45', up: 'rotate-180' } %}
+{% set rotation = rotations[side] ?? '' %}
+<div class="arrow-circle | w-12 h-12 px-[14px] flex justify-center items-center rounded-full bg-dark text-white {{ arrow_class }} {{ rotation }}" {% if scale %} data-scroll="scale" {% endif %}>{{ include('views/svg/arrow.twig') }}</div>

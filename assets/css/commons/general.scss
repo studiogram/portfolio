@@ -1,0 +1,217 @@
+@use "mixins" as *;
+
+// Pre-hide scroll-animated elements' start states until Scrolls has set them,
+// so they don't flash in their final (plain) state on load. Scoped to the
+// frontend (.studiogram) so the editor, which never runs Scrolls, still shows
+// them. The class is added by Scrolls once every ScrollTrigger is built.
+.studiogram:not(.is-scroll-ready) {
+    [data-scroll="fade"],
+    [data-scroll="letters"],
+    [data-scroll="blur"],
+    [data-scroll="align"],
+    [data-scroll="reveal"],
+    [data-scroll="from-left"],
+    [data-scroll="from-left-full"] {
+        opacity: 0;
+    }
+
+    [data-scroll="bars"] {
+        width: 0;
+    }
+}
+
+// Ease the reveal (apparition) only during the reveal window (.is-revealing,
+// removed by Scrolls right after). Kept off otherwise so it never fights GSAP's
+// per-frame scrub of opacity/width.
+.studiogram.is-revealing {
+    [data-scroll="fade"],
+    [data-scroll="letters"],
+    [data-scroll="blur"],
+    [data-scroll="align"],
+    [data-scroll="reveal"] {
+        transition: opacity 0.3s ease;
+    }
+
+    [data-scroll="bars"] {
+        transition: width 0.3s ease;
+    }
+}
+
+@layer components {
+    :where(.studiogram, .editor-styles-wrapper)
+        :where(.grider, [data-block-type])
+        > * {
+        grid-column: span 12;
+
+        @include lg {
+            grid-column: span 24;
+        }
+    }
+}
+
+.content-grid {
+    display: grid;
+    grid-column: 1 / span 12;
+
+    &--large,
+    &--big {
+        grid-column: 1 / span 12;
+    }
+
+    @include lg {
+        grid-column: 3 / span 16;
+
+        &--center {
+            grid-column: 6 / span 14;
+        }
+
+        &--small {
+            grid-column: 3 / span 16;
+        }
+
+        &--medium {
+            grid-column: 3 / span 20;
+        }
+
+        &--large,
+        &--big {
+            grid-column: 2 / span 22;
+        }
+
+        &--xlarge {
+            grid-column: 1 / span 24;
+        }
+    }
+}
+
+.studiogram,
+.editor-styles-wrapper {
+    .colors-transition {
+        &,
+        & > * {
+            transition:
+                background-color 0.5s,
+                color 0.5s,
+                fill 0.5s,
+                stroke 0.5s;
+        }
+    }
+
+    #wpadminbar {
+        position: fixed !important;
+        overflow: hidden;
+    }
+
+    .grider,
+    [data-block-type] {
+        display: grid;
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+        gap: 1rem;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+
+        @include lg {
+            grid-template-columns: repeat(24, minmax(0, 1fr));
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+    }
+
+    .block,
+    [data-block-type] {
+        position: relative;
+        margin-bottom: 6rem;
+
+        @include lg {
+            margin-bottom: 8rem;
+        }
+    }
+
+    &.single-post {
+        main {
+            padding-top: 0;
+        }
+    }
+
+    main {
+        min-height: 100dvh;
+        overflow: hidden;
+    }
+
+    .wysiwyg {
+        li {
+            margin-bottom: 0.25rem;
+            list-style: none;
+            padding-left: 1.5rem;
+            position: relative;
+
+            &::before {
+                content: "•";
+                font-size: 2em;
+                color: color-mix(
+                    in srgb,
+                    var(--wp--preset--color--primary) 25%,
+                    transparent
+                );
+                position: absolute;
+                left: 0;
+                top: 0;
+                line-height: 0.5em;
+            }
+        }
+
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        a {
+            color: var(--wp--preset--color--warning);
+        }
+    }
+
+    .wysiwyg,
+    .links {
+        a,
+        button {
+            transition: 0.35s;
+
+            &:hover {
+                opacity: 0.6;
+            }
+        }
+    }
+
+    cite {
+        font-style: normal;
+    }
+
+    .fit {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .img-fit {
+        position: relative;
+        overflow: hidden;
+
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        div {
+            position: relative;
+        }
+    }
+
+    figure {
+        margin: 0;
+    }
+}

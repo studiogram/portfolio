@@ -1,0 +1,73 @@
+{% set h = post_card(id) %}
+
+{% if h %}
+	{% set rot = random([-8, -7, -6, 6, 7, 8]) %}
+
+	{% if h.layout == 'actualites' %}
+		<article class="@container/card group relative flex h-full flex-col rounded-3xl bg-dark text-white">
+			<figure class="h-70 lg:h-95 rounded-3xl bg-dark overflow-hidden px-4 pt-4">
+				{% if h.image %}
+					<img class="lazyload object-cover w-full! h-full! rounded-xl transition duration-500 group-hover:scale-110" {{ responsive_image(h.image) }}/>
+				{% endif %}
+			</figure>
+			{{ include('views/components/post-card/content.twig', { h: h, class: "flex-1", taglist: false }, false) }}
+		</article>
+
+	{% elseif h.layout == 'case' %}
+
+		<article class="@container/card group relative flex h-full flex-col rounded-3xl bg-white overflow-hidden" style="--rot: {{ rot }}deg">
+			<figure class="relative h-70 lg:h-95  bg-white overflow-hidden p-4 rounded-t-3xl">
+				{{ include('views/components/shape/view.twig', { svg: h.svg_url, dim: h.svg_dim, from: h.type_color, to: h.type_color, class: 'pointer-events-none absolute h-full md:h-[150%] w-auto! mix-blend-multiply z-10 transition duration-500 group-hover:rotate-[var(--rot)] group-hover:scale-120  ' ~ (h.shape_right ? 'left-2/5' : 'right-2/5') ~ ' ' ~ (h.shape_bottom ? 'top-2/5' : 'bottom-2/5') }) }}
+
+				{% if h.image %}
+					<img class="lazyload object-cover w-full! h-full! relative transition duration-500 group-hover:scale-110" {{ responsive_image(h.image) }}/>
+				{% endif %}
+			</figure>
+			{{ include('views/components/post-card/content.twig', { h: h, taglist: true, class: "flex-1" }, false) }}
+		</article>
+
+
+	{% elseif h.layout == 'veille' %}
+
+		<article class="@container/card group relative flex h-full flex-col rounded-3xl bg-white" style="--rot: {{ rot }}deg">
+			<figure class="relative h-70 lg:h-95 rounded-2xl bg-white overflow-hidden px-4 pt-4">
+				{{ include('views/components/shape/view.twig', { svg: h.svg_url, dim: h.svg_dim, from: h.type_color, to: h.type_color, class: 'pointer-events-none absolute bottom-3/5 -left-2/5 h-full w-auto! z-10 mix-blend-multiply @lg/card:h-[150%]! transition duration-500 group-hover:rotate-[var(--rot)] group-hover:scale-120' }) }}
+
+
+				{% if h.image %}
+					<img class="lazyload object-cover w-full! h-full! relative rounded-xl transition duration-500 group-hover:scale-110" {{ responsive_image(h.image) }}/>
+				{% endif %}
+			</figure>
+			{{ include('views/components/post-card/content.twig', { h: h, taglist: true, class: "flex-1" }, false) }}
+
+
+		</article>
+
+	{% elseif h.layout == 'situation' %}
+
+		<article class="@container/card group relative flex h-full flex-col rounded-3xl bg-white overflow-hidden" style="--rot: {{ rot }}deg">
+			{{ include('views/components/post-card/content.twig', { h: h, taglist: true }, false) }}
+
+			<figure class="flex-1 relative h-70 lg:h-95 bg-white px-4 pt-4 min-h-100">
+				{{ include('views/components/shape/view.twig', { svg: h.svg_url, dim: h.svg_dim, from: 'white', to: h.shape_color, mid: '10%', class: 'pointer-events-none absolute top-0 left-8 h-[150%]! w-auto! z-10 mix-blend-multiply transition duration-500 group-hover:rotate-[var(--rot)] group-hover:scale-120' }) }}
+
+			</figure>
+
+		</article>
+
+	{% elseif h.layout == 'expertises' %}
+
+		<article class="@container/card group  flex h-full flex-col rounded-3xl overflow-hidden bg-white p-4" style="--rot: {{ rot }}deg">
+			<div class="bg-{{ h.bg_color }} text-white relative overflow-hidden flex-1 rounded-2xl flex flex-col">
+				<p class="text-s my-1 px-4 py-6 relative z-10">{{ h.date }}</p>
+
+				<figure class="min-h-87 z-0">
+					{{ include('views/components/shape/view.twig', { svg: h.svg_url, dim: h.svg_dim, grad: 'radial', from: h.shape_color, to: h.bg_color, mid: '0%', class: 'pointer-events-none absolute top-8 left-1/2 -translate-x-1/2 h-[120%]! w-auto! z-0 transition duration-500 group-hover:rotate-[var(--rot)] group-hover:scale-120' }) }}
+				</figure>
+
+				{{ include('views/components/post-card/content.twig', { h: h, taglist: true, show_date: false, space: 'px-4 py-6', class: 'flex-1', tag_color: 'dark' }, false) }}
+			</div>
+		</article>
+
+	{% endif %}
+{% endif %}

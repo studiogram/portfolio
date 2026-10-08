@@ -1,0 +1,13 @@
+{% set poster_url = fields.poster ? fn('wp_get_attachment_image_url', fields.poster , 'large') : '' %}
+
+<section {{ block_id }} data-block-type="video" data-block-id="{{ block.id }}" class="{% if fields.space.espace %}mb-8!{% endif %}">
+	<div class="content-grid content-grid--{{fields.space.large}} rounded-4xl overflow-hidden">
+		<figure class="{% if bordercolor %}mr-4!{% endif%} relative col-span-12 text-center lg:col-span-20">
+			<div class="relative aspect-video overflow-hidden">
+				<video class="video__player" controls {% if poster_url %} poster="{{ poster_url }}" preload="none" {% endif %}>
+					<source src="{{ fields.video }}" type="video/mp4"/>
+				</video>
+			</div>
+		</figure>
+	</div>
+</section>

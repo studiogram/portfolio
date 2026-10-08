@@ -1,0 +1,19 @@
+<div class="z-10 flex flex-col justify-between {{ text|default('') }} {{ class|default('') }} {{ space|default('p-8') }}">
+	<div>
+		<div class="relative z-20 flex flex-wrap items-center gap-2 pointer-events-none mb-2">
+			{{ include('views/components/tag/view.twig', { tag: {text: h.category.name, url: h.category_link}, bg: h.type_color, color: tag_color|default('white') }) }}
+
+			{% if taglist|default(false) %}
+				{% for t in h.tags %}
+					{{ include('views/components/tag/view.twig', { tag: {text: t, class: 'bg-dark text-white'} }) }}
+
+				{% endfor %}
+			{% endif %}
+		</div>
+		{% if show_date is not defined or show_date %}
+			<p class="text-s my-1">{{ h.date }}</p>
+		{% endif %}
+		<h3 class="font-bold mb-4!">{{ h.title|striptags }}</h3>
+	</div>
+	{{ include('views/components/button-arrow/view.twig', { link: h.url, text: field('buttons', 'custom-content').read_more ?: 'Lire la suite', class: "z-20 mt-auto after:absolute after:inset-0 after:content-['']" }) }}
+</div>

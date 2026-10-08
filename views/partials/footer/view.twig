@@ -1,0 +1,19 @@
+<footer id="footer" class="text-white bg-dark">
+	<div class="mx-auto max-w-[1600px] px-8 py-16 flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
+		<a href="{{ home }}" class="footer__logo" aria-label="{{ site.name }}">
+			{{ include('views/svg/logo.twig') }}
+		</a>
+
+		{% if footer_menu %}
+			<nav aria-label="{{ site.name }}">
+				<ul class="flex flex-col gap-4 lg:flex-row lg:gap-8">
+					{% for item in footer_menu.items %}
+						<li><a class="a" href="{{ item.link }}">{{ item.title }}</a></li>
+					{% endfor %}
+				</ul>
+			</nav>
+		{% endif %}
+
+		<p class="text-xs">© {{ "now"|date("Y") }} {{ site.name }}</p>
+	</div>
+</footer>

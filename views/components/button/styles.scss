@@ -1,0 +1,26 @@
+@use "mixins" as *;
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1.5rem;
+    padding: 0.85rem 1.25rem;
+    background-image: linear-gradient(var(--btn-fill), var(--btn-fill));
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-size: 100% 0%;
+    transition:
+        background-size 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+        color 0.3s ease,
+        border-radius 0.35s ease;
+
+    &:hover {
+        border-radius: 0.75rem;
+        background-size: 100% 100%;
+    }
+
+    @include lg {
+        padding: 0.85rem 1.75rem;
+    }
+}

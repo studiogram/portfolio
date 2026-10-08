@@ -1,0 +1,16 @@
+[data-block-type="related"] {
+    .wysiwyg {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            u,
+            [style*="underline"] {
+                background-size: var(--underline, 0%) 5px;
+                padding-bottom: 12px;
+            }
+        }
+    }
+}

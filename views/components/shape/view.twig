@@ -1,0 +1,38 @@
+{# Gradient shape via CSS: the gradient is a real CSS background, the shape is a
+   CSS mask. No SVG paint-server, so it renders identically on the front end and
+   in the admin block preview — which flattens inline-SVG camelCase and breaks
+   <linearGradient>/<radialGradient>.
+
+   Shape source, either:
+   - svg: URL of an uploaded SVG (single silhouette). dim: [w, h] for aspect-ratio.
+   - shape (a-d): built-in preset path (data-URI mask, dims below).
+
+   Params: from, to (colour slugs), grad ('linear'|'radial'),
+   angle (linear, default 135deg = top-left -> bottom-right), x/y (radial origin),
+   fade (bool: start transparent), mid (gradient midpoint), class (utilities incl.
+   width + positioning on the caller). #}
+{% set dims = { 'a': [822, 450], 'b': [846, 640], 'c': [854.99, 479.01], 'd': [815, 543] } %}
+{% set use_svg = svg is defined and svg %}
+{% if use_svg or shape in ['a', 'b', 'c', 'd'] %}
+{% if use_svg %}
+    {% set dim = dim|default([1, 1]) %}
+    {% set mask = "url('" ~ svg ~ "') center / 100% 100% no-repeat" %}
+{% else %}
+    {% set dim = dims[shape] ?? dims['a'] %}
+    {% set d = include('views/svg/shapes/paths/' ~ shape ~ '.twig')|trim|replace({' ': '%20'}) %}
+    {% set svgdata = "%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20" ~ dim[0] ~ "%20" ~ dim[1] ~ "%22%20preserveAspectRatio=%22none%22%3E%3Cpath%20fill=%22%23fff%22%20d=%22" ~ d ~ "%22/%3E%3C/svg%3E" %}
+    {% set mask = "url('data:image/svg+xml," ~ svgdata ~ "') center / 100% 100% no-repeat" %}
+{% endif %}
+{# Baked hex (with a var() fallback) so the gradient renders in the block-editor
+   iframe too, where the --color-* custom properties aren't always present. #}
+{% set hex = { 'dark': '#030e21', 'blue': '#00394c', 'lightblue': '#9bd7eb', 'lighterblue': '#d8e3f6', 'purple': '#453989', 'orange': '#e26643', 'green': '#015c52', 'lightgreen': '#ade0da', 'grey': '#e8e8e9', 'darkgrey': '#bbbec1', 'lightgrey': '#f3f3f3', 'white': '#ffffff' } %}
+{% set toc = hex[to|default('white')] ?? ('var(--color-' ~ (to|default('white')) ~ ')') %}
+{% set fromslug = from|default('dark') %}
+{% set fromc = fade|default(false) ? 'color-mix(in srgb, ' ~ toc ~ ' 0%, transparent)' : (hex[fromslug] ?? ('var(--color-' ~ fromslug ~ ')')) %}
+{% set mid = mid|default('20%') %}
+{% set bg = (grad|default('linear') == 'radial')
+    ? 'radial-gradient(circle at ' ~ (x|default('20%')) ~ ' ' ~ (y|default('20%')) ~ ', ' ~ fromc ~ ' 0%, ' ~ fromc ~ ' ' ~ mid ~ ', ' ~ toc ~ ' 100%)'
+    : 'linear-gradient(' ~ (angle|default('135deg')) ~ ', ' ~ fromc ~ ' 0%, ' ~ fromc ~ ' ' ~ mid ~ ', ' ~ toc ~ ' 100%)' %}
+{% set style = 'aspect-ratio: ' ~ dim[0] ~ ' / ' ~ dim[1] ~ '; background: ' ~ bg ~ '; -webkit-mask: ' ~ mask ~ '; mask: ' ~ mask ~ ';' %}
+<div class="{{ class }}" style="{{ style|raw }}"></div>
+{% endif %}

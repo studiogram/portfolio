@@ -1,0 +1,17 @@
+@use "mixins" as *;
+
+.studiogram,
+.editor-styles-wrapper {
+    width: 100vw;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    .block {
+        padding-block: rem(80);
+        overflow: hidden;
+
+        @media (min-width: theme("screens.md")) {
+            padding-block: rem(64);
+        }
+    }
+}

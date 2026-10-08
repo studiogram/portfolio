@@ -1,0 +1,20 @@
+{% if fields.show_introduction %}
+	<header class="introduction | pb-6 flex flex-col {% if intro.text %} lg:items-end {% else %} lg:items-center {% endif %} {% if not cols %} lg:flex-row {% else %} text-center {% endif %} gap-4 lg:gap-8 justify-between {{intro_class}}">
+
+		{% if intro.title or intro.text %}
+			<div class="wysiwyg | flex flex-col gap-4">
+				{% if intro.title %}
+					<div>{{ intro.title }}</div>
+				{% endif %}
+
+				{% if intro.text %}
+					<div>{{intro.text}}</div>
+				{% endif %}
+			</div>
+		{% endif %}
+
+		{% if intro.show_button %}
+			<div class="shrink-0 {% if cols %} w-full mb-4{% endif %}">{{include('views/components/button/view.twig',{button:intro.button.btn})}}</div>
+		{% endif %}
+	</header>
+{% endif %}

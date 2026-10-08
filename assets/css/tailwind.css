@@ -1,0 +1,26 @@
+@import "tailwindcss";
+@source "../../views/**/*.twig";
+@source "../../blocks/**/*.twig";
+@source inline(
+    "{hover:,group-hover:,}{bg,text,stroke,fill,border}-{dark,blue,lightblue,lighterblue,purple,orange,green,lightgreen,grey,darkgrey,lightgrey,white}{!,}"
+);
+
+@theme {
+    --breakpoint-sm: 640px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 1024px;
+    --breakpoint-xl: 1280px;
+
+    --color-dark: #030e21;
+    --color-blue: #00394c;
+    --color-lightblue: #9bd7eb;
+    --color-lighterblue: #d8e3f6;
+    --color-purple: #453989;
+    --color-orange: #e26643;
+    --color-green: #015c52;
+    --color-lightgreen: #ade0da;
+    --color-grey: #e8e8e9;
+    --color-darkgrey: #bbbec1;
+    --color-lightgrey: #f3f3f3;
+    --color-white: #ffffff;
+}

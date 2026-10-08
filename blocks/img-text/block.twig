@@ -1,0 +1,8 @@
+<section {{ block_id }} data-block-type="img-text" data-block-id="{{ block.id }}" class="{% if fields.space.espace %}mb-8!{% endif %}">
+	<div class="content-grid content-grid--{{fields.space.large}} | grid items-center gap-4 lg:grid-cols-2">
+		<div class="wysiwyg {{fields.side ? 'order-1' : 'order-2'}}">{{ fields.text }}</div>
+		{% if fields.image %}
+			{{ include('views/components/reveal-image/view.twig', { image: fields.image, blend: fields.multiply ? theme : null, class: (fields.side ? 'order-2' : 'order-1')}) }}
+		{% endif %}
+	</div>
+</section>

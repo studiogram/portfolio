@@ -1,0 +1,133 @@
+.mce-content-body {
+    li {
+        list-style: none;
+        font-size: inherit;
+        padding-left: 1.5rem;
+        position: relative;
+
+        &::before {
+            content: "•";
+            font-size: 2em;
+            color: color-mix(
+                in srgb,
+                var(--wp--preset--color--primary) 25%,
+                transparent
+            );
+            position: absolute;
+            left: 0;
+            top: 0;
+            line-height: 0.5em;
+        }
+    }
+}
+
+.editor-visual-editor__post-title-wrapper,
+.edit-post-visual-editor__post-title-wrapper {
+    position: relative;
+    z-index: 1;
+    margin-top: 0 !important;
+    background: #1e1e1e;
+    color: white;
+}
+
+.editor-visual-editor__post-title-wrapper .editor-post-title__input,
+.edit-post-visual-editor__post-title-wrapper .editor-post-title__input {
+    text-align: center !important;
+    padding: 1rem !important;
+    font-size: 1.5rem !important;
+    line-height: 1.2 !important;
+    font-weight: 500 !important;
+    font-family: sans-serif !important;
+    color: #fff !important;
+}
+
+// Canvas rules — scoped to .editor-styles-wrapper only. In the iframed editor
+// (WP copies this into the canvas iframe) the outer skeleton wrappers don't
+// exist, only .editor-styles-wrapper does, so anchoring here is what makes the
+// pointer-events guard actually apply. Non-iframed editors nest it deeper — the
+// selector still matches.
+.editor-styles-wrapper {
+    padding: 0;
+    overflow: visible;
+
+    [data-block-type] {
+        pointer-events: none;
+    }
+
+    .wp-editor-area[aria-hidden="true"] {
+        display: none;
+    }
+
+    .wp-block {
+        margin: 0;
+        max-width: none;
+        overflow: visible !important;
+
+        &:focus::after {
+            outline: none !important;
+        }
+
+        &.is-selected {
+            outline: 2px solid var(--wp-admin-theme-color, #007cba) !important;
+            outline-offset: -2px;
+        }
+    }
+
+    .wp-block {
+        * {
+            pointer-events: none !important;
+        }
+    }
+
+    .wp-block.block-list-appender,
+    .wp-block.block-list-appender *,
+    .wp-block .block-list-appender,
+    .wp-block .block-list-appender * {
+        pointer-events: all !important;
+    }
+
+    .wp-block[data-type="acf/blocks"],
+    .wp-block[data-type="acf/blocks"] .acf-block-body,
+    .wp-block[data-type="acf/blocks"] .acf-block-preview,
+    .wp-block[data-type="acf/blocks"] .acf-block-component,
+    .wp-block[data-type="acf/blocks"] [data-block-type="blocks"] {
+        overflow: visible !important;
+    }
+
+    .block-list-appender {
+        display: none !important;
+    }
+
+    &::after {
+        background: #1e1e1e;
+    }
+}
+
+.block-editor-page {
+    .interface-interface-skeleton__body {
+        position: relative;
+
+        .block-editor-block-inspector__advanced {
+            display: none !important;
+        }
+
+        .editor-sidebar,
+        .interface-complementary-area__fill {
+            width: 400px !important;
+        }
+
+        .acf-repeater .acf-row-handle {
+            width: 10px !important;
+            padding: 5px !important;
+        }
+
+        /* Set absolute positioning to editors sidebars */
+        .interface-interface-skeleton__secondary-sidebar {
+            position: absolute !important;
+        }
+    }
+}
+
+.acf-block-preview .gform_wrapper {
+    display: block !important;
+}

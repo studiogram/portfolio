@@ -1,0 +1,133 @@
+@use "mixins" as *;
+
+[data-block-type="table"] {
+    table {
+        display: table;
+        width: 100%;
+        max-width: 850px;
+        border-collapse: separate;
+        border-spacing: 0;
+        border-radius: rem(4);
+        overflow: hidden;
+
+        // Only trim the outer edges on desktop where it's a real grid of cells.
+        @include lg {
+            tbody tr:last-of-type {
+                td,
+                th {
+                    border-bottom: none;
+                }
+            }
+
+            tr th:last-of-type,
+            tr td:last-of-type {
+                border-right: none;
+            }
+        }
+
+        th,
+        td {
+            padding: rem(12) rem(16) !important;
+            text-align: left;
+            vertical-align: top;
+        }
+    }
+
+    // ---- Mobile: transpose to a single column ----
+    // Each column stacks vertically as "header cell + its values". The markup is
+    // row-based, so flatten the rows with display:contents (cells become flex
+    // items of the table) and order each cell by its column position: cells that
+    // share an order keep DOM (row) order, so every column groups together.
+    @include only-mobile {
+        table {
+            display: flex;
+            flex-direction: column;
+        }
+
+        thead,
+        tbody,
+        tr {
+            display: contents;
+        }
+
+        th,
+        td {
+            display: block;
+            width: 100%;
+            border-right: none !important;
+        }
+
+        tr > *:nth-child(1) {
+            order: 1;
+        }
+        tr > *:nth-child(2) {
+            order: 2;
+        }
+        tr > *:nth-child(3) {
+            order: 3;
+        }
+        tr > *:nth-child(4) {
+            order: 4;
+        }
+        tr > *:nth-child(5) {
+            order: 5;
+        }
+        tr > *:nth-child(6) {
+            order: 6;
+        }
+        tr > *:nth-child(7) {
+            order: 7;
+        }
+        tr > *:nth-child(8) {
+            order: 8;
+        }
+    }
+}
+
+[data-theme="light"] {
+    [data-block-type="table"] {
+        table {
+            border: 2px solid var(--wp--preset--color--dark);
+
+            tr {
+                th,
+                td {
+                    border-bottom: 2px solid var(--wp--preset--color--dark);
+                }
+            }
+
+            th {
+                background: var(--wp--preset--color--white);
+            }
+
+            th,
+            td {
+                border-right: 2px solid var(--wp--preset--color--dark);
+            }
+        }
+    }
+}
+
+[data-theme="dark"] {
+    [data-block-type="table"] {
+        table {
+            border: 2px solid var(--wp--preset--color--white);
+
+            tr {
+                th,
+                td {
+                    border-bottom: 2px solid var(--wp--preset--color--white);
+                }
+            }
+
+            th {
+                background: var(--wp--preset--color--darkgrey);
+            }
+
+            th,
+            td {
+                border-right: 2px solid var(--wp--preset--color--white);
+            }
+        }
+    }
+}

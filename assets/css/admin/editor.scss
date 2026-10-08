@@ -1,0 +1,49 @@
+@use "../commons/mixins" as *;
+
+#editor {
+    .postbox.acf-postbox {
+        background: var(--colors_background_primary) !important;
+        label {
+            color: var(--colors_background_secondary) !important;
+        }
+    }
+
+    .edit-post-header-toolbar {
+        button[disabled] {
+            display: none;
+        }
+    }
+
+    .editor-styles-wrapper {
+        padding: 0;
+
+        &::after {
+            display: none;
+        }
+
+        .edit-post-visual-editor__post-title-wrapper {
+            margin: 0;
+            font-family: sans-serif;
+        }
+
+        .wp-block {
+            max-width: 100%;
+            margin: 0 !important;
+        }
+    }
+
+    .is-root-container {
+        overflow: hidden;
+    }
+
+    .block-editor-block-types-list__item-title,
+    .block-editor-inserter__quick-inserter-expand {
+        text-align: center;
+    }
+}
+
+:root :where(.editor-styles-wrapper)::after {
+    // height: 10dvh !important;
+    color: var(--colors_texts) !important;
+    background: var(--colors_background_secondary) !important;
+}
