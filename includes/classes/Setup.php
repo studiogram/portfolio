@@ -46,20 +46,20 @@ if (!class_exists('STUDIOGRAM\Setup')) :
             $post = get_post();
             $context['post'] = $post;
             $context['admin'] = is_admin();
+
             $theme_source_id = $post ? $post->ID : 0;
             if (is_home() || is_category() || is_archive()) {
                 $blog_id = (int) get_option('page_for_posts');
                 if ($blog_id) $theme_source_id = $blog_id;
             }
             $context['theme'] = ($theme_source_id && get_post_meta($theme_source_id, 'theme', true)) ? 'light' : 'dark';
-            $context['primary_menu'] = \Timber\Timber::get_menu('primary') ?: null;
-            $context['footer_menu'] = \Timber\Timber::get_menu('footer') ?: null;
+
+            $context['header'] = $menus['header'] ?: null;
+            $context['contact'] = $menus['contact'] ?: null;
+            $context['footer'] = $menus['footer'] ?: null;
+
+            $context['show_contact'] = function_exists('get_field') ? get_field('show_contact') : null;
             $context['home'] = function_exists('pll_home_url') ? pll_home_url() : home_url('/');
-            $context['languages'] = function_exists('pll_the_languages') ? pll_the_languages([
-                'raw' => 1,
-                'hide_if_no_translation' => 0,
-                'display_names_as' => 'slug',
-            ]) : [];
             return $context;
         }
 

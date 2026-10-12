@@ -1,7 +1,20 @@
 @use "mixins" as *;
 
-#footer {
-    position: relative;
-    background: var(--wp--preset--color--dark);
-    color: var(--wp--preset--color--white);
+.footer {
+    position: sticky;
+    bottom: 0;
+    z-index: 0;
+
+    &__contact {
+        position: relative;
+        z-index: 1;
+        padding-bottom: 200px;
+
+        svg {
+            position: absolute;
+            top: calc(100% - 200px);
+            left: -5%;
+            width: 110%;
+        }
+    }
 }

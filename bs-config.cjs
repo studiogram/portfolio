@@ -1,5 +1,5 @@
 module.exports = {
-    proxy: "https://ohc.localhost/",
+    proxy: "https://studiogram.localhost/",
     files: [
         "dist/js/*.js",
         "dist/css/*.css",

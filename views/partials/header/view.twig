@@ -1,18 +1,18 @@
 <header id="header" class="fixed inset-x-0 top-4 mx-4 lg:mx-8">
-	<div class="relative flex items-center justify-between px-4! lg:px-8! py-2">
+	{# <div class="relative flex items-center justify-between px-4! lg:px-8! py-2">
 		<a href="{{ home }}" class="header__logo | py-4" aria-label="{{ site.name }}">
-			{{ include('views/svg/logo.twig') }}
-		</a>
+			{# {{ include('views/svg/logo.twig') }} #}
+	</a>
 
-		<button class="burger lg:hidden!" data-isopen="false" aria-label="Menu">{{ include('views/svg/burger.twig') }}</button>
+	{# <button class="burger lg:hidden!" data-isopen="false" aria-label="Menu">{{ include('views/svg/burger.twig') }}</button> #}
 
-		{% if primary_menu %}
-			<nav class="header__nav | hidden lg:flex gap-6 items-center text-m" aria-label="{{ site.name }}">
-				{% for item in primary_menu.items %}
-					<a class="header__link {{ item.current ? 'is-current' : '' }}" href="{{ item.link }}">{{ item.title }}</a>
-				{% endfor %}
-			</nav>
-		{% endif %}
+	{% if primary_menu %}
+		<nav class="header__nav | hidden lg:flex gap-6 items-center text-m" aria-label="{{ site.name }}">
+			{% for item in primary_menu.items %}
+				<a class="header__link {{ item.current ? 'is-current' : '' }}" href="{{ item.link }}">{{ item.title }}</a>
+			{% endfor %}
+		</nav>
+	{% endif %}
 	</div>
 
 	{% if primary_menu %}
@@ -23,5 +23,5 @@
 				{% endfor %}
 			</ul>
 		</nav>
-	{% endif %}
+	{% endif %} #}
 </header>

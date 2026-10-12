@@ -19,10 +19,10 @@ if (!class_exists('STUDIOGRAM\PostTypes')) :
         public function register()
         {
             $this->rename_post_type('Projets', 'Projet', 'dashicons-portfolio', true, 'post');
-            $this->rename_post_type('Pages', 'Page', 'dashicons-portfolio', false, 'page');
+            $this->rename_post_type('Pages', 'Page', 'edit-page', false, 'page');
             unregister_taxonomy_for_object_type('post_tag', 'post');
-            $this->register_cpt('notes', 'Notes', 'Note', 'dashicons-editor-paste-text', false, 21);
-            $this->register_cpt('labo', 'Labo', 'Labo', 'dashicons-smiley', true, 22);
+            $this->register_cpt('notes', 'Notes', 'Note', 'dashicons-editor-paste-text', false, 22);
+            $this->register_cpt('labo', 'Labo', 'Labo', 'dashicons-smiley', true, 21);
         }
 
         /**

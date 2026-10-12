@@ -1,7 +1,0 @@
-{% set gid = (id|default('shape')) ~ '-grad' %}
-{% set svg %}<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 815 543" preserveAspectRatio="none">
-    <defs>{{ include('views/svg/shapes/_gradient.twig', { id: gid, type: type, from: from, to: to, x: x, y: y, r: r }) }}</defs>
-    <path fill="{{ fill|default('url(#' ~ gid ~ ')') }}" d="{{ include('views/svg/shapes/paths/d.twig')|trim }}" />
-</svg>{% endset %}
-{% set uri = svg|trim|replace({"\n": "", "\t": ""})|replace({'%': '%25', '#': '%23', '<': '%3C', '>': '%3E', '"': '%22', ' ': '%20'}) %}
-<div class="{{ class|default('w-full') }}" style="aspect-ratio: 815 / 543; background: url('data:image/svg+xml,{{ uri|raw }}') center / 100% 100% no-repeat;"></div>

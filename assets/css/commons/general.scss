@@ -49,43 +49,26 @@
     }
 }
 
+[data-taxi] {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    background: var(--color-light);
+}
+
 .content-grid {
     display: grid;
-    grid-column: 1 / span 12;
-
-    &--large,
-    &--big {
-        grid-column: 1 / span 12;
-    }
+    grid-column: 2 / span 10;
 
     @include lg {
-        grid-column: 3 / span 16;
-
-        &--center {
-            grid-column: 6 / span 14;
-        }
-
-        &--small {
-            grid-column: 3 / span 16;
-        }
-
-        &--medium {
-            grid-column: 3 / span 20;
-        }
-
-        &--large,
-        &--big {
-            grid-column: 2 / span 22;
-        }
-
-        &--xlarge {
-            grid-column: 1 / span 24;
-        }
+        grid-column: 2 / span 22;
     }
 }
 
 .studiogram,
 .editor-styles-wrapper {
+    color: var(--wp--preset--color--dark);
+
     .colors-transition {
         &,
         & > * {
@@ -106,14 +89,11 @@
     [data-block-type] {
         display: grid;
         grid-template-columns: repeat(12, minmax(0, 1fr));
-        gap: 1rem;
-        padding-left: 1.5rem;
-        padding-right: 1.5rem;
+        gap: 0.25rem;
 
         @include lg {
             grid-template-columns: repeat(24, minmax(0, 1fr));
-            padding-left: 2rem;
-            padding-right: 2rem;
+            gap: 1.25rem;
         }
     }
 
@@ -213,5 +193,19 @@
 
     figure {
         margin: 0;
+    }
+
+    .rounded {
+        border-radius: 3rem;
+
+        &--bottom {
+            border-top-left-radius: 0rem;
+            border-top-right-radius: 0rem;
+        }
+
+        &--top {
+            border-bottom-left-radius: 0rem;
+            border-bottom-right-radius: 0rem;
+        }
     }
 }

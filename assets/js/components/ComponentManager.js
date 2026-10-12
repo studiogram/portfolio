@@ -1,4 +1,5 @@
 import components from "../views/components";
+import Effect from "../actions/Effect";
 
 /* One instance per element, shared across frontend load, Taxi navigation and the
    admin editor. Keeps components (e.g. Spline/WebGL) from being double-initialised
@@ -45,6 +46,12 @@ function initIn(root) {
     });
 }
 
+function initEffects(root) {
+    [...root.querySelectorAll("[data-effect]")]
+        .filter((el) => !instances.has(el))
+        .forEach((el) => instances.set(el, new Effect(el)));
+}
+
 function pruneDetached() {
     instances.forEach((instance, el) => {
         if (!document.contains(el)) {
@@ -58,6 +65,7 @@ function pruneDetached() {
 export function syncComponents(root = document) {
     pruneDetached();
     initIn(root);
+    initEffects(root);
 }
 
 /* Dispose components inside a subtree while it is still attached and sized.

@@ -225,7 +225,7 @@
                     "label": "Description",
                     "name": "description",
                     "aria-label": "",
-                    "type": "textarea",
+                    "type": "wysiwyg",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -235,18 +235,18 @@
                         "id": ""
                     },
                     "default_value": "",
-                    "maxlength": "",
                     "allow_in_bindings": 0,
-                    "rows": "",
-                    "placeholder": "",
-                    "new_lines": ""
+                    "tabs": "all",
+                    "toolbar": "full",
+                    "media_upload": 0,
+                    "delay": 0
                 },
                 {
                     "key": "field_6a1e892a7ae7d",
                     "label": "Pages",
                     "name": "pages",
                     "aria-label": "",
-                    "type": "repeater",
+                    "type": "group",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -255,13 +255,11 @@
                         "class": "",
                         "id": ""
                     },
-                    "layout": "table",
-                    "pagination": 0,
                     "min": 1,
-                    "max": 0,
+                    "max": "",
                     "collapsed": "",
                     "button_label": "Ajouter une page",
-                    "rows_per_page": 20,
+                    "layout": "block",
                     "sub_fields": [
                         {
                             "key": "field_6acca6e9c0097",
@@ -282,15 +280,14 @@
                             "allow_in_bindings": 0,
                             "placeholder": "",
                             "prepend": "",
-                            "append": "",
-                            "parent_repeater": "field_6a1e892a7ae7d"
+                            "append": ""
                         },
                         {
-                            "key": "field_6a1e89467ae7e",
-                            "label": "Page",
-                            "name": "page",
+                            "key": "field_6acce280a880e",
+                            "label": "Pages",
+                            "name": "pages",
                             "aria-label": "",
-                            "type": "clone",
+                            "type": "repeater",
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -299,14 +296,38 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "clone": [
-                                "group_6a1e75ca2d41f"
-                            ],
-                            "display": "seamless",
                             "layout": "block",
-                            "prefix_label": 0,
-                            "prefix_name": 0,
-                            "parent_repeater": "field_6a1e892a7ae7d"
+                            "pagination": 0,
+                            "min": 1,
+                            "max": 0,
+                            "collapsed": "",
+                            "button_label": "Ajouter un élément",
+                            "rows_per_page": 20,
+                            "sub_fields": [
+                                {
+                                    "key": "field_6a1e89467ae7e",
+                                    "label": "Page",
+                                    "name": "page",
+                                    "aria-label": "",
+                                    "type": "clone",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "clone": [
+                                        "group_6a1e75ca2d41f"
+                                    ],
+                                    "display": "seamless",
+                                    "layout": "block",
+                                    "prefix_label": 0,
+                                    "prefix_name": 0,
+                                    "parent_repeater": "field_6acce280a880e"
+                                }
+                            ]
                         }
                     ]
                 },
@@ -315,7 +336,7 @@
                     "label": "Secteurs",
                     "name": "secteurs",
                     "aria-label": "",
-                    "type": "repeater",
+                    "type": "group",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -325,12 +346,6 @@
                         "id": ""
                     },
                     "layout": "block",
-                    "pagination": 0,
-                    "min": 1,
-                    "max": 0,
-                    "collapsed": "",
-                    "button_label": "Ajouter une page",
-                    "rows_per_page": 20,
                     "sub_fields": [
                         {
                             "key": "field_6acca6f6c009a",
@@ -351,8 +366,7 @@
                             "allow_in_bindings": 0,
                             "placeholder": "",
                             "prepend": "",
-                            "append": "",
-                            "parent_repeater": "field_6acca6f6c0098"
+                            "append": ""
                         },
                         {
                             "key": "field_6acca728c009c",
@@ -370,7 +384,7 @@
                             },
                             "layout": "block",
                             "pagination": 0,
-                            "min": 0,
+                            "min": 1,
                             "max": 0,
                             "collapsed": "",
                             "button_label": "Ajouter un élément",
@@ -403,8 +417,7 @@
                                     "bidirectional_target": [],
                                     "parent_repeater": "field_6acca728c009c"
                                 }
-                            ],
-                            "parent_repeater": "field_6acca6f6c0098"
+                            ]
                         }
                     ]
                 },
@@ -512,7 +525,7 @@
                     "label": "Engagements",
                     "name": "engagements",
                     "aria-label": "",
-                    "type": "repeater",
+                    "type": "group",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -521,13 +534,7 @@
                         "class": "",
                         "id": ""
                     },
-                    "layout": "table",
-                    "pagination": 0,
-                    "min": 1,
-                    "max": 0,
-                    "collapsed": "",
-                    "button_label": "Ajouter une page",
-                    "rows_per_page": 20,
+                    "layout": "block",
                     "sub_fields": [
                         {
                             "key": "field_6acca7abc00a4",
@@ -548,15 +555,14 @@
                             "allow_in_bindings": 0,
                             "placeholder": "",
                             "prepend": "",
-                            "append": "",
-                            "parent_repeater": "field_6acca7abc00a2"
+                            "append": ""
                         },
                         {
-                            "key": "field_6acca7abc00a5",
-                            "label": "Page",
-                            "name": "page",
+                            "key": "field_6acce2f2a880f",
+                            "label": "Pages",
+                            "name": "pages",
                             "aria-label": "",
-                            "type": "clone",
+                            "type": "repeater",
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -565,14 +571,38 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "clone": [
-                                "group_6a1e75ca2d41f"
-                            ],
-                            "display": "seamless",
-                            "layout": "",
-                            "prefix_label": 0,
-                            "prefix_name": 0,
-                            "parent_repeater": "field_6acca7abc00a2"
+                            "layout": "block",
+                            "pagination": 0,
+                            "min": 1,
+                            "max": 0,
+                            "collapsed": "",
+                            "button_label": "Ajouter un élément",
+                            "rows_per_page": 20,
+                            "sub_fields": [
+                                {
+                                    "key": "field_6acca7abc00a5",
+                                    "label": "Page",
+                                    "name": "page",
+                                    "aria-label": "",
+                                    "type": "clone",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "clone": [
+                                        "group_6a1e75ca2d41f"
+                                    ],
+                                    "display": "seamless",
+                                    "layout": "",
+                                    "prefix_label": 0,
+                                    "prefix_name": 0,
+                                    "parent_repeater": "field_6acce2f2a880f"
+                                }
+                            ]
                         }
                     ]
                 },
@@ -633,5 +663,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1791798862
+    "modified": 1791812422
 }
