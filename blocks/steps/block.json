@@ -1,0 +1,27 @@
+{
+    "name": "studiogram/steps",
+    "title": "Étapes",
+    "category": "studiogram",
+    "icon": "editor-alignleft",
+    "keywords": ["texte", "contenu"],
+    "acf": {
+        "mode": "preview"
+    },
+    "supports": {
+        "mode": false,
+        "color": {
+            "background": false,
+            "heading": false,
+            "link": false,
+            "text": false
+        }
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image": true
+            }
+        }
+    }
+}

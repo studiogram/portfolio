@@ -1,19 +1,12 @@
 {
     "name": "studiogram/header",
-    "title": "Header",
-    "category": "headers",
-    "icon": "cover-image",
-    "keywords": [
-        "hero",
-        "banner",
-        "header",
-        "en-tête"
-    ],
+    "title": "En-tête",
+    "category": "studiogram",
+    "icon": "editor-alignleft",
+    "keywords": ["texte", "contenu"],
     "acf": {
         "mode": "preview"
     },
-    "script": "file:../../dist/blocks/header/scripts.min.js",
-    "style": "file:../../dist/blocks/header/styles.min.css",
     "supports": {
         "mode": false,
         "color": {
