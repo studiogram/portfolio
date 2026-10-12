@@ -4,7 +4,7 @@
     "fields": [
         {
             "key": "field_6a59de3664120",
-            "label": "Couleur principale",
+            "label": "Couleur",
             "name": "color",
             "aria-label": "",
             "type": "color_palette",
@@ -19,149 +19,14 @@
             "allow_null": 0,
             "allowed_colors": [
                 "dark",
-                "blue",
-                "lightblue",
-                "lighterblue",
-                "purple",
-                "orange",
+                "red",
                 "green",
-                "lightgreen",
-                "grey",
-                "darkgrey",
-                "lightgrey",
-                "white"
+                "lightblue",
+                "pink",
+                "blue"
             ],
-            "default_value": "",
+            "default_value": "dark",
             "allow_in_bindings": 0
-        },
-        {
-            "key": "field_6a59de6e23709",
-            "label": "Couleur du texte",
-            "name": "text",
-            "aria-label": "",
-            "type": "true_false",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 0,
-            "allow_in_bindings": 0,
-            "ui_on_text": "Foncé",
-            "ui_off_text": "Clair",
-            "ui": 1
-        },
-        {
-            "key": "field_6a5634d6c1de7",
-            "label": "Titre",
-            "name": "category_title",
-            "aria-label": "",
-            "type": "textarea",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "allow_in_bindings": 0,
-            "rows": 4,
-            "placeholder": "",
-            "new_lines": "br"
-        },
-        {
-            "key": "field_6a86d1a0head1",
-            "label": "Mise en page de l'en-tête",
-            "name": "header_layout",
-            "aria-label": "",
-            "type": "select",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "case": "Étude de cas",
-                "expertises": "Expertise",
-                "situation": "Situation",
-                "veille": "Veille",
-                "actualites": "Actualité"
-            },
-            "default_value": "case",
-            "return_format": "value",
-            "multiple": 0,
-            "allow_null": 0,
-            "allow_in_bindings": 0,
-            "ui": 0,
-            "ajax": 0,
-            "placeholder": "",
-            "create_options": 0,
-            "save_options": 0
-        },
-        {
-            "key": "field_6a5634d6layout",
-            "label": "Disposition",
-            "name": "layout",
-            "aria-label": "",
-            "type": "repeater",
-            "instructions": "(7 éléments par chargement, 6 colonnes disponibles par ligne)",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "layout": "table",
-            "pagination": 0,
-            "min": 7,
-            "max": 7,
-            "collapsed": "",
-            "button_label": "Ajouter",
-            "rows_per_page": 20,
-            "sub_fields": [
-                {
-                    "key": "field_6a5634d6span",
-                    "label": "Taille",
-                    "name": "span",
-                    "aria-label": "",
-                    "type": "select",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "choices": {
-                        "2": "Petit",
-                        "3": "Moyen",
-                        "4": "Grand"
-                    },
-                    "default_value": 4,
-                    "return_format": "value",
-                    "multiple": 0,
-                    "allow_null": 0,
-                    "allow_in_bindings": 0,
-                    "ui": 0,
-                    "ajax": 0,
-                    "placeholder": "",
-                    "create_options": 0,
-                    "save_options": 0,
-                    "parent_repeater": "field_6a5634d6layout"
-                }
-            ]
         }
     ],
     "location": [
@@ -183,5 +48,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1787660000
+    "modified": 1791800517
 }

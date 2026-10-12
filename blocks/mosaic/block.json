@@ -2,8 +2,8 @@
     "name": "studiogram/mosaic",
     "title": "Mosaïque",
     "category": "studiogram",
-    "icon": "editor-alignleft",
-    "keywords": ["texte", "contenu"],
+    "icon": "table-row-after",
+    "keywords": ["mosaïque", "mosaic"],
     "acf": {
         "mode": "preview"
     },

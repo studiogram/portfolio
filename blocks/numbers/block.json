@@ -2,8 +2,8 @@
     "name": "studiogram/numbers",
     "title": "Nombres",
     "category": "studiogram",
-    "icon": "editor-alignleft",
-    "keywords": ["texte", "contenu"],
+    "icon": "chart-line",
+    "keywords": ["nombres", "numbers"],
     "acf": {
         "mode": "preview"
     },

@@ -2,8 +2,8 @@
     "name": "studiogram/note-content",
     "title": "Note détaillée",
     "category": "studiogram",
-    "icon": "editor-alignleft",
-    "keywords": ["texte", "contenu"],
+    "icon": "excerpt-view",
+    "keywords": ["note"],
     "acf": {
         "mode": "preview"
     },

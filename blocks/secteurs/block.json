@@ -2,8 +2,8 @@
     "name": "studiogram/sectors",
     "title": "Secteurs",
     "category": "studiogram",
-    "icon": "editor-alignleft",
-    "keywords": ["texte", "contenu"],
+    "icon": "ellipsis",
+    "keywords": ["secteurs", "sectors"],
     "acf": {
         "mode": "preview"
     },

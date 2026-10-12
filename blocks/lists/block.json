@@ -2,8 +2,8 @@
     "name": "studiogram/lists",
     "title": "Listes",
     "category": "studiogram",
-    "icon": "editor-alignleft",
-    "keywords": ["texte", "contenu"],
+    "icon": "editor-ol",
+    "keywords": ["liste", "list"],
     "acf": {
         "mode": "preview"
     },

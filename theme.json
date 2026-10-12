@@ -4,18 +4,28 @@
     "settings": {
         "color": {
             "palette": [
-                { "color": "#111111", "name": "Dark", "slug": "dark" },
-                { "color": "#2563EB", "name": "Blue", "slug": "blue" },
-                { "color": "#93C5FD", "name": "Light blue", "slug": "lightblue" },
-                { "color": "#DBEAFE", "name": "Lighter blue", "slug": "lighterblue" },
-                { "color": "#7C3AED", "name": "Purple", "slug": "purple" },
-                { "color": "#EA580C", "name": "Orange", "slug": "orange" },
-                { "color": "#15803D", "name": "Green", "slug": "green" },
-                { "color": "#BBF7D0", "name": "Light green", "slug": "lightgreen" },
-                { "color": "#E5E5E5", "name": "Grey", "slug": "grey" },
-                { "color": "#A3A3A3", "name": "Dark grey", "slug": "darkgrey" },
-                { "color": "#F5F5F5", "name": "Light grey", "slug": "lightgrey" },
-                { "color": "#FFFFFF", "name": "White", "slug": "white" }
+                { "color": "#FCFAFC", "name": "Light", "slug": "light" },
+                { "color": "#150A29", "name": "Dark", "slug": "dark" },
+                { "color": "#E85B51", "name": "Rouge", "slug": "red" },
+                { "color": "#15B681", "name": "Vert", "slug": "green" },
+                {
+                    "color": "#95BBE6",
+                    "name": "Bleu clair",
+                    "slug": "lightblue"
+                },
+                { "color": "#E18BA6", "name": "Rose", "slug": "pink" },
+                { "color": "#356ABA", "name": "Bleu", "slug": "blue" },
+                { "color": "#F7F5F3", "name": "Medium", "slug": "medium" },
+                {
+                    "color": "#DBD4CE",
+                    "name": "Medium secondaire",
+                    "slug": "medium-secondary"
+                },
+                {
+                    "color": "#887E75",
+                    "name": "Medium tertiaire",
+                    "slug": "medium-tertiary"
+                }
             ],
             "background": true,
             "text": true,

@@ -2,8 +2,8 @@
     "name": "studiogram/panels",
     "title": "Panneaux",
     "category": "studiogram",
-    "icon": "editor-alignleft",
-    "keywords": ["texte", "contenu"],
+    "icon": "slides",
+    "keywords": ["panels", "panneaux"],
     "acf": {
         "mode": "preview"
     },

@@ -2,8 +2,8 @@
     "name": "studiogram/header-about",
     "title": "En-tête - À propos",
     "category": "studiogram",
-    "icon": "editor-alignleft",
-    "keywords": ["texte", "contenu"],
+    "icon": "block-default",
+    "keywords": ["en-tête", "header", "about", "à propos"],
     "acf": {
         "mode": "preview"
     },

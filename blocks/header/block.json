@@ -2,8 +2,8 @@
     "name": "studiogram/header",
     "title": "En-tête",
     "category": "studiogram",
-    "icon": "editor-alignleft",
-    "keywords": ["texte", "contenu"],
+    "icon": "block-default",
+    "keywords": ["en-tête", "header"],
     "acf": {
         "mode": "preview"
     },

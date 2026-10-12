@@ -2,8 +2,8 @@
     "name": "studiogram/before-after",
     "title": "Avant/Après",
     "category": "studiogram",
-    "icon": "editor-alignleft",
-    "keywords": ["texte", "contenu"],
+    "icon": "image-flip-horizontal",
+    "keywords": ["avant", "après", "before", "after"],
     "acf": {
         "mode": "preview"
     },

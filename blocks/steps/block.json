@@ -2,8 +2,8 @@
     "name": "studiogram/steps",
     "title": "Étapes",
     "category": "studiogram",
-    "icon": "editor-alignleft",
-    "keywords": ["texte", "contenu"],
+    "icon": "editor-ul",
+    "keywords": ["étapes", "steps"],
     "acf": {
         "mode": "preview"
     },

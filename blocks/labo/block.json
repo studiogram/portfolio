@@ -2,8 +2,8 @@
     "name": "studiogram/labo",
     "title": "Labo",
     "category": "studiogram",
-    "icon": "editor-alignleft",
-    "keywords": ["texte", "contenu"],
+    "icon": "smiley",
+    "keywords": ["labo"],
     "acf": {
         "mode": "preview"
     },

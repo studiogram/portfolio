@@ -1,11 +1,11 @@
 {
-    "key": "group_6a202a81f1740",
-    "title": "Thème",
+    "key": "group_6accb4e08cc4b",
+    "title": "Page",
     "fields": [
         {
-            "key": "field_6a202a8231edc",
-            "label": "Thème de la page",
-            "name": "theme",
+            "key": "field_6accb4e1ada43",
+            "label": "Afficher le contact",
+            "name": "show_contact",
             "aria-label": "",
             "type": "true_false",
             "instructions": "",
@@ -19,19 +19,12 @@
             "message": "",
             "default_value": 1,
             "allow_in_bindings": 0,
-            "ui_on_text": "Light",
-            "ui_off_text": "Dark",
+            "ui_on_text": "",
+            "ui_off_text": "",
             "ui": 1
         }
     ],
     "location": [
-        [
-            {
-                "param": "post_type",
-                "operator": "==",
-                "value": "post"
-            }
-        ],
         [
             {
                 "param": "post_type",
@@ -50,5 +43,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1780493274
+    "modified": 1791800581
 }
