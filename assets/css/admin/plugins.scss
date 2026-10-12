@@ -69,6 +69,15 @@
     justify-items: start !important;
 }
 
+.acf-cpf-circle {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
 // Yoast
 .wpseo-metabox-menu,
 .wpseo-meta-section,

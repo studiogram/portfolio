@@ -110,8 +110,7 @@ if (!class_exists('STUDIOGRAM\ACFColorPalette')) :
             $dir = get_stylesheet_directory_uri();
             $v   = wp_get_theme()->get('Version');
 
-            wp_enqueue_style('acf-cpf-input', $dir . '/dist/acf-color-palette/acf-color-palette.css', [], $v);
-            wp_enqueue_script('acf-cpf-input', $dir . '/dist/acf-color-palette/acf-color-palette.js', ['acf-input'], $v, true);
+            wp_enqueue_style('acf-cpf-tailwind', $dir . '/dist/css/main.min.css', [], $v);
         }
     }
     endif;

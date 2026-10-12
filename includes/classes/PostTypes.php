@@ -18,10 +18,11 @@ if (!class_exists('STUDIOGRAM\PostTypes')) :
 
         public function register()
         {
-            $this->rename_post_type('Projets', 'Projet', 'dashicons-portfolio');
+            $this->rename_post_type('Projets', 'Projet', 'dashicons-portfolio', true, 'post');
+            $this->rename_post_type('Pages', 'Page', 'dashicons-portfolio', false, 'page');
             unregister_taxonomy_for_object_type('post_tag', 'post');
-            $this->register_cpt('notes', 'Notes', 'Note', 'dashicons-editor-paste-text', 21);
-            $this->register_cpt('labo', 'Labo', 'Labo', 'dashicons-smiley', 22);
+            $this->register_cpt('notes', 'Notes', 'Note', 'dashicons-editor-paste-text', false, 21);
+            $this->register_cpt('labo', 'Labo', 'Labo', 'dashicons-smiley', true, 22);
         }
 
         /**
@@ -49,7 +50,7 @@ if (!class_exists('STUDIOGRAM\PostTypes')) :
         /**
          * Register a public, block-editor CPT with French labels.
          */
-        public function register_cpt($slug, $plural, $singular, $icon, $position)
+        public function register_cpt($slug, $plural, $singular, $icon, $masculine = false, $position = null)
         {
             register_post_type($slug, [
                 'labels' => [
@@ -57,12 +58,12 @@ if (!class_exists('STUDIOGRAM\PostTypes')) :
                     'singular_name' => $singular,
                     'menu_name' => $plural,
                     'add_new' => 'Ajouter',
-                    'add_new_item' => "Ajouter : {$singular}",
-                    'edit_item' => "Modifier : {$singular}",
-                    'new_item' => "Nouveau : {$singular}",
-                    'view_item' => "Voir : {$singular}",
-                    'search_items' => "Rechercher : {$plural}",
-                    'all_items' => "Tous : {$plural}",
+                    'add_new_item' => "Ajouter",
+                    'edit_item' => "Modifier",
+                    'new_item' => "Nouveau",
+                    'view_item' => "Voir",
+                    'search_items' => "Rechercher",
+                    'all_items' => $masculine ? "Tous" : "Toutes",
                     'not_found' => "Aucun élément trouvé",
                     'not_found_in_trash' => "Aucun élément dans la corbeille",
                 ],
@@ -79,9 +80,9 @@ if (!class_exists('STUDIOGRAM\PostTypes')) :
         /**
          * Relabel the built-in "post" type (name + icon). Call from register().
          */
-        public function rename_post_type($plural, $singular, $icon = 'dashicons-admin-post')
+        public function rename_post_type($plural, $singular, $icon = 'dashicons-admin-post', $masculine = false, $post)
         {
-            $post = get_post_type_object('post');
+            $post = get_post_type_object($post);
             if (!$post) return;
 
             $post->menu_icon = $icon;
@@ -90,12 +91,12 @@ if (!class_exists('STUDIOGRAM\PostTypes')) :
             $l->singular_name = $singular;
             $l->menu_name = $plural;
             $l->name_admin_bar = $singular;
-            $l->add_new_item = "Ajouter : {$singular}";
-            $l->edit_item = "Modifier : {$singular}";
-            $l->new_item = "Nouveau : {$singular}";
-            $l->view_item = "Voir : {$singular}";
-            $l->all_items = "Tous : {$plural}";
-            $l->search_items = "Rechercher : {$plural}";
+            $l->add_new_item = "Ajouter";
+            $l->edit_item = "Modifier";
+            $l->new_item = "Nouveau";
+            $l->view_item = "Voir";
+            $l->all_items = $masculine ? "Tous" : "Toutes";
+            $l->search_items = "Rechercher";
         }
     }
 endif;

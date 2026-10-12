@@ -36,7 +36,8 @@ if (!defined('ABSPATH')) exit;
             title="<?php echo $label; ?>">
             <input type="radio" name="<?php echo $name; ?>" value="<?php echo $slug; ?>"
                 <?php checked($value, $color['slug']); ?> class="acf-cpf-radio" />
-            <span class="acf-cpf-circle" style="--c:<?php echo $hex; ?>"></span>
+            <span class="acf-cpf-circle bg-<?= $slug ?>"></span>
+            <span class="acf-cpf-label"><?php echo $label; ?></span>
         </label>
     <?php endforeach; ?>
 
