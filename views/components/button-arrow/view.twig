@@ -1,9 +1,0 @@
-{% if link %}
-	<a data-component="button-arrow" href="{{link}}"{% if theme %} data-theme="{{ theme }}"{% endif %} class="flex items-center gap-1 text-left hover:text-{{color_hover}} {{ class }}">{{text}}
-		<span>{{ include('views/svg/arrow.twig') }}</span>
-	</a>
-{% else %}
-	<button data-component="button-arrow" class="flex items-center gap-1 text-left group-hover:text-{{fields.color}} {{ class }}">{{text}}
-		<span>{{ include('views/svg/arrow.twig') }}</span>
-	</button>
-{% endif %}

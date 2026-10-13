@@ -1,8 +1,8 @@
-<div class="contact | bg-medium relative rounded rounded--bottom overflow-hidden">
+<div class="contact spacing--top | bg-medium relative rounded rounded--bottom overflow-hidden z-10 text-center ">
 	{% if show_contact is not same as(false) %}
-		<div>
-			<h2>Contact</h2>
-			{# contact content here #}
+		<div class="wysiwyg">
+			{{ contact.description }}
+			{{ include('views/components/button/view.twig', {button: contact.btn}) }}
 		</div>
 	{% endif %}
 	{{ include('views/svg/worm.twig') }}

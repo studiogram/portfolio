@@ -63,6 +63,17 @@
     @include lg {
         grid-column: 2 / span 22;
     }
+
+    &--grider {
+        display: grid;
+        grid-template-columns: repeat(10, minmax(0, 1fr));
+        gap: 0.25rem;
+
+        @include lg {
+            grid-template-columns: repeat(22, minmax(0, 1fr));
+            gap: 1.25rem;
+        }
+    }
 }
 
 .studiogram,
@@ -104,6 +115,22 @@
 
         @include lg {
             margin-bottom: 8rem;
+        }
+    }
+
+    .spacing {
+        &--bottom {
+            padding-bottom: 4rem;
+            @include lg {
+                padding-bottom: 6rem;
+            }
+        }
+
+        &--top {
+            padding-top: 4rem;
+            @include lg {
+                padding-top: 6rem;
+            }
         }
     }
 

@@ -1,0 +1,145 @@
+{
+    "key": "group_6ace48452a86c",
+    "title": "Block",
+    "fields": [
+        {
+            "key": "field_6ace491813db6",
+            "label": "Couleur de fond",
+            "name": "background",
+            "aria-label": "",
+            "type": "color_palette",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "allow_null": 0,
+            "allowed_colors": [
+                "light",
+                "dark",
+                "medium",
+                "medium-secondary",
+                "medium-tertiary"
+            ],
+            "default_value": "light",
+            "allow_in_bindings": 0
+        },
+        {
+            "key": "field_6ace484513db2",
+            "label": "Bordures",
+            "name": "borders",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 2,
+            "collapsed": "",
+            "button_label": "Ajouter une bordure",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_6ace486413db3",
+                    "label": "Position",
+                    "name": "position",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 0,
+                    "allow_in_bindings": 0,
+                    "ui_on_text": "En haut",
+                    "ui_off_text": "En bas",
+                    "ui": 1,
+                    "parent_repeater": "field_6ace484513db2"
+                },
+                {
+                    "key": "field_6ace48a613db4",
+                    "label": "Orientation",
+                    "name": "orientation",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 0,
+                    "allow_in_bindings": 0,
+                    "ui_on_text": "Vers le haut",
+                    "ui_off_text": "Vers le bas",
+                    "ui": 1,
+                    "parent_repeater": "field_6ace484513db2"
+                },
+                {
+                    "key": "field_6ace48b913db5",
+                    "label": "Couleur",
+                    "name": "color",
+                    "aria-label": "",
+                    "type": "color_palette",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "allow_null": 0,
+                    "allowed_colors": [
+                        "light",
+                        "dark",
+                        "medium",
+                        "medium-secondary",
+                        "medium-tertiary"
+                    ],
+                    "default_value": "light",
+                    "allow_in_bindings": 0,
+                    "parent_repeater": "field_6ace484513db2"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "all"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "display_title": "",
+    "modified": 1791904066
+}

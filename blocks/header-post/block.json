@@ -1,0 +1,27 @@
+{
+    "name": "studiogram/header-post",
+    "title": "En-tête - Projet",
+    "category": "studiogram",
+    "icon": "block-default",
+    "keywords": ["en-tête", "header", "projet"],
+    "acf": {
+        "mode": "preview"
+    },
+    "supports": {
+        "mode": false,
+        "color": {
+            "background": false,
+            "heading": false,
+            "link": false,
+            "text": false
+        }
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image": true
+            }
+        }
+    }
+}

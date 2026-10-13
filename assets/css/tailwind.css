@@ -2,7 +2,7 @@
 @source "../../views/**/*.twig";
 @source "../../blocks/**/*.twig";
 @source inline(
-    "{hover:,group-hover:,}{bg,text,stroke,fill,border}-{light,dark,red,green,lightblue,pink,blue,medium,medium-secondary,medium-tertiary}{!,}"
+    "{hover:,group-hover:,}{bg,text,stroke,fill,border}-{light,dark,soft,red,green,lightblue,pink,blue,medium,medium-secondary,medium-tertiary}{!,}"
 );
 
 @theme {
@@ -13,6 +13,7 @@
 
     --color-light: #fcfafc;
     --color-dark: #150a29;
+    --color-soft: #51648a;
     --color-red: #e85b51;
     --color-green: #15b681;
     --color-lightblue: #95bbe6;
