@@ -1,42 +1,28 @@
-import { gsap } from "gsap";
-
 const DESKTOP = 1024;
 
-/* Mobile burger: toggles the submenu panel height. Desktop nav is pure CSS. */
 export default class Header {
     constructor(element) {
         this.el = element;
-        this.burger = this.el.querySelector(".burger");
-        this.submenu = this.el.querySelector(".header__submenu");
-        this.links = this.submenu
-            ? [...this.submenu.querySelectorAll("a")]
-            : [];
-        this.init();
-        this.bind();
-    }
+        this.burger = element.querySelector(".burger");
+        this.label = element.querySelector(".burger__label");
+        this.nav = element.querySelector(".header__nav");
+        this.links = this.nav ? [...this.nav.querySelectorAll("a")] : [];
 
-    isMobile() {
-        return window.innerWidth < DESKTOP;
-    }
+        this.onBurger = () => this.toggle();
+        this.onLink = () => this.close();
+        this.onKey = (e) => { if (e.key === "Escape") this.close(); };
+        this.onResize = () => {
+            if (window.innerWidth >= DESKTOP) this.close();
+            if (!this.nav) return;
+            this.nav.style.transition = "none";
+            clearTimeout(this.resizeT);
+            this.resizeT = setTimeout(() => { this.nav.style.transition = ""; }, 100);
+        };
 
-    init() {
-        if (this.submenu && this.isMobile()) gsap.set(this.submenu, { height: 0 });
-    }
-
-    bind() {
-        this.burger?.addEventListener("click", () => this.toggle());
-        this.links.forEach((a) => a.addEventListener("click", () => this.close()));
-        window.addEventListener("resize", () => {
-            if (!this.submenu) return;
-            if (this.isMobile()) {
-                if (!this.el.classList.contains("is-menu-open"))
-                    gsap.set(this.submenu, { height: 0 });
-            } else {
-                gsap.set(this.submenu, { clearProps: "height" });
-                this.el.classList.remove("is-menu-open");
-                this.burger?.setAttribute("data-isopen", "false");
-            }
-        });
+        this.burger?.addEventListener("click", this.onBurger);
+        this.links.forEach((a) => a.addEventListener("click", this.onLink));
+        addEventListener("keydown", this.onKey);
+        addEventListener("resize", this.onResize);
     }
 
     toggle() {
@@ -44,16 +30,25 @@ export default class Header {
     }
 
     open() {
-        if (!this.submenu) return;
         this.el.classList.add("is-menu-open");
         this.burger?.setAttribute("data-isopen", "true");
-        gsap.to(this.submenu, { height: "auto", duration: 0.4, ease: "power2.inOut" });
+        this.burger?.setAttribute("aria-expanded", "true");
+        this.burger?.setAttribute("aria-label", "Fermer");
+        if (this.label) this.label.textContent = "Fermer";
     }
 
     close() {
-        if (!this.submenu) return;
         this.el.classList.remove("is-menu-open");
         this.burger?.setAttribute("data-isopen", "false");
-        gsap.to(this.submenu, { height: 0, duration: 0.4, ease: "power2.inOut" });
+        this.burger?.setAttribute("aria-expanded", "false");
+        this.burger?.setAttribute("aria-label", "Menu");
+        if (this.label) this.label.textContent = "Menu";
+    }
+
+    destroy() {
+        this.burger?.removeEventListener("click", this.onBurger);
+        this.links.forEach((a) => a.removeEventListener("click", this.onLink));
+        removeEventListener("keydown", this.onKey);
+        removeEventListener("resize", this.onResize);
     }
 }

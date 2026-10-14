@@ -6,7 +6,7 @@
             "palette": [
                 { "color": "#FCFAFC", "name": "Light", "slug": "light" },
                 { "color": "#150A29", "name": "Dark", "slug": "dark" },
-                { "color": "#51648A", "name": "Soft", "slug": "soft" },
+                { "color": "#6E6878", "name": "Soft", "slug": "soft" },
                 { "color": "#E85B51", "name": "Rouge", "slug": "red" },
                 { "color": "#15B681", "name": "Vert", "slug": "green" },
                 {
@@ -15,7 +15,7 @@
                     "slug": "lightblue"
                 },
                 { "color": "#E18BA6", "name": "Rose", "slug": "pink" },
-                { "color": "#356ABA", "name": "Bleu", "slug": "blue" },
+                { "color": "#5681DB", "name": "Bleu", "slug": "blue" },
                 { "color": "#F7F5F3", "name": "Medium", "slug": "medium" },
                 {
                     "color": "#DBD4CE",

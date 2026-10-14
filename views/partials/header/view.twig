@@ -2,14 +2,17 @@
 
 	<div class="relative flex items-center justify-between px-4! lg:px-8! py-2">
 		<a href="{{ home }}" class="header__logo | py-4" aria-label="{{ site.name }}">
-			{{ include('views/svg/logo.twig') }}
+			{{ include('views/svg/logo-gram.twig') }}
 		</a>
 
-		{# <button class="burger lg:hidden!" data-isopen="false" aria-label="Menu">{{ include('views/svg/burger.twig') }}</button> #}
+		<button class="burger lg:hidden!" data-isopen="false" aria-label="Menu" aria-expanded="false" aria-controls="header-nav">
+			<span class="burger__label">Menu</span>
+			{{ include('views/svg/burger.twig') }}
+		</button>
 
 		{% if header.pages %}
-			<nav class="header__nav | hidden lg:flex gap-6 items-center text-m" aria-label="{{ site.name }}">
-				<ul>
+			<nav id="header-nav" class="header__nav" aria-label="{{ site.name }}">
+				<ul class="flex flex-col lg:flex-row gap-6 lg:items-center">
 					{% for item in header.pages %}
 						<li><a class="header__link {{ item.current ? 'is-current' : '' }}" href="{{ item.page }}">{{ item.text }}</a></li>
 					{% endfor %}
