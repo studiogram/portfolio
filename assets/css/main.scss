@@ -28,17 +28,6 @@ html.js {
     transition: background-color 0.45s ease;
 }
 
-[data-theme="light"] .page-cover {
-    background-color: var(--wp--preset--color--lightgrey);
-}
-
-[data-theme="dark"] .page-cover {
-    background-color: var(--wp--preset--color--dark);
-}
-
-// Hide the persistent header/footer shell on the 404 view only. They stay in the
-// DOM (outside [data-taxi]) so Taxi navigation restores them once the swapped view
-// is no longer the 404 template.
 body:has([data-template="404"]) {
     #header,
     #footer {

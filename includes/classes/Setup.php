@@ -59,6 +59,7 @@ if (!class_exists('STUDIOGRAM\Setup')) :
             $context['footer'] = $menus['footer'] ?: null;
 
             $context['show_contact'] = function_exists('get_field') ? get_field('show_contact') : null;
+            $context['dice'] = Dice::data();
             $context['home'] = function_exists('pll_home_url') ? pll_home_url() : home_url('/');
             return $context;
         }

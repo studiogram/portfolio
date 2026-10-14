@@ -59,25 +59,3 @@
         overflow-y: auto;
     }
 }
-
-[data-theme="light"] #header {
-    color: var(--wp--preset--color--dark);
-
-    .burger {
-        background: var(--wp--preset--color--dark);
-        svg path {
-            stroke: var(--wp--preset--color--white);
-        }
-    }
-}
-
-[data-theme="dark"] #header {
-    color: var(--wp--preset--color--white);
-
-    .burger {
-        background: var(--wp--preset--color--white);
-        svg path {
-            stroke: var(--wp--preset--color--dark);
-        }
-    }
-}

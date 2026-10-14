@@ -1,3 +1,11 @@
 <section {{ block_id }} data-block-type="text" data-block-id="{{ block.id }}" class="{% if fields.space.espace %}mb-8!{% endif %}">
 	<div class="wysiwyg content-grid content-grid--{{fields.space.large}}">{{ fields.text }}</div>
+
+	{% for item in items %}
+		<div id="{{ item.slug }}" class="content-grid content-grid--{{fields.space.large}} scroll-mt-24">
+			{% if item.color %}<span data-pastille class="inline-block w-5 h-5 rounded-full bg-{{ item.color }}"></span>{% endif %}
+			<h3>{{ item.title }}</h3>
+			{% if item.text %}<div class="wysiwyg">{{ item.text }}</div>{% endif %}
+		</div>
+	{% endfor %}
 </section>

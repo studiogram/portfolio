@@ -5,8 +5,9 @@
     "scripts": {
         "tailwind": "tailwindcss -i assets/css/tailwind.css -o assets/css/tailwind.build.css --minify",
         "tailwind:watch": "tailwindcss -i assets/css/tailwind.css -o assets/css/tailwind.build.css --minify --watch --poll",
-        "dev": "concurrently \"npm run tailwind:watch\" \"CHOKIDAR_USEPOLLING=true vite build --watch\" \"browser-sync start --config bs-config.cjs\"",
-        "build": "npm run tailwind && vite build"
+        "clean": "rm -rf dist/js/chunks",
+        "dev": "npm run clean && concurrently \"npm run tailwind:watch\" \"CHOKIDAR_USEPOLLING=true vite build --watch\" \"browser-sync start --config bs-config.cjs\"",
+        "build": "npm run clean && npm run tailwind && vite build"
     },
     "dependencies": {
         "@splinetool/runtime": "^1.12.97",

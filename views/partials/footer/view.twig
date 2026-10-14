@@ -26,7 +26,10 @@
 					<h2 id="footer-secteurs">{{ footer.secteurs.title }}</h2>
 					<ul class="flex flex-col gap-4">
 						{% for category in footer.secteurs.secteurs %}
-							<li><a href="{{ function('get_term_link', category.secteur) }}">{{ category.secteur.name }}</a></li>
+							{% set link = function('get_term_link', category.secteur) %}
+							{% if category.secteur and not function('is_wp_error', link) %}
+								<li><a href="{{ link }}">{{ category.secteur.name }}</a></li>
+							{% endif %}
 						{% endfor %}
 					</ul>
 				</nav>
@@ -53,4 +56,5 @@
 			<p class="col-span-10 lg:col-span-22">© {{ "now"|date("Y") }} {{ site.name }}</p>
 		</div>
 	</div>
+	{{ include('views/components/dice/view.twig') }}
 </footer>

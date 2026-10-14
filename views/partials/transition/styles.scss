@@ -38,29 +38,3 @@ html.is-loading * {
         transform-origin: top;
     }
 }
-
-[data-theme="light"] .page-transition {
-    --transition-fill: var(--wp--preset--color--lightgrey);
-    --transition-line: color-mix(
-        in srgb,
-        var(--wp--preset--color--dark) 55%,
-        transparent
-    );
-
-    .page-transition__bg {
-        background-color: var(--wp--preset--color--lightgrey);
-    }
-}
-
-[data-theme="dark"] .page-transition {
-    --transition-fill: var(--wp--preset--color--dark);
-    --transition-line: color-mix(
-        in srgb,
-        var(--wp--preset--color--white) 55%,
-        transparent
-    );
-
-    .page-transition__bg {
-        background-color: var(--wp--preset--color--dark);
-    }
-}

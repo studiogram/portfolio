@@ -14,7 +14,7 @@
         {{ function('wp_head') }} {% include 'partials/meta/view.twig' %}
     </head>
 
-    <body class="{{ body_class }} bg-light" data-theme="{{ theme }}">
+    <body class="{{ body_class }} bg-light">
         {% include 'partials/header/view.twig' %}
         <div data-taxi>
             <div data-taxi-view {% if post and post.post_type in ['post', 'page'] %} data-post-id="{{ post.id }}" {% endif %}>
@@ -22,7 +22,8 @@
             </div>
         </div>
         {% include 'partials/contact/view.twig' %}
-        {% include 'partials/footer/view.twig' %} {{ function('wp_footer') }}
+        {% include 'partials/footer/view.twig' %}
+        {{ function('wp_footer') }}
     </body>
 
 </html>

@@ -22,18 +22,8 @@ class Main {
         this.initPartials();
         syncComponents();
         this.initTaxi();
-        this.bindThemeLinks();
         this.introLoad();
         sendView();
-    }
-
-    bindThemeLinks() {
-        document.addEventListener("click", (e) => {
-            const link = e.target.closest("a[data-theme]");
-            if (link?.dataset.theme) {
-                document.body.setAttribute("data-theme", link.dataset.theme);
-            }
-        });
     }
 
     introLoad() {
@@ -46,7 +36,11 @@ class Main {
             onComplete: clearLoading,
         });
         if (cover) {
-            tl.to(cover, { opacity: 0, duration: 1.2, onComplete: clearLoading }, 0);
+            tl.to(
+                cover,
+                { opacity: 0, duration: 1.2, onComplete: clearLoading },
+                0,
+            );
         } else {
             clearLoading();
         }
@@ -97,7 +91,10 @@ class Main {
             reloadJsFilter: (element) => {
                 const src = element.src || "";
                 if (element.dataset.taxiReload !== undefined) return true;
-                if (!src && /gform|gravityforms/i.test(element.textContent || ""))
+                if (
+                    !src &&
+                    /gform|gravityforms/i.test(element.textContent || "")
+                )
                     return true;
                 return false;
             },

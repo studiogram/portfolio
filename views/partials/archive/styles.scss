@@ -119,35 +119,3 @@
         transform: rotate(360deg);
     }
 }
-
-[data-theme="dark"] {
-    .archive__cat {
-        border-color: var(--color-white);
-        color: var(--color-white);
-
-        &:hover,
-        &.is-active {
-            background: var(--color-white);
-            color: var(--color-dark);
-        }
-    }
-
-    .archive__more {
-        --btn-fill: var(--color-dark);
-        border-color: var(--color-white);
-        background-color: var(--color-white);
-        color: var(--color-dark);
-
-        &:hover {
-            color: var(--color-white);
-        }
-    }
-
-    .archive__divider {
-        background: var(--color-white);
-    }
-
-    .archive__loader::after {
-        border-top-color: var(--color-white);
-    }
-}

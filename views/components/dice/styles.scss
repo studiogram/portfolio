@@ -1,0 +1,102 @@
+.dice {
+    position: absolute;
+    right: 3.5rem;
+    bottom: 3.5rem;
+    z-index: 10;
+
+    &.is-rolling &__cube,
+    &.is-rolling &__bulle {
+        visibility: hidden;
+    }
+
+    &__btn {
+        position: relative;
+        display: block;
+        width: 90px;
+        height: 90px;
+        padding: 0;
+        border: 0;
+        background: none;
+        cursor: pointer;
+
+        &:focus-visible {
+            outline: 3px solid var(--color-soft);
+            outline-offset: 3px;
+        }
+    }
+
+    &__cube {
+        display: block;
+        width: 90px;
+        height: 90px;
+        border-radius: 18px;
+        background: #f7f5f2;
+        box-shadow: 0 10px 24px rgba(21, 10, 41, 0.18);
+        position: relative;
+        transform: rotate(12deg);
+        transition: transform 0.45s cubic-bezier(0.3, 1.5, 0.5, 1);
+
+        &::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            margin: auto;
+            width: 53%;
+            height: 53%;
+            border-radius: 50%;
+            background: var(--color-soft);
+        }
+    }
+
+    &__btn:hover &__cube,
+    &__btn:focus-visible &__cube {
+        transform: rotate(4deg) translateY(-3px);
+    }
+
+    &__bulle {
+        position: absolute;
+        left: 50%;
+        bottom: calc(100% + 12px);
+        transform: translate(-50%, 4px);
+        white-space: nowrap;
+        background: var(--color-dark);
+        color: var(--color-light);
+        font-size: 13px;
+        padding: 7px 12px;
+        border-radius: 10px;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s, transform 0.2s;
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 6px solid transparent;
+            border-top-color: var(--color-dark);
+        }
+    }
+
+    &__btn:hover &__bulle,
+    &__btn:focus-visible &__bulle {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+
+    &__scene {
+        position: fixed;
+        inset: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 2000;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.35s;
+
+        &.actif {
+            opacity: 1;
+        }
+    }
+}

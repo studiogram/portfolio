@@ -1,0 +1,11 @@
+{% if dice and dice.faces|length %}
+	<div class="dice" data-component="dice">
+		<button class="dice__btn" type="button" aria-label="Voir un projet au hasard">
+			<span class="dice__cube" aria-hidden="true"></span>
+			<span class="dice__bulle" aria-hidden="true">Projet au hasard</span>
+			<span class="sr">Lancer le dé</span>
+		</button>
+		<canvas class="dice__scene" aria-hidden="true"></canvas>
+		<script type="application/json" class="dice__data">{{ dice|json_encode|raw }}</script>
+	</div>
+{% endif %}

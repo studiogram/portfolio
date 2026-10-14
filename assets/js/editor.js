@@ -186,27 +186,6 @@ document.addEventListener("DOMContentLoaded", () => {
         return null;
     };
 
-    // Sync data-theme from ACF "theme" field to editor wrapper
-    const syncTheme = (wrapper) => {
-        const fieldWrapper = find('[data-name="theme"]');
-        if (!fieldWrapper) return false;
-
-        const checkbox = fieldWrapper.querySelector('input[type="checkbox"]');
-
-        const update = () => {
-            const theme = checkbox?.checked ? "light" : "dark";
-            wrapper.setAttribute("data-theme", theme);
-        };
-
-        update();
-
-        if (checkbox) {
-            checkbox.addEventListener("change", update);
-        }
-
-        return true;
-    };
-
     // Inject grid overlay in editor from PHP-provided HTML
     const injectGrid = (wrapper) => {
         if (!wrapper || wrapper.querySelector(".grid-element")) return;
@@ -231,7 +210,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (wrapper && field) {
             clearInterval(waitForReady);
-            syncTheme(wrapper);
             injectGrid(wrapper);
         } else if (waitCount > 50) {
             clearInterval(waitForReady);

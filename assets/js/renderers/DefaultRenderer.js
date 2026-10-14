@@ -70,13 +70,6 @@ export default class DefaultRenderer extends Renderer {
 
         const nextBody = next.querySelector("body");
         if (nextBody) {
-            const theme = nextBody.getAttribute("data-theme");
-            if (theme !== null) {
-                document.body.setAttribute("data-theme", theme);
-            } else {
-                document.body.removeAttribute("data-theme");
-            }
-
             const keep = [...document.body.classList].filter((c) =>
                 c.startsWith("is-"),
             );

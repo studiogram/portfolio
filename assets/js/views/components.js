@@ -18,12 +18,9 @@ const components = [
         load: () => import("../../../views/components/spline/scripts"),
     },
     {
-        name: "header-arrow",
-        load: () => import("../../../views/components/header-arrow/scripts"),
-    },
-    {
-        name: "gradient",
-        load: () => import("../../../views/components/gradient/scripts"),
+        name: "dice",
+        defer: true,
+        load: () => import("../../../views/components/dice/scripts"),
     },
 ];
 
