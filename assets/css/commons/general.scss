@@ -56,6 +56,12 @@
     background: var(--color-light);
 }
 
+.home-sectors text {
+    font-family: "moderat";
+    font-size: 22px;
+    font-weight: 500;
+}
+
 .content-grid {
     display: grid;
     grid-column: 2 / span 10;

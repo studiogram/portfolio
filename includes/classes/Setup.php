@@ -28,6 +28,7 @@ if (!class_exists('STUDIOGRAM\Setup')) :
             add_filter('should_load_separate_core_block_assets', '__return_true');
             add_action('admin_init', [$this, 'disable_autosave']);
             add_action('admin_init', [$this, 'redirect_dashboard']);
+            add_action('pre_get_posts', [$this, 'filter_secteur']);
         }
 
 
@@ -64,6 +65,17 @@ if (!class_exists('STUDIOGRAM\Setup')) :
             return $context;
         }
 
+
+
+        public function filter_secteur($query)
+        {
+            if (is_admin() || !$query->is_main_query()) return;
+            if (!isset($_GET['secteur'])) return;
+            $id = (int) $_GET['secteur'];
+            if ($id && ($query->is_home() || $query->is_post_type_archive('post'))) {
+                $query->set('cat', $id);
+            }
+        }
 
 
         public function redirect_dashboard()

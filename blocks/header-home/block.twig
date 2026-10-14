@@ -1,3 +1,6 @@
-<section {{ block_id }} data-block-type="text" data-block-id="{{ block.id }}" class="{% if fields.space.espace %}mb-8!{% endif %}">
-	<div class="wysiwyg content-grid content-grid--{{fields.space.large}}">{{ fields.text }}</div>
+<section {{ block_id }} data-block-type="header-home" data-block-id="{{ block.id }}" class="{% if fields.space.espace %}mb-8!{% endif %}">
+	<div class="content-grid content-grid--{{ fields.space.large }}">
+		{% if fields.text %}<div class="wysiwyg">{{ fields.text }}</div>{% endif %}
+		{{ include('views/svg/home.twig') }}
+	</div>
 </section>
