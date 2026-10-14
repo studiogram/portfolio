@@ -10,7 +10,7 @@ html.js {
         visibility: hidden;
     }
 
-    #header {
+    .header {
         top: -8rem;
     }
 
@@ -29,8 +29,8 @@ html.js {
 }
 
 body:has([data-template="404"]) {
-    #header,
-    #footer {
+    .header,
+    .footer {
         display: none;
     }
 }

@@ -1,4 +1,4 @@
-const DESKTOP = 1024;
+const DESKTOP = 992;
 
 export default class Header {
     constructor(element) {

@@ -1,7 +1,7 @@
 {
     "name": "studiogram/header-home",
     "title": "En-tête - Accueil",
-    "category": "studiogram",
+    "category": "headers",
     "icon": "block-default",
     "keywords": ["en-tête", "header", "home", "accueil"],
     "acf": {

@@ -120,6 +120,36 @@
                     "parent_repeater": "field_6ace484513db2"
                 }
             ]
+        },
+        {
+            "key": "field_6acf8bfde89ad",
+            "label": "Espacement",
+            "name": "spacing",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "both": "En haut et en bas",
+                "top": "En haut",
+                "bottom": "En bas"
+            },
+            "default_value": "both",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
         }
     ],
     "location": [
@@ -141,5 +171,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1791904066
+    "modified": 1791986727
 }

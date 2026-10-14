@@ -1,7 +1,7 @@
 {
     "name": "studiogram/header-post",
     "title": "En-tête - Projet",
-    "category": "studiogram",
+    "category": "headers",
     "icon": "block-default",
     "keywords": ["en-tête", "header", "projet"],
     "acf": {

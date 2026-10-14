@@ -27,7 +27,7 @@ class Main {
     }
 
     introLoad() {
-        const header = document.getElementById("header");
+        const header = document.querySelector(".header");
         const cover = document.querySelector("[data-cover]");
         const clearLoading = () =>
             document.documentElement.classList.remove("is-loading");
@@ -60,7 +60,7 @@ class Main {
 
     initPartials() {
         partials.forEach((partial) => {
-            const foundPartial = document.getElementById(partial.name);
+            const foundPartial = document.querySelector("." + partial.name);
             if (foundPartial) {
                 new partial.Class(foundPartial);
             }

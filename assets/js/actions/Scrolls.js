@@ -28,7 +28,7 @@ export default class Scrolls {
 
     getElements() {
         this.height = 0;
-        this.header = document.getElementById("header");
+        this.header = document.querySelector(".header");
         this.adminBar = document.getElementById("wpadminbar");
         this.links = document.querySelectorAll('a[href^="#"]');
         this.fades = [...document.querySelectorAll('[data-scroll="fade"]')];
@@ -369,7 +369,7 @@ export default class Scrolls {
             });
         }
 
-        const footer = document.getElementById("footer");
+        const footer = document.querySelector(".footer");
         if (footer) {
             this.mm = this.mm || gsap.matchMedia();
             this.mm.add("(min-width: 1025px)", () => {
