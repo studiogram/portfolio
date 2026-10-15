@@ -9,10 +9,6 @@
     [data-block-type] {
         overflow: hidden;
 
-        @media (min-width: theme("screens.md")) {
-            padding-block: rem(64);
-        }
-
         .cartouche {
             position: relative;
             background: var(--wp--preset--color--dark);

@@ -4,25 +4,61 @@
     "fields": [
         {
             "key": "field_6a55084c5220c",
-            "label": "Espace",
-            "name": "space",
+            "label": "Disposition",
+            "name": "disposition",
             "aria-label": "",
-            "type": "clone",
+            "type": "select",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "50",
                 "class": "",
                 "id": ""
             },
-            "clone": [
-                "group_6a55eb7c3b2b8"
-            ],
-            "display": "seamless",
-            "layout": "block",
-            "prefix_label": 0,
-            "prefix_name": 0
+            "choices": {
+                "normal": "Normal",
+                "columns": "2 colonnes"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
+        },
+        {
+            "key": "field_6ad08b58041e7",
+            "label": "Orientation",
+            "name": "orientation",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "left": "À gauche",
+                "center": "Centré"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
         },
         {
             "key": "field_6a1ec10867813",
@@ -38,7 +74,36 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "<p class=\"text-l\">Lorem ipsum<\/p>",
+            "default_value": "Lorem ipsum",
+            "allow_in_bindings": 0,
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 0,
+            "delay": 0
+        },
+        {
+            "key": "field_6ad08d0e86010",
+            "label": "Texte",
+            "name": "text2",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6a55084c5220c",
+                        "operator": "==",
+                        "value": "columns"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Lorem ipsum",
             "allow_in_bindings": 0,
             "tabs": "all",
             "toolbar": "full",
@@ -65,5 +130,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1787148227
+    "modified": 1792052532
 }

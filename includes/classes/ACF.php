@@ -19,6 +19,27 @@ if (!class_exists('STUDIOGRAM\ACF')) :
             add_filter('tiny_mce_plugins', [$this, 'remove_colorpicker_plugin']);
             add_filter('acf/load_field/name=form', [$this, 'populate_gravity_forms']);
             add_action('admin_enqueue_scripts', [$this, 'enqueue_admin_styles']);
+            add_filter('wp_kses_allowed_html', [$this, 'allow_svg_kses'], 10, 2);
+        }
+
+        public function allow_svg_kses($tags, $context)
+        {
+            if ($context !== 'post') return $tags;
+
+            $svg = [
+                'svg'      => ['xmlns' => true, 'xmlns:xlink' => true, 'viewbox' => true, 'class' => true, 'width' => true, 'height' => true, 'fill' => true, 'preserveaspectratio' => true, 'data-effect' => true, 'aria-hidden' => true, 'role' => true, 'version' => true],
+                'defs'     => [],
+                'g'        => ['class' => true, 'fill' => true, 'transform' => true],
+                'path'     => ['d' => true, 'fill' => true, 'class' => true, 'id' => true, 'transform' => true, 'style' => true],
+                'circle'   => ['cx' => true, 'cy' => true, 'r' => true, 'fill' => true, 'class' => true],
+                'line'     => ['x1' => true, 'y1' => true, 'x2' => true, 'y2' => true],
+                'text'     => ['fill' => true, 'class' => true, 'text-anchor' => true, 'font-family' => true, 'font-size' => true, 'font-weight' => true, 'x' => true, 'y' => true],
+                'textpath' => ['href' => true, 'xlink:href' => true, 'startoffset' => true, 'class' => true],
+                'tspan'    => ['x' => true, 'y' => true, 'class' => true, 'fill' => true],
+                'a'        => array_merge($tags['a'] ?? [], ['href' => true, 'xlink:href' => true, 'class' => true, 'data-sector' => true, 'data-taxi-ignore' => true, 'style' => true, 'aria-label' => true, 'target' => true]),
+            ];
+
+            return array_merge($tags, $svg);
         }
 
         public function mark_spacer_paragraphs($value)
@@ -46,31 +67,48 @@ if (!class_exists('STUDIOGRAM\ACF')) :
             // Size styles: apply to whatever block element the caret sits in
             // (p, h1-h6, li) via `selector` so the class adapts to its parent tag.
             $sizes = [
-                'XLD' => 'text-xld',
-                'XD'  => 'text-xd',
-                'MD'  => 'text-md',
+                'XXXL' => 'text-xxxl',
+                'XXL'  => 'text-xxl',
+                'XL'  => 'text-xl',
                 'L'   => 'text-l',
                 'M'   => 'text-m',
                 'S'   => 'text-s',
                 'XS'  => 'text-xs',
             ];
 
-            $style_formats = [];
+            $size_items = [];
             foreach ($sizes as $title => $class) {
-                $style_formats[] = [
+                $size_items[] = [
                     'title'    => $title,
                     'selector' => 'p,h1,h2,h3,h4,h5,h6,li',
                     'classes'  => $class,
                 ];
             }
+
+            $color_items = [];
+            $theme_json = get_template_directory() . '/theme.json';
+            if (file_exists($theme_json)) {
+                $palette = json_decode(file_get_contents($theme_json), true)['settings']['color']['palette'] ?? [];
+                foreach ($palette as $color) {
+                    $color_items[] = [
+                        'title'   => $color['name'],
+                        'inline'  => 'span',
+                        'classes' => 'text-' . $color['slug'],
+                    ];
+                }
+            }
+
+            $style_formats = [['title' => 'Taille', 'items' => $size_items]];
+            if ($color_items) $style_formats[] = ['title' => 'Couleur', 'items' => $color_items];
             $settings['style_formats'] = json_encode($style_formats);
 
             // Load theme fonts/styles in editor
-            $editor_css = get_stylesheet_directory_uri() . '/dist/css/editor.css';
+            $uri = get_stylesheet_directory_uri();
+            $extra_css = $uri . '/dist/css/editor.css,' . $uri . '/assets/css/tailwind.build.css';
             if (isset($settings['content_css'])) {
-                $settings['content_css'] .= ',' . $editor_css;
+                $settings['content_css'] .= ',' . $extra_css;
             } else {
-                $settings['content_css'] = $editor_css;
+                $settings['content_css'] = $extra_css;
             }
             $settings['body_class'] = 'studiogram';
 

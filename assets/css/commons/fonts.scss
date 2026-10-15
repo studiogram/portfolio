@@ -21,17 +21,8 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: antialiased;
 
-    .wysiwyg {
-        ol li {
-            font-size: 1.075rem;
-            &::before {
-                font-size: 1.25rem;
-            }
-        }
-    }
-
     h1,
-    .text-xxl {
+    .text-xxxl {
         font-size: rem(27) !important;
         line-height: 100%;
 
@@ -41,7 +32,7 @@
     }
 
     h2,
-    .text-xl {
+    .text-xxl {
         font-size: rem(24) !important;
         line-height: rem(28) !important;
 
@@ -52,7 +43,7 @@
     }
 
     h3,
-    .text-l {
+    .text-xl {
         font-size: rem(20) !important;
         line-height: rem(24) !important;
 
@@ -63,7 +54,7 @@
     }
 
     h4,
-    .text-m {
+    .text-l {
         font-size: rem(16) !important;
         line-height: rem(20) !important;
 
@@ -74,7 +65,7 @@
     }
 
     h5,
-    .text-d {
+    .text-m {
         font-size: rem(16) !important;
         line-height: rem(20) !important;
 
@@ -89,19 +80,6 @@
     .text-s {
         font-size: rem(18) !important;
         line-height: 160% !important;
-
-        a {
-            text-decoration: none;
-            padding-bottom: rem(4);
-            background-image: radial-gradient(
-                circle,
-                currentColor 1.5px,
-                transparent 1.5px
-            );
-            background-position: 0 100%;
-            background-repeat: repeat-x;
-            background-size: 6px 1px;
-        }
     }
 
     .text-xs {
@@ -119,8 +97,29 @@
         line-height: rem(20) !important;
     }
 
-    .text-hero {
-        font-size: rem(90) !important;
-        line-height: rem(90) !important;
+    .wysiwyg {
+        ol li {
+            font-size: 1.075rem;
+            &::before {
+                font-size: 1.25rem;
+            }
+        }
+
+        p,
+        li,
+        .text-s {
+            a {
+                text-decoration: none;
+                padding-bottom: rem(4);
+                background-image: radial-gradient(
+                    circle,
+                    currentColor 1.5px,
+                    transparent 1.5px
+                );
+                background-position: 0 100%;
+                background-repeat: repeat-x;
+                background-size: 6px 1px;
+            }
+        }
     }
 }
