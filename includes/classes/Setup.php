@@ -178,6 +178,8 @@ if (!class_exists('STUDIOGRAM\Setup')) :
             remove_action('wp_head', 'rsd_link');
             remove_action('wp_head', 'wlwmanifest_link');
             remove_action('wp_head', 'wp_shortlink_wp_head');
+            // our dynamic sector favicon is the single source of truth
+            remove_action('wp_head', 'wp_site_icon', 99);
         }
 
         private function remove_comments()

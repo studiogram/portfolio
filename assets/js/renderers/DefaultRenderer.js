@@ -21,26 +21,6 @@ export default class DefaultRenderer extends Renderer {
         if (lenis) lenis.scrollTo(0, { immediate: true });
         else window.scrollTo({ top: 0, left: 0, behavior: "instant" });
         this.syncHead();
-        this.syncLangSwitcher();
-    }
-
-    // The header (with its language switcher) lives outside the Taxi view, so its
-    // hrefs stay frozen on the first page's translations. Copy the fetched page's
-    // per-language URLs onto the live switcher, matched by lang slug.
-    syncLangSwitcher() {
-        const next = this.page;
-        if (!next) return;
-
-        const urls = new Map();
-        next.querySelectorAll(".header__lang").forEach((a) => {
-            urls.set(a.textContent.trim(), a.getAttribute("href"));
-        });
-        if (!urls.size) return;
-
-        document.querySelectorAll(".header__lang").forEach((a) => {
-            const href = urls.get(a.textContent.trim());
-            if (href) a.setAttribute("href", href);
-        });
     }
 
     async onEnterCompleted() {
@@ -86,6 +66,9 @@ export default class DefaultRenderer extends Renderer {
             'meta[property^="article:"]',
             'meta[name^="twitter:"]',
             'link[rel="canonical"]',
+            'link[rel="icon"]',
+            'link[rel="shortcut icon"]',
+            'link[rel="apple-touch-icon"]',
             'script[type="application/ld+json"]',
         ];
         selectors.forEach((selector) => {

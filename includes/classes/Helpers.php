@@ -39,6 +39,9 @@ if (!class_exists('STUDIOGRAM\Helpers')) :
             $twig->addFunction(new TwigFunction('block_classes', [$this, 'block_classes']));
             $twig->addFunction(new TwigFunction('post_card', [$this, 'post_card']));
             $twig->addFunction(new TwigFunction('theme_for', [$this, 'theme_for']));
+            $twig->addFunction(new TwigFunction('favicon_href', [$this, 'favicon_href']));
+            $twig->addFunction(new TwigFunction('favicon_ico_href', [$this, 'favicon_ico_href']));
+            $twig->addFunction(new TwigFunction('apple_touch_href', [$this, 'apple_touch_href']));
 
             return $twig;
         }
@@ -347,6 +350,74 @@ if (!class_exists('STUDIOGRAM\Helpers')) :
          * @param bool $is_header
          * @return string
          */
+        /**
+         * Color slug for the current sector context, or '' when none applies.
+         * Labo → lightblue; single project → its category color; archive filtered
+         * by ?secteur=<term_id> or a category archive → that category's color.
+         *
+         * @return string
+         */
+        public static function sector_slug()
+        {
+            if (!function_exists('get_field')) return '';
+
+            if (is_singular('labo') || is_post_type_archive('labo') || is_page('labo')) {
+                return 'lightblue';
+            }
+
+            if (is_singular('post')) {
+                foreach ((get_the_category() ?: []) as $cat) {
+                    if ($slug = get_field('color', 'category_' . $cat->term_id)) return $slug;
+                }
+            }
+
+            $secteur = isset($_GET['secteur']) ? (int) $_GET['secteur'] : 0;
+            if ($secteur && ($slug = get_field('color', 'category_' . $secteur))) return $slug;
+
+            if (is_category()) {
+                $term = get_queried_object();
+                if ($term && ($slug = get_field('color', 'category_' . $term->term_id))) return $slug;
+            }
+
+            return '';
+        }
+
+        /**
+         * Favicon asset URL: the sector-colored variant (<prefix>-<slug>.<ext>)
+         * when it exists for the current context, otherwise the default.
+         *
+         * @param string $prefix
+         * @param string $ext
+         * @return string
+         */
+        private static function sector_asset($prefix, $ext)
+        {
+            $base = '/dist/favicons/';
+            $slug = self::sector_slug();
+
+            if ($slug && file_exists(get_template_directory() . $base . $prefix . '-' . $slug . '.' . $ext)) {
+                return get_template_directory_uri() . $base . $prefix . '-' . $slug . '.' . $ext;
+            }
+
+            return get_template_directory_uri() . $base . $prefix . '.' . $ext;
+        }
+
+        public static function favicon_href()
+        {
+            return self::sector_asset('favicon', 'svg');
+        }
+
+        public static function favicon_ico_href()
+        {
+            return self::sector_asset('favicon', 'ico');
+        }
+
+        public static function apple_touch_href()
+        {
+            return self::sector_asset('apple-touch-icon', 'png');
+        }
+
+
         public static function block_classes($fields, $is_header = false)
         {
             $fields = is_array($fields) ? $fields : [];
