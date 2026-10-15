@@ -23,32 +23,32 @@
 
     h1,
     .text-xxxl {
-        font-size: rem(84) !important;
-        line-height: 100% !important;
+        font-size: clamp(2.25rem, 1.12rem + 4.63vw, 7.5rem);
+        line-height: 1 !important;
     }
 
     h2,
     .text-xxl {
         font-size: rem(56) !important;
-        line-height: 120% !important;
+        line-height: 1.2 !important;
     }
 
     h3,
     .text-xl {
         font-size: rem(30) !important;
-        line-height: 100% !important;
+        line-height: 1 !important;
     }
 
     h4,
     .text-l {
         font-size: rem(28) !important;
-        line-height: 100% !important;
+        line-height: 1 !important;
     }
 
     h5,
     .text-m {
         font-size: rem(22) !important;
-        line-height: 160% !important;
+        line-height: 1.6 !important;
 
         // @include lg {
 
@@ -59,12 +59,12 @@
     li,
     .text-s {
         font-size: rem(18) !important;
-        line-height: 160% !important;
+        line-height: 1.6 !important;
     }
 
     .text-xs {
         font-size: rem(14) !important;
-        line-height: 150% !important;
+        line-height: 1.5 !important;
     }
 
     .btn,

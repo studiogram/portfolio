@@ -1,8 +1,9 @@
 @use "mixins" as *;
 
 // expose each selected block background as --cartouche-bg (inherits to the cartouche dots)
-$bg-slugs: "light", "dark", "soft", "red", "green", "blue", "lightblue",
-    "pink", "medium", "medium-secondary", "medium-tertiary";
+$bg-slugs:
+    "light", "dark", "soft", "red", "green", "blue", "lightblue", "pink",
+    "medium", "medium-secondary", "medium-tertiary";
 
 .studiogram,
 .editor-styles-wrapper {
@@ -65,6 +66,8 @@ $bg-slugs: "light", "dark", "soft", "red", "green", "blue", "lightblue",
             overflow: hidden;
             transform: perspective(600px);
             transform-origin: bottom center;
+            max-width: 1600px;
+            margin-inline: auto;
 
             &::before,
             &::after {
@@ -89,6 +92,10 @@ $bg-slugs: "light", "dark", "soft", "red", "green", "blue", "lightblue",
                 right: 2rem;
             }
         }
+    }
+
+    [data-block-type^="header-"] {
+        padding-inline: 1rem;
     }
 }
 
