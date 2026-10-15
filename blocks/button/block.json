@@ -1,0 +1,27 @@
+{
+    "name": "studiogram/button",
+    "title": "Bouton",
+    "category": "studiogram",
+    "icon": "button",
+    "keywords": ["bouton", "button", "cta"],
+    "acf": {
+        "mode": "preview"
+    },
+    "supports": {
+        "mode": false,
+        "color": {
+            "background": false,
+            "heading": false,
+            "link": false,
+            "text": false
+        }
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image": true
+            }
+        }
+    }
+}

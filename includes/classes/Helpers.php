@@ -36,6 +36,7 @@ if (!class_exists('STUDIOGRAM\Helpers')) :
             $twig->addFunction(new TwigFunction('get_single_selected_menu', [$this, 'get_single_selected_menu']));
             $twig->addFunction(new TwigFunction('default_introduction', [$this, 'default_introduction']));
             $twig->addFunction(new TwigFunction('background', [$this, 'background']));
+            $twig->addFunction(new TwigFunction('block_classes', [$this, 'block_classes']));
             $twig->addFunction(new TwigFunction('post_card', [$this, 'post_card']));
             $twig->addFunction(new TwigFunction('theme_for', [$this, 'theme_for']));
 
@@ -335,6 +336,34 @@ if (!class_exists('STUDIOGRAM\Helpers')) :
         public static function field($field, $id)
         {
             return function_exists('get_field') ? get_field($field, $id) : null;
+        }
+
+
+        /**
+         * Generic block chrome classes from the "Block" ACF group.
+         * Headers only get the background color; other blocks also get spacing.
+         *
+         * @param array $fields
+         * @param bool $is_header
+         * @return string
+         */
+        public static function block_classes($fields, $is_header = false)
+        {
+            $fields = is_array($fields) ? $fields : [];
+            $classes = [];
+
+            if (!empty($fields['background'])) {
+                $classes[] = 'bg-' . $fields['background'];
+            }
+
+            if (!$is_header) {
+                $classes[] = 'block';
+                if (!empty($fields['spacing'])) {
+                    $classes[] = 'block--space-' . $fields['spacing'];
+                }
+            }
+
+            return esc_attr(implode(' ', $classes));
         }
 
 

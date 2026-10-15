@@ -25,11 +25,11 @@
             "prefix_name": 0
         },
         {
-            "key": "field_6a5651c8d78d5",
-            "label": "Position du bouton",
-            "name": "centered",
+            "key": "field_6b0btntext01",
+            "label": "Texte",
+            "name": "text",
             "aria-label": "",
-            "type": "true_false",
+            "type": "wysiwyg",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -38,12 +38,12 @@
                 "class": "",
                 "id": ""
             },
-            "message": "",
-            "default_value": 0,
+            "default_value": "",
             "allow_in_bindings": 0,
-            "ui_on_text": "Centré",
-            "ui_off_text": "À gauche",
-            "ui": 1
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 0,
+            "delay": 0
         },
         {
             "key": "field_6a1ec2957c6e4",
@@ -60,7 +60,7 @@
                 "id": ""
             },
             "clone": [
-                "group_67b7435de49c7"
+                "group_67ed2f37472ae"
             ],
             "display": "seamless",
             "layout": "block",
@@ -87,5 +87,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1784041959
+    "modified": 1792069027
 }

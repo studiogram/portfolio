@@ -1,3 +1,4 @@
-<section {{ block_id }} data-block-type="text" data-block-id="{{ block.id }}" class="{% if fields.space.espace %}mb-8!{% endif %}">
+<section {{ block_id }} data-block-type="text" data-block-id="{{ block.id }}" class="{{ block_classes(fields) }}">
+	{% include 'views/partials/block/borders.twig' %}
 	<div class="wysiwyg content-grid content-grid--{{fields.space.large}}">{{ fields.text }}</div>
 </section>

@@ -1,0 +1,3 @@
+{% for border in fields.borders %}
+	<span class="block__border block__border--{{ border.position ? 'top' : 'bottom' }} block__border--round-{{ border.orientation ? 'top' : 'bottom' }} {{ border.color ? 'bg-' ~ border.color }}"></span>
+{% endfor %}

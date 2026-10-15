@@ -1,10 +1,59 @@
 @use "mixins" as *;
 
+// expose each selected block background as --cartouche-bg (inherits to the cartouche dots)
+$bg-slugs:
+    light, dark, soft, red, green, blue, lightblue, pink, medium,
+    medium-secondary, medium-tertiary;
+
 .studiogram,
 .editor-styles-wrapper {
     width: 100vw;
     overflow-x: hidden;
     overflow-y: auto;
+
+    @each $slug in $bg-slugs {
+        .bg-#{$slug} {
+            --cartouche-bg: var(--wp--preset--color--#{$slug});
+        }
+    }
+
+    // generic block chrome: background + spacing + decorative rounded borders
+    .block {
+        --block-space: clamp(3rem, 7vw, 7rem);
+        position: relative;
+
+        &--space-top {
+            padding-top: var(--block-space);
+        }
+        &--space-bottom {
+            padding-bottom: var(--block-space);
+        }
+        &--space-both {
+            padding-block: var(--block-space);
+        }
+
+        &__border {
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 3rem;
+            z-index: 2;
+            pointer-events: none;
+
+            &--top {
+                top: 0;
+            }
+            &--bottom {
+                bottom: 0;
+            }
+            &--round-top {
+                border-radius: 3rem 3rem 0 0;
+            }
+            &--round-bottom {
+                border-radius: 0 0 3rem 3rem;
+            }
+        }
+    }
 
     [data-block-type] {
         overflow: hidden;
@@ -15,13 +64,19 @@
             color: var(--wp--preset--color--light);
             border-radius: 3rem;
             overflow: hidden;
+            transform: perspective(600px);
+            transform-origin: bottom center;
 
             &::before,
             &::after {
                 content: "";
                 position: absolute;
                 top: 2rem;
-                background: var(--wp--preset--color--light);
+                // dots are "holes" showing the section background behind the cartouche
+                background: var(
+                    --cartouche-bg,
+                    var(--wp--preset--color--light)
+                );
                 width: 22px;
                 height: 22px;
                 border-radius: 50%;
@@ -36,8 +91,15 @@
             }
         }
     }
+}
 
+.studiogram {
     [data-block-type^="header-"] {
         padding-top: rem(130);
+    }
+}
+.editor-styles-wrapper {
+    [data-block-type^="header-"] {
+        padding-top: 2rem;
     }
 }

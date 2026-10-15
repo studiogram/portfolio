@@ -1,4 +1,5 @@
-<section {{ block_id }} data-block-type="img" data-block-id="{{ block.id }}" class="{% if fields.space.espace %}mb-8!{% endif %}">
+<section {{ block_id }} data-block-type="img" data-block-id="{{ block.id }}" class="{{ block_classes(fields) }}">
+	{% include 'views/partials/block/borders.twig' %}
 	<div class="content-grid content-grid--{{fields.space.large}}">
 		{% if fields.image %}
 			{{ include('views/components/reveal-image/view.twig', { image: fields.image, blend: fields.multiply ? theme : null, class: '' }) }}

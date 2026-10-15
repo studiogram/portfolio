@@ -23,56 +23,36 @@
 
     h1,
     .text-xxxl {
-        font-size: rem(27) !important;
-        line-height: 100%;
-
-        @include lg {
-            font-size: rem(84) !important;
-        }
+        font-size: rem(84) !important;
+        line-height: 100% !important;
     }
 
     h2,
     .text-xxl {
-        font-size: rem(24) !important;
-        line-height: rem(28) !important;
-
-        @include lg {
-            font-size: rem(30) !important;
-            line-height: rem(32) !important;
-        }
+        font-size: rem(56) !important;
+        line-height: 120% !important;
     }
 
     h3,
     .text-xl {
-        font-size: rem(20) !important;
-        line-height: rem(24) !important;
-
-        @include lg {
-            font-size: rem(24) !important;
-            line-height: rem(30) !important;
-        }
+        font-size: rem(30) !important;
+        line-height: 100% !important;
     }
 
     h4,
     .text-l {
-        font-size: rem(16) !important;
-        line-height: rem(20) !important;
-
-        @include lg {
-            font-size: rem(18) !important;
-            line-height: rem(24) !important;
-        }
+        font-size: rem(28) !important;
+        line-height: 100% !important;
     }
 
     h5,
     .text-m {
-        font-size: rem(16) !important;
-        line-height: rem(20) !important;
+        font-size: rem(22) !important;
+        line-height: 160% !important;
 
-        @include lg {
-            font-size: rem(18) !important;
-            line-height: rem(24) !important;
-        }
+        // @include lg {
+
+        // }
     }
 
     p,

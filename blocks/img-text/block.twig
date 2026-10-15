@@ -1,4 +1,5 @@
-<section {{ block_id }} data-block-type="img-text" data-block-id="{{ block.id }}" class="{% if fields.space.espace %}mb-8!{% endif %}">
+<section {{ block_id }} data-block-type="img-text" data-block-id="{{ block.id }}" class="{{ block_classes(fields) }}">
+	{% include 'views/partials/block/borders.twig' %}
 	<div class="content-grid content-grid--{{fields.space.large}} | grid items-center gap-4 lg:grid-cols-2">
 		<div class="wysiwyg {{fields.side ? 'order-1' : 'order-2'}}">{{ fields.text }}</div>
 		{% if fields.image %}

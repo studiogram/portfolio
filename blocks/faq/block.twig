@@ -1,4 +1,5 @@
-<section {{ block_id }} data-block-type="faq" data-block-id="{{ block.id }}">
+<section {{ block_id }} data-block-type="faq" data-block-id="{{ block.id }}" class="{{ block_classes(fields) }}">
+	{% include 'views/partials/block/borders.twig' %}
 	{% if faq_schema %}
 		<script type="application/ld+json">{{ faq_schema|raw }}</script>
 	{% endif %}

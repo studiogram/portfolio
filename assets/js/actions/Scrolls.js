@@ -121,6 +121,30 @@ export default class Scrolls {
     }
 
     scrolls() {
+        const reduceMotion = window.matchMedia(
+            "(prefers-reduced-motion: reduce)",
+        ).matches;
+
+        if (this.perspectives && !reduceMotion) {
+            this.perspectives.forEach((perspective) => {
+                gsap.fromTo(
+                    perspective,
+                    { rotationX: 0 },
+                    {
+                        rotationX: 40,
+                        autoAlpha: 0,
+                        scrollTrigger: {
+                            trigger: perspective.parentElement,
+                            start: "top top",
+                            end: "center top",
+                            scrub: 1,
+                            invalidateOnRefresh: true,
+                        },
+                    },
+                );
+            });
+        }
+
         if (this.fromLeft) {
             this.fromLeft.forEach((fromLeft) => {
                 gsap.fromTo(
@@ -159,29 +183,6 @@ export default class Scrolls {
                     fade,
                     { autoAlpha: 0 },
                     { autoAlpha: 1, ...this.enterVars(fade) },
-                );
-            });
-        }
-
-        if (this.perspectives.length) {
-            this.perspectives.forEach((el) => {
-                gsap.set(el, {
-                    transformPerspective: 1000,
-                    transformOrigin: "center bottom",
-                });
-                gsap.fromTo(
-                    el,
-                    { rotateX: 0 },
-                    {
-                        rotateX: 30,
-                        ease: "none",
-                        scrollTrigger: {
-                            trigger: el,
-                            start: "top top",
-                            end: "bottom top",
-                            scrub: true,
-                        },
-                    },
                 );
             });
         }

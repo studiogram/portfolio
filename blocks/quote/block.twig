@@ -1,6 +1,7 @@
 {% set has_title = fields.quote.title is not empty %}
 
-<section {{ block_id }} data-block-type="image" data-block-id="{{ block.id }}" class="{% if fields.space %} py-16 {% else %} mb-0! {% endif %} {% if fields.background %} bg-{{ fields.background }} rounded-4xl overflow-hidden {% endif %}">
+<section {{ block_id }} data-block-type="image" data-block-id="{{ block.id }}" class="{{ block_classes(fields) }} {% if fields.background %} rounded-4xl overflow-hidden {% endif %}">
+	{% include 'views/partials/block/borders.twig' %}
 	<div class="content-grid content-grid--large">
 		<div class="flex flex-col gap-8 lg:flex-row lg:items-{{ fields.image.vertical }} lg:gap-16">
 
