@@ -17,6 +17,7 @@ if (!class_exists('STUDIOGRAM\Theme')) :
             add_filter('gform_field_content', [$this, 'delegend_choice_label'], 10, 5);
             add_filter('gform_field_container', [$this, 'label_choice_fieldset'], 10, 3);
             add_action('enqueue_block_editor_assets', [$this, 'enqueue_editor_styles_and_scripts']);
+            add_action('enqueue_block_assets', [$this, 'enqueue_canvas_styles']);
             add_filter('script_loader_tag', [$this, 'add_module_type'], 10, 3);
             add_shortcode('orange', [$this, 'add_orange_shortcode']);
         }
@@ -151,6 +152,18 @@ if (!class_exists('STUDIOGRAM\Theme')) :
             ]);
         }
 
+        public function enqueue_canvas_styles()
+        {
+            if (!is_admin()) return;
+            $uri = get_stylesheet_directory_uri();
+            $dir = get_stylesheet_directory();
+            $ver = fn(string $rel) => file_exists($dir . $rel) ? filemtime($dir . $rel) : null;
+
+            wp_enqueue_style('sg-canvas-tailwind', $uri . '/assets/css/tailwind.build.css', [], $ver('/assets/css/tailwind.build.css'));
+            wp_enqueue_style('sg-canvas-styles', $uri . '/dist/css/main.min.css', [], $ver('/dist/css/main.min.css'));
+        }
+
+
         public function enqueue_editor_styles_and_scripts()
         {
             // Load Inclusive Sans in the editor iframe too (the frontend gets it
@@ -158,7 +171,6 @@ if (!class_exists('STUDIOGRAM\Theme')) :
             $dir = get_stylesheet_directory();
             $ver = fn(string $rel) => file_exists($dir . $rel) ? filemtime($dir . $rel) : null;
 
-            wp_enqueue_style('studiogram-styles', get_stylesheet_directory_uri() . "/dist/css/main.min.css", [], $ver('/dist/css/main.min.css'));
             wp_enqueue_style('studiogram-editor-fonts', 'https://fonts.googleapis.com/css2?family=Inclusive+Sans:wght@300..700&display=swap', [], null);
             wp_enqueue_style('studiogram-editor-tailwind', get_stylesheet_directory_uri() . "/assets/css/tailwind.build.css", [], $ver('/assets/css/tailwind.build.css'));
             wp_enqueue_style('studiogram-editor-styles', get_stylesheet_directory_uri() . "/dist/css/editor.css", ['studiogram-editor-tailwind'], $ver('/dist/css/editor.css'));
