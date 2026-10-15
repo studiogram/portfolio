@@ -133,6 +133,7 @@ export default class Scrolls {
                     {
                         rotationX: 40,
                         autoAlpha: 0,
+                        ease: "none",
                         scrollTrigger: {
                             trigger: perspective.parentElement,
                             start: "top top",

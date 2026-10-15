@@ -1,9 +1,8 @@
 @use "mixins" as *;
 
 // expose each selected block background as --cartouche-bg (inherits to the cartouche dots)
-$bg-slugs:
-    light, dark, soft, red, green, blue, lightblue, pink, medium,
-    medium-secondary, medium-tertiary;
+$bg-slugs: "light", "dark", "soft", "red", "green", "blue", "lightblue",
+    "pink", "medium", "medium-secondary", "medium-tertiary";
 
 .studiogram,
 .editor-styles-wrapper {

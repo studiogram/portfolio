@@ -4,6 +4,8 @@
     "category": "studiogram",
     "icon": "table-row-after",
     "keywords": ["mosaïque", "mosaic"],
+    "style": "file:../../dist/blocks/mosaic/styles.min.css",
+    "script": "file:../../dist/blocks/mosaic/scripts.min.js",
     "acf": {
         "mode": "preview"
     },

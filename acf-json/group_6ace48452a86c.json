@@ -20,9 +20,7 @@
             "allowed_colors": [
                 "light",
                 "dark",
-                "medium",
-                "medium-secondary",
-                "medium-tertiary"
+                "medium"
             ],
             "default_value": "light",
             "allow_in_bindings": 0
@@ -111,9 +109,7 @@
                     "allowed_colors": [
                         "light",
                         "dark",
-                        "medium",
-                        "medium-secondary",
-                        "medium-tertiary"
+                        "medium"
                     ],
                     "default_value": "light",
                     "allow_in_bindings": 0,
@@ -162,22 +158,22 @@
             {
                 "param": "block",
                 "operator": "!=",
-                "value": "studiogram/header"
+                "value": "studiogram\/header"
             },
             {
                 "param": "block",
                 "operator": "!=",
-                "value": "studiogram/header-about"
+                "value": "studiogram\/header-about"
             },
             {
                 "param": "block",
                 "operator": "!=",
-                "value": "studiogram/header-home"
+                "value": "studiogram\/header-home"
             },
             {
                 "param": "block",
                 "operator": "!=",
-                "value": "studiogram/header-post"
+                "value": "studiogram\/header-post"
             }
         ]
     ],
@@ -191,5 +187,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1792068734
+    "modified": 1792071651
 }

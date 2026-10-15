@@ -1,4 +1,25 @@
-<section {{ block_id }} data-block-type="text" data-block-id="{{ block.id }}" class="{{ block_classes(fields) }}">
+<section {{ block_id }} data-block-type="mosaic" data-block-id="{{ block.id }}" class="{{ block_classes(fields) }}">
 	{% include 'views/partials/block/borders.twig' %}
-	<div class="wysiwyg content-grid content-grid--{{fields.space.large}}">{{ fields.text }}</div>
+	<div class="mosaic content-grid">
+		{% for column in fields.columns %}
+			<div class="mosaic__col {{ loop.index is even ? 'mosaic__col--offset' }}">
+				{% for media in column.medias %}
+					{% set href = media.project ? permalink_by_ID(media.project) : '' %}
+					<{{ href ? 'a' : 'div' }} class="mosaic__media" {{ href ? 'href="' ~ href ~ '"' }}>
+						{% if media.type == 'video' and media.video %}
+							<video class="mosaic__asset" autoplay muted loop playsinline>
+								<source src="{{ media.video }}" type="video/mp4">
+							</video>
+						{% elseif media.image %}
+							<img class="mosaic__asset lazyload" {{ responsive_image(media.image) }}/>
+						{% endif %}
+
+						{% if media.title %}
+							<span class="mosaic__caption">{{ media.title }}</span>
+						{% endif %}
+					</{{ href ? 'a' : 'div' }}>
+				{% endfor %}
+			</div>
+		{% endfor %}
+	</div>
 </section>
