@@ -71,6 +71,12 @@
         }
     }
 
+    &--center {
+        @include lg {
+            grid-column: 4 / span 20;
+        }
+    }
+
     &--grider {
         display: grid;
         grid-template-columns: repeat(10, minmax(0, 1fr));

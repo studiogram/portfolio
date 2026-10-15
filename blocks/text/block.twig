@@ -1,3 +1,12 @@
 <section {{ block_id }} data-block-type="text" data-block-id="{{ block.id }}" class="{% if fields.space.espace %}mb-8!{% endif %}">
-	<div class="wysiwyg content-grid content-grid--{{fields.space.large}}">{{ fields.text }}</div>
+	<div class="content-grid {{ fields.orientation == 'center' ? 'content-grid--center' }}">
+		{% if fields.disposition == 'columns' %}
+			<div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6">
+				<div class="wysiwyg">{{ fields.text }}</div>
+				<div class="wysiwyg">{{ fields.text2 }}</div>
+			</div>
+		{% else %}
+			<div class="wysiwyg">{{ fields.text }}</div>
+		{% endif %}
+	</div>
 </section>
