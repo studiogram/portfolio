@@ -16,7 +16,6 @@
     font-synthesis: none;
     font-optical-sizing: auto;
     font-size: 16px !important;
-    line-height: 100% !important;
     font-weight: 400 !important;
     font-style: normal;
     -webkit-font-smoothing: antialiased;
@@ -31,38 +30,18 @@
         }
     }
 
-    .text-xld,
-    .header--text h1 {
-        font-size: rem(32) !important;
-        line-height: rem(30) !important;
-
-        @include lg {
-            font-size: rem(64) !important;
-            line-height: rem(60) !important;
-        }
-    }
-
     h1,
-    .h1,
-    .text-xd {
+    .text-xxl {
         font-size: rem(27) !important;
-        line-height: rem(28) !important;
+        line-height: 100%;
 
         @include lg {
-            font-size: rem(54) !important;
-            line-height: rem(56) !important;
-        }
-
-        u,
-        [style*="underline"] {
-            background-position: 0 80% !important;
+            font-size: rem(84) !important;
         }
     }
 
     h2,
-    .h2,
-    .text-md,
-    .gform-field-label {
+    .text-xl {
         font-size: rem(24) !important;
         line-height: rem(28) !important;
 
@@ -73,12 +52,7 @@
     }
 
     h3,
-    .h3,
-    .text-l,
-    .gform_heading p,
-    .gfield_description,
-    .gform_validation_errors h2,
-    .gform_confirmation_message {
+    .text-l {
         font-size: rem(20) !important;
         line-height: rem(24) !important;
 
@@ -89,11 +63,7 @@
     }
 
     h4,
-    .h4,
-    .text-m,
-    .ginput_container_text input,
-    .ginput_container_email input,
-    .ginput_container_textarea textarea {
+    .text-m {
         font-size: rem(16) !important;
         line-height: rem(20) !important;
 
@@ -103,20 +73,40 @@
         }
     }
 
-    .text-s,
-    .gfield_description.gfield_validation_message {
+    h5,
+    .text-d {
         font-size: rem(16) !important;
-        line-height: rem(17) !important;
+        line-height: rem(20) !important;
+
+        @include lg {
+            font-size: rem(18) !important;
+            line-height: rem(24) !important;
+        }
+    }
+
+    p,
+    li,
+    .text-s {
+        font-size: rem(18) !important;
+        line-height: 160% !important;
+
+        a {
+            text-decoration: none;
+            padding-bottom: rem(4);
+            background-image: radial-gradient(
+                circle,
+                currentColor 1.5px,
+                transparent 1.5px
+            );
+            background-position: 0 100%;
+            background-repeat: repeat-x;
+            background-size: 6px 1px;
+        }
     }
 
     .text-xs {
-        font-size: rem(12) !important;
-        line-height: rem(12) !important;
-    }
-
-    .text-tag {
         font-size: rem(14) !important;
-        line-height: rem(16) !important;
+        line-height: 150% !important;
     }
 
     .btn,
@@ -132,16 +122,5 @@
     .text-hero {
         font-size: rem(90) !important;
         line-height: rem(90) !important;
-    }
-
-    p,
-    li {
-        font-size: rem(18) !important;
-        line-height: rem(24) !important;
-
-        u,
-        [style*="underline"] {
-            background-size: var(--underline, 0%) 2px !important;
-        }
     }
 }

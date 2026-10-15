@@ -1,9 +1,5 @@
 @use "mixins" as *;
 
-// Pre-hide scroll-animated elements' start states until Scrolls has set them,
-// so they don't flash in their final (plain) state on load. Scoped to the
-// frontend (.studiogram) so the editor, which never runs Scrolls, still shows
-// them. The class is added by Scrolls once every ScrollTrigger is built.
 .studiogram:not(.is-scroll-ready) {
     [data-scroll="fade"],
     [data-scroll="letters"],
@@ -20,9 +16,6 @@
     }
 }
 
-// Ease the reveal (apparition) only during the reveal window (.is-revealing,
-// removed by Scrolls right after). Kept off otherwise so it never fights GSAP's
-// per-frame scrub of opacity/width.
 .studiogram.is-revealing {
     [data-scroll="fade"],
     [data-scroll="letters"],
@@ -70,6 +63,14 @@
         grid-column: 2 / span 22;
     }
 
+    &--full {
+        grid-column: 1 / span 12;
+
+        @include lg {
+            grid-column: 1 / span 24;
+        }
+    }
+
     &--grider {
         display: grid;
         grid-template-columns: repeat(10, minmax(0, 1fr));
@@ -111,16 +112,6 @@
         @include lg {
             grid-template-columns: repeat(24, minmax(0, 1fr));
             gap: 1.25rem;
-        }
-    }
-
-    .block,
-    [data-block-type] {
-        position: relative;
-        margin-bottom: 6rem;
-
-        @include lg {
-            margin-bottom: 8rem;
         }
     }
 
@@ -178,7 +169,9 @@
         gap: 1rem;
 
         a {
-            color: var(--wp--preset--color--warning);
+            &:hover {
+                color: var(--wp--preset--color--soft);
+            }
         }
     }
 
@@ -187,10 +180,6 @@
         a,
         button {
             transition: 0.35s;
-
-            &:hover {
-                opacity: 0.6;
-            }
         }
     }
 

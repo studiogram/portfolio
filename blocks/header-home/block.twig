@@ -1,6 +1,9 @@
 <section {{ block_id }} data-block-type="header-home" data-block-id="{{ block.id }}" class="{% if fields.space.espace %}mb-8!{% endif %}">
-	<div class="content-grid content-grid--{{ fields.space.large }}">
-		{% if fields.text %}<div class="wysiwyg">{{ fields.text }}</div>{% endif %}
-		{{ include('views/svg/home.twig') }}
+	<div class="cartouche content-grid content-grid--full grider gap-12!">
+		{% if fields.title %}<h1 class="col-start-3 col-span-18 pt-24!">{{ fields.title }}</h1>{% endif %}
+		{% if fields.intro %}<div class="col-start-3 col-span-7 wysiwyg pb-24">{{ fields.intro }}</div>{% endif %}
+		<div class="col-start-11 col-span-14 flex items-end">
+			{{ include('views/svg/home.twig') }}
+		</div>
 	</div>
 </section>

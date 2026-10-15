@@ -22,4 +22,8 @@
     --color-medium: #f7f5f3;
     --color-medium-secondary: #dbd4ce;
     --color-medium-tertiary: #887e75;
+
+    --radius-s: 1rem;
+    --radius-m: 2rem;
+    --radius-l: 3rem;
 }
