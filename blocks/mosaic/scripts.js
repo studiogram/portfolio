@@ -7,9 +7,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 const blockName = "mosaic";
 
-// yPercent amplitude per column-step away from the center. Higher = sharper arrow.
-const STEP = 6;
-
 class Mosaic extends BlockParent {
     constructor(element) {
         super(element);
@@ -21,34 +18,33 @@ class Mosaic extends BlockParent {
         const reduce = window.matchMedia(
             "(prefers-reduced-motion: reduce)",
         ).matches;
-        this.cols = [...this.element.querySelectorAll(".mosaic__col")];
-        if (!this.cols.length || reduce) return;
+        const cols = [...this.element.querySelectorAll(".mosaic__col")];
+        this.oddCols = cols.filter(
+            (c) => !c.classList.contains("mosaic__col--offset"),
+        );
+        this.offsetCol = cols.find((c) =>
+            c.classList.contains("mosaic__col--offset"),
+        );
+        if (!this.oddCols.length || !this.offsetCol || reduce) return;
 
-        const center = (this.cols.length - 1) / 2;
+        const targetY = () =>
+            parseFloat(getComputedStyle(this.offsetCol).marginTop) || 0;
 
-        // Scrub each column down as the block passes; the closer to the center,
-        // the more it drops → a ∨ arrow forms. Outer columns barely move.
-        this.tweens = this.cols
-            .map((col, i) => {
-                const amp = (center - Math.abs(i - center)) * STEP;
-                if (!amp) return null;
-                return gsap.fromTo(
-                    col,
-                    { yPercent: -amp },
-                    {
-                        yPercent: amp,
-                        ease: "none",
-                        scrollTrigger: {
-                            trigger: this.element,
-                            start: "top bottom",
-                            end: "bottom center",
-                            scrub: 1,
-                            invalidateOnRefresh: true,
-                        },
-                    },
-                );
-            })
-            .filter(Boolean);
+        this.tween = gsap.fromTo(
+            this.oddCols,
+            { y: 0 },
+            {
+                y: targetY,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: this.element,
+                    start: "top bottom",
+                    end: "bottom 75%",
+                    scrub: 1,
+                    invalidateOnRefresh: true,
+                },
+            },
+        );
     }
 
     update() {
@@ -57,11 +53,9 @@ class Mosaic extends BlockParent {
     }
 
     destroy() {
-        this.tweens?.forEach((t) => {
-            t.scrollTrigger?.kill();
-            t.kill();
-        });
-        this.tweens = null;
+        this.tween?.scrollTrigger?.kill();
+        this.tween?.kill();
+        this.tween = null;
     }
 }
 

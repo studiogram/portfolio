@@ -126,23 +126,20 @@ export default class Scrolls {
         ).matches;
 
         if (this.perspectives && !reduceMotion) {
-            this.perspectives.forEach((perspective) => {
-                gsap.fromTo(
-                    perspective,
-                    { rotationX: 0 },
-                    {
-                        rotationX: 40,
-                        autoAlpha: 0,
-                        ease: "none",
-                        scrollTrigger: {
-                            trigger: perspective.parentElement,
-                            start: "top top",
-                            end: "center top",
-                            scrub: 1,
-                            invalidateOnRefresh: true,
-                        },
+            this.perspectives.forEach((el) => {
+                gsap.to(el, {
+                    rotationX: -20,
+                    transformPerspective: 900,
+                    transformOrigin: "top center",
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: el.parentElement,
+                        start: "top top",
+                        end: "bottom top",
+                        scrub: 1,
+                        invalidateOnRefresh: true,
                     },
-                );
+                });
             });
         }
 
