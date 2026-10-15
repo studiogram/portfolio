@@ -6,7 +6,7 @@
             "palette": [
                 { "color": "#FCFAFC", "name": "Light", "slug": "light" },
                 { "color": "#150A29", "name": "Dark", "slug": "dark" },
-                { "color": "#6E6878", "name": "Soft", "slug": "soft" },
+                { "color": "#807299", "name": "Soft", "slug": "soft" },
                 { "color": "#E85B51", "name": "Rouge", "slug": "red" },
                 { "color": "#15B681", "name": "Vert", "slug": "green" },
                 {

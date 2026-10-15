@@ -56,7 +56,7 @@
                         ]
                     ],
                     "wrapper": {
-                        "width": "100",
+                        "width": "50",
                         "class": "",
                         "id": ""
                     },
@@ -67,6 +67,79 @@
                         "calendar": "Calendrier"
                     },
                     "default_value": "interne",
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "allow_in_bindings": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0
+                },
+                {
+                    "key": "field_6ad0939591d31",
+                    "label": "Alignement",
+                    "name": "align",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_67ed312857e8b",
+                                "operator": "!=empty"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "left": "Gauche",
+                        "center": "Centré",
+                        "right": "Droite"
+                    },
+                    "default_value": "left",
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "allow_in_bindings": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0
+                },
+                {
+                    "key": "field_6b0a1c2e3f4d5",
+                    "label": "Style",
+                    "name": "variant",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_67ed312857e8b",
+                                "operator": "!=empty"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "primary": "Primaire",
+                        "secondary": "Secondaire"
+                    },
+                    "default_value": "primary",
                     "return_format": "value",
                     "multiple": 0,
                     "allow_null": 0,
@@ -216,5 +289,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1791811977
+    "modified": 1792054194
 }

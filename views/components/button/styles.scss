@@ -1,26 +1,123 @@
 @use "mixins" as *;
 
 .btn {
+    --btn-soft: var(--wp--preset--color--soft);
+    --btn-hover-fill: var(--wp--preset--color--dark);
+    --btn-bg: var(--wp--preset--color--dark);
+    --btn-text: var(--wp--preset--color--light);
+    --btn-dot: var(--wp--preset--color--light);
+
+    position: relative;
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    border-radius: 1.5rem;
-    padding: 0.85rem 1.25rem;
-    background-image: linear-gradient(var(--btn-fill), var(--btn-fill));
-    background-repeat: no-repeat;
-    background-position: center bottom;
-    background-size: 100% 0%;
-    transition:
-        background-size 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-        color 0.3s ease,
-        border-radius 0.35s ease;
+    align-self: flex-start; // never stretch in a flex/grid parent
+    justify-self: start;
+    width: fit-content;
+    min-height: 44px;
+    padding: 0 0.75rem 0 calc(35px + 0.75rem);
+    border-radius: 8px;
+    box-shadow: 0 0 0 2px var(--btn-soft); // ring, no overflow clip offset
+    background: var(--btn-bg);
+    color: var(--btn-text) !important;
+    font-size: 1.375rem;
+    line-height: 1;
+    overflow: hidden;
+    transition: 0.5s;
 
-    &:hover {
-        border-radius: 0.75rem;
-        background-size: 100% 100%;
+    &::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 3rem;
+        height: 100%;
+        aspect-ratio: 1;
+        border-radius: 0;
+        background: var(--btn-soft);
+        transform: translate(-25%, -50%) scale(1);
+        transform-origin: left center;
+        transition: 0.5s;
+        z-index: 0;
     }
 
-    @include lg {
-        padding: 0.85rem 1.75rem;
+    &::after {
+        // the pastille
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 17.5px;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: var(--btn-dot);
+        transform: translate(-50%, -50%);
+        z-index: 1;
+    }
+
+    span {
+        position: relative;
+        z-index: 1;
+        transition: 0.5s;
+    }
+
+    &:hover,
+    &:focus-visible {
+        --btn-soft: var(--btn-hover-fill);
+
+        span {
+            transform: translateX(-11px);
+        }
+    }
+
+    &:focus-visible {
+        outline: 2px solid var(--btn-soft);
+        outline-offset: 2px;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+        &:hover::before,
+        &:focus-visible::before {
+            transform: translate(-25%, -50%) scale(14);
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        &:hover,
+        &:focus-visible {
+            background: var(--btn-hover-fill);
+        }
+    }
+
+    // border variant: bg matches the section
+    &--secondary {
+        --btn-bg: var(--wp--preset--color--light);
+        --btn-text: var(--wp--preset--color--dark);
+    }
+
+    // alignment (ACF: left / center / right)
+    &--center {
+        align-self: center;
+        justify-self: center;
+        margin-inline: auto;
+    }
+
+    &--right {
+        align-self: flex-end;
+        justify-self: end;
+        margin-left: auto;
+    }
+}
+
+// dark section: parent carries .bg-dark — colors flip
+.bg-dark {
+    .btn {
+        --btn-bg: var(--wp--preset--color--light);
+        --btn-text: var(--wp--preset--color--dark);
+        --btn-dot: var(--wp--preset--color--dark);
+
+        &--secondary {
+            --btn-bg: var(--wp--preset--color--dark);
+            --btn-text: var(--wp--preset--color--light);
+        }
     }
 }

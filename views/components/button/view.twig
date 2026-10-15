@@ -1,18 +1,15 @@
-{% if button.type %}
-	{% set is_button = is_button ?? true %}
-	{% set anchor = button.anchor ? '#' ~ button.anchor : '' %}
+{% if button.text %}
+	{% set anchor = button.identifiant ? '#' ~ button.identifiant : '' %}
 	{% set types = {
 		interne: {href: button.interne ~ anchor},
 		externe: {href: button.externe, target: '_blank'},
 		file: {href: button.file, target: '_blank', download: true},
-		anchor: {href: '#' ~ button.anchor},
 		calendar: {href: '#calendar'}
-    } %}
+	} %}
 	{% set type = types[button.type] %}
-	{% set text = button.color ? 'dark' : 'white' %}
 	{% if type %}
-		<a class="{{ is_button ? 'btn' : '' }} {{ button.class }} border border-{{ button.background }} bg-{{ button.background }} text-{{ text }}!{{ is_button ? '' : ' hover:bg-' ~ text }} hover:text-{{ button.background }}!{% if button.type == 'file' %} inline-flex items-center gap-2{% endif %}" data-button="{{ button.background ? button.background : 'primary' }}" style="--btn-fill: var(--wp--preset--color--{{ text }})" href="{{ type.href }}" {{ type.target ? ' target="' ~ type.target ~ '"' : '' }} {{ type.download ? ' download' : '' }}>
-			{{ button.text }}
+		<a class="btn{{ button.variant ? ' btn--' ~ button.variant }}{{ button.align and button.align != 'left' ? ' btn--' ~ button.align }}{{ button.class ? ' ' ~ button.class }}" href="{{ type.href }}"{{ type.target ? ' target="' ~ type.target ~ '"' }}{{ type.download ? ' download' }}>
+			<span>{{ button.text }}</span>
 		</a>
 	{% endif %}
 {% endif %}

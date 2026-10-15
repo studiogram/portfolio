@@ -1,9 +1,11 @@
 <div class="contact spacing--top | bg-medium relative rounded rounded--bottom overflow-hidden z-10 text-center ">
-	{% if show_contact is not same as(false) %}
-		<div class="wysiwyg">
-			{{ contact.description }}
-			{{ include('views/components/button/view.twig', {button: contact.btn}) }}
-		</div>
-	{% endif %}
+	<div class="flex flex-col gap-8 items-center">
+		{% if show_contact is not same as(false) %}
+			<div class="wysiwyg">
+				{{ contact.description }}
+			</div>
+		{% endif %}
+		{{ include('views/components/button/view.twig', {button: contact.btn}) }}
+	</div>
 	{{ include('views/svg/worm.twig') }}
 </div>
