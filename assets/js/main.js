@@ -27,24 +27,16 @@ class Main {
     }
 
     introLoad() {
+        // The loader partial (partials/loader) owns the intro when present:
+        // it runs the circle animation, reveals the page, and springs the header.
+        if (document.querySelector("[data-loader]")) return;
+
         const header = document.querySelector(".header");
-        const cover = document.querySelector("[data-cover]");
         const clearLoading = () =>
             document.documentElement.classList.remove("is-loading");
-        const tl = gsap.timeline({
-            defaults: { ease: "power2.out" },
-            onComplete: clearLoading,
-        });
-        if (cover) {
-            tl.to(
-                cover,
-                { opacity: 0, duration: 1.2, onComplete: clearLoading },
-                0,
-            );
-        } else {
-            clearLoading();
-        }
+        clearLoading();
         if (header) {
+            const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
             tl.fromTo(
                 header,
                 { top: "-8rem" },

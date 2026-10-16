@@ -24,6 +24,22 @@
     -moz-osx-font-smoothing: antialiased;
 
     h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    .text-xxxl,
+    .text-xxl,
+    .text-xl,
+    .text-l,
+    .text-m {
+        strong {
+            color: var(--wp--preset--color--soft);
+        }
+    }
+
+    h1,
     .text-xxxl {
         font-size: clamp(2.25rem, 1.12rem + 4.63vw, 7.5rem) !important;
         line-height: 1 !important;
