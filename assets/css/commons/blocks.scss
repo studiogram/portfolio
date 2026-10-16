@@ -66,8 +66,8 @@ $bg-slugs:
             overflow: hidden;
             transform: perspective(600px);
             transform-origin: bottom center;
-            max-width: 1600px;
             margin-inline: auto;
+            max-width: 100rem;
 
             &::before,
             &::after {

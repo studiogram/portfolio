@@ -29,10 +29,10 @@ if (!class_exists('STUDIOGRAM\Theme')) :
 
         public function register_menus()
         {
-            register_nav_menus([
-                'primary' => 'Menu principal',
-                'footer'  => 'Menu pied de page',
-            ]);
+            // register_nav_menus([
+            //     'primary' => 'Menu principal',
+            //     'footer'  => 'Menu pied de page',
+            // ]);
         }
 
         public function set_thumbnails()
@@ -51,16 +51,7 @@ if (!class_exists('STUDIOGRAM\Theme')) :
             }
         }
 
-        /**
-         * Gravity Forms enqueues its frontend JS (and gf_global) only on pages that
-         * render a form, and that core lives in wp_footer — outside the Taxi content
-         * container — so it is never reloaded on SPA navigation. A form reached via
-         * nav then throws "gform is not defined" / "gf_global is not defined". Load
-         * GF's frontend scripts for every form on every front-end page so the objects
-         * exist everywhere; Taxi then only re-runs the per-form inline init.
-         * Uses GF's own enqueue API (frontend handles only — never the admin/editor
-         * bundles) so nothing admin-side leaks onto the front end.
-         */
+
         public function force_gravity_forms_scripts()
         {
             if (is_admin() || !function_exists('gravity_form_enqueue_scripts') || !class_exists('GFAPI')) {
@@ -77,20 +68,7 @@ if (!class_exists('STUDIOGRAM\Theme')) :
             }
         }
 
-        /**
-         * On successful submission, render the global brochure block below the GF
-         * confirmation message. Text confirmations are strings; skip redirect
-         * confirmations (arrays). Brochure content comes from the custom-content
-         * options group, same source the brochure block uses.
-         */
-        /**
-         * Choice fields (radio/checkbox) render their label as a <legend>, which
-         * browsers pin to the top of the <fieldset> and keep out of flex layout,
-         * so the CSS `order` that arranges description/label/error/input can't
-         * touch it. Swap the legend for a div (same id + gfield_label class) so it
-         * becomes a normal flex item; the group stays labelled for screen readers
-         * via aria-labelledby on the fieldset (see label_choice_fieldset()).
-         */
+
         public function delegend_choice_label($content, $field, $value = null, $lead_id = 0, $form_id = 0)
         {
             if (is_admin()) {

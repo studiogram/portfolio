@@ -5,9 +5,13 @@
     src:
         url("../fonts/Moderat-Medium.woff2") format("woff2"),
         url("../fonts/Moderat-Medium.woff") format("woff");
-    font-weight: 100 900;
+    font-weight: 500;
     font-style: normal;
     font-display: swap;
+}
+
+:root {
+    font-size: clamp(1rem, 0.52rem + 0.54vw, 1.5rem);
 }
 
 .studiogram,
@@ -15,15 +19,13 @@
     font-family: "moderat", sans-serif;
     font-synthesis: none;
     font-optical-sizing: auto;
-    font-size: 16px !important;
-    font-weight: 400 !important;
     font-style: normal;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: antialiased;
 
     h1,
     .text-xxxl {
-        font-size: clamp(2.25rem, 1.12rem + 4.63vw, 7.5rem);
+        font-size: clamp(2.25rem, 1.12rem + 4.63vw, 7.5rem) !important;
         line-height: 1 !important;
     }
 
@@ -78,13 +80,6 @@
     }
 
     .wysiwyg {
-        ol li {
-            font-size: 1.075rem;
-            &::before {
-                font-size: 1.25rem;
-            }
-        }
-
         p,
         li,
         .text-s {

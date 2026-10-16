@@ -418,7 +418,7 @@ if (!class_exists('STUDIOGRAM\Helpers')) :
         }
 
 
-        public static function block_classes($fields, $is_header = false)
+        public static function block_classes($fields, $is_header = false, $with_spacing = true)
         {
             $fields = is_array($fields) ? $fields : [];
             $classes = [];
@@ -429,7 +429,7 @@ if (!class_exists('STUDIOGRAM\Helpers')) :
 
             if (!$is_header) {
                 $classes[] = 'block';
-                if (!empty($fields['spacing'])) {
+                if ($with_spacing && !empty($fields['spacing'])) {
                     $classes[] = 'block--space-' . $fields['spacing'];
                 }
             }

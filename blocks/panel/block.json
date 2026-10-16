@@ -1,0 +1,29 @@
+{
+    "name": "studiogram/panel",
+    "title": "Panneau",
+    "category": "studiogram",
+    "icon": "slides",
+    "keywords": ["panel", "panneau"],
+    "style": "file:../../dist/blocks/panel/styles.min.css",
+    "script": "file:../../dist/blocks/panel/scripts.min.js",
+    "acf": {
+        "mode": "preview"
+    },
+    "supports": {
+        "mode": false,
+        "color": {
+            "background": false,
+            "heading": false,
+            "link": false,
+            "text": false
+        }
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image": true
+            }
+        }
+    }
+}

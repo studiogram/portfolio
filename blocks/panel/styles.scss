@@ -1,0 +1,177 @@
+@use "mixins" as *;
+
+.panel {
+    --panel-gutter: clamp(2rem, 8vw, 10rem);
+    --panel-radius: 2rem;
+
+    position: relative;
+    grid-template-columns: minmax(0, 32rem) 1fr;
+    gap: clamp(2rem, 5vw, 6rem);
+    align-items: start;
+    padding-block: clamp(2rem, 6vw, 6rem);
+    // title side keeps a gutter; panel side bleeds to the screen edge
+    padding-left: var(--panel-gutter);
+
+    &--left {
+        grid-template-columns: 1fr minmax(0, 32rem);
+        padding-left: 0;
+        padding-right: var(--panel-gutter);
+
+        .panel__head {
+            order: 2;
+        }
+        .panel__stack {
+            order: 1;
+        }
+    }
+
+    &__head {
+        position: relative;
+        z-index: 1;
+        align-self: start;
+    }
+
+    // wheel sits below the title, pushed half off the viewport edge (the section
+    // clips it); its svg is rotated on scroll by the block script
+    &__wheel {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: auto;
+        height: clamp(26rem, 44vw, 46rem);
+        // most of the wheel sits off the left edge; the section clips it
+        transform: translateX(-58%);
+        z-index: 0;
+        pointer-events: none;
+
+        svg {
+            display: block;
+            width: auto;
+            height: 100%;
+        }
+    }
+
+    &--left &__wheel {
+        left: auto;
+        right: 0;
+        transform: translateX(58%);
+    }
+
+    @include under-md {
+        &__wheel {
+            display: none;
+        }
+    }
+
+    &__stack {
+        position: relative;
+        max-width: 45rem;
+        margin-left: auto;
+    }
+
+    &__back {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        background: var(--wp--preset--color--medium);
+        border-radius: var(--panel-radius) 0 0 var(--panel-radius);
+        transform: rotate(-3deg);
+        transform-origin: bottom right;
+    }
+
+    &--left &__back {
+        border-radius: 0 var(--panel-radius) var(--panel-radius) 0;
+        transform: rotate(3deg);
+        transform-origin: bottom left;
+    }
+
+    &__list {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        gap: clamp(2rem, 4vw, 3.5rem);
+        margin: 0;
+        padding: clamp(2.5rem, 4vw, 4rem) clamp(1.5rem, 4vw, 4rem);
+        background: var(--wp--preset--color--dark);
+        color: var(--wp--preset--color--light);
+        border-radius: var(--panel-radius) 0 0 var(--panel-radius);
+        list-style: none;
+    }
+
+    &--left &__list {
+        border-radius: 0 var(--panel-radius) var(--panel-radius) 0;
+    }
+
+    &__item {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        align-items: flex-start;
+        gap: 0.75rem 1.5rem;
+    }
+
+    &__list:not(&__list--numbered) &__item {
+        grid-template-columns: 1fr;
+    }
+
+    &__num {
+        grid-row: 1;
+        grid-column: 1;
+        display: grid;
+        place-items: center;
+        width: 2.6rem;
+        height: 2.6rem;
+        border-radius: 50%;
+        background: var(--wp--preset--color--medium);
+        color: var(--wp--preset--color--dark);
+        font-size: 1.5rem;
+        flex-shrink: 0;
+        margin-top: 1rem;
+    }
+
+    &__item-title {
+        grid-column: 2;
+        margin: 0;
+        font-size: clamp(2rem, 4vw, 4rem);
+        line-height: 1.05;
+    }
+
+    &__list:not(&__list--numbered) &__item-title {
+        grid-column: 1;
+    }
+
+    &__item-text {
+        grid-column: 2;
+        margin: 0.5rem 0 0;
+        max-width: 34rem;
+        font-size: clamp(1rem, 1.4vw, 1.3rem);
+        line-height: 1.4;
+        opacity: 0.85;
+    }
+
+    &__list:not(&__list--numbered) &__item-text {
+        grid-column: 1;
+    }
+
+    @include under-md {
+        grid-template-columns: 1fr;
+        padding-inline: 1rem;
+
+        &--left {
+            padding-inline: 1rem;
+        }
+
+        &__head {
+            position: static;
+        }
+
+        &__list,
+        &--left &__list {
+            border-radius: var(--panel-radius);
+        }
+
+        &__back {
+            display: none;
+        }
+    }
+}

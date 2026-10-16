@@ -1,0 +1,27 @@
+<section {{ block_id }} data-block-type="panel" data-block-id="{{ block.id }}" class="{{ block_classes(fields, false, false) }}">
+	{% include 'views/partials/block/borders.twig' %}
+	<div class="panel content-grid content-grid--full {{ fields.side == 'left' ? 'panel--left' }}" data-panel-side="{{ fields.side == 'left' ? 'left' : 'right' }}">
+		<div class="panel__wheel" data-panel-wheel aria-hidden="true">
+			{% include 'views/svg/wheel.twig' %}
+		</div>
+
+		<div class="panel__head">
+			{% if fields.title %}<h2 class="panel__title | text-xxxl">{{ fields.title }}</h2>{% endif %}
+		</div>
+
+		<div class="panel__stack">
+			<span class="panel__back" data-panel-back aria-hidden="true"></span>
+			<ol class="panel__list {{ fields.numbered ? 'panel__list--numbered' }}">
+				{% for item in fields.items %}
+					<li class="panel__item">
+						{% if fields.numbered %}<span class="panel__num">{{ loop.index }}</span>{% endif %}
+						<div class="panel__content">
+							{% if item.title %}<h3 class="panel__item-title | text-xxl">{{ item.title }}</h3>{% endif %}
+							{% if item.text %}<p class="panel__item-text">{{ item.text }}</p>{% endif %}
+						</div>
+					</li>
+				{% endfor %}
+			</ol>
+		</div>
+	</div>
+</section>
