@@ -56,11 +56,11 @@ export default class Headline {
         this.strongChars.forEach((char) => {
             const color = this.theme[(Math.random() * this.theme.length) | 0];
             this.tl
-                .to(char, { color, duration: 0.1, ease: "power1.inOut" }, at)
+                .to(char, { color, duration: 0.15, ease: "power1.inOut" }, at)
                 .to(
                     char,
                     { color: this.soft, duration: 0.2, ease: "power1.out" },
-                    at + 0.05,
+                    at + 0.2,
                 );
             at += 0.035;
         });

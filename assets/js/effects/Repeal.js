@@ -6,6 +6,7 @@ const GROUP = { radius: 240, shift: 24, rot: 12 };
 export default class Repeal {
     constructor(element) {
         this.el = element;
+        if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) return;
         const groups = [...element.querySelectorAll("[data-sector]")];
         this.cfg = groups.length ? GROUP : SHAPE;
 
