@@ -2,6 +2,7 @@
    matching [data-effect] is on the page. Add a new effect here. */
 const effects = {
     repeal: () => import("./Repeal"),
+    headline: () => import("./Headline"),
 };
 
 export default effects;

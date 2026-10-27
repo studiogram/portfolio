@@ -15,7 +15,6 @@
     </head>
 
     <body class="{{ body_class }} bg-light">
-        {% include 'partials/loader/view.twig' %}
         {% include 'partials/header/view.twig' %}
         <div data-taxi>
             <div data-taxi-view {% if post and post.post_type in ['post', 'page'] %} data-post-id="{{ post.id }}" {% endif %}>

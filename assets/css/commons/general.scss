@@ -55,6 +55,12 @@
     font-weight: 500;
 }
 
+@media (prefers-reduced-motion: no-preference) {
+    html.js h1[data-effect="headline"] {
+        visibility: hidden;
+    }
+}
+
 .content-grid {
     display: grid;
     grid-column: 2 / span 10;

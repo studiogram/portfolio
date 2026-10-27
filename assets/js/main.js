@@ -6,7 +6,6 @@ import "lenis/dist/lenis.css";
 import "../css/main.scss";
 import "lazysizes";
 import { Core } from "@unseenco/taxi";
-import { gsap } from "gsap/all";
 import partials from "./views/partials";
 import { initSmooth } from "./actions/Smooth";
 import { syncComponents } from "./components/ComponentManager";
@@ -27,27 +26,7 @@ class Main {
     }
 
     introLoad() {
-        // The loader partial (partials/loader) owns the intro when present:
-        // it runs the circle animation, reveals the page, and springs the header.
-        if (document.querySelector("[data-loader]")) return;
-
-        const header = document.querySelector(".header");
-        const clearLoading = () =>
-            document.documentElement.classList.remove("is-loading");
-        clearLoading();
-        if (header) {
-            const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
-            tl.fromTo(
-                header,
-                { top: "-8rem" },
-                {
-                    top: "1rem",
-                    duration: 1.6,
-                    ease: "elastic.out(1, 0.7)",
-                },
-                0.15,
-            );
-        }
+        document.documentElement.classList.remove("is-loading");
     }
 
     initPartials() {
