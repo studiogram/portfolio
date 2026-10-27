@@ -14,15 +14,16 @@
     --breakpoint-3xl: 1800px;
 
     --color-light: #ffffff;
-    --color-dark: #150a29;
+    --color-dark: #20172e;
     --color-soft: #90869f;
-    --color-red: #e85b51;
-    --color-green: #15b681;
+    --color-soft-light: #d8cfe6;
+    --color-red: #dc6455;
+    --color-green: #52b584;
     --color-lightblue: #95bbe6;
     --color-pink: #e18ba6;
     --color-blue: #5681db;
     --color-medium: #f1efeb;
-    --color-medium-secondary: #dbd4ce;
+    --color-medium-secondary: #ece7e2;
     --color-medium-tertiary: #887e75;
 
     --radius-s: 1rem;

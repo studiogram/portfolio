@@ -5,10 +5,15 @@
         "color": {
             "palette": [
                 { "color": "#FFFFFF", "name": "Light", "slug": "light" },
-                { "color": "#150A29", "name": "Dark", "slug": "dark" },
+                { "color": "#20172E", "name": "Dark", "slug": "dark" },
                 { "color": "#90869F", "name": "Soft", "slug": "soft" },
-                { "color": "#E85B51", "name": "Rouge", "slug": "red" },
-                { "color": "#15B681", "name": "Vert", "slug": "green" },
+                {
+                    "color": "#D8CFE6",
+                    "name": "Soft Light",
+                    "slug": "softlight"
+                },
+                { "color": "#DC6455", "name": "Rouge", "slug": "red" },
+                { "color": "#52B584", "name": "Vert", "slug": "green" },
                 {
                     "color": "#95BBE6",
                     "name": "Bleu clair",
@@ -18,7 +23,7 @@
                 { "color": "#5681DB", "name": "Bleu", "slug": "blue" },
                 { "color": "#F1EFEB", "name": "Medium", "slug": "medium" },
                 {
-                    "color": "#DBD4CE",
+                    "color": "#ECE7E2",
                     "name": "Medium secondaire",
                     "slug": "medium-secondary"
                 },
