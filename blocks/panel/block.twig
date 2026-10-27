@@ -1,10 +1,7 @@
 <section {{ block_id }} data-block-type="panel" data-block-id="{{ block.id }}" class="{{ block_classes(fields, false, false) }}">
 	{% include 'views/partials/block/borders.twig' %}
 	<div class="panel content-grid content-grid--full {{ fields.side == 'left' ? 'panel--left' }}" data-panel-side="{{ fields.side == 'left' ? 'left' : 'right' }}">
-		<div class="panel__wheel" data-panel-wheel aria-hidden="true">
-			{% include 'views/svg/wheel.twig' %}
-		</div>
-
+		
 		<div class="panel__head">
 			{% if fields.title %}<h2 class="panel__title | text-xxxl">{{ fields.title }}</h2>{% endif %}
 		</div>

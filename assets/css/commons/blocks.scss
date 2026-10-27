@@ -67,7 +67,8 @@ $bg-slugs:
             transform: perspective(600px);
             transform-origin: bottom center;
             margin-inline: auto;
-            max-width: 100rem;
+            width: 100%;
+            // max-width: 120rem;
 
             &::before,
             &::after {

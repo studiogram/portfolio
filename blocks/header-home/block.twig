@@ -1,8 +1,22 @@
 <section {{ block_id }} data-block-type="header-home" data-block-id="{{ block.id }}" class="{{ block_classes(fields, true) }}">
 	<div class="cartouche content-grid content-grid--full grider gap-12!" data-scroll="perspective">
-		{% if fields.title %}<h1 class="col-start-4 col-span-17 pt-24!" data-effect="headline">{{ fields.title }}</h1>{% endif %}
-		{% if fields.intro %}<div class="col-start-4 col-span-8 wysiwyg pb-30 text-soft-light">{{ fields.intro }}</div>{% endif %}
-		<div class="col-start-13 col-span-12 flex items-end justify-end">
+		{% if fields.title %}<h1 class="col-start-3 col-span-20 pt-24!" data-effect="headline">{{ fields.title }}</h1>{% endif %}
+		<div class="col-start-3 col-span-11 pb-24 flex flex-col gap-12">
+			{% if fields.intro %} <div class="wysiwyg text-soft-light max-w-108">{{ fields.intro }}</div>{% endif %}
+			{% if categories %}
+				<ul class="flex flex-wrap items-center gap-1.5 pb-30">
+					{% for cat in categories %}
+						<li>
+							<a href="{{ cat.url }}" class="flex items-center gap-3 rounded-lg p-2 text-[18px] text-light transition-opacity duration-300 hover:opacity-70">
+								<span class="size-3 shrink-0 rounded-full bg-{{ cat.color }}"></span>
+								{{ cat.title }}
+							</a>
+						</li>
+					{% endfor %}
+				</ul>
+			{% endif %}
+		</div>
+		<div class="col-start-14 col-span-11 flex items-end justify-end">
 			{{ include('views/svg/home.twig') }}
 		</div>
 	</div>

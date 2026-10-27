@@ -371,8 +371,13 @@ if (!class_exists('STUDIOGRAM\Helpers')) :
                 }
             }
 
-            $secteur = isset($_GET['secteur']) ? (int) $_GET['secteur'] : 0;
-            if ($secteur && ($slug = get_field('color', 'category_' . $secteur))) return $slug;
+            $secteur = isset($_GET['secteur']) ? sanitize_text_field(wp_unslash($_GET['secteur'])) : '';
+            if ($secteur !== '') {
+                $term = is_numeric($secteur)
+                    ? get_term((int) $secteur, 'category')
+                    : get_term_by('slug', $secteur, 'category');
+                if ($term && !is_wp_error($term) && ($slug = get_field('color', 'category_' . $term->term_id))) return $slug;
+            }
 
             if (is_category()) {
                 $term = get_queried_object();

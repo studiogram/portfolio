@@ -71,9 +71,13 @@ if (!class_exists('STUDIOGRAM\Setup')) :
         {
             if (is_admin() || !$query->is_main_query()) return;
             if (!isset($_GET['secteur'])) return;
-            $id = (int) $_GET['secteur'];
-            if ($id && ($query->is_home() || $query->is_post_type_archive('post'))) {
-                $query->set('cat', $id);
+            $secteur = sanitize_text_field(wp_unslash($_GET['secteur']));
+            if ($secteur === '') return;
+            $term = is_numeric($secteur)
+                ? get_term((int) $secteur, 'category')
+                : get_term_by('slug', $secteur, 'category');
+            if ($term && !is_wp_error($term) && ($query->is_home() || $query->is_post_type_archive('post'))) {
+                $query->set('cat', $term->term_id);
             }
         }
 

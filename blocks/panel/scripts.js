@@ -44,6 +44,41 @@ class Panel extends BlockParent {
             },
         );
 
+        const head = this.element.querySelector(".panel__head");
+        if (head) {
+            this.mm = gsap.matchMedia();
+            this.mm.add("(min-width: 1025px)", () => {
+                const st = ScrollTrigger.create({
+                    trigger: head,
+                    start: "center center",
+                    endTrigger: wrap,
+                    end: "bottom bottom",
+                    pin: head,
+                    pinSpacing: false,
+                    invalidateOnRefresh: true,
+                });
+                return () => st.kill();
+            });
+        }
+
+        this.itemTweens = [
+            ...this.element.querySelectorAll(".panel__item"),
+        ].map((item) => {
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: item,
+                    start: "top bottom",
+                    end: "bottom top",
+                    scrub: true,
+                    invalidateOnRefresh: true,
+                },
+            });
+            tl.fromTo(item, { opacity: 0 }, { opacity: 1, duration: 1, ease: "none" })
+                .to(item, { opacity: 1, duration: 0.6, ease: "none" })
+                .to(item, { opacity: 0, duration: 1, ease: "none" });
+            return tl;
+        });
+
         const wheel = this.element.querySelector("[data-panel-wheel] svg");
         if (wheel) {
             this.wheelTween = gsap.fromTo(
@@ -71,12 +106,15 @@ class Panel extends BlockParent {
     }
 
     destroy() {
-        [this.tween, this.wheelTween].forEach((t) => {
+        [this.tween, this.wheelTween, ...(this.itemTweens || [])].forEach((t) => {
             t?.scrollTrigger?.kill();
             t?.kill();
         });
         this.tween = null;
         this.wheelTween = null;
+        this.itemTweens = null;
+        this.mm?.revert();
+        this.mm = null;
     }
 }
 

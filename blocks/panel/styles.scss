@@ -73,7 +73,8 @@
         position: absolute;
         inset: 0;
         z-index: 0;
-        background: var(--wp--preset--color--medium);
+        background: var(--wp--preset--color--medium)
+            url("/wp-content/themes/studiogram/dist/img/panel.svg") no-repeat;
         border-radius: var(--panel-radius) 0 0 var(--panel-radius);
         transform: rotate(-3deg);
         transform-origin: bottom right;
