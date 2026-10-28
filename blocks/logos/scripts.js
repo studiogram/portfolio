@@ -25,7 +25,11 @@ class Logos extends BlockParent {
         this.admin = document.body.classList.contains("wp-admin");
         this.marquee = this.root.hasAttribute("data-logos-marquee");
 
-        this.build();
+        const build = () => {
+            if (document.contains(this.element)) this.build();
+        };
+        if (document.fonts?.ready) document.fonts.ready.then(build);
+        else build();
     }
 
     build() {

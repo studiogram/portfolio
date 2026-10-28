@@ -2,27 +2,29 @@
 
 .header__scrim {
     position: fixed;
-    inset: 0 0 auto 0;
+    inset: -4px 0 auto 0;
     height: 9rem;
     z-index: 90;
     pointer-events: none;
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
     background: linear-gradient(
         to bottom,
         rgba(21, 10, 41, 0.08),
         rgba(21, 10, 41, 0)
     );
-    mask-image: linear-gradient(to bottom, #000, transparent),
-        linear-gradient(to right, #000, transparent 65%);
+    mask-image:
+        linear-gradient(to bottom, #000, transparent),
+        linear-gradient(to right, #000, transparent 50%);
     mask-composite: intersect;
-    -webkit-mask-image: linear-gradient(to bottom, #000, transparent),
-        linear-gradient(to right, #000, transparent 65%);
+    -webkit-mask-image:
+        linear-gradient(to bottom, #000, transparent),
+        linear-gradient(to right, #000, transparent 50%);
     -webkit-mask-composite: source-in;
 }
 
 .header {
-    --header-fg: var(--color-light);
+    --header-fg: var(--color-dark);
 
     width: calc(100% - 2rem);
     z-index: 99;
@@ -31,8 +33,8 @@
         width: calc(100% - 4rem);
     }
 
-    &.is-on-light {
-        --header-fg: var(--color-dark);
+    &.is-on-dark {
+        --header-fg: var(--color-light);
     }
 
     &__logo svg {

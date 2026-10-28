@@ -51,7 +51,7 @@ export default class Header {
                 ? ".cartouche, .bg-dark, .panel__list"
                 : ".cartouche, .bg-dark";
         const dark = this.crosses(darkSel, band);
-        this.el.classList.toggle("is-on-light", !dark);
+        this.el.classList.toggle("is-on-dark", dark);
     }
 
     toggle() {
