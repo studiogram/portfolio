@@ -1,0 +1,79 @@
+@use "mixins" as *;
+
+.labo {
+    align-items: center;
+    row-gap: clamp(2rem, 6vw, 4rem);
+    padding-block: clamp(3rem, 8vw, 7rem);
+
+    &__visual {
+        position: relative;
+        aspect-ratio: 1 / 1;
+    }
+
+    &__blobs {
+        position: absolute;
+        inset: -12% -8% -8% -8%;
+        width: auto;
+        height: auto;
+        z-index: 0;
+        pointer-events: none;
+
+        &--top {
+            inset: auto;
+            top: -12%;
+            right: -6%;
+            width: 55%;
+            height: auto;
+        }
+    }
+
+    &__stack {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+    }
+
+    &__img {
+        position: absolute;
+        border-radius: 24px;
+        object-fit: cover;
+        box-shadow: 0 20px 50px rgba(21, 10, 41, 0.18);
+    }
+
+    &__img--1 {
+        width: 46%;
+        aspect-ratio: 306 / 278;
+        left: 6%;
+        top: 30%;
+        z-index: 1;
+    }
+
+    &__img--2 {
+        width: 44%;
+        aspect-ratio: 322 / 239;
+        left: 24%;
+        top: 52%;
+        z-index: 2;
+    }
+
+    &__img--3 {
+        width: 48%;
+        aspect-ratio: 335 / 506;
+        left: 42%;
+        top: 14%;
+        z-index: 3;
+    }
+
+    &__text {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: clamp(1.5rem, 3vw, 3rem);
+        z-index: 2;
+    }
+
+    &__blobs--top {
+        z-index: -1;
+    }
+}

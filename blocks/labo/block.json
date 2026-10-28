@@ -4,6 +4,8 @@
     "category": "studiogram",
     "icon": "smiley",
     "keywords": ["labo"],
+    "style": "file:../../dist/blocks/labo/styles.min.css",
+    "script": "file:../../dist/blocks/labo/scripts.min.js",
     "acf": {
         "mode": "preview"
     },

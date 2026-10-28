@@ -1,12 +1,19 @@
-<section {{ block_id }} data-block-type="text" data-block-id="{{ block.id }}" class="{{ block_classes(fields) }}">
+<section {{ block_id }} data-block-type="labo" data-block-id="{{ block.id }}" class="{{ block_classes(fields) }}">
 	{% include 'views/partials/block/borders.twig' %}
-	<div class="wysiwyg content-grid content-grid--{{fields.space.large}}">{{ fields.text }}</div>
-
-	{% for item in items %}
-		<div id="{{ item.slug }}" class="content-grid content-grid--{{fields.space.large}} scroll-mt-24">
-			{% if item.color %}<span data-pastille class="inline-block w-5 h-5 rounded-full bg-{{ item.color }}"></span>{% endif %}
-			<h3>{{ item.title }}</h3>
-			{% if item.text %}<div class="wysiwyg">{{ item.text }}</div>{% endif %}
+	<div class="labo grider">
+		<div class="labo__visual col-start-2 col-end-12 lg:col-end-13">
+			{{ include('views/svg/labo-details.twig', { class: 'labo__blobs' }) }}
+			<div class="labo__stack">
+				{% if fields.image1 %}<img class="labo__img labo__img--1 lazyload" data-labo-img {{ responsive_image(fields.image1) }} alt=""/>{% endif %}
+				{% if fields.image2 %}<img class="labo__img labo__img--2 lazyload" data-labo-img {{ responsive_image(fields.image2) }} alt=""/>{% endif %}
+				{% if fields.image3 %}<img class="labo__img labo__img--3 lazyload" data-labo-img {{ responsive_image(fields.image3) }} alt=""/>{% endif %}
+			</div>
 		</div>
-	{% endfor %}
+
+		<div class="labo__text col-start-2 col-end-12 lg:col-start-14 lg:col-end-24">
+			{{ include('views/svg/labo-top.twig', { class: 'labo__blobs labo__blobs--top' }) }}
+			{% if fields.text %}<div class="wysiwyg labo__wysiwyg">{{ fields.text }}</div>{% endif %}
+			{{ include('views/components/button/view.twig', { button: fields.btn }) }}
+		</div>
+	</div>
 </section>
