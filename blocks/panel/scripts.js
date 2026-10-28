@@ -19,9 +19,10 @@ class Panel extends BlockParent {
         const reduce = window.matchMedia(
             "(prefers-reduced-motion: reduce)",
         ).matches;
+        const admin = document.body.classList.contains("wp-admin");
         const back = this.element.querySelector("[data-panel-back]");
         const wrap = this.element.querySelector(".panel");
-        if (!back || !wrap || reduce) return;
+        if (!back || !wrap || reduce || admin) return;
 
         const left = wrap.dataset.panelSide === "left";
         const tilt = left ? TILT : -TILT;
@@ -52,7 +53,7 @@ class Panel extends BlockParent {
                     trigger: head,
                     start: "center center",
                     endTrigger: wrap,
-                    end: "bottom center",
+                    end: () => "bottom center+=" + head.offsetHeight / 2,
                     pin: head,
                     pinSpacing: false,
                     invalidateOnRefresh: true,
