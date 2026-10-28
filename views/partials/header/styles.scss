@@ -1,6 +1,29 @@
 @use "mixins" as *;
 
+.header__scrim {
+    position: fixed;
+    inset: 0 0 auto 0;
+    height: 9rem;
+    z-index: 90;
+    pointer-events: none;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    background: linear-gradient(
+        to bottom,
+        rgba(21, 10, 41, 0.08),
+        rgba(21, 10, 41, 0)
+    );
+    mask-image: linear-gradient(to bottom, #000, transparent),
+        linear-gradient(to right, #000, transparent 65%);
+    mask-composite: intersect;
+    -webkit-mask-image: linear-gradient(to bottom, #000, transparent),
+        linear-gradient(to right, #000, transparent 65%);
+    -webkit-mask-composite: source-in;
+}
+
 .header {
+    --header-fg: var(--color-light);
+
     width: calc(100% - 2rem);
     z-index: 99;
 
@@ -8,8 +31,14 @@
         width: calc(100% - 4rem);
     }
 
+    &.is-on-light {
+        --header-fg: var(--color-dark);
+    }
+
     &__logo svg {
         width: 180px !important;
+        fill: var(--header-fg);
+        transition: fill 0.7s ease-in-out;
     }
 
     &__logo,
@@ -30,10 +59,19 @@
         }
     }
 
-    &__nav ul {
+    &__nav {
         @include lg {
-            flex-direction: row;
-            align-items: center;
+            background: var(--color-medium);
+            color: var(--color-dark);
+            border-radius: 1.5rem;
+            padding: 0.4rem 0.4rem 0.4rem 1.5rem;
+        }
+
+        ul {
+            @include lg {
+                flex-direction: row;
+                align-items: center;
+            }
         }
     }
 
@@ -43,7 +81,8 @@
         gap: 0.6rem;
         padding: 0.75rem 1rem;
         border-radius: 1.25rem;
-        color: var(--color-dark);
+        color: var(--header-fg);
+        transition: color 0.7s ease-in-out;
 
         @include lg {
             display: none;

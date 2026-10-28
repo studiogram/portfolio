@@ -13,6 +13,7 @@ export default class Header {
         this.onKey = (e) => { if (e.key === "Escape") this.close(); };
         this.onResize = () => {
             if (window.innerWidth >= DESKTOP) this.close();
+            this.updateContrast();
             if (!this.nav) return;
             this.nav.style.transition = "none";
             clearTimeout(this.resizeT);
@@ -23,6 +24,34 @@ export default class Header {
         this.links.forEach((a) => a.addEventListener("click", this.onLink));
         addEventListener("keydown", this.onKey);
         addEventListener("resize", this.onResize);
+
+        this.onContrast = () => {
+            if (this.raf) return;
+            this.raf = requestAnimationFrame(() => {
+                this.raf = null;
+                this.updateContrast();
+            });
+        };
+        addEventListener("scroll", this.onContrast, { passive: true });
+        this.updateContrast();
+    }
+
+    crosses(selector, band) {
+        for (const el of document.querySelectorAll(selector)) {
+            const r = el.getBoundingClientRect();
+            if (r.top <= band && r.bottom > band) return true;
+        }
+        return false;
+    }
+
+    updateContrast() {
+        const band = 48;
+        const darkSel =
+            window.innerWidth < DESKTOP
+                ? ".cartouche, .bg-dark, .panel__list"
+                : ".cartouche, .bg-dark";
+        const dark = this.crosses(darkSel, band);
+        this.el.classList.toggle("is-on-light", !dark);
     }
 
     toggle() {
@@ -50,5 +79,7 @@ export default class Header {
         this.links.forEach((a) => a.removeEventListener("click", this.onLink));
         removeEventListener("keydown", this.onKey);
         removeEventListener("resize", this.onResize);
+        removeEventListener("scroll", this.onContrast);
+        if (this.raf) cancelAnimationFrame(this.raf);
     }
 }
