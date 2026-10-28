@@ -35,22 +35,29 @@ class Logos extends BlockParent {
     build() {
         this.teardown();
         if (!this.marquee || this.reduce || this.admin) return;
-        if (this.track.scrollWidth <= this.viewport.clientWidth) return;
 
         const gap = parseFloat(getComputedStyle(this.track).columnGap) || 0;
-        this.clone = this.track.cloneNode(true);
-        this.clone.setAttribute("aria-hidden", "true");
+        const unit = this.track.offsetWidth + gap;
+        if (!unit) return;
 
         this.lane = document.createElement("div");
         this.lane.className = "logos__lane";
         this.viewport.appendChild(this.lane);
-        this.lane.append(this.track, this.clone);
+        this.lane.appendChild(this.track);
+
+        const copies = Math.max(2, Math.ceil(this.viewport.clientWidth / unit) + 1);
+        this.clones = [];
+        for (let i = 1; i < copies; i++) {
+            const c = this.track.cloneNode(true);
+            c.setAttribute("aria-hidden", "true");
+            this.lane.appendChild(c);
+            this.clones.push(c);
+        }
         this.root.setAttribute("data-logos-running", "");
 
-        const dist = this.track.offsetWidth + gap;
         this.tween = gsap.to(this.lane, {
-            x: -dist,
-            duration: dist / SPEED,
+            x: -unit,
+            duration: unit / SPEED,
             ease: "none",
             repeat: -1,
         });
@@ -69,12 +76,12 @@ class Logos extends BlockParent {
         this.onEnter = this.onLeave = null;
         this.root?.removeAttribute("data-logos-running");
         if (this.lane) {
-            this.clone?.remove();
+            this.clones?.forEach((c) => c.remove());
             gsap.set(this.track, { clearProps: "transform" });
             this.viewport.appendChild(this.track);
             this.lane.remove();
             this.lane = null;
-            this.clone = null;
+            this.clones = null;
         }
     }
 

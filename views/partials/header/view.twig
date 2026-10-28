@@ -1,7 +1,7 @@
 <hr class="header__scrim" aria-hidden="true"/>
-<header class="header | fixed inset-x-0 top-4 mx-4 lg:mx-8">
+<header class="header | grider fixed inset-x-0 top-4">
 
-	<div class="relative flex items-center justify-between px-4! py-2 lg:px-8!">
+	<div class="relative col-start-2 col-end-12 flex items-center justify-between py-2 lg:col-end-24">
 		<a href="{{ home }}" class="header__logo | py-4" aria-label="{{ site.name }}">
 			{{ include('views/svg/logo-gram.twig') }}
 		</a>
@@ -15,7 +15,7 @@
 			<nav id="header-nav" class="header__nav" aria-label="{{ site.name }}">
 				<ul class="flex flex-col gap-6">
 					{% for item in header.pages %}
-						<li><a class="header__link {{ item.current ? 'is-current' : '' }}" href="{{ item.page }}">{{ item.text }}</a></li>
+						<li><a class="header__link {{ item.current ? 'is-current' : '' }} text-m" href="{{ item.page }}">{{ item.text }}</a></li>
 					{% endfor %}
 					<li>{{ include('views/components/button/view.twig', {button: header.btn}) }}</li>
 				</ul>

@@ -26,12 +26,7 @@
 .header {
     --header-fg: var(--color-dark);
 
-    width: calc(100% - 2rem);
     z-index: 99;
-
-    @include lg {
-        width: calc(100% - 4rem);
-    }
 
     &.is-on-dark {
         --header-fg: var(--color-light);
@@ -50,14 +45,41 @@
     }
 
     &__link {
-        transition: opacity 0.25s ease;
-
-        &:hover {
-            opacity: 0.6;
-        }
+        display: inline-flex;
 
         &.is-current {
             font-weight: 700;
+        }
+
+        .char {
+            display: inline-flex;
+            flex-direction: column;
+            overflow: hidden;
+            height: 1.1em;
+            line-height: 1.1;
+
+            span {
+                transition:
+                    transform 0.4s ease,
+                    opacity 0.4s ease;
+                transition-delay: calc(var(--i) * 25ms);
+            }
+
+            span:nth-child(2) {
+                opacity: 0;
+            }
+        }
+
+        &:hover .char span {
+            transform: translateY(-100%);
+        }
+
+        &:hover .char span:nth-child(1) {
+            opacity: 0;
+        }
+
+        &:hover .char span:nth-child(2) {
+            opacity: 1;
         }
     }
 
@@ -65,7 +87,7 @@
         @include lg {
             background: var(--color-medium);
             color: var(--color-dark);
-            border-radius: 1.5rem;
+            border-radius: 0.5rem;
             padding: 0.4rem 0.4rem 0.4rem 1.5rem;
         }
 

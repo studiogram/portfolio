@@ -8,6 +8,10 @@ export default class Header {
         this.nav = element.querySelector(".header__nav");
         this.links = this.nav ? [...this.nav.querySelectorAll("a")] : [];
 
+        element
+            .querySelectorAll(".header__link")
+            .forEach((a) => this.splitLink(a));
+
         this.onBurger = () => this.toggle();
         this.onLink = () => this.close();
         this.onKey = (e) => { if (e.key === "Escape") this.close(); };
@@ -52,6 +56,24 @@ export default class Header {
                 : ".cartouche, .bg-dark";
         const dark = this.crosses(darkSel, band);
         this.el.classList.toggle("is-on-dark", dark);
+    }
+
+    splitLink(a) {
+        const text = a.textContent.trim();
+        a.setAttribute("aria-label", text);
+        const frag = document.createDocumentFragment();
+        [...text].forEach((ch, i) => {
+            const c = document.createElement("span");
+            c.className = "char";
+            c.setAttribute("aria-hidden", "true");
+            c.style.setProperty("--i", i);
+            const top = document.createElement("span");
+            top.textContent = ch === " " ? " " : ch;
+            c.append(top, top.cloneNode(true));
+            frag.appendChild(c);
+        });
+        a.textContent = "";
+        a.appendChild(frag);
     }
 
     toggle() {
