@@ -1,22 +1,22 @@
 <section {{ block_id }} data-block-type="header-home" data-block-id="{{ block.id }}" class="{{ block_classes(fields, true) }}">
-	<div class="cartouche content-grid content-grid--full grider gap-12!" data-scroll="perspective">
-		{% if fields.title %}<h1 class="col-start-3 col-span-20 pt-24!" data-effect="headline">{{ fields.title }}</h1>{% endif %}
-		<div class="col-start-3 col-span-11 pb-24 flex flex-col gap-12">
-			{% if fields.intro %} <div class="wysiwyg text-soft-light max-w-108">{{ fields.intro }}</div>{% endif %}
+	<div class="cartouche grider gap-y-6! content-grid content-grid--full lg:gap-y-12!" data-scroll="perspective">
+		{% if fields.title %}<h1 class="col-span-12 pt-16! text-center md:px-6! md:text-left lg:col-span-20 lg:col-start-3 lg:px-0! lg:pt-22! xxl:col-span-18 xxl:col-start-4" data-effect="headline">{{ fields.title }}</h1>{% endif %}
+		<div class="col-span-12 flex flex-col gap-12 px-6! lg:col-span-9 lg:col-start-3 lg:px-0! lg:pb-24 xl:col-span-11 xl:col-start-3 xxl:col-span-10 xxl:col-start-4">
+			{% if fields.intro %} <div class="wysiwyg text-soft-light text-center md:text-left lg:max-w-100">{{ fields.intro }}</div>{% endif %}
 			{% if categories %}
-				<ul class="flex flex-wrap items-center gap-1.5 pb-30">
+				<ul class="flex flex-col gap-1.5 lg:pb-30 xl:flex-row xl:flex-nowrap">
 					{% for cat in categories %}
-						<li>
-							<a href="{{ cat.url }}" class="flex items-center gap-3 rounded-lg p-2 text-[18px] text-light transition-opacity duration-300 hover:opacity-70">
+						<li class="shrink-0">
+							<a href="{{ cat.url }}" class="text-m text-light flex items-center gap-3 rounded-lg px-2 transition-opacity duration-300 hover:opacity-70">
 								<span class="size-3 shrink-0 rounded-full bg-{{ cat.color }}"></span>
-								{{ cat.title }}
+								<span class="shrink-0">{{ cat.title }}</span>
 							</a>
 						</li>
 					{% endfor %}
 				</ul>
 			{% endif %}
 		</div>
-		<div class="col-start-14 col-span-11 flex items-end justify-end">
+		<div class="col-span-12 flex items-end justify-end lg:col-span-13 lg:col-start-12 xl:col-span-11 xl:col-start-14">
 			{{ include('views/svg/home.twig') }}
 		</div>
 	</div>

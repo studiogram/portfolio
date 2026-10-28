@@ -52,7 +52,7 @@ class Panel extends BlockParent {
                     trigger: head,
                     start: "center center",
                     endTrigger: wrap,
-                    end: "bottom bottom",
+                    end: "bottom center",
                     pin: head,
                     pinSpacing: false,
                     invalidateOnRefresh: true,

@@ -7,7 +7,8 @@
         "tailwind:watch": "tailwindcss -i assets/css/tailwind.css -o assets/css/tailwind.build.css --minify --watch --poll",
         "clean": "rm -rf dist/js/chunks",
         "dev": "npm run clean && concurrently \"npm run tailwind:watch\" \"CHOKIDAR_USEPOLLING=true vite build --watch\" \"browser-sync start --config bs-config.cjs\"",
-        "build": "npm run clean && npm run tailwind && vite build"
+        "build": "npm run clean && npm run tailwind && vite build",
+        "format:classes": "rustywind --write blocks views"
     },
     "dependencies": {
         "@splinetool/runtime": "^1.12.97",
@@ -32,6 +33,7 @@
         "postcss": "^8.5.8",
         "prettier": "^3.9.4",
         "prettier-plugin-tailwindcss": "^0.8.0",
+        "rustywind": "^0.28.0",
         "sass": "^1.98.0",
         "tailwindcss": "^4.2.1",
         "vite": "^6.3.0"

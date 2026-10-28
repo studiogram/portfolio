@@ -41,7 +41,7 @@
 
     h1,
     .text-xxxl {
-        font-size: clamp(2.25rem, 1.12rem + 4.63vw, 7.5rem) !important;
+        font-size: clamp(1.5rem, 0.75rem + 5vw, 7.5rem) !important;
         line-height: 1 !important;
     }
 
@@ -65,19 +65,24 @@
 
     h5,
     .text-m {
-        font-size: rem(22) !important;
+        font-size: rem(16) !important;
         line-height: 1.6 !important;
 
-        // @include lg {
-
-        // }
+        @include lg {
+            font-size: rem(20) !important;
+            line-height: 1.6 !important;
+        }
     }
 
     p,
     li,
     .text-s {
-        font-size: rem(18) !important;
+        font-size: rem(16) !important;
         line-height: 1.6 !important;
+
+        @include lg {
+            font-size: rem(18) !important;
+        }
     }
 
     .text-xs {
