@@ -15,6 +15,7 @@ if (!class_exists('STUDIOGRAM\ACF')) :
             add_filter('acf/format_value/type=textarea', 'do_shortcode', 20);
             add_filter('acf/format_value/type=wysiwyg', 'do_shortcode', 20);
             add_filter('acf/format_value/type=wysiwyg', [$this, 'mark_spacer_paragraphs'], 21);
+            add_filter('acf/format_value/type=wysiwyg', [$this, 'wrap_link_dots'], 22);
             add_filter('tiny_mce_before_init', [$this, 'set_custom_wysiwyg_colors']);
             add_filter('tiny_mce_plugins', [$this, 'remove_colorpicker_plugin']);
             add_filter('acf/load_field/name=form', [$this, 'populate_gravity_forms']);
@@ -50,6 +51,18 @@ if (!class_exists('STUDIOGRAM\ACF')) :
             return preg_replace(
                 '/<p>(?:\s|&nbsp;|\x{00A0})+<\/p>/u',
                 '<p class="is-spacer"></p>',
+                $value
+            );
+        }
+
+        public function wrap_link_dots($value)
+        {
+            if (!is_string($value) || $value === '') {
+                return $value;
+            }
+            return preg_replace(
+                '/(<a\b[^>]*>\s*)\x{25CF}/u',
+                '$1<span class="link-dot">●</span>',
                 $value
             );
         }
