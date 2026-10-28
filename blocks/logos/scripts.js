@@ -61,19 +61,11 @@ class Logos extends BlockParent {
             ease: "none",
             repeat: -1,
         });
-
-        this.onEnter = () => this.tween?.pause();
-        this.onLeave = () => this.tween?.resume();
-        this.root.addEventListener("mouseenter", this.onEnter);
-        this.root.addEventListener("mouseleave", this.onLeave);
     }
 
     teardown() {
         this.tween?.kill();
         this.tween = null;
-        if (this.onEnter) this.root.removeEventListener("mouseenter", this.onEnter);
-        if (this.onLeave) this.root.removeEventListener("mouseleave", this.onLeave);
-        this.onEnter = this.onLeave = null;
         this.root?.removeAttribute("data-logos-running");
         if (this.lane) {
             this.clones?.forEach((c) => c.remove());
