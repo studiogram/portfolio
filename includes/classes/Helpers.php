@@ -361,7 +361,7 @@ if (!class_exists('STUDIOGRAM\Helpers')) :
         {
             if (!function_exists('get_field')) return '';
 
-            if (is_singular('labo') || is_post_type_archive('labo') || is_page('labo')) {
+            if (is_page('labo')) {
                 return 'lightblue';
             }
 

@@ -22,11 +22,10 @@ if (!class_exists('STUDIOGRAM\PostTypes')) :
             $this->rename_post_type('Pages', 'Page', 'dashicons-format-aside', false, 'page');
             unregister_taxonomy_for_object_type('post_tag', 'post');
             $this->register_cpt('notes', 'Notes', 'Note', 'dashicons-editor-paste-text', false, 22);
-            $this->register_cpt('labo', 'Labo', 'Labo', 'dashicons-smiley', true, 21);
         }
 
         /**
-         * Group Pages, Projets, Notes, Labo contiguously at Pages' slot.
+         * Group Pages, Projets, Notes contiguously at Pages' slot.
          */
         public function reorder_menu($menu_order)
         {
@@ -34,7 +33,6 @@ if (!class_exists('STUDIOGRAM\PostTypes')) :
                 'edit.php?post_type=page', // Pages
                 'edit.php',                // Projets (built-in post)
                 'edit.php?post_type=notes',
-                'edit.php?post_type=labo',
             ];
             $out = [];
             foreach ($menu_order as $item) {
