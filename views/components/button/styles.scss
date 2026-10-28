@@ -34,13 +34,13 @@
         background: var(--wp--preset--color--soft);
         transform: translate(-50%, -50%);
         z-index: 0;
-        transition: 0.5s 0.15s;
+        transition: 0.5s 0.1s;
     }
 
     span {
         position: relative;
         z-index: 1;
-        transition: 0.5s 0.15s;
+        transition: 0.5s 0.1s;
     }
 
     &:hover,
@@ -67,7 +67,7 @@
                 var(--wp--preset--color--soft) 20%,
                 transparent
             );
-            transition: 0.5s 0.15s;
+            transition: 0.5s 0.1s;
         }
     }
 
