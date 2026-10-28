@@ -5,6 +5,15 @@ export default class Footer {
         this.element = element;
         this.getElements();
         this.events();
+        this.onResize = this.reserve.bind(this);
+        addEventListener("resize", this.onResize);
+        this.reserve();
+        document.fonts?.ready.then(() => this.reserve());
+    }
+
+    reserve() {
+        const prev = this.element.previousElementSibling;
+        if (prev) prev.style.marginBottom = this.element.offsetHeight + "px";
     }
 
     getElements() {

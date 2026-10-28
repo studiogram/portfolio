@@ -2,6 +2,7 @@ import * as THREE from "three";
 import Stage from "./Stage";
 import Cube from "./Cube";
 import { planThrow } from "./Physics";
+import { getSmooth } from "../../../assets/js/actions/Smooth";
 
 const R = {
     H: 40, fov: 24, taille: 0.2, arrondi: 0.045, rugosite: 0.79, cercle: 0.53,
@@ -261,15 +262,8 @@ export default class Dice {
     }
 
     lock(on) {
-        const html = document.documentElement;
-        if (on) {
-            this.pad = innerWidth - html.clientWidth;
-            html.style.overflow = "hidden";
-            document.body.style.paddingRight = this.pad + "px";
-        } else {
-            html.style.overflow = "";
-            document.body.style.paddingRight = "";
-        }
+        const lenis = getSmooth();
+        if (lenis) lenis.isStopped = on;
     }
 
     cancel() {
