@@ -1,5 +1,8 @@
 import BlockParent from "../../assets/js/blocks/BlockParent";
 import BlockEvents from "../../assets/js/blocks/BlockEvents";
+import { gsap, ScrollTrigger } from "gsap/all";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const blockName = "header-home";
 
@@ -14,6 +17,44 @@ class HeaderHome extends BlockParent {
     init() {
         this.links = [...this.element.querySelectorAll("[data-sector]")];
         this.links.forEach((a) => a.addEventListener("click", this.onClick));
+        this.enter();
+    }
+
+    enter() {
+        if (this.entered) return;
+        this.entered = true;
+        const admin = document.body.classList.contains("wp-admin");
+        const reduce = window.matchMedia(
+            "(prefers-reduced-motion: reduce)",
+        ).matches;
+        this.cartouche = this.element.querySelector(".cartouche");
+        if (!this.cartouche || admin || reduce) return;
+
+        gsap.set(this.cartouche, {
+            transformPerspective: 900,
+            transformOrigin: "top center",
+        });
+
+        gsap.from(this.cartouche, {
+            rotationX: -20,
+            duration: 1.4,
+            ease: "power2.out",
+            onComplete: () => this.scrollTilt(),
+        });
+    }
+
+    scrollTilt() {
+        this.tilt = gsap.to(this.cartouche, {
+            rotationX: -20,
+            ease: "none",
+            scrollTrigger: {
+                trigger: this.element,
+                start: "top top",
+                end: "bottom top",
+                scrub: 1,
+                invalidateOnRefresh: true,
+            },
+        });
     }
 
     onClick(e) {
@@ -32,6 +73,8 @@ class HeaderHome extends BlockParent {
 
     destroy() {
         this.links?.forEach((a) => a.removeEventListener("click", this.onClick));
+        this.tilt?.scrollTrigger?.kill();
+        this.tilt?.kill();
     }
 }
 
