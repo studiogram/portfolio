@@ -14,9 +14,8 @@
     justify-self: start;
     width: fit-content;
     min-height: 44px;
-    padding: 0 0.75rem 0 calc(35px + 0.75rem);
+    padding: 0 0.75rem 0 2rem;
     border-radius: 8px;
-    box-shadow: inset 0 0 0 2px var(--btn-soft); // inset ring, never clipped by parent overflow
     background: var(--btn-bg);
     color: var(--btn-text) !important;
     font-size: 1.375rem;
@@ -28,36 +27,20 @@
         content: "";
         position: absolute;
         top: 50%;
-        left: 0;
-        width: 3rem;
-        height: 100%;
-        aspect-ratio: 1;
-        border-radius: 0;
-        background: var(--btn-soft);
-        transform: translate(-25%, -50%) scale(1);
-        transform-origin: left center;
-        transition: 0.5s;
-        z-index: 0;
-    }
-
-    &::after {
-        // the pastille
-        content: "";
-        position: absolute;
-        top: 50%;
         left: 17.5px;
         width: 12px;
-        height: 12px;
+        padding-bottom: 12px;
         border-radius: 50%;
-        background: var(--btn-dot);
+        background: var(--wp--preset--color--soft);
         transform: translate(-50%, -50%);
-        z-index: 1;
+        z-index: 0;
+        transition: 0.5s 0.15s;
     }
 
     span {
         position: relative;
         z-index: 1;
-        transition: 0.5s;
+        transition: 0.5s 0.15s;
     }
 
     &:hover,
@@ -77,8 +60,14 @@
     @media (prefers-reduced-motion: no-preference) {
         &:hover::before,
         &:focus-visible::before {
-            transform: translate(-25%, -50%);
-            width: 100%;
+            width: 200%;
+            padding-bottom: 200%;
+            background: color-mix(
+                in srgb,
+                var(--wp--preset--color--soft) 20%,
+                transparent
+            );
+            transition: 0.5s 0.15s;
         }
     }
 
