@@ -1,4 +1,13 @@
-<section {{ block_id }} data-block-type="text" data-block-id="{{ block.id }}" class="{{ block_classes(fields) }}">
-	{% include 'views/partials/block/borders.twig' %}
-	<div class="wysiwyg content-grid content-grid--{{fields.space.large}}">{{ fields.text }}</div>
+<section {{ block_id }} data-block-type="logos" data-block-id="{{ block.id }}" class="{{ block_classes(fields, false, false) }}">
+	<div class="logos bg-dark text-light" {% if fields.marquee %}data-logos-marquee{% endif %}>
+		<div class="logos__viewport">
+			<div class="logos__track">
+				{% if fields.title %}<span class="logos__title text-soft-light">{{ fields.title }}</span>{% endif %}
+				{% for item in fields.items %}
+					{% if not loop.first %}<span class="logos__dot" aria-hidden="true"></span>{% endif %}
+					<span class="logos__name">{{ item.name }}{% if item.suffix %} <span class="logos__suffix">({{ item.suffix }})</span>{% endif %}</span>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
 </section>

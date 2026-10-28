@@ -2,8 +2,10 @@
     "name": "studiogram/logos",
     "title": "Logos",
     "category": "studiogram",
-    "icon": "image-filter",
-    "keywords": ["logos"],
+    "icon": "editor-ul",
+    "keywords": ["logos", "marquee", "partenaires", "jury"],
+    "style": "file:../../dist/blocks/logos/styles.min.css",
+    "script": "file:../../dist/blocks/logos/scripts.min.js",
     "acf": {
         "mode": "preview"
     },
