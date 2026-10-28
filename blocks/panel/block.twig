@@ -1,12 +1,11 @@
 <section {{ block_id }} data-block-type="panel" data-block-id="{{ block.id }}" class="{{ block_classes(fields, false, false) }}">
 	{% include 'views/partials/block/borders.twig' %}
-	<div class="panel content-grid content-grid--full {{ fields.side == 'left' ? 'panel--left' }}" data-panel-side="{{ fields.side == 'left' ? 'left' : 'right' }}">
-		
-		<div class="panel__head">
+	<div class="panel content-grid content-grid--full grider">
+		<div class="panel__head col-start-2 col-end-12 lg:col-end-13">
 			{% if fields.title %}<h2 class="panel__title | text-xxxl">{{ fields.title }}</h2>{% endif %}
 		</div>
 
-		<div class="panel__stack">
+		<div class="panel__stack col-start-2 col-end-13 lg:col-start-13 lg:col-end-25">
 			<span class="panel__back" data-panel-back aria-hidden="true"></span>
 			<ol class="panel__list {{ fields.numbered ? 'panel__list--numbered' }}">
 				{% for item in fields.items %}

@@ -1,73 +1,21 @@
 @use "mixins" as *;
 
 .panel {
-    --panel-gutter: clamp(2rem, 8vw, 10rem);
     --panel-radius: 2rem;
 
     position: relative;
-    grid-template-columns: minmax(0, 32rem) 1fr;
-    gap: clamp(2rem, 5vw, 6rem);
     align-items: start;
+    row-gap: clamp(2rem, 6vw, 4rem);
     padding-block: clamp(2rem, 6vw, 6rem);
-    // title side keeps a gutter; panel side bleeds to the screen edge
-    padding-left: var(--panel-gutter);
-
-    &--left {
-        grid-template-columns: 1fr minmax(0, 32rem);
-        padding-left: 0;
-        padding-right: var(--panel-gutter);
-
-        .panel__head {
-            order: 2;
-        }
-        .panel__stack {
-            order: 1;
-        }
-    }
 
     &__head {
         position: relative;
         z-index: 1;
         align-self: start;
-        max-width: 32rem;
-    }
-
-    // wheel sits below the title, pushed half off the viewport edge (the section
-    // clips it); its svg is rotated on scroll by the block script
-    &__wheel {
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        width: auto;
-        height: clamp(26rem, 44vw, 46rem);
-        // most of the wheel sits off the left edge; the section clips it
-        transform: translateX(-58%);
-        z-index: 0;
-        pointer-events: none;
-
-        svg {
-            display: block;
-            width: auto;
-            height: 100%;
-        }
-    }
-
-    &--left &__wheel {
-        left: auto;
-        right: 0;
-        transform: translateX(58%);
-    }
-
-    @include under-md {
-        &__wheel {
-            display: none;
-        }
     }
 
     &__stack {
         position: relative;
-        max-width: 45rem;
-        margin-left: auto;
     }
 
     &__back {
@@ -79,12 +27,6 @@
         border-radius: var(--panel-radius) 0 0 var(--panel-radius);
         transform: rotate(-3deg);
         transform-origin: bottom right;
-    }
-
-    &--left &__back {
-        border-radius: 0 var(--panel-radius) var(--panel-radius) 0;
-        transform: rotate(3deg);
-        transform-origin: bottom left;
     }
 
     &__list {
@@ -99,10 +41,6 @@
         color: var(--wp--preset--color--light);
         border-radius: var(--panel-radius) 0 0 var(--panel-radius);
         list-style: none;
-    }
-
-    &--left &__list {
-        border-radius: 0 var(--panel-radius) var(--panel-radius) 0;
     }
 
     &__item {
@@ -153,27 +91,5 @@
 
     &__list:not(&__list--numbered) &__item-text {
         grid-column: 1;
-    }
-
-    @include under-md {
-        grid-template-columns: 1fr;
-        padding-inline: 1rem;
-
-        &--left {
-            padding-inline: 1rem;
-        }
-
-        &__head {
-            position: static;
-        }
-
-        &__list,
-        &--left &__list {
-            border-radius: var(--panel-radius);
-        }
-
-        &__back {
-            display: none;
-        }
     }
 }

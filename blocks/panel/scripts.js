@@ -24,16 +24,13 @@ class Panel extends BlockParent {
         const wrap = this.element.querySelector(".panel");
         if (!back || !wrap || reduce || admin) return;
 
-        const left = wrap.dataset.panelSide === "left";
-        const tilt = left ? TILT : -TILT;
-
         // the back panel rotates in from flat to its resting tilt as it enters
         this.tween = gsap.fromTo(
             back,
             { rotation: 0 },
             {
-                rotation: tilt,
-                transformOrigin: left ? "bottom left" : "bottom right",
+                rotation: -TILT,
+                transformOrigin: "bottom right",
                 ease: "none",
                 scrollTrigger: {
                     trigger: this.element,
@@ -48,7 +45,7 @@ class Panel extends BlockParent {
         const head = this.element.querySelector(".panel__head");
         if (head) {
             this.mm = gsap.matchMedia();
-            this.mm.add("(min-width: 1025px)", () => {
+            this.mm.add("(min-width: 992px)", () => {
                 const st = ScrollTrigger.create({
                     trigger: head,
                     start: "center center",

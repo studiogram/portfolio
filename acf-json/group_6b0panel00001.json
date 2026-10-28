@@ -20,28 +20,6 @@
             "append": ""
         },
         {
-            "key": "field_6b0pnside001",
-            "label": "Position",
-            "name": "side",
-            "aria-label": "",
-            "type": "select",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": { "width": "25", "class": "", "id": "" },
-            "choices": { "right": "À droite", "left": "À gauche" },
-            "default_value": "right",
-            "return_format": "value",
-            "multiple": 0,
-            "allow_null": 0,
-            "allow_in_bindings": 0,
-            "ui": 0,
-            "ajax": 0,
-            "placeholder": "",
-            "create_options": 0,
-            "save_options": 0
-        },
-        {
             "key": "field_6b0pnnumb001",
             "label": "Afficher les numéros",
             "name": "numbered",
@@ -50,7 +28,7 @@
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
-            "wrapper": { "width": "25", "class": "", "id": "" },
+            "wrapper": { "width": "50", "class": "", "id": "" },
             "message": "",
             "default_value": 1,
             "allow_in_bindings": 0,
@@ -127,5 +105,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1792069800
+    "modified": 1793181600
 }
