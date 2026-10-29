@@ -20,7 +20,7 @@ class Labo extends BlockParent {
         ).matches;
         const admin = document.body.classList.contains("wp-admin");
         this.imgs = [...this.element.querySelectorAll("[data-labo-img]")];
-        this.blobs = [...this.element.querySelectorAll(".labo__blobs")];
+        // this.blobs = [...this.element.querySelectorAll(".labo__blobs")];
         if (reduce || admin) return;
 
         this.build();
@@ -30,33 +30,24 @@ class Labo extends BlockParent {
         this.teardown();
         this.tweens = [];
 
-        const enter = (vars) => ({
-            ease: "none",
-            scrollTrigger: {
-                trigger: this.element,
-                start: "top bottom",
-                end: "center center",
-                scrub: 1,
-                invalidateOnRefresh: true,
-            },
-            ...vars,
-        });
-
-        this.imgs.forEach((img, i) => {
+        this.imgs.forEach((img) => {
+            const x = parseFloat(img.dataset.x) || 0;
             const rot = parseFloat(img.dataset.rot) || 0;
             const t = gsap.fromTo(
                 img,
-                { rotation: 0, yPercent: 14 - i * 4 },
-                enter({ rotation: rot, yPercent: 0 }),
-            );
-            this.tweens.push(t);
-        });
-
-        this.blobs.forEach((b, i) => {
-            const t = gsap.fromTo(
-                b,
-                { rotation: 0, yPercent: 10 + i * 4 },
-                enter({ rotation: i ? 6 : -6, yPercent: -6 }),
+                { rotation: 0, xPercent: 0 },
+                {
+                    rotation: rot,
+                    xPercent: x,
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: this.element,
+                        start: "top bottom",
+                        end: "center center",
+                        scrub: 1,
+                        invalidateOnRefresh: true,
+                    },
+                },
             );
             this.tweens.push(t);
         });
@@ -81,8 +72,9 @@ class Labo extends BlockParent {
 }
 
 if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", () =>
-        new BlockEvents(blockName, Labo),
+    document.addEventListener(
+        "DOMContentLoaded",
+        () => new BlockEvents(blockName, Labo),
     );
 } else {
     new BlockEvents(blockName, Labo);
