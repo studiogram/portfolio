@@ -1,16 +1,14 @@
 <section {{ block_id }} data-block-type="labo" data-block-id="{{ block.id }}" class="{{ block_classes(fields) }}">
 	{% include 'views/partials/block/borders.twig' %}
 	<div class="labo grider">
-		<div class="labo__visual col-start-2 col-end-12 lg:col-end-13">
-			{{ include('views/svg/labo-details.twig', { class: 'labo__blobs' }) }}
-			<div class="labo__stack">
-				{% if fields.image1 %}<img class="labo__img labo__img--1 lazyload" data-labo-img {{ responsive_image(fields.image1) }} alt=""/>{% endif %}
-				{% if fields.image2 %}<img class="labo__img labo__img--2 lazyload" data-labo-img {{ responsive_image(fields.image2) }} alt=""/>{% endif %}
-				{% if fields.image3 %}<img class="labo__img labo__img--3 lazyload" data-labo-img {{ responsive_image(fields.image3) }} alt=""/>{% endif %}
-			</div>
+		<div class="labo__cluster col-start-2 col-end-12 lg:col-end-16">
+			{{ include('views/svg/labo-details.twig', { class: 'labo__blobs labo__blobs--details' }) }}
+			{% if fields.image1 %}<img class="labo__img labo__img--velo lazyload" data-labo-img data-rot="-11.21" {{ responsive_image(fields.image1) }} alt=""/>{% endif %}
+			{% if fields.image2 %}<img class="labo__img labo__img--carrom lazyload" data-labo-img data-rot="4.79" {{ responsive_image(fields.image2) }} alt=""/>{% endif %}
+			{% if fields.image3 %}<img class="labo__img labo__img--capture lazyload" data-labo-img data-rot="17.75" {{ responsive_image(fields.image3) }} alt=""/>{% endif %}
 		</div>
 
-		<div class="labo__text col-start-2 col-end-12 lg:col-start-14 lg:col-end-24">
+		<div class="labo__text col-start-2 col-end-12 lg:col-start-16 lg:col-end-23">
 			{{ include('views/svg/labo-top.twig', { class: 'labo__blobs labo__blobs--top' }) }}
 			{% if fields.text %}<div class="wysiwyg labo__wysiwyg">{{ fields.text }}</div>{% endif %}
 			{{ include('views/components/button/view.twig', { button: fields.btn }) }}

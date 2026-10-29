@@ -30,27 +30,36 @@ class Labo extends BlockParent {
         this.teardown();
         this.tweens = [];
 
-        const parallax = (el, amount) => {
+        const enter = (vars) => ({
+            ease: "none",
+            scrollTrigger: {
+                trigger: this.element,
+                start: "top bottom",
+                end: "center center",
+                scrub: 1,
+                invalidateOnRefresh: true,
+            },
+            ...vars,
+        });
+
+        this.imgs.forEach((img, i) => {
+            const rot = parseFloat(img.dataset.rot) || 0;
             const t = gsap.fromTo(
-                el,
-                { yPercent: amount },
-                {
-                    yPercent: -amount,
-                    ease: "none",
-                    scrollTrigger: {
-                        trigger: this.element,
-                        start: "top bottom",
-                        end: "bottom top",
-                        scrub: 1,
-                        invalidateOnRefresh: true,
-                    },
-                },
+                img,
+                { rotation: 0, yPercent: 14 - i * 4 },
+                enter({ rotation: rot, yPercent: 0 }),
             );
             this.tweens.push(t);
-        };
+        });
 
-        this.imgs.forEach((img, i) => parallax(img, 18 + i * 12));
-        this.blobs.forEach((b, i) => parallax(b, 6 + i * 4));
+        this.blobs.forEach((b, i) => {
+            const t = gsap.fromTo(
+                b,
+                { rotation: 0, yPercent: 10 + i * 4 },
+                enter({ rotation: i ? 6 : -6, yPercent: -6 }),
+            );
+            this.tweens.push(t);
+        });
     }
 
     teardown() {
