@@ -4,6 +4,8 @@
     "category": "studiogram",
     "icon": "slides",
     "keywords": ["panels", "panneaux"],
+    "style": "file:../../dist/blocks/panels/styles.min.css",
+    "script": "file:../../dist/blocks/panels/scripts.min.js",
     "acf": {
         "mode": "preview"
     },

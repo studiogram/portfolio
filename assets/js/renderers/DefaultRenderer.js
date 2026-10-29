@@ -40,6 +40,7 @@ export default class DefaultRenderer extends Renderer {
         // Blocks/components just mounted — recompute scroll positions and land
         // at the top now that final page height is known.
         resetSmooth();
+        document.dispatchEvent(new Event("app:navigated"));
         this.syncActiveMenu();
         sendView(this.content);
     }

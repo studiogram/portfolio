@@ -1,0 +1,29 @@
+{
+    "name": "studiogram/transmission",
+    "title": "Transmission",
+    "category": "studiogram",
+    "icon": "share",
+    "keywords": ["transmission"],
+    "style": "file:../../dist/blocks/transmission/styles.min.css",
+    "script": "file:../../dist/blocks/transmission/scripts.min.js",
+    "acf": {
+        "mode": "preview"
+    },
+    "supports": {
+        "mode": false,
+        "color": {
+            "background": false,
+            "heading": false,
+            "link": false,
+            "text": false
+        }
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image": true
+            }
+        }
+    }
+}

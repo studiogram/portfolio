@@ -42,6 +42,7 @@ export default class Header {
 
     crosses(selector, band) {
         for (const el of document.querySelectorAll(selector)) {
+            if (el.closest("[data-header-skip]")) continue;
             const r = el.getBoundingClientRect();
             if (r.top <= band && r.bottom > band) return true;
         }

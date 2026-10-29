@@ -1,12 +1,10 @@
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { reducedMotion } from "../utils/motion";
 
-// Shared header-cartouche entrance: hidden → quick fade-in + 3D flip, played
-// once the initial-load cover clears (the `app:intro` signal). On SPA
-// navigation the intro already ran, so it plays immediately. Skipped for
-// reduced-motion and the block editor (the global `html.js .cartouche` CSS
-// leaves it visible in those cases).
-export function cartoucheEnter(cartouche, { onComplete } = {}) {
+gsap.registerPlugin(ScrollTrigger);
+
+export function cartoucheEnter(cartouche, { onComplete, tilt = true } = {}) {
 	if (!cartouche) return;
 	if (reducedMotion() || document.body.classList.contains("wp-admin")) {
 		onComplete?.();
@@ -26,10 +24,28 @@ export function cartoucheEnter(cartouche, { onComplete } = {}) {
 			rotationX: 0,
 			duration: 1,
 			ease: "power3.out",
-			onComplete,
+			onComplete: () => {
+				if (tilt) startTilt(cartouche);
+				onComplete?.();
+			},
 		});
 	};
 
 	if (window.__introDone) play();
 	else document.addEventListener("app:intro", play, { once: true });
+}
+
+function startTilt(cartouche) {
+	const trigger = cartouche.closest("[data-block-type]") || cartouche;
+	gsap.to(cartouche, {
+		rotationX: -20,
+		ease: "none",
+		scrollTrigger: {
+			trigger,
+			start: "top top",
+			end: "bottom top",
+			scrub: 1,
+			invalidateOnRefresh: true,
+		},
+	});
 }

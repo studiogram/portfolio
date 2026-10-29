@@ -50,6 +50,7 @@ class Panel extends BlockParent {
                     end: () => "bottom center+=" + head.offsetHeight / 2,
                     pin: head,
                     pinSpacing: false,
+                    pinType: "transform",
                     invalidateOnRefresh: true,
                 });
                 return () => st.kill();

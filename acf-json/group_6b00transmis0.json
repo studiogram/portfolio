@@ -1,0 +1,67 @@
+{
+	"key": "group_6b00transmis0",
+	"title": "Block transmission",
+	"fields": [
+		{
+			"key": "field_6b0transtit01",
+			"label": "Titre",
+			"name": "title",
+			"type": "text",
+			"instructions": "",
+			"required": 0,
+			"wrapper": { "width": "", "class": "", "id": "" },
+			"default_value": "",
+			"placeholder": ""
+		},
+		{
+			"key": "field_6b0transtxt01",
+			"label": "Texte",
+			"name": "text",
+			"type": "wysiwyg",
+			"instructions": "",
+			"required": 0,
+			"wrapper": { "width": "", "class": "", "id": "" },
+			"tabs": "all",
+			"toolbar": "basic",
+			"media_upload": 0,
+			"delay": 0
+		},
+		{
+			"key": "field_6b0transval01",
+			"label": "Statistique",
+			"name": "stat_value",
+			"type": "text",
+			"instructions": "ex: +300",
+			"required": 0,
+			"wrapper": { "width": "50", "class": "", "id": "" },
+			"default_value": "",
+			"placeholder": ""
+		},
+		{
+			"key": "field_6b0translab01",
+			"label": "Légende statistique",
+			"name": "stat_label",
+			"type": "text",
+			"instructions": "ex: personnes formées",
+			"required": 0,
+			"wrapper": { "width": "50", "class": "", "id": "" },
+			"default_value": "",
+			"placeholder": ""
+		}
+	],
+	"location": [
+		[
+			{ "param": "block", "operator": "==", "value": "studiogram/transmission" }
+		]
+	],
+	"menu_order": 0,
+	"position": "normal",
+	"style": "default",
+	"label_placement": "top",
+	"instruction_placement": "label",
+	"hide_on_screen": "",
+	"active": true,
+	"description": "",
+	"show_in_rest": 0,
+	"modified": 1793279111
+}

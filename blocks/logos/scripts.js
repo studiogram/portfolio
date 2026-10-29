@@ -26,8 +26,10 @@ class Logos extends BlockParent {
         const build = () => {
             if (document.contains(this.element)) this.build();
         };
-        if (document.fonts?.ready) document.fonts.ready.then(build);
-        else build();
+        const schedule = () =>
+            requestAnimationFrame(() => requestAnimationFrame(build));
+        if (document.fonts?.ready) document.fonts.ready.then(schedule);
+        else schedule();
     }
 
     build() {

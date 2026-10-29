@@ -1,9 +1,9 @@
-<section {{ block_id }} data-block-type="header-about" data-block-id="{{ block.id }}" class="{{ block_classes(fields) }}">
+<section {{ block_id }} data-block-type="header-about" data-block-id="{{ block.id }}" class="{{ block_classes(fields) }}" data-header-skip>
 	{% include 'views/partials/block/borders.twig' %}
 	<div class="header-about grider">
 		{% if fields.image %}
 			<figure class="header-about__cartouche cartouche col-start-2 col-end-12 lg:col-start-6 lg:col-end-20">
-				<img class="header-about__img lazyload" {{ responsive_image(fields.image) }} alt=""/>
+				<img class="header-about__img" {{ priority_image(fields.image) }} alt=""/>
 			</figure>
 		{% endif %}
 	</div>

@@ -12,24 +12,33 @@ export default class Footer {
         this.reveal();
         this.onResize = this.reserve.bind(this);
         addEventListener("resize", this.onResize);
+        this.onNavigated = () => {
+            this.reveal();
+            this.reserve();
+        };
+        document.addEventListener("app:navigated", this.onNavigated);
         this.reserve();
         document.fonts?.ready.then(() => this.reserve());
     }
 
     reveal() {
-        const items = this.element.querySelectorAll("[data-reveal]");
-        if (!items.length) return;
-        if (reducedMotion()) return;
+        this.revealTween?.scrollTrigger?.kill();
+        this.revealTween?.kill();
+        this.revealTween = null;
 
-        gsap.from(items, {
+        const items = this.element.querySelectorAll("[data-reveal]");
+        if (!items.length || reducedMotion()) return;
+
+        gsap.set(items, { clearProps: "all" });
+        this.revealTween = gsap.from(items, {
             yPercent: 60,
             autoAlpha: 0,
-            duration: 0.7,
+            duration: 0.75,
             ease: "power3.out",
-            stagger: 0.1,
+            stagger: 0.15,
             scrollTrigger: {
                 trigger: ".contact",
-                start: "bottom bottom",
+                start: "bottom 80%",
                 toggleActions: "play none none reverse",
             },
         });
