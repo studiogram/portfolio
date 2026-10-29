@@ -19,9 +19,7 @@ class Logos extends BlockParent {
         this.track = this.element.querySelector(".logos__track");
         if (!this.root || !this.viewport || !this.track) return;
 
-        this.reduce = window.matchMedia(
-            "(prefers-reduced-motion: reduce)",
-        ).matches;
+        this.reduce = this.reduced;
         this.admin = document.body.classList.contains("wp-admin");
         this.marquee = this.root.hasAttribute("data-logos-marquee");
 

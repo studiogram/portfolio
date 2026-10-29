@@ -1,21 +1,23 @@
-<footer class="footer | bg-light">
-	<div class="footer__content spacing--top | grider pb-8">
+<footer class="footer | bg-light relative overflow-hidden">
+	{{ include('views/svg/footer-mark.twig', { class: 'footer__mark pointer-events-none absolute inset-x-0 bottom-0 z-0 w-full' }) }}
+
+	<div class="footer__content spacing--top | grider relative z-10 pb-8">
 		<div class="content-grid content-grid--grider">
-			<div class="col-span-10 lg:col-span-6">
+			<div class="col-span-10 flex flex-col gap-6 lg:col-span-6">
 				<a href="{{ home }}" class="footer__logo" aria-label="{{ site.name }}">
 					{{ include('views/svg/logo.twig') }}
 				</a>
-				<div class="wysiwyg">
+				<div class="wysiwyg text-xs">
 					{{ footer.description }}
 				</div>
 			</div>
 
 			{% if footer.pages.pages %}
 				<nav class="col-span-5 lg:col-span-4" aria-labelledby="footer-pages">
-					<h2 id="footer-pages">{{ footer.pages.title }}</h2>
+					<h2 id="footer-pages" class="mb-7 text-xs">{{ footer.pages.title }}</h2>
 					<ul class="flex flex-col gap-4">
 						{% for item in footer.pages.pages %}
-							<li><a href="{{ item.page }}">{{ item.text }}</a></li>
+							<li><a class="text-xs" href="{{ item.page }}">{{ item.text }}</a></li>
 						{% endfor %}
 					</ul>
 				</nav>
@@ -23,12 +25,12 @@
 
 			{% if footer.secteurs.title %}
 				<nav class="col-span-5 lg:col-span-4" aria-labelledby="footer-secteurs">
-					<h2 id="footer-secteurs">{{ footer.secteurs.title }}</h2>
+					<h2 id="footer-secteurs" class="mb-7 text-xs">{{ footer.secteurs.title }}</h2>
 					<ul class="flex flex-col gap-4">
 						{% for category in footer.secteurs.secteurs %}
 							{% set link = function('get_term_link', category.secteur) %}
 							{% if category.secteur and not function('is_wp_error', link) %}
-								<li><a href="{{ link }}">{{ category.secteur.name }}</a></li>
+								<li><a class="text-xs" href="{{ link }}">{{ category.secteur.name }}</a></li>
 							{% endif %}
 						{% endfor %}
 					</ul>
@@ -37,23 +39,22 @@
 
 			{% if footer.social.title %}
 				<nav class="col-span-5 lg:col-span-4" aria-labelledby="footer-social">
-					<h2 id="footer-social">{{ footer.social.title }}</h2>
-					{# {{ dump(footer.social) }} #}
+					<h2 id="footer-social" class="mb-7 text-xs">{{ footer.social.title }}</h2>
 				</nav>
 			{% endif %}
 
 			{% if footer.engagements.title %}
 				<nav class="col-span-5 lg:col-span-4" aria-labelledby="footer-engagements">
-					<h2 id="footer-engagements">{{ footer.engagements.title }}</h2>
+					<h2 id="footer-engagements" class="mb-7 text-xs">{{ footer.engagements.title }}</h2>
 					<ul class="flex flex-col gap-4">
 						{% for item in footer.engagements.pages %}
-							<li><a href="{{ item.page }}">{{ item.text }}</a></li>
+							<li><a class="text-xs" href="{{ item.page }}">{{ item.text }}</a></li>
 						{% endfor %}
 					</ul>
 				</nav>
 			{% endif %}
 
-			<p class="col-span-10 lg:col-span-22">© {{ "now"|date("Y") }} {{ site.name }}</p>
+			<p class="col-span-10 mt-16 text-xs lg:col-span-22">© {{ "now"|date("Y") }} {{ site.name }}</p>
 		</div>
 	</div>
 	{{ include('views/components/dice/view.twig') }}

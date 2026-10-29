@@ -3,6 +3,7 @@ import Stage from "./Stage";
 import Cube from "./Cube";
 import { planThrow } from "./Physics";
 import { getSmooth } from "../../../assets/js/actions/Smooth";
+import { motionQuery } from "../../../assets/js/utils/motion";
 
 const R = {
     H: 40, fov: 24, taille: 0.2, arrondi: 0.045, rugosite: 0.79, cercle: 0.53,
@@ -24,7 +25,7 @@ export default class Dice {
         try { this.data = json ? JSON.parse(json.textContent) : null; } catch { this.data = null; }
         if (!this.data || !this.data.faces?.length || !this.canvas || !this.btn) return;
 
-        this.reduce = matchMedia("(prefers-reduced-motion: reduce)");
+        this.reduce = motionQuery;
         this.onClick = this.onClick.bind(this);
         this.onKey = this.onKey.bind(this);
         this.btn.addEventListener("click", this.onClick);

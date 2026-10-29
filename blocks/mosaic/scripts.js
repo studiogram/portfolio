@@ -15,9 +15,6 @@ class Mosaic extends BlockParent {
     }
 
     init() {
-        const reduce = window.matchMedia(
-            "(prefers-reduced-motion: reduce)",
-        ).matches;
         const cols = [...this.element.querySelectorAll(".mosaic__col")];
         this.oddCols = cols.filter(
             (c) => !c.classList.contains("mosaic__col--offset"),
@@ -25,7 +22,7 @@ class Mosaic extends BlockParent {
         this.offsetCol = cols.find((c) =>
             c.classList.contains("mosaic__col--offset"),
         );
-        if (!this.oddCols.length || !this.offsetCol || reduce) return;
+        if (!this.oddCols.length || !this.offsetCol || this.reduced) return;
 
         const targetY = () =>
             parseFloat(getComputedStyle(this.offsetCol).marginTop) || 0;

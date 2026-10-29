@@ -16,13 +16,10 @@ class Panel extends BlockParent {
     }
 
     init() {
-        const reduce = window.matchMedia(
-            "(prefers-reduced-motion: reduce)",
-        ).matches;
         const admin = document.body.classList.contains("wp-admin");
         const back = this.element.querySelector("[data-panel-back]");
         const wrap = this.element.querySelector(".panel");
-        if (!back || !wrap || reduce || admin) return;
+        if (!back || !wrap || this.reduced || admin) return;
 
         // the back panel rotates in from flat to its resting tilt as it enters
         this.tween = gsap.fromTo(

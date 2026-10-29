@@ -5,6 +5,8 @@
     inset: auto 0 0 0;
     overflow: hidden;
     z-index: 0;
-    background: url("/wp-content/themes/studiogram/dist/img/footer.svg") bottom
-        center / 100% auto no-repeat;
+}
+
+.footer__mark {
+    height: auto;
 }

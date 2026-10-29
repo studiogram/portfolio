@@ -1,14 +1,38 @@
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { reducedMotion } from "../../../assets/js/utils/motion";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default class Footer {
     constructor(element) {
         this.element = element;
         this.getElements();
         this.events();
+        this.reveal();
         this.onResize = this.reserve.bind(this);
         addEventListener("resize", this.onResize);
         this.reserve();
         document.fonts?.ready.then(() => this.reserve());
+    }
+
+    reveal() {
+        const items = this.element.querySelectorAll("[data-reveal]");
+        if (!items.length) return;
+        if (reducedMotion()) return;
+
+        gsap.from(items, {
+            yPercent: 60,
+            autoAlpha: 0,
+            duration: 0.7,
+            ease: "power3.out",
+            stagger: 0.1,
+            scrollTrigger: {
+                trigger: ".contact",
+                start: "bottom bottom",
+                toggleActions: "play none none reverse",
+            },
+        });
     }
 
     reserve() {

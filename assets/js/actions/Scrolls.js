@@ -1,5 +1,6 @@
 import { gsap, SplitText, ScrollToPlugin, ScrollTrigger } from "gsap/all";
 import { getSmooth } from "./Smooth";
+import { reducedMotion } from "../utils/motion";
 gsap.registerPlugin(SplitText, ScrollToPlugin, ScrollTrigger);
 
 export default class Scrolls {
@@ -121,9 +122,7 @@ export default class Scrolls {
     }
 
     scrolls() {
-        const reduceMotion = window.matchMedia(
-            "(prefers-reduced-motion: reduce)",
-        ).matches;
+        const reduceMotion = reducedMotion();
 
         if (this.perspectives && !reduceMotion) {
             this.perspectives.forEach((el) => {

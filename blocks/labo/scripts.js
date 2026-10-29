@@ -15,13 +15,10 @@ class Labo extends BlockParent {
     }
 
     init() {
-        const reduce = window.matchMedia(
-            "(prefers-reduced-motion: reduce)",
-        ).matches;
         const admin = document.body.classList.contains("wp-admin");
         this.imgs = [...this.element.querySelectorAll("[data-labo-img]")];
         // this.blobs = [...this.element.querySelectorAll(".labo__blobs")];
-        if (reduce || admin) return;
+        if (this.reduced || admin) return;
 
         this.build();
     }

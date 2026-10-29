@@ -1,4 +1,10 @@
+import { reducedMotion } from "../utils/motion";
+
 export default class BlockParent {
+    get reduced() {
+        return reducedMotion();
+    }
+
     constructor(el) {
         if (el && document.body.classList.contains("wp-admin")) {
             this._blockType = el.getAttribute("data-block-type") || "unknown";

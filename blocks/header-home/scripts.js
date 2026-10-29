@@ -24,11 +24,8 @@ class HeaderHome extends BlockParent {
         if (this.entered) return;
         this.entered = true;
         const admin = document.body.classList.contains("wp-admin");
-        const reduce = window.matchMedia(
-            "(prefers-reduced-motion: reduce)",
-        ).matches;
         this.cartouche = this.element.querySelector(".cartouche");
-        if (!this.cartouche || admin || reduce) return;
+        if (!this.cartouche || admin || this.reduced) return;
 
         gsap.set(this.cartouche, {
             transformPerspective: 900,
