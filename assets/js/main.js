@@ -5,9 +5,10 @@ import "plyr/dist/plyr.css";
 import "lenis/dist/lenis.css";
 import "../css/main.scss";
 import "lazysizes";
+import { gsap } from "gsap";
 import { Core } from "@unseenco/taxi";
 import partials from "./views/partials";
-import { initSmooth } from "./actions/Smooth";
+import { initSmooth, getSmooth } from "./actions/Smooth";
 import { syncComponents } from "./components/ComponentManager";
 import DefaultRenderer from "./renderers/DefaultRenderer";
 import DefaultTransition from "./transitions/DefaultTransition";
@@ -18,6 +19,7 @@ document.documentElement.classList.add("is-loading");
 class Main {
     constructor() {
         initSmooth();
+        this.scrollTopNoHash();
         this.initPartials();
         syncComponents();
         this.initTaxi();
@@ -25,8 +27,38 @@ class Main {
         sendView();
     }
 
+    // Land at the top on a fresh load unless the URL targets an anchor. Runs
+    // again on `load` to beat the browser's scroll restoration (ScrollTrigger
+    // forces history.scrollRestoration = "auto", so we can't rely on "manual").
+    scrollTopNoHash() {
+        if (location.hash) return;
+        const toTop = () => {
+            getSmooth()?.scrollTo(0, { immediate: true });
+            window.scrollTo(0, 0);
+        };
+        toTop();
+        addEventListener("load", toTop);
+    }
+
     introLoad() {
         document.documentElement.classList.remove("is-loading");
+        const cover = document.querySelector("[data-cover]");
+        const reveal = () => {
+            if (this.revealed) return;
+            this.revealed = true;
+            if (cover) gsap.to(cover, { opacity: 0, duration: 0.6, ease: "power1.out" });
+            // Signal entrance animations (e.g. header cartouche) to play now
+            // that the cover is clearing. Late listeners read the flag.
+            window.__introDone = true;
+            document.dispatchEvent(new Event("app:intro"));
+        };
+        // Fade the cover out once fonts are ready (no FOUT / empty headline) and
+        // the first frame of entrance animations has painted beneath it.
+        (document.fonts?.ready ?? Promise.resolve()).then(() =>
+            requestAnimationFrame(reveal),
+        );
+        // Safety net so the cover never gets stuck if fonts never resolve.
+        setTimeout(reveal, 1500);
     }
 
     initPartials() {

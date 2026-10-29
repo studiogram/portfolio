@@ -59,6 +59,10 @@
     html.js h1[data-effect="headline"] {
         visibility: hidden;
     }
+
+    html.js .cartouche {
+        opacity: 0;
+    }
 }
 
 
@@ -243,4 +247,17 @@
             border-bottom-right-radius: 0rem;
         }
     }
+}
+
+.page-cover {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: var(--wp--preset--color--light);
+    opacity: 1;
+    pointer-events: none;
+}
+
+html:not(.js) .page-cover {
+    display: none;
 }

@@ -5,8 +5,18 @@
     inset: auto 0 0 0;
     overflow: hidden;
     z-index: 0;
-}
 
-.footer__mark {
-    height: auto;
+    &__mark {
+        height: auto;
+    }
+
+    &__logo {
+        max-width: 160px;
+    }
+
+    a {
+        &:hover {
+            color: var(--wp--preset--color--soft);
+        }
+    }
 }

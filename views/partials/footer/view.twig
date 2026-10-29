@@ -3,21 +3,21 @@
 
 	<div class="footer__content spacing--top | grider relative z-10 pb-8">
 		<div class="content-grid content-grid--grider">
-			<div class="col-span-10 flex flex-col gap-6 lg:col-span-6">
+			<div class="col-span-10 flex flex-col gap-10 lg:col-span-6">
 				<a href="{{ home }}" class="footer__logo" aria-label="{{ site.name }}">
 					{{ include('views/svg/logo.twig') }}
 				</a>
-				<div class="wysiwyg text-xs">
+				<p class="max-w-75 text-xs opacity-70 lg:pr-4">
 					{{ footer.description }}
-				</div>
+				</p>
 			</div>
 
 			{% if footer.pages.pages %}
 				<nav class="col-span-5 lg:col-span-4" aria-labelledby="footer-pages">
-					<h2 id="footer-pages" class="mb-7 text-xs">{{ footer.pages.title }}</h2>
-					<ul class="flex flex-col gap-4">
+					<h2 id="footer-pages" class="text-l mb-6!">{{ footer.pages.title }}</h2>
+					<ul class="flex flex-col gap-2">
 						{% for item in footer.pages.pages %}
-							<li><a class="text-xs" href="{{ item.page }}">{{ item.text }}</a></li>
+							<li class="leading-none!"><a class="text-xs" href="{{ item.page }}">{{ item.text }}</a></li>
 						{% endfor %}
 					</ul>
 				</nav>
@@ -25,12 +25,18 @@
 
 			{% if footer.secteurs.title %}
 				<nav class="col-span-5 lg:col-span-4" aria-labelledby="footer-secteurs">
-					<h2 id="footer-secteurs" class="mb-7 text-xs">{{ footer.secteurs.title }}</h2>
-					<ul class="flex flex-col gap-4">
+					<h2 id="footer-secteurs" class="text-l mb-6!">{{ footer.secteurs.title }}</h2>
+					<ul class="flex flex-col gap-2">
 						{% for category in footer.secteurs.secteurs %}
 							{% set link = function('get_term_link', category.secteur) %}
 							{% if category.secteur and not function('is_wp_error', link) %}
-								<li><a class="text-xs" href="{{ link }}">{{ category.secteur.name }}</a></li>
+								{% set scolor = function('get_field', 'color', 'category_' ~ (category.secteur.term_id ?? category.secteur.id ?? category.secteur)) %}
+								<li class="leading-none!">
+									<a class="flex items-center gap-3 text-xs" href="{{ link }}">
+										<span class="size-1.5 shrink-0 rounded-full {{ scolor ? 'bg-' ~ scolor : 'bg-soft' }}"></span>
+										{{ category.secteur.name }}
+									</a>
+								</li>
 							{% endif %}
 						{% endfor %}
 					</ul>
@@ -39,16 +45,34 @@
 
 			{% if footer.social.title %}
 				<nav class="col-span-5 lg:col-span-4" aria-labelledby="footer-social">
-					<h2 id="footer-social" class="mb-7 text-xs">{{ footer.social.title }}</h2>
+					<h2 id="footer-social" class="text-l mb-6!">{{ footer.social.title }}</h2>
+					<ul class="flex flex-col gap-2">
+						{% if footer.social.networks.linkedin %}
+							<li class="leading-none!">
+								<a class="flex items-center gap-3 text-xs" href="{{ footer.social.networks.linkedin }}" target="_blank" rel="noopener noreferrer">
+									<span class="inline-flex size-3.5 shrink-0">{{ include('views/svg/linkedin.twig') }}</span>
+									LinkedIn
+								</a>
+							</li>
+						{% endif %}
+						{% if footer.social.networks.github %}
+							<li>
+								<a class="flex items-center gap-3 text-xs" href="{{ footer.social.networks.github }}" target="_blank" rel="noopener noreferrer">
+									<span class="inline-flex size-3.5 shrink-0">{{ include('views/svg/github.twig') }}</span>
+									GitHub
+								</a>
+							</li>
+						{% endif %}
+					</ul>
 				</nav>
 			{% endif %}
 
 			{% if footer.engagements.title %}
 				<nav class="col-span-5 lg:col-span-4" aria-labelledby="footer-engagements">
-					<h2 id="footer-engagements" class="mb-7 text-xs">{{ footer.engagements.title }}</h2>
-					<ul class="flex flex-col gap-4">
+					<h2 id="footer-engagements" class="text-l mb-6!">{{ footer.engagements.title }}</h2>
+					<ul class="flex flex-col gap-2">
 						{% for item in footer.engagements.pages %}
-							<li><a class="text-xs" href="{{ item.page }}">{{ item.text }}</a></li>
+							<li class="leading-none!"><a class="text-xs" href="{{ item.page }}">{{ item.text }}</a></li>
 						{% endfor %}
 					</ul>
 				</nav>

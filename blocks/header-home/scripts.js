@@ -30,14 +30,28 @@ class HeaderHome extends BlockParent {
         gsap.set(this.cartouche, {
             transformPerspective: 900,
             transformOrigin: "top center",
+            rotationX: -20,
+            autoAlpha: 0,
         });
 
-        gsap.from(this.cartouche, {
-            rotationX: -20,
-            duration: 1.4,
-            ease: "power2.out",
-            onComplete: () => this.scrollTilt(),
-        });
+        const play = () => {
+            gsap.to(this.cartouche, {
+                autoAlpha: 1,
+                duration: 0.3,
+                ease: "power2.out",
+            });
+            gsap.to(this.cartouche, {
+                rotationX: 0,
+                duration: 1,
+                ease: "power3.out",
+                onComplete: () => this.scrollTilt(),
+            });
+        };
+
+        // Play once the initial-load cover has cleared, so the fade-in + flip
+        // happen in view. On SPA navigation the intro already ran → play now.
+        if (window.__introDone) play();
+        else document.addEventListener("app:intro", play, { once: true });
     }
 
     scrollTilt() {
@@ -69,14 +83,19 @@ class HeaderHome extends BlockParent {
     }
 
     destroy() {
-        this.links?.forEach((a) => a.removeEventListener("click", this.onClick));
+        this.links?.forEach((a) =>
+            a.removeEventListener("click", this.onClick),
+        );
         this.tilt?.scrollTrigger?.kill();
         this.tilt?.kill();
     }
 }
 
 if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", () => new BlockEvents(blockName, HeaderHome));
+    document.addEventListener(
+        "DOMContentLoaded",
+        () => new BlockEvents(blockName, HeaderHome),
+    );
 } else {
     new BlockEvents(blockName, HeaderHome);
 }

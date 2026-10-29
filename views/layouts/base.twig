@@ -3,7 +3,9 @@
 
     <head>
         <script>
-            document.documentElement.classList.add("js");
+            document.documentElement.classList.add("js", "is-loading");
+            if ("scrollRestoration" in history)
+                history.scrollRestoration = "manual";
         </script>
         <meta charset="{{ site.charset }}"/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -15,6 +17,7 @@
     </head>
 
     <body class="{{ body_class }} bg-light">
+        <div data-cover class="page-cover" aria-hidden="true"></div>
         {% include 'partials/header/view.twig' %}
         <div data-taxi>
             <div data-taxi-view {% if post and post.post_type in ['post', 'page'] %} data-post-id="{{ post.id }}" {% endif %}>

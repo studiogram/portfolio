@@ -86,8 +86,13 @@
     }
 
     .text-xs {
-        font-size: rem(14) !important;
+        font-size: rem(16) !important;
         line-height: 1.5 !important;
+    }
+
+    .text-xxs {
+        font-size: rem(14) !important;
+        line-height: 1.2 !important;
     }
 
     .btn,
