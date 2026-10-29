@@ -4,6 +4,8 @@
     "category": "headers",
     "icon": "block-default",
     "keywords": ["en-tête", "header", "about", "à propos"],
+    "style": "file:../../dist/blocks/header-about/styles.min.css",
+    "script": "file:../../dist/blocks/header-about/scripts.min.js",
     "acf": {
         "mode": "preview"
     },

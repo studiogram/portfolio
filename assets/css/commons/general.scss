@@ -65,7 +65,6 @@
     }
 }
 
-
 .content-grid {
     display: grid;
     grid-column: 2 / span 10;
@@ -103,6 +102,7 @@
 .studiogram,
 .editor-styles-wrapper {
     color: var(--wp--preset--color--dark);
+    background: var(--wp--preset--color--medium);
 
     .colors-transition {
         &,

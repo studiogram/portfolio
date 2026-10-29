@@ -1,0 +1,9 @@
+@use "mixins" as *;
+
+.header-about {
+	&__img {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+}

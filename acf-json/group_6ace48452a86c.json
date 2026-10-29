@@ -1,191 +1,186 @@
 {
-    "key": "group_6ace48452a86c",
-    "title": "Block",
-    "fields": [
-        {
-            "key": "field_6ace491813db6",
-            "label": "Couleur de fond",
-            "name": "background",
-            "aria-label": "",
-            "type": "color_palette",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "allow_null": 0,
-            "allowed_colors": [
-                "light",
-                "dark",
-                "medium"
-            ],
-            "default_value": "light",
-            "allow_in_bindings": 0
-        },
-        {
-            "key": "field_6ace484513db2",
-            "label": "Bordures",
-            "name": "borders",
-            "aria-label": "",
-            "type": "repeater",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "layout": "block",
-            "pagination": 0,
-            "min": 0,
-            "max": 2,
-            "collapsed": "",
-            "button_label": "Ajouter une bordure",
-            "rows_per_page": 20,
-            "sub_fields": [
-                {
-                    "key": "field_6ace486413db3",
-                    "label": "Position",
-                    "name": "position",
-                    "aria-label": "",
-                    "type": "true_false",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "50",
-                        "class": "",
-                        "id": ""
-                    },
-                    "message": "",
-                    "default_value": 0,
-                    "allow_in_bindings": 0,
-                    "ui_on_text": "Haut",
-                    "ui_off_text": "Bas",
-                    "ui": 1,
-                    "parent_repeater": "field_6ace484513db2"
-                },
-                {
-                    "key": "field_6ace48a613db4",
-                    "label": "Orientation",
-                    "name": "orientation",
-                    "aria-label": "",
-                    "type": "true_false",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "50",
-                        "class": "",
-                        "id": ""
-                    },
-                    "message": "",
-                    "default_value": 0,
-                    "allow_in_bindings": 0,
-                    "ui_on_text": "Haut",
-                    "ui_off_text": "Bas",
-                    "ui": 1,
-                    "parent_repeater": "field_6ace484513db2"
-                },
-                {
-                    "key": "field_6ace48b913db5",
-                    "label": "Couleur",
-                    "name": "color",
-                    "aria-label": "",
-                    "type": "color_palette",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "allow_null": 0,
-                    "allowed_colors": [
-                        "light",
-                        "dark",
-                        "medium"
-                    ],
-                    "default_value": "light",
-                    "allow_in_bindings": 0,
-                    "parent_repeater": "field_6ace484513db2"
-                }
-            ]
-        },
-        {
-            "key": "field_6acf8bfde89ad",
-            "label": "Espacement",
-            "name": "spacing",
-            "aria-label": "",
-            "type": "select",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "both": "En haut et en bas",
-                "top": "En haut",
-                "bottom": "En bas"
-            },
-            "default_value": "top",
-            "return_format": "value",
-            "multiple": 0,
-            "allow_null": 0,
-            "allow_in_bindings": 0,
-            "ui": 0,
-            "ajax": 0,
-            "placeholder": "",
-            "create_options": 0,
-            "save_options": 0
-        }
-    ],
-    "location": [
-        [
-            {
-                "param": "block",
-                "operator": "==",
-                "value": "all"
-            },
-            {
-                "param": "block",
-                "operator": "!=",
-                "value": "studiogram\/header"
-            },
-            {
-                "param": "block",
-                "operator": "!=",
-                "value": "studiogram\/header-about"
-            },
-            {
-                "param": "block",
-                "operator": "!=",
-                "value": "studiogram\/header-home"
-            },
-            {
-                "param": "block",
-                "operator": "!=",
-                "value": "studiogram\/header-post"
-            }
-        ]
-    ],
-    "menu_order": 0,
-    "position": "normal",
-    "style": "default",
-    "label_placement": "top",
-    "instruction_placement": "label",
-    "hide_on_screen": "",
-    "active": true,
-    "description": "",
-    "show_in_rest": 0,
-    "display_title": "",
-    "modified": 1792071651
+	"key": "group_6ace48452a86c",
+	"title": "Block",
+	"fields": [
+		{
+			"key": "field_6ace491813db6",
+			"label": "Couleur de fond",
+			"name": "background",
+			"aria-label": "",
+			"type": "color_palette",
+			"instructions": "",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"allow_null": 0,
+			"allowed_colors": [
+				"light",
+				"dark",
+				"medium"
+			],
+			"default_value": "light",
+			"allow_in_bindings": 0
+		},
+		{
+			"key": "field_6ace484513db2",
+			"label": "Bordures",
+			"name": "borders",
+			"aria-label": "",
+			"type": "repeater",
+			"instructions": "",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"layout": "block",
+			"pagination": 0,
+			"min": 0,
+			"max": 2,
+			"collapsed": "",
+			"button_label": "Ajouter une bordure",
+			"rows_per_page": 20,
+			"sub_fields": [
+				{
+					"key": "field_6ace486413db3",
+					"label": "Position",
+					"name": "position",
+					"aria-label": "",
+					"type": "true_false",
+					"instructions": "",
+					"required": 0,
+					"conditional_logic": 0,
+					"wrapper": {
+						"width": "50",
+						"class": "",
+						"id": ""
+					},
+					"message": "",
+					"default_value": 0,
+					"allow_in_bindings": 0,
+					"ui_on_text": "Haut",
+					"ui_off_text": "Bas",
+					"ui": 1,
+					"parent_repeater": "field_6ace484513db2"
+				},
+				{
+					"key": "field_6ace48a613db4",
+					"label": "Orientation",
+					"name": "orientation",
+					"aria-label": "",
+					"type": "true_false",
+					"instructions": "",
+					"required": 0,
+					"conditional_logic": 0,
+					"wrapper": {
+						"width": "50",
+						"class": "",
+						"id": ""
+					},
+					"message": "",
+					"default_value": 0,
+					"allow_in_bindings": 0,
+					"ui_on_text": "Haut",
+					"ui_off_text": "Bas",
+					"ui": 1,
+					"parent_repeater": "field_6ace484513db2"
+				},
+				{
+					"key": "field_6ace48b913db5",
+					"label": "Couleur",
+					"name": "color",
+					"aria-label": "",
+					"type": "color_palette",
+					"instructions": "",
+					"required": 0,
+					"conditional_logic": 0,
+					"wrapper": {
+						"width": "",
+						"class": "",
+						"id": ""
+					},
+					"allow_null": 0,
+					"allowed_colors": [
+						"light",
+						"dark",
+						"medium"
+					],
+					"default_value": "light",
+					"allow_in_bindings": 0,
+					"parent_repeater": "field_6ace484513db2"
+				}
+			]
+		},
+		{
+			"key": "field_6acf8bfde89ad",
+			"label": "Espacement",
+			"name": "spacing",
+			"aria-label": "",
+			"type": "select",
+			"instructions": "",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"choices": {
+				"both": "En haut et en bas",
+				"top": "En haut",
+				"bottom": "En bas"
+			},
+			"default_value": "top",
+			"return_format": "value",
+			"multiple": 0,
+			"allow_null": 0,
+			"allow_in_bindings": 0,
+			"ui": 0,
+			"ajax": 0,
+			"placeholder": "",
+			"create_options": 0,
+			"save_options": 0
+		}
+	],
+	"location": [
+		[
+			{
+				"param": "block",
+				"operator": "==",
+				"value": "all"
+			},
+			{
+				"param": "block",
+				"operator": "!=",
+				"value": "studiogram/header"
+			},
+			{
+				"param": "block",
+				"operator": "!=",
+				"value": "studiogram/header-home"
+			},
+			{
+				"param": "block",
+				"operator": "!=",
+				"value": "studiogram/header-post"
+			}
+		]
+	],
+	"menu_order": 0,
+	"position": "normal",
+	"style": "default",
+	"label_placement": "top",
+	"instruction_placement": "label",
+	"hide_on_screen": "",
+	"active": true,
+	"description": "",
+	"show_in_rest": 0,
+	"display_title": "",
+	"modified": 1793278529
 }
