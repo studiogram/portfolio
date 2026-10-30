@@ -2,7 +2,7 @@
 
 {% block content %}
 	<main data-template="archive" class="mx-auto max-w-[1600px] px-8 py-24">
-		<h1 class="text-l font-bold mb-8">{{ function('get_the_archive_title') }}</h1>
+		<h1 data-effect="headline" class="text-l font-bold mb-8">{{ function('get_the_archive_title') }}</h1>
 		<div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
 			{% for item in posts %}
 				<article>
