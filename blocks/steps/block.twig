@@ -1,4 +1,44 @@
-<section {{ block_id }} data-block-type="text" data-block-id="{{ block.id }}" class="{{ block_classes(fields) }}">
+<section {{ block_id }} data-block-type="steps" data-block-id="{{ block.id }}" class="{{ block_classes(fields) }} steps relative text-light">
 	{% include 'views/partials/block/borders.twig' %}
-	<div class="wysiwyg content-grid content-grid--{{fields.space.large}}">{{ fields.text }}</div>
+
+	<div class="pointer-events-none absolute inset-x-0 bottom-0 top-[14%] z-0" data-header-dark aria-hidden="true"></div>
+
+	<div class="pointer-events-none absolute -left-[5%] -top-[5%] z-0 w-[64%] lg:w-[42%]" aria-hidden="true">
+		{{ include('views/svg/approche-blobs.twig') }}
+	</div>
+
+	<div class="relative z-10 col-span-12 flex flex-col gap-14 px-6! py-16 lg:col-span-20 lg:col-start-3 lg:gap-24 lg:px-0! lg:py-28">
+
+		<header class="flex flex-col gap-4 lg:ml-auto lg:w-1/2 lg:pl-10">
+			{% if fields.heading %}<h2 class="text-xxl">{{ fields.heading }}</h2>{% endif %}
+			{% if fields.subheading %}<p class="text-soft-light">{{ fields.subheading }}</p>{% endif %}
+		</header>
+
+		{% if fields.steps %}
+			<ol class="grid gap-x-10 gap-y-12 lg:grid-cols-2 lg:gap-x-20 lg:gap-y-20">
+				{% for step in fields.steps %}
+					<li class="flex gap-5 lg:gap-8">
+						<span class="flex size-11 shrink-0 items-center justify-center rounded-full bg-medium text-l text-dark">{{ loop.index }}</span>
+						<div class="flex flex-col gap-5 lg:gap-8">
+							{% if step.title %}<h3 class="text-xxl">{{ step.title }}</h3>{% endif %}
+							{% if step.text %}<p class="text-soft-light">{{ step.text }}</p>{% endif %}
+						</div>
+					</li>
+				{% endfor %}
+			</ol>
+		{% endif %}
+
+		{% if fields.closing %}<p class="mx-auto max-w-[55ch] text-center text-soft-light">{{ fields.closing }}</p>{% endif %}
+
+		{% if fields.card_title or fields.card_text %}
+			<div class="mx-auto w-full max-w-200">
+				<div data-scroll="perspective" class="relative rounded-m bg-light px-6 py-12 text-center text-dark lg:px-20 lg:py-16">
+					<span class="absolute left-5 top-5 size-4 rounded-full bg-dark lg:left-8 lg:top-8 lg:size-5" aria-hidden="true"></span>
+					<span class="absolute right-5 top-5 size-4 rounded-full bg-dark lg:right-8 lg:top-8 lg:size-5" aria-hidden="true"></span>
+					{% if fields.card_title %}<h3 class="text-xxl mb-6 lg:mb-10">{{ fields.card_title }}</h3>{% endif %}
+					{% if fields.card_text %}<div class="wysiwyg mx-auto max-w-[66ch]">{{ fields.card_text }}</div>{% endif %}
+				</div>
+			</div>
+		{% endif %}
+	</div>
 </section>

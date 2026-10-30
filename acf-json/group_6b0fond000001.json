@@ -1,64 +1,71 @@
 {
-	"key": "group_6b0fond000001",
-	"title": "Fond",
-	"fields": [
-		{
-			"key": "field_6b0fond000bg1",
-			"label": "Couleur de fond",
-			"name": "background",
-			"aria-label": "",
-			"type": "color_palette",
-			"instructions": "",
-			"required": 0,
-			"conditional_logic": 0,
-			"wrapper": {
-				"width": "",
-				"class": "",
-				"id": ""
-			},
-			"allow_null": 0,
-			"allowed_colors": [
-				"light",
-				"dark",
-				"medium",
-				"medium-secondary",
-				"medium-tertiary"
-			],
-			"default_value": "light",
-			"allow_in_bindings": 0
-		}
-	],
-	"location": [
-		[
-			{
-				"param": "block",
-				"operator": "==",
-				"value": "studiogram/header"
-			}
-		],
-		[
-			{
-				"param": "block",
-				"operator": "==",
-				"value": "studiogram/header-home"
-			}
-		],
-		[
-			{
-				"param": "block",
-				"operator": "==",
-				"value": "studiogram/header-post"
-			}
-		]
-	],
-	"menu_order": 0,
-	"position": "normal",
-	"style": "default",
-	"label_placement": "top",
-	"instruction_placement": "label",
-	"hide_on_screen": "",
-	"active": true,
-	"description": "",
-	"show_in_rest": 0,
-	"modified": 1793278529
+    "key": "group_6b0fond000001",
+    "title": "Fond",
+    "fields": [
+        {
+            "key": "field_6b0fond000bg1",
+            "label": "Couleur de fond",
+            "name": "background",
+            "aria-label": "",
+            "type": "color_palette",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "allow_null": 0,
+            "allowed_colors": [
+                "light",
+                "dark",
+                "medium",
+                "medium-secondary",
+                "medium-tertiary"
+            ],
+            "default_value": "light",
+            "allow_in_bindings": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "studiogram/header"
+            }
+        ],
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "studiogram/header-home"
+            }
+        ],
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "studiogram/header-post"
+            }
+        ],
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "studiogram/header-approche"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1793353741
 }

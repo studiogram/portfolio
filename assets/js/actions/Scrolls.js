@@ -126,14 +126,15 @@ export default class Scrolls {
 
         if (this.perspectives && !reduceMotion) {
             this.perspectives.forEach((el) => {
-                gsap.to(el, {
+                gsap.set(el, { transformPerspective: 900, transformOrigin: "top center" });
+                gsap.fromTo(el, {
+                    rotationX: 0,
+                }, {
                     rotationX: -20,
-                    transformPerspective: 900,
-                    transformOrigin: "top center",
                     ease: "none",
                     scrollTrigger: {
-                        trigger: el.parentElement,
-                        start: "top top",
+                        trigger: el,
+                        start: "center center",
                         end: "bottom top",
                         scrub: 1,
                         invalidateOnRefresh: true,

@@ -86,7 +86,7 @@ if (!class_exists('STUDIOGRAM\Setup')) :
         {
             global $pagenow;
 
-            if ($pagenow === 'index.php' && ! wp_doing_ajax()) {
+            if ($pagenow === 'index.php' && ! wp_doing_ajax() && ! current_user_can('update_core')) {
                 wp_safe_redirect(admin_url('edit.php?lang=fr'));
                 exit;
             }

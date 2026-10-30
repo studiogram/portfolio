@@ -1,0 +1,145 @@
+{
+    "key": "group_6b0steps0001",
+    "title": "Block steps",
+    "fields": [
+        {
+            "key": "field_6b0stphead0",
+            "label": "Titre",
+            "name": "heading",
+            "type": "text",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_6b0stpsub00",
+            "label": "Sous-titre",
+            "name": "subheading",
+            "type": "text",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_6b0stpitems",
+            "label": "Étapes",
+            "name": "steps",
+            "type": "repeater",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "min": 0,
+            "max": 0,
+            "button_label": "Ajouter une étape",
+            "sub_fields": [
+                {
+                    "key": "field_6b0stpittit",
+                    "label": "Titre",
+                    "name": "title",
+                    "type": "text",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "40",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_6b0stpittxt",
+                    "label": "Texte",
+                    "name": "text",
+                    "type": "textarea",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "60",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "rows": 3,
+                    "new_lines": ""
+                }
+            ]
+        },
+        {
+            "key": "field_6b0stpclose",
+            "label": "Texte de conclusion",
+            "name": "closing",
+            "type": "textarea",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "rows": 2,
+            "new_lines": ""
+        },
+        {
+            "key": "field_6b0stpcdtit",
+            "label": "Carte — Titre",
+            "name": "card_title",
+            "type": "text",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_6b0stpcdtxt",
+            "label": "Carte — Texte",
+            "name": "card_text",
+            "type": "wysiwyg",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "studiogram/steps"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1793353741
+}

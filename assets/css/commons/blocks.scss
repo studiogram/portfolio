@@ -1,9 +1,22 @@
 @use "mixins" as *;
 
-// expose each selected block background as --cartouche-bg (inherits to the cartouche dots)
-$bg-slugs:
-    "light", "dark", "soft", "red", "green", "blue", "lightblue", "pink",
-    "medium", "medium-secondary", "medium-tertiary";
+// each block background slug -> readable foreground text color.
+// setting .bg-* also sets the contrast color so any block can go dark
+// via the "Block" ACF field without hardcoding text-light.
+$bg-fg: (
+    "light": "dark",
+    "medium": "dark",
+    "medium-secondary": "dark",
+    "soft-light": "dark",
+    "lightblue": "dark",
+    "pink": "dark",
+    "dark": "light",
+    "soft": "light",
+    "red": "light",
+    "green": "light",
+    "blue": "light",
+    "medium-tertiary": "light",
+);
 
 .studiogram,
 .editor-styles-wrapper {
@@ -11,9 +24,11 @@ $bg-slugs:
     overflow-x: hidden;
     overflow-y: auto;
 
-    @each $slug in $bg-slugs {
+    @each $slug, $fg in $bg-fg {
         .bg-#{$slug} {
+            // expose the bg as --cartouche-bg (inherits to the cartouche dots)
             --cartouche-bg: var(--wp--preset--color--#{$slug});
+            color: var(--wp--preset--color--#{$fg});
         }
     }
 
@@ -114,6 +129,20 @@ $bg-slugs:
 
     [data-block-type^="header-"] {
         padding-inline: 1rem;
+    }
+
+    [data-block-type="steps"] {
+        overflow: visible;
+        isolation: isolate;
+
+        &::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            background: var(--color-dark);
+            clip-path: ellipse(120% 100% at 60% 100%);
+        }
     }
 }
 

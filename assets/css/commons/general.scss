@@ -56,7 +56,7 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-    html.js h1[data-effect="headline"] {
+    html.js h1 {
         visibility: hidden;
     }
 

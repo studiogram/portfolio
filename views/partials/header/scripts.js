@@ -53,8 +53,8 @@ export default class Header {
         const band = 48;
         const darkSel =
             window.innerWidth < DESKTOP
-                ? ".cartouche, .bg-dark, .panel__list"
-                : ".cartouche, .bg-dark";
+                ? ".cartouche, .bg-dark, .panel__list, [data-header-dark]"
+                : ".cartouche, .bg-dark, [data-header-dark]";
         const dark = this.crosses(darkSel, band);
         this.el.classList.toggle("is-on-dark", dark);
     }

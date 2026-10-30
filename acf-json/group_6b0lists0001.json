@@ -1,0 +1,100 @@
+{
+    "key": "group_6b0lists0001",
+    "title": "Block lists",
+    "fields": [
+        {
+            "key": "field_6b0lsttit00",
+            "label": "Titre",
+            "name": "title",
+            "type": "text",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_6b0lstcols0",
+            "label": "Colonnes",
+            "name": "columns",
+            "type": "repeater",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "min": 0,
+            "max": 0,
+            "button_label": "Ajouter une colonne",
+            "sub_fields": [
+                {
+                    "key": "field_6b0lstclhd0",
+                    "label": "Intitulé",
+                    "name": "heading",
+                    "type": "text",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "40",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_6b0lstclit0",
+                    "label": "Éléments (un par ligne)",
+                    "name": "items",
+                    "type": "textarea",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "60",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "rows": 5,
+                    "new_lines": ""
+                }
+            ]
+        },
+        {
+            "key": "field_6b0lstfoot0",
+            "label": "Texte de conclusion",
+            "name": "footer",
+            "type": "text",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "studiogram/lists"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1793353741
+}
