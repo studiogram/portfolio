@@ -28,12 +28,14 @@ class Panels extends BlockParent {
         const slides = this.panels.slice(1);
         gsap.set(slides, { xPercent: 110 });
 
+        const pin = this.element.querySelector("[data-panels-pin]");
+
         this.tl = gsap.timeline({
             scrollTrigger: {
-                trigger: this.element,
+                trigger: pin,
                 start: "center center",
                 end: "+=" + slides.length * 100 + "%",
-                pin: true,
+                pin: pin,
                 scrub: true,
                 invalidateOnRefresh: true,
             },

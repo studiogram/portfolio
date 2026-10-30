@@ -1,9 +1,15 @@
 @use "mixins" as *;
 
 .header-about {
-	&__img {
-		display: block;
-		width: 100%;
-		height: auto;
-	}
+    &__img {
+        display: block;
+        width: 100%;
+        height: auto;
+
+        @include lg {
+            height: 60vh;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
 }

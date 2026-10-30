@@ -115,10 +115,27 @@
 		border-radius: 1.5rem;
 	}
 
+	&__pin {
+		grid-column: 1 / -1;
+		position: relative;
+	}
+
 	&.is-pinned {
+		padding-block: 0 !important;
+
+		.panels__pin {
+			height: 100dvh;
+			margin-block: 3rem;
+		}
+
+		.panels__bg {
+			top: -3rem;
+			bottom: -3rem;
+		}
+
 		.panels__stage {
 			display: block;
-			height: 100vh;
+			height: 100%;
 			padding: 0;
 			overflow: hidden;
 		}
@@ -129,13 +146,14 @@
 			translate: 0 -50%;
 			left: 8.333%;
 			width: 83.333%;
-			height: min(82vh, 46rem);
+			height: min(82dvh, 46rem);
 			min-height: 0;
 			margin: 0;
 
 			@include lg {
 				left: 4.167%;
 				width: 91.667%;
+				height: min(70dvh, 40rem);
 			}
 		}
 	}

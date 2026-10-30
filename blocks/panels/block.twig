@@ -1,23 +1,25 @@
 <section {{ block_id }} data-block-type="panels" data-block-id="{{ block.id }}" class="{{ block_classes(fields) }} panels">
 	{% include 'views/partials/block/borders.twig' %}
 
-	<div class="panels__bg" aria-hidden="true">
-		{{ include('views/svg/panels-bg.twig', { class: 'panels__blobs' }) }}
-	</div>
+	<div class="panels__pin" data-panels-pin>
+		<div class="panels__bg" aria-hidden="true">
+			{{ include('views/svg/panels-bg.twig', { class: 'panels__blobs' }) }}
+		</div>
 
-	<div class="panels__stage" data-panels-stage>
-		{% for item in fields.items %}
-			<article class="panels__panel panels__panel--{{ item.theme ?: 'light' }}" data-panels-panel style="z-index: {{ loop.index }}">
-				<div class="panels__content">
-					{% if item.title %}<h3 class="panels__title | text-xxl">{{ item.title }}</h3>{% endif %}
-					{% if item.text %}<p class="panels__text">{{ item.text }}</p>{% endif %}
-				</div>
-				{% if item.image %}
-					<figure class="panels__media">
-						<img class="panels__img lazyload" {{ responsive_image(item.image) }} alt=""/>
-					</figure>
-				{% endif %}
-			</article>
-		{% endfor %}
+		<div class="panels__stage" data-panels-stage>
+			{% for item in fields.items %}
+				<article class="panels__panel panels__panel--{{ item.theme ?: 'light' }}" data-panels-panel style="z-index: {{ loop.index }}">
+					<div class="panels__content">
+						{% if item.title %}<h3 class="panels__title | text-xxl">{{ item.title }}</h3>{% endif %}
+						{% if item.text %}<p class="panels__text">{{ item.text }}</p>{% endif %}
+					</div>
+					{% if item.image %}
+						<figure class="panels__media">
+							<img class="panels__img lazyload" {{ responsive_image(item.image) }} alt=""/>
+						</figure>
+					{% endif %}
+				</article>
+			{% endfor %}
+		</div>
 	</div>
 </section>
