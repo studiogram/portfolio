@@ -36,7 +36,6 @@ class Panels extends BlockParent {
                 pin: true,
                 scrub: true,
                 invalidateOnRefresh: true,
-                markers: true,
             },
         });
 

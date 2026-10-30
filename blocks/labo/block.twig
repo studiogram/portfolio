@@ -2,8 +2,8 @@
 	{% include 'views/partials/block/borders.twig' %}
 	<div class="labo grider">
 		<div class="labo__cluster | col-span-10 col-start-2 flex items-end justify-center pt-20 lg:col-span-14 lg:col-start-1">
-			<figure class="relative w-10/12 xl:w-5/12">
-				{{ include('views/svg/labo-details.twig', { class: 'labo__blobs labo__blobs--details' }) }}
+			<figure class="relative w-6/10 xl:w-5/12">
+				{{ include('views/svg/labo-details.twig', { class: 'labo__blobs labo__blobs--details hidden lg:block' }) }}
 				{% if fields.image1 %}<img class="labo__img labo__img--velo lazyload absolute top-0 left-0 w-4/5!" data-labo-img data-x="-40" data-rot="-11.21" {{ responsive_image(fields.image1) }} alt=""/>{% endif %}
 				{% if fields.image2 %}<img class="labo__img labo__img--carrom lazyload absolute bottom-3/12 left-0 w-3/5!" data-labo-img data-x="-10" data-rot="4.79" {{ responsive_image(fields.image2) }} alt=""/>{% endif %}
 				{% if fields.image3 %}<img class="labo__img labo__img--capture lazyload relative" data-labo-img data-x="40" data-rot="12.5" {{ responsive_image(fields.image3) }} alt=""/>{% endif %}
@@ -11,7 +11,7 @@
 		</div>
 
 		<div class="labo__text | col-span-10 col-start-2 mb-20 flex flex-col lg:col-span-6 lg:col-start-17">
-			{{ include('views/svg/labo-top.twig', { class: 'labo__blobs labo__blobs--top' }) }}
+			{{ include('views/svg/labo-top.twig', { class: 'labo__blobs labo__blobs--top hidden lg:block' }) }}
 			{% if fields.text %}<div class="wysiwyg labo__wysiwyg pb-12">{{ fields.text }}</div>{% endif %}
 			{{ include('views/components/button/view.twig', { button: fields.btn }) }}
 		</div>

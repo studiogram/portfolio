@@ -1,5 +1,5 @@
 <div class="contact spacing--top | bg-medium rounded--bottom relative z-10 overflow-hidden rounded text-center">
-	<div class="-mb-16 flex flex-col items-center gap-8">
+	<div class="flex w- flex-col items-center gap-8 lg:-mb-16">
 		{% if show_contact is not same as(false) %}
 			<div class="wysiwyg">
 				{{ contact.description }}
@@ -7,5 +7,5 @@
 		{% endif %}
 		{{ include('views/components/button/view.twig', {button: contact.btn}) }}
 	</div>
-	{{ include('views/svg/footer.twig') }}
+	{{ include('views/svg/footer.twig', {class: "w-[200%]! -left-1/4 lg:w-full! lg:left-0"}) }}
 </div>

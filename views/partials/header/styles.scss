@@ -33,9 +33,13 @@
     }
 
     &__logo svg {
-        width: 180px !important;
+        width: 140px !important;
         fill: var(--header-fg);
         transition: fill 0.7s ease-in-out;
+
+        @include lg {
+            width: 180px !important;
+        }
     }
 
     &__logo,
@@ -104,8 +108,9 @@
         align-items: center;
         gap: 0.6rem;
         padding: 0.75rem 1rem;
-        border-radius: 1.25rem;
-        color: var(--header-fg);
+        border-radius: 0.5rem;
+        background: var(--color-medium);
+        color: var(--color-dark);
         transition: color 0.7s ease-in-out;
 
         @include lg {

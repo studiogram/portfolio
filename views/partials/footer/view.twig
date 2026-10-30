@@ -2,12 +2,12 @@
 	{{ include('views/svg/footer-mark.twig', { class: 'footer__mark pointer-events-none absolute inset-x-0 bottom-0 z-0 w-full' }) }}
 
 	<div class="footer__content spacing--top | grider relative z-10 pb-8">
-		<div class="content-grid content-grid--grider">
+		<div class="gap-y-6! content-grid content-grid--grider">
 			<div class="col-span-10 flex flex-col gap-10 lg:col-span-6">
-				<a href="{{ home }}" class="footer__logo" aria-label="{{ site.name }}">
+				<a href="{{ home }}" class="footer__logo hidden lg:block" aria-label="{{ site.name }}">
 					{{ include('views/svg/logo.twig') }}
 				</a>
-				<p class="max-w-75 text-xs opacity-70 lg:pr-4">
+				<p class="text-xs opacity-70 lg:max-w-75 lg:pr-4">
 					{{ footer.description }}
 				</p>
 			</div>

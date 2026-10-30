@@ -12,6 +12,7 @@ const THEME_VARS = [
 export default class Headline {
     constructor(element) {
         this.el = element;
+        this.html = element.innerHTML;
 
         const css = getComputedStyle(document.documentElement);
         this.theme = THEME_VARS.map((v) =>
@@ -32,8 +33,11 @@ export default class Headline {
 
     split() {
         this.el.style.visibility = "visible";
+        this.el.innerHTML = this.html;
+        if (window.innerWidth < 768)
+            this.el.querySelectorAll("br").forEach((br) => br.replaceWith(" "));
         this.st = new SplitText(this.el, {
-            type: "lines,chars",
+            type: "lines,words,chars",
             mask: "lines",
             linesClass: "headline__line",
         });

@@ -119,7 +119,11 @@ $bg-slugs:
 
 .studiogram {
     [data-block-type^="header-"] {
-        padding-top: rem(130);
+        padding-top: rem(100);
+
+        @include lg {
+            padding-top: rem(130);
+        }
     }
 }
 .editor-styles-wrapper {
