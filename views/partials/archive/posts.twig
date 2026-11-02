@@ -1,15 +1,30 @@
-{# Literal classes so Tailwind's scanner emits them — interpolated
-   `lg:col-span-{{ span }}` is invisible to the JIT build. #}
-{% set spans = {
-	1: 'lg:col-span-1',
-	2: 'lg:col-span-2',
-	3: 'lg:col-span-3',
-	4: 'lg:col-span-4',
-	5: 'lg:col-span-5',
-	6: 'lg:col-span-6'
-} %}
 {% for post in posts %}
-	<div class="archive__item | col-span-1 {{ spans[post.span] ?? 'lg:col-span-2' }}">
-		{{ include('views/components/post-card/view.twig', { id: post.id }) }}
-	</div>
+	{% set term = post.terms('category')|first %}
+	{% set color = term ? (function('get_field', 'color', 'category_' ~ term.id) ?: 'dark') : 'dark' %}
+	<article class="archive__item group relative">
+		<a href="{{ post.link }}" class="flex flex-col gap-6 lg:flex-row lg:items-stretch lg:gap-16">
+			<figure class="relative shrink-0 self-start overflow-hidden rounded-xl bg-medium-secondary lg:w-1/2">
+				<div class="aspect-[8/5] w-full">
+					{% if post.thumbnail %}
+						<img class="lazyload size-full object-cover" {{ responsive_image(post.thumbnail.id) }}/>
+					{% else %}
+						<span class="flex size-full items-center justify-center text-[92px] text-dark/30">{{ post.title|slice(0, 1) }}</span>
+					{% endif %}
+				</div>
+			</figure>
+
+			<div class="flex flex-1 flex-col justify-center gap-5 lg:py-10">
+				{% if term %}
+					<span class="text-s inline-flex items-center gap-2.5 uppercase text-{{ color }}">
+						<span class="size-3 shrink-0 rounded-full bg-{{ color }}"></span>
+						{{ term.name }}
+					</span>
+				{% endif %}
+				<h2 class="text-xxl text-dark">{{ post.title }}</h2>
+				<span aria-hidden="true" class="mt-2 flex size-12 items-center justify-center rounded-full bg-{{ color }} transition-transform duration-300 group-hover:translate-x-1 lg:ml-auto">
+					<svg class="w-5" viewBox="0 0 24 24" fill="none" stroke="#20172e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+				</span>
+			</div>
+		</a>
+	</article>
 {% endfor %}

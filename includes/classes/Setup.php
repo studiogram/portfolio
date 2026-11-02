@@ -29,6 +29,8 @@ if (!class_exists('STUDIOGRAM\Setup')) :
             add_action('admin_init', [$this, 'disable_autosave']);
             add_action('admin_init', [$this, 'redirect_dashboard']);
             add_action('pre_get_posts', [$this, 'filter_secteur']);
+            add_action('wp_ajax_load_posts', [$this, 'load_posts']);
+            add_action('wp_ajax_nopriv_load_posts', [$this, 'load_posts']);
         }
 
 
@@ -62,7 +64,94 @@ if (!class_exists('STUDIOGRAM\Setup')) :
             $context['show_contact'] = function_exists('get_field') ? get_field('show_contact') : null;
             $context['dice'] = Dice::data();
             $context['home'] = function_exists('pll_home_url') ? pll_home_url() : home_url('/');
+
+            if (is_home() || is_category() || is_post_type_archive('post')) {
+                $context['archive'] = $this->archive_context();
+            }
             return $context;
+        }
+
+
+        /**
+         * Context for the Projets archive: hero ACF fields (stored on the
+         * posts page), sector filter terms + their colour, and the main query.
+         *
+         * @return array
+         */
+        private function archive_context()
+        {
+            $posts_page = (int) get_option('page_for_posts');
+            $base_url   = $posts_page ? get_permalink($posts_page) : home_url('/');
+            $current    = is_category() ? (int) get_queried_object_id() : 0;
+
+            $field = fn(string $name, string $fallback = '') =>
+                ($posts_page && function_exists('get_field') ? get_field($name, $posts_page) : '') ?: $fallback;
+
+            $categories = [];
+            $terms = get_terms(['taxonomy' => 'category', 'hide_empty' => true]);
+            if (!is_wp_error($terms)) {
+                foreach ($terms as $term) {
+                    $link  = get_term_link($term);
+                    $color = function_exists('get_field') ? get_field('color', 'category_' . $term->term_id) : '';
+                    $color = $color ?: 'dark';
+                    $categories[] = [
+                        'id'         => $term->term_id,
+                        'title'      => $term->name,
+                        'url'        => is_wp_error($link) ? $base_url : $link,
+                        'color'      => $color,
+                        'text_color' => $this->contrast($color),
+                    ];
+                }
+            }
+
+            return [
+                'hero_title'    => $field('hero_title', 'Projets'),
+                'hero_subtitle' => $field('hero_subtitle'),
+                'filter_label'  => $field('filter_label', 'Filtrer par secteur :'),
+                'categories'    => $categories,
+                'current_cat'   => $current,
+                'cartouche'     => $this->cartouche_data($current, $field('hero_title', 'Projets'), $field('hero_subtitle')),
+                'url'           => $base_url,
+                'posts'         => $this->archive_posts($current),
+            ];
+        }
+
+        private function archive_posts(int $cat)
+        {
+            $args = ['post_type' => 'post', 'post_status' => 'publish', 'posts_per_page' => -1];
+            if ($cat > 0) $args['cat'] = $cat;
+
+            return \Timber\Timber::get_posts(new \WP_Query($args));
+        }
+
+        private function contrast(string $slug): string
+        {
+            return $slug === 'dark' ? 'light' : 'dark';
+        }
+
+        private function cartouche_data(int $cat, string $default_title, string $subtitle): array
+        {
+            if ($cat <= 0) {
+                return ['title' => $default_title, 'text' => $subtitle, 'color' => ''];
+            }
+
+            return [
+                'title' => get_cat_name($cat) ?: $default_title,
+                'text'  => $subtitle,
+                'color' => (function_exists('get_field') ? (string) get_field('color', 'category_' . $cat) : '') ?: 'dark',
+            ];
+        }
+
+
+        public function load_posts()
+        {
+            check_ajax_referer('ajax-nonce', 'nonce');
+
+            $cat   = isset($_POST['cat']) ? (int) $_POST['cat'] : 0;
+            $posts = $this->archive_posts($cat);
+            $html  = \Timber\Timber::compile('views/partials/archive/posts.twig', ['posts' => $posts]);
+
+            wp_send_json_success(['html' => $html]);
         }
 
 

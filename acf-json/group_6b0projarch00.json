@@ -1,0 +1,89 @@
+{
+    "key": "group_6b0projarch00",
+    "title": "Archive Projets",
+    "fields": [
+        {
+            "key": "field_6b0pa0001title",
+            "label": "Titre",
+            "name": "hero_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Titre affiché dans le cartouche de l'en-tête (défaut : Projets).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Projets",
+            "maxlength": "",
+            "placeholder": "Projets",
+            "prepend": "",
+            "append": "",
+            "allow_in_bindings": 0
+        },
+        {
+            "key": "field_6b0pa0003label",
+            "label": "Libellé du filtre",
+            "name": "filter_label",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Texte précédant les filtres par secteur.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Filtrer par secteur :",
+            "maxlength": "",
+            "placeholder": "Filtrer par secteur :",
+            "prepend": "",
+            "append": "",
+            "allow_in_bindings": 0
+        },
+        {
+            "key": "field_6b0pa0002sub",
+            "label": "Sous-titre",
+            "name": "hero_subtitle",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Texte d'introduction affiché à droite du titre.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "100",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "rows": 2,
+            "placeholder": "",
+            "new_lines": "",
+            "allow_in_bindings": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_type",
+                "operator": "==",
+                "value": "posts_page"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "display_title": "",
+    "modified": 1793616112
+}

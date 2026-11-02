@@ -4,10 +4,6 @@
    site-wide. */
 const components = [
     {
-        name: "load-more",
-        load: () => import("../actions/LoadMore"),
-    },
-    {
         name: "archive-filter",
         load: () => import("../actions/ArchiveFilter"),
     },

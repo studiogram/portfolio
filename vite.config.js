@@ -1,5 +1,5 @@
 import { defineConfig } from "vite";
-import { readdirSync, existsSync } from "fs";
+import { readdirSync, existsSync, rmSync } from "fs";
 
 const blockEntries = Object.fromEntries(
     readdirSync("blocks", { withFileTypes: true })
@@ -7,8 +7,16 @@ const blockEntries = Object.fromEntries(
         .map((d) => [`blocks/${d.name}/scripts`, `blocks/${d.name}/scripts.js`]),
 );
 
+const purgeChunks = () => ({
+    name: "purge-chunks",
+    buildStart() {
+        rmSync("dist/js/chunks", { recursive: true, force: true });
+    },
+});
+
 export default defineConfig({
     base: "./",
+    plugins: [purgeChunks()],
     build: {
         outDir: "dist",
         emptyOutDir: false,
