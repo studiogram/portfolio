@@ -26,6 +26,7 @@ if (!class_exists('STUDIOGRAM\Admin')) :
             add_action('wp_ajax_toggle_post_status', [$this, 'ajax_toggle_post_status']);
             add_action('admin_post_studiogram_duplicate', [$this, 'duplicate_post']);
             add_filter('option_wpseo', [$this, 'disable_yoast_ai']);
+            add_filter('use_block_editor_for_post', [$this, 'notes_disable_block_editor'], 10, 2);
             add_filter('display_post_states', [$this, 'hide_post_states'], 10, 2);
             add_filter('pre_trash_post', [$this, 'force_delete_post'], 10, 2);
 
@@ -147,6 +148,15 @@ if (!class_exists('STUDIOGRAM\Admin')) :
                     $published ? esc_html__('Masquer', 'studiogram') : esc_html__('Publier', 'studiogram')
                 );
             }
+        }
+
+
+        public function notes_disable_block_editor($use, $post)
+        {
+            if ($post && get_page_template_slug($post->ID) === 'template-notes.php') {
+                return false;
+            }
+            return $use;
         }
 
 

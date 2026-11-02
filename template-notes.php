@@ -1,4 +1,7 @@
 <?php
+/**
+ * Template Name: Archive Notes
+ */
 
 use Timber\Timber;
 

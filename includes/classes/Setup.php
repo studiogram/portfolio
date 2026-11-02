@@ -70,22 +70,22 @@ if (!class_exists('STUDIOGRAM\Setup')) :
             if (is_home() || is_category() || is_post_type_archive('post')) {
                 $context['archive'] = $this->archive_context();
             }
-            if (is_post_type_archive('notes')) {
-                $context['notes_archive'] = $this->notes_archive_context();
+            if (is_page_template('template-notes.php')) {
+                $context['notes_archive'] = $this->notes_archive_context((int) get_queried_object_id());
             }
             return $context;
         }
 
         private const NOTES_PER_PAGE = 12;
 
-        private function notes_archive_context()
+        private function notes_archive_context(int $page_id)
         {
             $query = $this->notes_query(1);
 
             return [
-                'title'       => (function_exists('get_field') ? (string) get_field('notes_title', 'custom-content') : '') ?: '',
-                'description' => (function_exists('get_field') ? (string) get_field('notes_description', 'custom-content') : '') ?: '',
-                'url'         => get_post_type_archive_link('notes'),
+                'title'       => $page_id ? get_the_title($page_id) : '',
+                'description' => ($page_id && function_exists('get_field') ? (string) get_field('notes_description', $page_id) : '') ?: '',
+                'url'         => $page_id ? get_permalink($page_id) : '',
                 'notes'       => $this->note_rows($query),
                 'pages'       => (int) $query->max_num_pages,
                 'current'     => 1,

@@ -6,7 +6,7 @@ $context = Timber::context();
 
 $note = [
     'body'     => function_exists('get_field') ? get_field('body') : '',
-    'back_url' => get_post_type_archive_link('notes'),
+    'back_url' => ($notes_page = get_page_by_path('notes')) ? get_permalink($notes_page) : home_url('/notes/'),
     'project'  => null,
 ];
 

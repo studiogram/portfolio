@@ -1,5 +1,5 @@
 {% for note in notes %}
-	<a href="{{ note.url }}" class="notes__row" data-taxi-ignore>
+	<a href="{{ note.url }}" class="notes__row">
 		<span class="notes__rowmain">
 			{% if note.project %}
 				<span class="notes__tag text-s inline-flex items-center gap-2.5 uppercase text-{{ note.project.color }}">

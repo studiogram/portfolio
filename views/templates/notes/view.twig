@@ -3,16 +3,20 @@
 {% block content %}
 	<section class="notes bg-medium" data-component="notes-archive">
 		<header class="notes__head">
-			<div class="notes__cartouche cartouche">
-				{% if notes_archive.title %}<h1 class="notes__title">{{ notes_archive.title }}</h1>{% endif %}
-				{% if notes_archive.description %}<p class="notes__desc">{{ notes_archive.description }}</p>{% endif %}
+			<div class="notes__grid">
+				<div class="notes__cartouche cartouche col-start-1 col-end-13 lg:col-start-2 lg:col-end-24">
+					{% if notes_archive.title %}<h1 class="notes__title" data-effect="none">{{ notes_archive.title }}</h1>{% endif %}
+					{% if notes_archive.description %}<div class="notes__desc">{{ notes_archive.description|raw }}</div>{% endif %}
+				</div>
 			</div>
 		</header>
 
 		<div class="notes__body">
-			<div class="notes__sheet">
-				<div class="notes__list" data-notes-list>
-					{% include 'views/partials/notes/rows.twig' with { notes: notes_archive.notes } %}
+			<div class="notes__grid">
+				<div class="notes__sheet col-start-2 col-end-12 lg:col-start-3 lg:col-end-23">
+					<div class="notes__list" data-notes-list>
+						{% include 'views/partials/notes/rows.twig' with { notes: notes_archive.notes } %}
+					</div>
 				</div>
 			</div>
 

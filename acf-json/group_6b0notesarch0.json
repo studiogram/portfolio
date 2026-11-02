@@ -11,7 +11,11 @@
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
-            "wrapper": { "width": "", "class": "", "id": "" },
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "default_value": "",
             "maxlength": "",
             "placeholder": "",
@@ -24,36 +28,55 @@
             "label": "Description archive notes",
             "name": "notes_description",
             "aria-label": "",
-            "type": "textarea",
+            "type": "wysiwyg",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
-            "wrapper": { "width": "", "class": "", "id": "" },
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "default_value": "",
-            "rows": 3,
-            "new_lines": "",
-            "maxlength": "",
-            "placeholder": "",
-            "allow_in_bindings": 0
+            "allow_in_bindings": 0,
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 0,
+            "delay": 0
         }
     ],
     "location": [
         [
             {
-                "param": "options_page",
+                "param": "page",
                 "operator": "==",
-                "value": "custom-content"
+                "value": "23"
             }
         ]
     ],
     "menu_order": 5,
-    "position": "normal",
+    "position": "acf_after_title",
     "style": "default",
     "label_placement": "top",
     "instruction_placement": "label",
-    "hide_on_screen": "",
+    "hide_on_screen": [
+        "the_content",
+        "excerpt",
+        "discussion",
+        "comments",
+        "revisions",
+        "slug",
+        "author",
+        "format",
+        "page_attributes",
+        "featured_image",
+        "categories",
+        "tags",
+        "send-trackbacks"
+    ],
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1793632326
+    "display_title": "",
+    "modified": 1793634134
 }

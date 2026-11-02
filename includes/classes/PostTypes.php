@@ -21,7 +21,7 @@ if (!class_exists('STUDIOGRAM\PostTypes')) :
             $this->rename_post_type('Projets', 'Projet', 'dashicons-portfolio', true, 'post');
             $this->rename_post_type('Pages', 'Page', 'dashicons-format-aside', false, 'page');
             unregister_taxonomy_for_object_type('post_tag', 'post');
-            $this->register_cpt('notes', 'Notes', 'Note', 'dashicons-editor-paste-text', false, 22);
+            $this->register_cpt('notes', 'Notes', 'Note', 'dashicons-editor-paste-text', false, 22, false);
         }
 
         /**
@@ -48,7 +48,7 @@ if (!class_exists('STUDIOGRAM\PostTypes')) :
         /**
          * Register a public, block-editor CPT with French labels.
          */
-        public function register_cpt($slug, $plural, $singular, $icon, $masculine = false, $position = null)
+        public function register_cpt($slug, $plural, $singular, $icon, $masculine = false, $position = null, $has_archive = true)
         {
             register_post_type($slug, [
                 'labels' => [
@@ -66,7 +66,7 @@ if (!class_exists('STUDIOGRAM\PostTypes')) :
                     'not_found_in_trash' => "Aucun élément dans la corbeille",
                 ],
                 'public' => true,
-                'has_archive' => true,
+                'has_archive' => $has_archive,
                 'show_in_rest' => true,
                 'menu_icon' => $icon,
                 'menu_position' => $position,
