@@ -70,7 +70,7 @@ if (!class_exists('STUDIOGRAM\PostTypes')) :
                 'show_in_rest' => true,
                 'menu_icon' => $icon,
                 'menu_position' => $position,
-                'supports' => ['title', 'editor', 'thumbnail', 'excerpt', 'revisions'],
+                'supports' => ['title', 'thumbnail', 'excerpt', 'revisions'],
                 'rewrite' => ['slug' => $slug, 'with_front' => false],
             ]);
         }
