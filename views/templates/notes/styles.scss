@@ -1,0 +1,153 @@
+@use "mixins" as *;
+
+.notes {
+    &__head {
+        padding-top: 8rem;
+        padding-bottom: 3rem;
+
+        @include lg {
+            padding-top: 10rem;
+            padding-bottom: 4.5rem;
+        }
+    }
+
+    &__cartouche {
+        max-width: 1150px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+        text-align: center;
+        color: var(--color-dark);
+    }
+
+    &__title {
+        margin-bottom: 1.5rem;
+    }
+
+    &__desc {
+        font-size: 1.875rem;
+        line-height: 1.3;
+    }
+
+    &__body {
+        padding-bottom: 5rem;
+
+        @include lg {
+            padding-bottom: 7rem;
+        }
+    }
+
+    &__sheet {
+        position: relative;
+        max-width: 1230px;
+        margin: 0 auto;
+        background: var(--color-light);
+        padding: clamp(1.5rem, 4vw, 3rem) clamp(1.5rem, 5vw, 4rem);
+    }
+
+    &__list {
+        position: relative;
+        padding-left: 3.5rem;
+
+        &::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 1.5rem;
+            bottom: 1.5rem;
+            width: 28px;
+            background-image: radial-gradient(
+                circle at center,
+                var(--color-medium) 0 14px,
+                transparent 15px
+            );
+            background-size: 28px 84px;
+            background-repeat: repeat-y;
+        }
+    }
+
+    &__row {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+        gap: 2rem;
+        padding: 1.75rem 0;
+        border-top: 1px solid rgb(32 23 46 / 0.12);
+        color: var(--color-dark);
+
+        &:first-child {
+            border-top: 0;
+        }
+    }
+
+    &__rowmain {
+        display: flex;
+        flex-direction: column;
+        gap: 0.65rem;
+    }
+
+    &__tag {
+        line-height: 1;
+    }
+
+    &__rowtitle {
+        font-size: 1.875rem;
+        line-height: 1.25;
+    }
+
+    &__arrow {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        border: 1px solid rgb(32 23 46 / 0.2);
+        color: var(--color-dark);
+        transition:
+            background-color 0.3s ease,
+            color 0.3s ease,
+            transform 0.3s ease;
+
+        svg {
+            width: 1.1rem;
+            height: 1.1rem;
+        }
+    }
+
+    &__row:hover &__arrow {
+        background: var(--color-dark);
+        color: var(--color-light);
+        transform: translateX(3px);
+    }
+
+    &__pagination {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 3rem;
+    }
+
+    &__page {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: var(--color-medium-tertiary);
+        color: var(--color-light);
+        font-size: 1.05rem;
+        line-height: 1;
+        transition: background-color 0.3s ease;
+
+        &.is-active {
+            background: var(--color-dark);
+        }
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    html.js .notes__row {
+        visibility: hidden;
+    }
+}

@@ -8,6 +8,10 @@ const components = [
         load: () => import("../actions/ArchiveFilter"),
     },
     {
+        name: "notes-archive",
+        load: () => import("../actions/NotesArchive"),
+    },
+    {
         name: "spline",
         // Heavy WebGL hero — defer to browser idle so it never blocks LCP/TBT.
         defer: true,

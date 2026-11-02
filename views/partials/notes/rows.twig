@@ -1,0 +1,15 @@
+{% for note in notes %}
+	<a href="{{ note.url }}" class="notes__row" data-taxi-ignore>
+		<span class="notes__rowmain">
+			{% if note.project %}
+				<span class="notes__tag text-s inline-flex items-center gap-2.5 uppercase text-{{ note.project.color }}">
+					<span class="size-2.5 shrink-0 rounded-full bg-{{ note.project.color }}"></span>{{ note.project.label }}
+				</span>
+			{% endif %}
+			<span class="notes__rowtitle">{{ note.title }}</span>
+		</span>
+		<span class="notes__arrow" aria-hidden="true">
+			<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+		</span>
+	</a>
+{% endfor %}

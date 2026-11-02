@@ -21,6 +21,8 @@ if (!class_exists('STUDIOGRAM\Admin')) :
 
             add_filter('manage_post_posts_columns', [$this, 'post_columns']);
             add_action('manage_post_posts_custom_column', [$this, 'post_column_content'], 10, 2);
+            add_filter('manage_notes_posts_columns', [$this, 'post_columns']);
+            add_action('manage_notes_posts_custom_column', [$this, 'post_column_content'], 10, 2);
             add_action('wp_ajax_toggle_post_status', [$this, 'ajax_toggle_post_status']);
             add_action('admin_post_studiogram_duplicate', [$this, 'duplicate_post']);
             add_filter('option_wpseo', [$this, 'disable_yoast_ai']);
@@ -163,7 +165,7 @@ if (!class_exists('STUDIOGRAM\Admin')) :
             check_admin_referer('studiogram_duplicate_' . $post_id);
 
             $post = $post_id ? get_post($post_id) : null;
-            if (!$post || $post->post_type !== 'post' || !current_user_can('edit_posts')) {
+            if (!$post || !in_array($post->post_type, ['post', 'notes'], true) || !current_user_can('edit_posts')) {
                 wp_die('forbidden');
             }
 
@@ -207,7 +209,7 @@ if (!class_exists('STUDIOGRAM\Admin')) :
                 }
             }
 
-            wp_safe_redirect(admin_url('edit.php?post_type=post'));
+            wp_safe_redirect(admin_url('edit.php?post_type=' . $post->post_type));
             exit;
         }
 

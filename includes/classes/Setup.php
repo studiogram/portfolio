@@ -31,6 +31,8 @@ if (!class_exists('STUDIOGRAM\Setup')) :
             add_action('pre_get_posts', [$this, 'filter_secteur']);
             add_action('wp_ajax_load_posts', [$this, 'load_posts']);
             add_action('wp_ajax_nopriv_load_posts', [$this, 'load_posts']);
+            add_action('wp_ajax_load_notes', [$this, 'load_notes']);
+            add_action('wp_ajax_nopriv_load_notes', [$this, 'load_notes']);
         }
 
 
@@ -68,7 +70,76 @@ if (!class_exists('STUDIOGRAM\Setup')) :
             if (is_home() || is_category() || is_post_type_archive('post')) {
                 $context['archive'] = $this->archive_context();
             }
+            if (is_post_type_archive('notes')) {
+                $context['notes_archive'] = $this->notes_archive_context();
+            }
             return $context;
+        }
+
+        private const NOTES_PER_PAGE = 12;
+
+        private function notes_archive_context()
+        {
+            $query = $this->notes_query(1);
+
+            return [
+                'title'       => (function_exists('get_field') ? (string) get_field('notes_title', 'custom-content') : '') ?: '',
+                'description' => (function_exists('get_field') ? (string) get_field('notes_description', 'custom-content') : '') ?: '',
+                'url'         => get_post_type_archive_link('notes'),
+                'notes'       => $this->note_rows($query),
+                'pages'       => (int) $query->max_num_pages,
+                'current'     => 1,
+            ];
+        }
+
+        private function notes_query(int $paged): \WP_Query
+        {
+            return new \WP_Query([
+                'post_type'      => 'notes',
+                'post_status'    => 'publish',
+                'posts_per_page' => self::NOTES_PER_PAGE,
+                'paged'          => max(1, $paged),
+            ]);
+        }
+
+        private function note_rows(\WP_Query $query): array
+        {
+            $rows = [];
+            foreach ($query->posts as $post) {
+                $pid     = function_exists('get_field') ? (int) get_field('related_project', $post->ID) : 0;
+                $project = null;
+                if ($pid && ($p = get_post($pid))) {
+                    $terms = get_the_terms($pid, 'category');
+                    $term  = (!is_wp_error($terms) && $terms) ? $terms[0] : null;
+                    $color = $term && function_exists('get_field')
+                        ? (get_field('color', 'category_' . $term->term_id) ?: 'dark')
+                        : 'dark';
+                    $project = ['label' => get_the_title($p), 'color' => $color];
+                }
+                $rows[] = [
+                    'title'   => get_the_title($post),
+                    'url'     => get_permalink($post),
+                    'project' => $project,
+                ];
+            }
+            return $rows;
+        }
+
+        public function load_notes()
+        {
+            check_ajax_referer('ajax-nonce', 'nonce');
+
+            $paged = isset($_POST['paged']) ? max(1, (int) $_POST['paged']) : 1;
+            $query = $this->notes_query($paged);
+            $html  = \Timber\Timber::compile('views/partials/notes/rows.twig', [
+                'notes' => $this->note_rows($query),
+            ]);
+
+            wp_send_json_success([
+                'html'    => $html,
+                'pages'   => (int) $query->max_num_pages,
+                'current' => $paged,
+            ]);
         }
 
 
