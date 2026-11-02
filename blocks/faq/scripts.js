@@ -80,14 +80,14 @@ class FAQ extends BlockParent {
                 height: isOpen ? 0 : "auto",
                 opacity: isOpen ? 0 : 1,
                 duration: 0.9,
-                ease: "elastic.out(0.6, 0.4)",
+                ease: "power2.inOut",
             });
             li.dataset.open = !isOpen;
             return;
         }
 
         let bg = li.querySelector(".faq__bg");
-        let ease = "elastic.out(0.5, 0.3)";
+        let ease = "power2.inOut";
 
         // Only the width tween is ours here; killing all li tweens would also
         // destroy the from-left scroll animation (xPercent/autoAlpha) on the li.

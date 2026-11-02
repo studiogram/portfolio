@@ -3,6 +3,18 @@
     "title": "Block faq",
     "fields": [
         {
+            "key": "field_6a1fdtitle0",
+            "label": "Titre",
+            "name": "title",
+            "type": "text",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
             "key": "field_6a1fdd3e64883",
             "label": "Introduction",
             "name": "intro",
@@ -119,7 +131,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "studiogram\/faq"
+                "value": "studiogram/faq"
             }
         ]
     ],
@@ -133,5 +145,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1784298669
+    "modified": 1793367921
 }

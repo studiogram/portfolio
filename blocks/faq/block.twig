@@ -3,20 +3,29 @@
 	{% if faq_schema %}
 		<script type="application/ld+json">{{ faq_schema|raw }}</script>
 	{% endif %}
-	<div class="col-span-12 col-start-1 {% if fields.dynamic %} lg:col-start-3 lg:col-span-20 {% else %} lg:col-start-6 lg:col-span-14{% endif %} ">
-		{{ include('views/components/introduction/view.twig', { intro: fields.intro.introduction }) }}
-	</div>
+
+	{% if fields.title %}
+		<h2 class="col-span-12 col-start-1 mb-10 text-center text-xxl lg:col-start-6 lg:col-span-14">{{ fields.title }}</h2>
+	{% endif %}
+
+	{% if fields.intro.introduction %}
+		<div class="col-span-12 col-start-1 {% if fields.dynamic %} lg:col-start-3 lg:col-span-20 {% else %} lg:col-start-6 lg:col-span-14{% endif %} ">
+			{{ include('views/components/introduction/view.twig', { intro: fields.intro.introduction }) }}
+		</div>
+	{% endif %}
 
 	<ul class="col-span-12 col-start-1 {% if fields.dynamic %} lg:col-start-3 lg:col-span-20 {% else %} lg:col-start-6 lg:col-span-14{% endif %} min-w-0 flex flex-col gap-4" {% if fields.dynamic %} data-dynamic="true" {% endif %}>
 		{% for faq in fields.questions %}
-			<li data-scroll="from-left" class="faq | py-8 px-7 rounded-4xl bg-grey text-dark max-w-full">
-				<span class="faq__bg | rounded-4xl bg-grey"></span>
-				<p class="faq__question | text-cta flex gap-4 justify-start items-center px-1">
-					<span class="shrink-0 w-2">{% include 'views/svg/faq.twig' %}</span>
-					{{ faq.question }}
+			<li data-scroll="fade" class="faq | relative max-w-full overflow-hidden rounded-lg bg-light text-dark shadow-[0_4px_16px_0_rgb(32_23_46/0.08)]">
+				<span class="faq__bg | rounded-lg bg-light"></span>
+				<p class="faq__question | text-cta flex cursor-pointer items-center justify-between gap-6 px-6 py-5">
+					<span class="pl-2">{{ faq.question }}</span>
+					<span class="flex size-12 shrink-0 items-center justify-center rounded-full bg-medium text-dark">
+						<span class="block w-3">{% include 'views/svg/faq.twig' %}</span>
+					</span>
 				</p>
-				<div class="faq__answer">
-					{{ faq.text }}
+				<div class="faq__answer | px-8">
+					<div class="wysiwyg text-medium-tertiary pb-6">{{ faq.text }}</div>
 				</div>
 			</li>
 		{% endfor %}

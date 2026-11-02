@@ -55,9 +55,12 @@
             cursor: pointer;
 
             svg {
-                width: 0.65rem;
+                width: 100%;
                 height: auto;
                 flex-shrink: 0;
+            }
+
+            .faq-icon__v {
                 transform-origin: center;
                 transition: transform 0.4s;
             }
@@ -79,8 +82,8 @@
                     transparent
                 );
 
-            .faq__question svg {
-                transform: rotate(90deg);
+            .faq-icon__v {
+                transform: scaleY(0);
             }
         }
     }

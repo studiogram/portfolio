@@ -1,0 +1,27 @@
+{
+    "name": "studiogram/header-contact",
+    "title": "En-tête - Contact",
+    "category": "headers",
+    "icon": "block-default",
+    "keywords": ["en-tête", "header", "contact"],
+    "acf": {
+        "mode": "preview"
+    },
+    "supports": {
+        "mode": false,
+        "color": {
+            "background": false,
+            "heading": false,
+            "link": false,
+            "text": false
+        }
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image": true
+            }
+        }
+    }
+}

@@ -59,6 +59,7 @@ export default class Scrolls {
             ...document.querySelectorAll('[data-scroll="radius"]'),
         ];
         this.rotates = [...document.querySelectorAll('[data-scroll="rotate"]')];
+        this.splits = [...document.querySelectorAll('[data-scroll="split"]')];
         this.blurs = [...document.querySelectorAll('[data-scroll="blur"]')];
         this.reveals = [...document.querySelectorAll('[data-scroll="reveal"]')];
         this.revealCircles = [
@@ -126,20 +127,27 @@ export default class Scrolls {
 
         if (this.perspectives && !reduceMotion) {
             this.perspectives.forEach((el) => {
-                gsap.set(el, { transformPerspective: 900, transformOrigin: "top center" });
-                gsap.fromTo(el, {
-                    rotationX: 0,
-                }, {
-                    rotationX: -20,
-                    ease: "none",
-                    scrollTrigger: {
-                        trigger: el,
-                        start: "center center",
-                        end: "bottom top",
-                        scrub: 1,
-                        invalidateOnRefresh: true,
-                    },
+                gsap.set(el, {
+                    transformPerspective: 900,
+                    transformOrigin: "top center",
                 });
+                gsap.fromTo(
+                    el,
+                    {
+                        rotationX: 0,
+                    },
+                    {
+                        rotationX: -20,
+                        ease: "none",
+                        scrollTrigger: {
+                            trigger: el,
+                            start: "center center",
+                            end: "bottom top",
+                            scrub: 1,
+                            invalidateOnRefresh: true,
+                        },
+                    },
+                );
             });
         }
 
@@ -394,6 +402,36 @@ export default class Scrolls {
                     transformOrigin: "center center",
                     ...this.enterVars(el),
                 });
+            });
+        }
+
+        if (this.splits.length && !reduceMotion) {
+            this.splits.forEach((el) => {
+                const left = el.querySelector('[data-split="left"]');
+                const right = el.querySelector('[data-split="right"]');
+                if (!left || !right) return;
+                const tl = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: el,
+                        start: "top bottom",
+                        end: "top center",
+                        scrub: 1,
+                        invalidateOnRefresh: true,
+                    },
+                });
+                if (window.innerWidth < 992) {
+                    tl.from(
+                        right,
+                        { yPercent: 40, autoAlpha: 0, ease: "none" },
+                        0,
+                    );
+                } else {
+                    tl.from(left, { xPercent: 50, ease: "none" }, 0).from(
+                        right,
+                        { xPercent: -50, ease: "none" },
+                        0,
+                    );
+                }
             });
         }
 

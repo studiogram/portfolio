@@ -56,6 +56,13 @@
                 "operator": "==",
                 "value": "studiogram/header-approche"
             }
+        ],
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "studiogram/header-contact"
+            }
         ]
     ],
     "menu_order": 0,
@@ -67,5 +74,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1793353741
+    "modified": 1793368967
 }
