@@ -2,7 +2,7 @@
 	{% include 'views/partials/block/borders.twig' %}
 	<div class="panel content-grid content-grid--full grider">
 		<div class="panel__head col-start-2 col-end-12 lg:col-end-13">
-			{% if fields.title %}<h2 class="panel__title | text-xxxl">{{ fields.title }}</h2>{% endif %}
+			{% if fields.title %}<h2 class="panel__title | text-xxxl">{{ fields.title|nl2br }}</h2>{% endif %}
 		</div>
 
 		<div class="panel__stack col-start-2 col-end-13 lg:col-start-13 lg:col-end-25">

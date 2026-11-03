@@ -434,7 +434,7 @@ if (!class_exists('STUDIOGRAM\Helpers')) :
 
             if (!$is_header) {
                 $classes[] = 'block';
-                if ($with_spacing && !empty($fields['spacing'])) {
+                if ($with_spacing && !empty($fields['spacing']) && $fields['spacing'] !== 'none') {
                     $classes[] = 'block--space-' . $fields['spacing'];
                 }
             }

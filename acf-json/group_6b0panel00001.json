@@ -7,17 +7,17 @@
             "label": "Titre",
             "name": "title",
             "aria-label": "",
-            "type": "text",
+            "type": "textarea",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": { "width": "50", "class": "", "id": "" },
             "default_value": "",
             "maxlength": "",
+            "rows": 2,
+            "new_lines": "",
             "allow_in_bindings": 0,
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
+            "placeholder": ""
         },
         {
             "key": "field_6b0pnnumb001",
@@ -105,5 +105,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1793181600
+    "modified": 1793709688
 }
