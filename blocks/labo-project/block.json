@@ -1,0 +1,21 @@
+{
+    "name": "studiogram/labo-project",
+    "title": "Labo projet",
+    "category": "studiogram",
+    "icon": "screenoptions",
+    "keywords": ["labo", "projet", "experimentation"],
+    "style": "file:../../dist/blocks/labo-project/styles.min.css",
+    "script": "file:../../dist/blocks/labo-project/scripts.min.js",
+    "acf": {
+        "mode": "preview"
+    },
+    "supports": {
+        "mode": false,
+        "color": {
+            "background": false,
+            "heading": false,
+            "link": false,
+            "text": false
+        }
+    }
+}

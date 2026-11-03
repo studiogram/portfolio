@@ -1,0 +1,47 @@
+<section {{ block_id }} data-block-type="labo-project" data-block-id="{{ block.id }}" class="{{ block_classes(fields) }} labo-project{{ fields.flip ? ' labo-project--flip' }}">
+	{% include 'views/partials/block/borders.twig' %}
+
+	<div class="labo-project__grid grider">
+		<div class="labo-project__head | col-span-12 col-start-1 lg:col-start-2 lg:col-end-24">
+			{% if fields.title %}
+				<h2 class="labo-project__title">
+					<span class="labo-project__dot bg-{{ fields.dot ?: 'lightblue' }}"></span>{{ fields.title }}
+				</h2>
+			{% endif %}
+		</div>
+
+		<div class="labo-project__card | col-span-12 col-start-1 {{ fields.flip ? 'lg:col-start-17 lg:col-end-24' : 'lg:col-start-2 lg:col-end-9' }}">
+			{% if fields.description %}<div class="wysiwyg labo-project__desc">{{ fields.description }}</div>{% endif %}
+
+			{% if fields.btn.text %}{{ include('views/components/button/view.twig', { button: fields.btn }) }}{% endif %}
+
+			{% if fields.tags %}
+				<ul class="labo-project__tags text-s">
+					{% for t in fields.tags %}{% if t.label %}<li class="labo-project__tag">{{ t.label }}</li>{% endif %}{% endfor %}
+				</ul>
+			{% endif %}
+
+			{% if fields.client_project %}
+				<a href="{{ function('get_permalink', fields.client_project) }}" class="labo-project__case" data-taxi-ignore>
+					<span class="labo-project__case-arrow" aria-hidden="true">
+						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
+					</span>
+					<span class="labo-project__case-label">{{ fields.client_label ?: 'Décliné pour un cas client :' }}</span>
+					<span class="labo-project__case-go" aria-hidden="true">
+						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+					</span>
+				</a>
+			{% endif %}
+		</div>
+
+		<div class="labo-project__cluster | col-span-12 col-start-1 {{ fields.flip ? 'lg:col-start-2 lg:col-end-16' : 'lg:col-start-10 lg:col-end-24' }}">
+			{% for item in fields.images %}
+				{% if item.image %}
+					<figure class="labo-project__tile" data-labo-tile>
+						<img class="lazyload size-full object-cover" {{ responsive_image(item.image) }} alt=""/>
+					</figure>
+				{% endif %}
+			{% endfor %}
+		</div>
+	</div>
+</section>

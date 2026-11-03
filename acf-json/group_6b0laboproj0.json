@@ -1,0 +1,146 @@
+{
+    "key": "group_6b0laboproj0",
+    "title": "Block labo projet",
+    "fields": [
+        {
+            "key": "field_6b0lpdot000",
+            "label": "Couleur pastille",
+            "name": "dot",
+            "type": "color_palette",
+            "required": 0,
+            "wrapper": { "width": "50", "class": "", "id": "" },
+            "allowed_colors": ["dark", "red", "green", "lightblue", "pink", "blue"],
+            "default_value": "lightblue",
+            "allow_null": 0,
+            "allow_in_bindings": 0
+        },
+        {
+            "key": "field_6b0lpflip00",
+            "label": "Inverser (images à gauche)",
+            "name": "flip",
+            "type": "true_false",
+            "required": 0,
+            "wrapper": { "width": "50", "class": "", "id": "" },
+            "ui": 1,
+            "default_value": 0
+        },
+        {
+            "key": "field_6b0lptitle0",
+            "label": "Titre",
+            "name": "title",
+            "type": "text",
+            "required": 0,
+            "wrapper": { "width": "", "class": "", "id": "" },
+            "default_value": ""
+        },
+        {
+            "key": "field_6b0lpdesc00",
+            "label": "Description",
+            "name": "description",
+            "type": "wysiwyg",
+            "required": 0,
+            "wrapper": { "width": "", "class": "", "id": "" },
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 0
+        },
+        {
+            "key": "field_6b0lptags00",
+            "label": "Technologies",
+            "name": "tags",
+            "type": "repeater",
+            "required": 0,
+            "wrapper": { "width": "", "class": "", "id": "" },
+            "layout": "table",
+            "button_label": "Ajouter",
+            "sub_fields": [
+                {
+                    "key": "field_6b0lptaglbl",
+                    "label": "Label",
+                    "name": "label",
+                    "type": "text",
+                    "parent_repeater": "field_6b0lptags00"
+                }
+            ]
+        },
+        {
+            "key": "field_6b0lpbtn000",
+            "label": "Bouton",
+            "name": "",
+            "type": "clone",
+            "required": 0,
+            "wrapper": { "width": "", "class": "", "id": "" },
+            "clone": ["group_67ed2f37472ae"],
+            "display": "seamless",
+            "layout": "block",
+            "prefix_label": 0,
+            "prefix_name": 0
+        },
+        {
+            "key": "field_6b0lpccproj",
+            "label": "Décliné pour un cas client (projet)",
+            "name": "client_project",
+            "type": "post_object",
+            "instructions": "Optionnel — affiche la pastille « Décliné pour un cas client » liée à ce projet.",
+            "required": 0,
+            "wrapper": { "width": "", "class": "", "id": "" },
+            "post_type": ["post"],
+            "return_format": "id",
+            "multiple": 0,
+            "allow_null": 1,
+            "ui": 1
+        },
+        {
+            "key": "field_6b0lpcclbl0",
+            "label": "Texte du cas client",
+            "name": "client_label",
+            "type": "text",
+            "required": 0,
+            "wrapper": { "width": "", "class": "", "id": "" },
+            "default_value": "Décliné pour un cas client :",
+            "conditional_logic": [
+                [
+                    { "field": "field_6b0lpccproj", "operator": "!=empty" }
+                ]
+            ]
+        },
+        {
+            "key": "field_6b0lpimgs00",
+            "label": "Images",
+            "name": "images",
+            "type": "repeater",
+            "required": 0,
+            "wrapper": { "width": "", "class": "", "id": "" },
+            "layout": "block",
+            "button_label": "Ajouter une image",
+            "sub_fields": [
+                {
+                    "key": "field_6b0lpimg001",
+                    "label": "Image",
+                    "name": "image",
+                    "type": "image",
+                    "return_format": "id",
+                    "preview_size": "medium",
+                    "library": "all",
+                    "parent_repeater": "field_6b0lpimgs00"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            { "param": "block", "operator": "==", "value": "studiogram/labo-project" }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1793704012
+}
