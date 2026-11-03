@@ -20,7 +20,56 @@ export function initSmooth() {
     gsap.ticker.add((time) => lenis.raf(time * 1000));
     gsap.ticker.lagSmoothing(0);
 
+    initHoverSync(lenis);
+
     return lenis;
+}
+
+function initHoverSync(lenis) {
+    let x = -1;
+    let y = -1;
+    let raf = 0;
+    let prev = [];
+
+    const apply = () => {
+        raf = 0;
+        if (x < 0) return;
+        let el = document.elementFromPoint(x, y);
+        const next = [];
+        while (el && el !== document.documentElement) {
+            next.push(el);
+            el = el.parentElement;
+        }
+        const set = new Set(next);
+        prev.forEach((e) => {
+            if (!set.has(e)) e.classList.remove("is-hover");
+        });
+        next.forEach((e) => e.classList.add("is-hover"));
+        prev = next;
+    };
+
+    const schedule = () => {
+        if (!raf) raf = requestAnimationFrame(apply);
+    };
+
+    const clear = () => {
+        x = -1;
+        y = -1;
+        prev.forEach((e) => e.classList.remove("is-hover"));
+        prev = [];
+    };
+
+    window.addEventListener(
+        "pointermove",
+        (e) => {
+            x = e.clientX;
+            y = e.clientY;
+            schedule();
+        },
+        { passive: true },
+    );
+    document.addEventListener("pointerleave", clear);
+    lenis.on("scroll", schedule);
 }
 
 export function getSmooth() {

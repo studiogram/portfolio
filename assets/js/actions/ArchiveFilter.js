@@ -101,7 +101,21 @@ export default class ArchiveFilter {
                 ease: "power2.in",
             })
             .add(() => {
+                const from = this.heroTitle.offsetHeight;
                 this.heroInner.textContent = title;
+                const to = this.heroTitle.offsetHeight;
+                if (from !== to) {
+                    gsap.fromTo(
+                        this.heroTitle,
+                        { height: from },
+                        {
+                            height: to,
+                            duration: 0.45,
+                            ease: "power3.out",
+                            clearProps: "height",
+                        },
+                    );
+                }
             })
             .set(this.heroInner, { yPercent: 100 })
             .to(this.heroInner, {
@@ -118,14 +132,11 @@ export default class ArchiveFilter {
     hideCards() {
         const items = this.cards();
         if (!items.length || reducedMotion()) return Promise.resolve();
-        return new Promise((resolve) => {
-            gsap.to(items, {
-                yPercent: 100,
-                duration: 0.4,
-                ease: "power2.in",
-                stagger: 0.06,
-                onComplete: resolve,
-            });
+        return gsap.to(items, {
+            yPercent: 100,
+            duration: 0.35,
+            ease: "power2.in",
+            stagger: 0.05,
         });
     }
 
@@ -133,18 +144,18 @@ export default class ArchiveFilter {
         const items = this.cards();
         if (!items.length) return;
         if (reducedMotion()) {
-            gsap.set(items, { yPercent: 0, visibility: "visible", clearProps: "transform" });
+            gsap.set(items, { clearProps: "all", visibility: "visible" });
             return;
         }
+        gsap.set(items, { visibility: "visible" });
         gsap.fromTo(
             items,
-            { yPercent: 100, visibility: "visible" },
+            { yPercent: 100 },
             {
                 yPercent: 0,
-                duration: 0.6,
+                duration: 0.7,
                 ease: "power3.out",
-                stagger: 0.08,
-                clearProps: "transform",
+                stagger: 0.1,
             },
         );
     }

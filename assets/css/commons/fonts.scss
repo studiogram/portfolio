@@ -51,14 +51,22 @@
 
     h2,
     .text-xxl {
-        font-size: rem(56) !important;
-        line-height: 1.2 !important;
+        font-size: 2rem !important;
+        line-height: 1.1 !important;
+
+        @include xl {
+            font-size: 3rem !important;
+        }
     }
 
     h3,
     .text-xl {
-        font-size: rem(30) !important;
+        font-size: 1.5rem !important;
         line-height: 1 !important;
+
+        @include xl {
+            font-size: 1.75rem !important;
+        }
     }
 
     h4,

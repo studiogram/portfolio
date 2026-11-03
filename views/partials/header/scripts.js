@@ -37,6 +37,8 @@ export default class Header {
             });
         };
         addEventListener("scroll", this.onContrast, { passive: true });
+        this.onNavigated = () => this.updateContrast();
+        document.addEventListener("app:navigated", this.onNavigated);
         this.updateContrast();
     }
 
@@ -103,6 +105,7 @@ export default class Header {
         removeEventListener("keydown", this.onKey);
         removeEventListener("resize", this.onResize);
         removeEventListener("scroll", this.onContrast);
+        document.removeEventListener("app:navigated", this.onNavigated);
         if (this.raf) cancelAnimationFrame(this.raf);
     }
 }
