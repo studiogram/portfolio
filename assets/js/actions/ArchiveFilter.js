@@ -30,24 +30,33 @@ export default class ArchiveFilter {
     initParallax() {
         this.killParallax();
         if (reducedMotion()) return;
-        this.parallax = [...this.grid.querySelectorAll("[data-parallax]")].map(
-            (el) =>
-                gsap.fromTo(
-                    el,
-                    { yPercent: 20 },
-                    {
-                        yPercent: 0,
-                        ease: "none",
-                        scrollTrigger: {
-                            trigger: el.closest("figure") || el,
-                            start: "top bottom",
-                            end: "center 35%",
-                            scrub: true,
-                            invalidateOnRefresh: true,
-                        },
+        const layers = [...this.grid.querySelectorAll("[data-parallax]")];
+        if (!layers.length) return;
+        gsap.set(layers, { autoAlpha: 0 });
+        this.parallax = layers.map((el) =>
+            gsap.fromTo(
+                el,
+                { yPercent: 20 },
+                {
+                    yPercent: 0,
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: el.closest(".archive__item") || el,
+                        start: "top bottom",
+                        end: "center 35%",
+                        scrub: true,
+                        invalidateOnRefresh: true,
                     },
-                ),
+                },
+            ),
         );
+        ScrollTrigger.refresh();
+        gsap.to(layers, {
+            autoAlpha: 1,
+            duration: 0.4,
+            delay: 0.15,
+            ease: "power1.out",
+        });
     }
 
     killParallax() {
@@ -70,7 +79,6 @@ export default class ArchiveFilter {
             duration: 0.8,
             ease: "power3.out",
             stagger: 0.12,
-            delay: 0.55,
         });
     }
 
@@ -194,7 +202,10 @@ export default class ArchiveFilter {
                 duration: 0.7,
                 ease: "power3.out",
                 stagger: 0.1,
-                onComplete: () => ScrollTrigger.refresh(),
+                onComplete: () => {
+                    gsap.set(items, { clearProps: "transform" });
+                    ScrollTrigger.refresh();
+                },
             },
         );
     }
