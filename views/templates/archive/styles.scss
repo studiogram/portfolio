@@ -187,6 +187,15 @@ $cart-fg: (
 }
 
 .project-fold {
+    &__layer {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        pointer-events: none;
+    }
+
     &::after {
         content: "";
         position: absolute;

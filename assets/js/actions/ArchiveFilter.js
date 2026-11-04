@@ -1,5 +1,7 @@
-import { gsap } from "gsap/all";
+import { gsap, ScrollTrigger } from "gsap/all";
 import { reducedMotion } from "../utils/motion";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default class ArchiveFilter {
     constructor(element) {
@@ -22,6 +24,38 @@ export default class ArchiveFilter {
         this.revealTitle();
         this.revealCards();
         this.revealPills();
+        this.initParallax();
+    }
+
+    initParallax() {
+        this.killParallax();
+        if (reducedMotion()) return;
+        this.parallax = [...this.grid.querySelectorAll("[data-parallax]")].map(
+            (el) =>
+                gsap.fromTo(
+                    el,
+                    { yPercent: 20 },
+                    {
+                        yPercent: 0,
+                        ease: "none",
+                        scrollTrigger: {
+                            trigger: el.closest("figure") || el,
+                            start: "top bottom",
+                            end: "center center",
+                            scrub: true,
+                            invalidateOnRefresh: true,
+                        },
+                    },
+                ),
+        );
+    }
+
+    killParallax() {
+        this.parallax?.forEach((t) => {
+            t.scrollTrigger?.kill();
+            t.kill();
+        });
+        this.parallax = null;
     }
 
     revealPills() {
@@ -84,7 +118,11 @@ export default class ArchiveFilter {
         }
         gsap.set(this.heroInner, { yPercent: 100 });
         if (this.heroTitle) this.heroTitle.style.visibility = "visible";
-        gsap.to(this.heroInner, { yPercent: 0, duration: 0.6, ease: "power3.out" });
+        gsap.to(this.heroInner, {
+            yPercent: 0,
+            duration: 0.6,
+            ease: "power3.out",
+        });
     }
 
     slideTitle(title) {
@@ -156,6 +194,7 @@ export default class ArchiveFilter {
                 duration: 0.7,
                 ease: "power3.out",
                 stagger: 0.1,
+                onComplete: () => ScrollTrigger.refresh(),
             },
         );
     }
@@ -172,6 +211,7 @@ export default class ArchiveFilter {
         if (json?.success) {
             this.grid.innerHTML = json.data.html;
             this.revealCards();
+            this.initParallax();
         }
 
         if (this.loader) this.loader.hidden = true;
@@ -199,5 +239,6 @@ export default class ArchiveFilter {
     destroy() {
         this.cats.forEach((a) => a.removeEventListener("click", this.onClick));
         this.select?.removeEventListener("change", this.onSelect);
+        this.killParallax();
     }
 }
