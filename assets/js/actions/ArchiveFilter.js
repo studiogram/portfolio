@@ -41,7 +41,7 @@ export default class ArchiveFilter {
                         scrollTrigger: {
                             trigger: el.closest("figure") || el,
                             start: "top bottom",
-                            end: "center center",
+                            end: "center 35%",
                             scrub: true,
                             invalidateOnRefresh: true,
                         },
