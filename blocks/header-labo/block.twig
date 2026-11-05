@@ -1,0 +1,12 @@
+<section {{ block_id }} data-block-type="header-labo" data-block-id="{{ block.id }}" class="{{ block_classes(fields, true) }} relative overflow-visible! px-0!" data-header-skip>
+	{% include 'views/partials/block/borders.twig' %}
+	<div class="header-labo bg-medium relative min-h-[65dvh]">
+		<div class="absolute top-1/2 left-0 w-full -translate-y-1/2">
+			{{ include('views/svg/labo-header.twig', { class: 'header-labo__blobs block h-auto w-full' }) }}
+		</div>
+		<div class="header-labo__content absolute inset-0 flex flex-col items-center justify-center gap-6 py-32 text-center">
+			{% if fields.title %}<h1 data-effect="headline">{{ fields.title }}</h1>{% endif %}
+			{% if fields.intro %}<p class="max-w-[34ch] text-xl">{{ fields.intro }}</p>{% endif %}
+		</div>
+	</div>
+</section>

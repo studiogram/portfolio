@@ -1,0 +1,29 @@
+{
+    "name": "studiogram/header-labo",
+    "title": "En-tête - Labo",
+    "category": "headers",
+    "icon": "block-default",
+    "keywords": ["en-tête", "header", "labo"],
+    "style": "file:../../dist/blocks/header-labo/styles.min.css",
+    "script": "file:../../dist/blocks/header-labo/scripts.min.js",
+    "acf": {
+        "mode": "preview"
+    },
+    "supports": {
+        "mode": false,
+        "color": {
+            "background": false,
+            "heading": false,
+            "link": false,
+            "text": false
+        }
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image": true
+            }
+        }
+    }
+}
