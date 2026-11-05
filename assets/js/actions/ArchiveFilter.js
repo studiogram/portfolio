@@ -25,6 +25,32 @@ export default class ArchiveFilter {
         this.revealCards();
         this.revealPills();
         this.initParallax();
+        this.tiltHeader();
+    }
+
+    tiltHeader() {
+        if (reducedMotion()) return;
+        const header = this.el.querySelector(".archive-hero");
+        if (!header) return;
+        gsap.set(header, {
+            transformPerspective: 900,
+            transformOrigin: "top center",
+        });
+        this.tilt = gsap.fromTo(
+            header,
+            { rotationX: 0 },
+            {
+                rotationX: -20,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: header,
+                    start: "top top",
+                    end: "bottom top",
+                    scrub: 1,
+                    invalidateOnRefresh: true,
+                },
+            },
+        );
     }
 
     initParallax() {
@@ -251,5 +277,7 @@ export default class ArchiveFilter {
         this.cats.forEach((a) => a.removeEventListener("click", this.onClick));
         this.select?.removeEventListener("change", this.onSelect);
         this.killParallax();
+        this.tilt?.scrollTrigger?.kill();
+        this.tilt?.kill();
     }
 }
