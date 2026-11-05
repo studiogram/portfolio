@@ -65,6 +65,14 @@
     }
 }
 
+.col-content {
+    grid-column: 2 / span 10;
+
+    @include lg {
+        grid-column: 2 / span 22;
+    }
+}
+
 .content-grid {
     display: grid;
     grid-column: 2 / span 10;
