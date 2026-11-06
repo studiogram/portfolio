@@ -230,17 +230,25 @@ export default class Dice {
 
         if (!url) { v.remove(); this.el.classList.remove("is-rolling"); this.lock(false); this.busy = false; return; }
         if (window.taxi?.navigateTo) {
-            try { await window.taxi.navigateTo(url); } catch { location.href = url; return; }
+            try { await window.taxi.navigateTo(url, "dice"); } catch { location.href = url; return; }
         } else {
             location.href = url;
             return;
         }
 
         this.lock(false);
+        let hash = "";
+        try { hash = new URL(url, location.href).hash.slice(1); } catch { hash = ""; }
         const target = this.pastilleTarget(url);
         if (target) {
-            if (window.lenis?.scrollTo) window.lenis.scrollTo(target, { immediate: true });
-            else target.scrollIntoView({ block: "center" });
+            if (hash) {
+                if (window.lenis?.scrollTo) window.lenis.scrollTo(target, { immediate: true });
+                else target.scrollIntoView({ block: "center" });
+            } else if (window.lenis?.scrollTo) {
+                window.lenis.scrollTo(0, { immediate: true });
+            } else {
+                scrollTo(0, 0);
+            }
             await new Promise((ok) => requestAnimationFrame(ok));
             const b = target.getBoundingClientRect();
             const tx = b.left + b.width / 2, ty = b.top + b.height / 2, tr = Math.max(4, b.width / 2);

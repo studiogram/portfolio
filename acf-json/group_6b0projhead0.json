@@ -1,0 +1,105 @@
+{
+    "key": "group_6b0projhead0",
+    "title": "Block header-post",
+    "fields": [
+        {
+            "key": "field_6b0phimg000",
+            "label": "Image (vignette)",
+            "name": "header_image",
+            "type": "image",
+            "instructions": "Image affichée à droite de l'en-tête.",
+            "required": 0,
+            "wrapper": { "width": "50", "class": "", "id": "" },
+            "return_format": "id",
+            "library": "all",
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_6b0phlogo00",
+            "label": "Logo client",
+            "name": "client_logo",
+            "type": "image",
+            "instructions": "Logo affiché sur la vignette.",
+            "required": 0,
+            "wrapper": { "width": "50", "class": "", "id": "" },
+            "return_format": "id",
+            "library": "all",
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_6b0phtitle0",
+            "label": "Titre",
+            "name": "title",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "wrapper": { "width": "", "class": "", "id": "" },
+            "rows": 2,
+            "new_lines": ""
+        },
+        {
+            "key": "field_6b0phintro0",
+            "label": "Introduction",
+            "name": "intro",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "wrapper": { "width": "", "class": "", "id": "" },
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 0,
+            "delay": 0
+        },
+        {
+            "key": "field_6b0phper000",
+            "label": "Période",
+            "name": "periode",
+            "type": "text",
+            "required": 0,
+            "wrapper": { "width": "25", "class": "", "id": "" }
+        },
+        {
+            "key": "field_6b0phlieu00",
+            "label": "Lieu",
+            "name": "lieu",
+            "type": "text",
+            "required": 0,
+            "wrapper": { "width": "25", "class": "", "id": "" }
+        },
+        {
+            "key": "field_6b0phtech00",
+            "label": "Technologies",
+            "name": "technologies",
+            "type": "text",
+            "required": 0,
+            "wrapper": { "width": "25", "class": "", "id": "" }
+        },
+        {
+            "key": "field_6b0phinter0",
+            "label": "Intervention",
+            "name": "intervention",
+            "type": "text",
+            "required": 0,
+            "wrapper": { "width": "25", "class": "", "id": "" }
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "studiogram/header-post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1793895200
+}

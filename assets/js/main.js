@@ -13,6 +13,7 @@ import { syncComponents } from "./components/ComponentManager";
 import DefaultRenderer from "./renderers/DefaultRenderer";
 import DefaultTransition from "./transitions/DefaultTransition";
 import ProjectTransition from "./transitions/ProjectTransition";
+import DiceTransition from "./transitions/DiceTransition";
 import sendView from "./actions/TrackView";
 
 document.documentElement.classList.add("is-loading");
@@ -75,6 +76,7 @@ class Main {
             transitions: {
                 default: DefaultTransition,
                 project: ProjectTransition,
+                dice: DiceTransition,
             },
             // Block view scripts are handled by BlockLoader/ensureBlocks on
             // navigation, not here — WordPress only enqueues a block's script on

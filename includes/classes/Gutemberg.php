@@ -154,7 +154,7 @@ if (!class_exists('STUDIOGRAM\Gutemberg')) :
             /* Pre-insert a header block on new pages/posts. */
             $default_headers = [
                 'page' => 'studiogram/header',
-                'post' => 'studiogram/header',
+                'post' => 'studiogram/header-post',
             ];
 
             foreach ($default_headers as $post_type => $header_block) {

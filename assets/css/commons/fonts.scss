@@ -107,6 +107,16 @@
         line-height: 1.2 !important;
     }
 
+    .text-tag {
+        font-size: rem(14) !important;
+        line-height: 1.2 !important;
+        text-transform: uppercase;
+
+        @include lg {
+            font-size: rem(16) !important;
+        }
+    }
+
     .btn,
     .a,
     .text-cta,

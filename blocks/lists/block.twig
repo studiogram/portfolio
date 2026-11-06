@@ -5,21 +5,11 @@
 		{% if fields.title %}<h2 class="text-xxl max-w-[16ch]">{{ fields.title }}</h2>{% endif %}
 
 		{% if fields.columns %}
-			<div class="grid w-full grid-cols-2 gap-x-8 gap-y-10 text-left sm:grid-cols-3 lg:grid-cols-5 lg:gap-x-6">
-				{% for col in fields.columns %}
-					<div class="flex flex-col gap-4">
-						{% if col.heading %}<h3 class="text-xxs text-medium-tertiary uppercase">{{ col.heading }}</h3>{% endif %}
-						<hr class="border-dark/15 border-t"/>
-						{% if col.items %}
-							<ul class="flex flex-col gap-3">
-								{% for item in col.items|split('\n') %}
-									{% if item|trim %}<li class="text-xxs">{{ item|trim }}</li>{% endif %}
-								{% endfor %}
-							</ul>
-						{% endif %}
-					</div>
-				{% endfor %}
-			</div>
+			{% set cols = [] %}
+			{% for col in fields.columns %}
+				{% set cols = cols|merge([{ heading: col.heading, lines: col.items|split('\n') }]) %}
+			{% endfor %}
+			{% include 'views/components/listing/view.twig' with { columns: cols, class: 'listing--rule w-full grid-cols-2 text-left sm:grid-cols-3 lg:grid-cols-5' } %}
 		{% endif %}
 
 		{% if fields.footer %}<p class="max-w-[40ch] text-xl">{{ fields.footer }}</p>{% endif %}

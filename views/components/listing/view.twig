@@ -1,0 +1,12 @@
+{% if columns %}
+	<dl class="listing {{ class }} gap-y-4">
+		{% for col in columns %}
+			<div class="listing__col">
+				<dt class="listing__head text-tag text-medium-tertiary border-dark/15 border-b pb-4 uppercase">{{ col.heading }}</dt>
+				<dd class="listing__body text-s flex flex-col gap-2">
+					{% for line in col.lines %}{% if line|trim %}<span>{{ line|trim }}</span>{% endif %}{% endfor %}
+				</dd>
+			</div>
+		{% endfor %}
+	</dl>
+{% endif %}

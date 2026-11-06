@@ -3,7 +3,7 @@
 {% block content %}
 	<div data-component="archive-filter" data-template="archive" data-default-title="{{ archive.hero_title }}">
 		<header class="archive-hero relative">
-			<div class="archive-hero__cartouche text-light relative flex flex-col gap-6 overflow-hidden rounded-b-m px-6 pt-36 pb-14 lg:flex-row lg:items-center lg:justify-between lg:gap-16 lg:px-20 lg:pt-30 lg:pb-12" data-header-dark{% if archive.cartouche.color %} data-color="{{ archive.cartouche.color }}"{% endif %}>
+			<div class="archive-hero__cartouche text-light relative flex flex-col gap-6 overflow-hidden rounded-b-m px-6 pb-14 lg:flex-row lg:items-center lg:justify-between lg:gap-16 lg:px-20 lg:pb-12" data-header-dark{% if archive.cartouche.color %} data-color="{{ archive.cartouche.color }}"{% endif %}>
 				<h1 data-effect="none" class="archive-hero__title" data-hero-title>
 					<span class="archive-hero__titleinner lg:pl-11!" data-hero-inner>{{ archive.cartouche.title }}</span>
 				</h1>

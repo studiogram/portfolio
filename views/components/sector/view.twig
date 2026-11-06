@@ -1,0 +1,5 @@
+{% if sector.name %}
+	<span class="sector text-tag inline-flex items-center gap-2.5 text-{{ sector.color }}-dark">
+		<span{% if sector.pastille %} data-pastille{% endif %} class="size-3.5 shrink-0 rounded-full bg-{{ sector.color }}"></span>{{ sector.name }}
+	</span>
+{% endif %}

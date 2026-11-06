@@ -64,13 +64,6 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "studiogram/header-post"
-            }
-        ],
-        [
-            {
-                "param": "block",
-                "operator": "==",
                 "value": "studiogram/header-approche"
             }
         ]
@@ -85,5 +78,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1793353741
+    "modified": 1793895419
 }

@@ -4,6 +4,7 @@ import { gsap, ScrollTrigger } from "gsap/all";
 export default class ProjectTransition extends Transition {
     onLeave({ trigger, done }) {
         document.documentElement.classList.add("is-loading");
+        document.querySelector(".header")?.classList.remove("is-on-dark");
         this.wrapper = document.querySelector("[data-taxi]");
         const cover = document.querySelector("[data-cover]");
         const fold = trigger

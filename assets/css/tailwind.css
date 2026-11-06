@@ -2,7 +2,7 @@
 @source "../../views/**/*.twig";
 @source "../../blocks/**/*.twig";
 @source inline(
-    "{hover:,group-hover:,}{bg,text,stroke,fill,border}-{light,dark,soft,red,green,lightblue,pink,blue,medium,medium-secondary,medium-tertiary}{!,}"
+    "{hover:,group-hover:,}{bg,text,stroke,fill,border}-{light,dark,soft,red,red-dark,green,green-dark,lightblue,pink,pink-dark,blue,blue-dark,medium,medium-secondary,medium-tertiary}{!,}"
 );
 
 @theme {
@@ -18,10 +18,14 @@
     --color-soft: #90869f;
     --color-soft-light: #d8cfe6;
     --color-red: #dc6455;
+    --color-red-dark: #a7524d;
     --color-green: #52b584;
+    --color-green-dark: #037b51;
     --color-lightblue: #95bbe6;
     --color-pink: #e18ba6;
+    --color-pink-dark: #a94d6b;
     --color-blue: #5681db;
+    --color-blue-dark: #2e6abf;
     --color-medium: #f1efeb;
     --color-medium-secondary: #ece7e2;
     --color-medium-tertiary: #887e75;

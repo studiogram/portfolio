@@ -1,6 +1,40 @@
-<section {{ block_id }} data-block-type="text" data-block-id="{{ block.id }}" class="{{ block_classes(fields, true) }}">
-	<div class="wysiwyg content-grid content-grid--{{fields.space.large}}">
-		{% if pastille %}<span data-pastille class="inline-block w-5 h-5 rounded-full bg-{{ pastille }}"></span>{% endif %}
-		{{ fields.text }}
+<section {{ block_id }} data-block-type="header-post" data-block-id="{{ block.id }}" class="{{ block_classes(fields, true) }} relative px-0!" data-header-skip>
+	{% include 'views/partials/block/borders.twig' %}
+	<div class="grider pb-12 lg:pb-16">
+		<div class="col-content flex flex-col gap-12 lg:gap-16">
+
+			<div class="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-x-16 lg:gap-y-8">
+				<div class="order-1 flex flex-col gap-6 lg:col-start-1 lg:row-start-1 lg:justify-center">
+					{% include 'views/components/sector/view.twig' with { sector: { name: sector_name, color: sector_color, pastille: true } } %}
+					<h1 class="text-xxxl" data-effect="headline">{{ fields.title ?: post.title }}</h1>
+				</div>
+		
+				<figure class="bg-medium-secondary relative order-2 aspect-4/5 rounded-3xl lg:order-0 lg:col-start-2 lg:row-span-2 lg:aspect-auto lg:self-stretch">
+					{% if fields.header_image %}
+						<img class="absolute inset-0 size-full rounded-3xl object-cover" {{ priority_image(fields.header_image) }} alt=""/>
+					{% endif %}
+					
+					{% if fields.client_logo %}
+						<span class="header-post__notch">
+							<img class="header-post__logo lazyload" {{ responsive_image(fields.client_logo) }} alt=""/>
+						</span>
+					{% endif %}
+				</figure>
+
+				{% if fields.intro %}
+					<div class="wysiwyg order-3 max-w-[46ch] text-xl lg:col-start-1 lg:row-start-2">{{ fields.intro }}</div>
+				{% endif %}
+			</div>
+
+			{% set metas = [] %}
+			{% if fields.periode %}{% set metas = metas|merge([{ heading: 'Période', lines: [fields.periode] }]) %}{% endif %}
+			{% if fields.lieu %}{% set metas = metas|merge([{ heading: 'Lieu', lines: [fields.lieu] }]) %}{% endif %}
+			{% if fields.technologies %}{% set metas = metas|merge([{ heading: 'Technologies', lines: [fields.technologies] }]) %}{% endif %}
+			{% if fields.intervention %}{% set metas = metas|merge([{ heading: 'Intervention', lines: [fields.intervention] }]) %}{% endif %}
+			{% if metas %}
+				{% include 'views/components/listing/view.twig' with { columns: metas, class: 'grid-cols-2 lg:grid-cols-4' } %}
+			{% endif %}
+
+		</div>
 	</div>
 </section>
