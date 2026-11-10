@@ -1,0 +1,10 @@
+{
+	"key": "group_6b0chapter0",
+	"title": "Block chapitre",
+	"fields": [
+		{ "key": "field_6b0chapeyb0", "label": "Surtitre", "name": "eyebrow", "type": "text", "required": 0, "wrapper": { "width": "", "class": "", "id": "" } }
+	],
+	"location": [ [ { "param": "block", "operator": "==", "value": "studiogram/chapter" } ] ],
+	"menu_order": 0, "position": "normal", "style": "default", "label_placement": "top", "instruction_placement": "label",
+	"hide_on_screen": "", "active": true, "description": "", "show_in_rest": 0, "modified": 1794303353
+}

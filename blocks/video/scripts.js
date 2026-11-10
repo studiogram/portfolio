@@ -4,14 +4,8 @@ import BlockEvents from "../../assets/js/blocks/BlockEvents";
 import BlockParent from "../../assets/js/blocks/BlockParent";
 
 const blockName = "video";
-const controls = [
-    "play-large",
-    "play",
-    "progress",
-    "current-time",
-    "mute",
-    "volume",
-];
+const controls = ["play-large"];
+const FADE = 0.6;
 
 class Video extends BlockParent {
     constructor(element) {
@@ -30,8 +24,26 @@ class Video extends BlockParent {
 
         this.player = new Plyr(this.videoPlayer, {
             controls,
-            loop: { active: false },
+            clickToPlay: true,
+            muted: true,
+            loop: { active: true },
         });
+
+        this.player.on("ready", () => {
+            this.player.muted = true;
+            if (this.reduced) {
+                this.player.pause();
+            }
+        });
+
+        if (!this.reduced) {
+            this.player.on("timeupdate", () => {
+                const d = this.player.duration;
+                if (!d) return;
+                const t = this.player.currentTime;
+                this.videoPlayer.classList.toggle("is-faded", d - t <= FADE);
+            });
+        }
     }
 
     update() {

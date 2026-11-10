@@ -3,7 +3,7 @@
     "title": "Image & Texte",
     "category": "studiogram",
     "icon": "align-pull-left",
-    "keywords": ["image", "texte"],
+    "keywords": ["image", "texte", "split", "carte"],
     "acf": {
         "mode": "preview"
     },

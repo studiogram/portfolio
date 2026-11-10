@@ -1,0 +1,19 @@
+{
+    "name": "studiogram/images",
+    "title": "Images",
+    "category": "studiogram",
+    "icon": "images-alt2",
+    "keywords": ["images", "galerie", "colonnes"],
+    "acf": {
+        "mode": "preview"
+    },
+    "supports": {
+        "mode": false,
+        "color": {
+            "background": false,
+            "heading": false,
+            "link": false,
+            "text": false
+        }
+    }
+}

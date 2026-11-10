@@ -1,0 +1,27 @@
+{
+	"key": "group_6b0images00",
+	"title": "Block images",
+	"fields": [
+		{
+			"key": "field_6b0imgitems",
+			"label": "Images",
+			"name": "items",
+			"type": "repeater",
+			"required": 0,
+			"wrapper": { "width": "", "class": "", "id": "" },
+			"layout": "block",
+			"button_label": "Ajouter une image",
+			"min": 0,
+			"max": 6,
+			"sub_fields": [
+				{ "key": "field_6b0imgimg0", "label": "Image", "name": "image", "type": "image", "required": 0, "wrapper": { "width": "50", "class": "", "id": "" }, "return_format": "id", "library": "all", "preview_size": "medium" },
+				{ "key": "field_6b0imgcold", "label": "Colonnes (desktop)", "name": "cols", "type": "number", "required": 0, "wrapper": { "width": "25", "class": "", "id": "" }, "default_value": 3, "min": 1, "max": 6, "step": 1 },
+				{ "key": "field_6b0imgcolm", "label": "Colonnes (mobile)", "name": "cols_mobile", "type": "number", "required": 0, "wrapper": { "width": "25", "class": "", "id": "" }, "default_value": 6, "min": 1, "max": 6, "step": 1 }
+			]
+		},
+		{ "key": "field_6b0imgcap0", "label": "Legende", "name": "caption", "type": "text", "required": 0, "wrapper": { "width": "", "class": "", "id": "" } }
+	],
+	"location": [ [ { "param": "block", "operator": "==", "value": "studiogram/images" } ] ],
+	"menu_order": 0, "position": "normal", "style": "default", "label_placement": "top", "instruction_placement": "label",
+	"hide_on_screen": "", "active": true, "description": "", "show_in_rest": 0, "modified": 1794303353
+}

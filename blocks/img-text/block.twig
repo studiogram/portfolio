@@ -1,9 +1,26 @@
-<section {{ block_id }} data-block-type="img-text" data-block-id="{{ block.id }}" class="{{ block_classes(fields) }}">
+<section {{ block_id }} data-block-type="img-text" data-block-id="{{ block.id }}" class="{{ block_classes(fields) }}{% if fields.card %} split{% endif %}">
 	{% include 'views/partials/block/borders.twig' %}
-	<div class="content-grid content-grid--{{fields.space.large}} | grid items-center gap-4 lg:grid-cols-2">
-		<div class="wysiwyg {{fields.side ? 'order-1' : 'order-2'}}">{{ fields.text }}</div>
-		{% if fields.image %}
-			{{ include('views/components/reveal-image/view.twig', { image: fields.image, blend: fields.multiply ? theme : null, class: (fields.side ? 'order-2' : 'order-1')}) }}
-		{% endif %}
-	</div>
+
+	{% if fields.card %}
+		<div data-scroll="split" class="col-span-12 grid items-stretch px-6! lg:col-span-20 lg:col-start-3 lg:grid-cols-2 lg:px-0!">
+			{% if fields.image %}
+				<figure data-split="left" class="relative z-10 order-1 overflow-hidden rounded-t-[2rem] lg:rounded-t-none {{ fields.side ? 'lg:order-2 lg:rounded-r-[2rem]' : 'lg:order-1 lg:rounded-l-[2rem]' }}">
+					<span class="bg-medium absolute top-4 left-4 z-10 size-4 rounded-full lg:top-6 lg:left-6 lg:size-5" aria-hidden="true"></span>
+					<span class="bg-medium absolute top-4 right-4 z-10 size-4 rounded-full lg:top-auto lg:right-auto lg:bottom-6 lg:left-6 lg:size-5" aria-hidden="true"></span>
+					<img class="lazyload block h-full min-h-72 w-full rounded-[2rem] object-cover" {{ responsive_image(fields.image) }} alt=""/>
+				</figure>
+			{% endif %}
+
+			<div data-split="right" class="bg-light text-dark relative z-0 order-2 flex flex-col justify-center gap-6 rounded-b-[2rem] px-8! py-12 lg:rounded-b-none lg:px-12! lg:py-16 {{ fields.side ? 'lg:order-1 lg:rounded-l-[2rem]' : 'lg:order-2 lg:rounded-r-[2rem]' }}">
+				{% if fields.text %}<div class="wysiwyg text-soft">{{ fields.text }}</div>{% endif %}
+			</div>
+		</div>
+	{% else %}
+		<div class="content-grid content-grid--{{fields.space.large}} | grid items-center gap-8 lg:grid-cols-2 lg:gap-16">
+			<div class="wysiwyg {{fields.side ? 'order-1' : 'order-2'}}">{{ fields.text }}</div>
+			{% if fields.image %}
+				<img class="lazyload w-full rounded-3xl object-cover {{ fields.side ? 'order-2' : 'order-1' }}" {{ responsive_image(fields.image) }} alt=""/>
+			{% endif %}
+		</div>
+	{% endif %}
 </section>

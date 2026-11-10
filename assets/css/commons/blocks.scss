@@ -35,16 +35,30 @@ $bg-fg: (
     // generic block chrome: background + spacing + decorative rounded borders
     .block {
         --block-space: clamp(3rem, 7vw, 7rem);
+        --border-size: 3rem;
+        --space-top: 0rem;
+        --space-bottom: 0rem;
+        --pad-border-top: 0rem;
+        --pad-border-bottom: 0rem;
         position: relative;
+        padding-top: calc(var(--space-top) + var(--pad-border-top));
+        padding-bottom: calc(var(--space-bottom) + var(--pad-border-bottom));
 
         &--space-top {
-            padding-top: var(--block-space);
+            --space-top: var(--block-space);
         }
         &--space-bottom {
-            padding-bottom: var(--block-space);
+            --space-bottom: var(--block-space);
         }
         &--space-both {
-            padding-block: var(--block-space);
+            --space-top: var(--block-space);
+            --space-bottom: var(--block-space);
+        }
+        &--border-top {
+            --pad-border-top: var(--border-size);
+        }
+        &--border-bottom {
+            --pad-border-bottom: var(--border-size);
         }
 
         &__border {

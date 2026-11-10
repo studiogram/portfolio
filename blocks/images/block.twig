@@ -1,0 +1,17 @@
+<section {{ block_id }} data-block-type="images" data-block-id="{{ block.id }}" class="{{ block_classes(fields) }}">
+	{% include 'views/partials/block/borders.twig' %}
+	<div class="content-grid">
+		<figure class="flex flex-col gap-4">
+			{% if fields.items %}
+				<div class="images__grid items-start gap-2 lg:gap-4">
+					{% for item in fields.items %}
+						{% if item.image %}
+							<img class="images__item lazyload w-full rounded-3xl" style="--cm:{{ item.cols_mobile ?: 6 }};--cd:{{ item.cols ?: 3 }}" {{ responsive_image(item.image) }} alt=""/>
+						{% endif %}
+					{% endfor %}
+				</div>
+			{% endif %}
+			{% if fields.caption %}<figcaption class="text-s text-medium-tertiary max-w-[80ch]">{{ fields.caption }}</figcaption>{% endif %}
+		</figure>
+	</div>
+</section>

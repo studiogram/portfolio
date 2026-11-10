@@ -1,11 +1,11 @@
-{% set poster_url = fields.poster ? fn('wp_get_attachment_image_url', fields.poster , 'large') : '' %}
+{% set poster_url = fields.poster ? fn('wp_get_attachment_image_url', fields.poster , 'full') : '' %}
 
 <section {{ block_id }} data-block-type="video" data-block-id="{{ block.id }}" class="{{ block_classes(fields) }}">
 	{% include 'views/partials/block/borders.twig' %}
-	<div class="content-grid content-grid--{{fields.space.large}} rounded-4xl overflow-hidden">
-		<figure class="{% if bordercolor %}mr-4!{% endif%} relative col-span-12 text-center lg:col-span-20">
-			<div class="relative aspect-video overflow-hidden">
-				<video class="video__player" controls {% if poster_url %} poster="{{ poster_url }}" preload="none" {% endif %}>
+	<div class="content-grid content-grid--{{fields.space.large}}">
+		<figure class="relative w-full max-w-4xl justify-self-center text-center">
+			<div class="video__frame rounded-4xl relative aspect-video overflow-hidden">
+				<video class="video__player" autoplay playsinline muted loop {% if poster_url %} poster="{{ poster_url }}" preload="none" {% endif %}>
 					<source src="{{ fields.video }}" type="video/mp4"/>
 				</video>
 			</div>

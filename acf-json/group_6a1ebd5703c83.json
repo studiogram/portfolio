@@ -25,27 +25,6 @@
             "prefix_name": 0
         },
         {
-            "key": "field_6a55fb068e265",
-            "label": "Fondre l'image sur la page",
-            "name": "multiply",
-            "aria-label": "",
-            "type": "true_false",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 1,
-            "allow_in_bindings": 0,
-            "ui_on_text": "",
-            "ui_off_text": "",
-            "ui": 1
-        },
-        {
             "key": "field_6a1ebd69b24d7",
             "label": "Image",
             "name": "image",
@@ -77,7 +56,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "studiogram\/img"
+                "value": "studiogram/img"
             }
         ]
     ],
@@ -91,5 +70,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1784019938
+    "modified": 1794303353
 }

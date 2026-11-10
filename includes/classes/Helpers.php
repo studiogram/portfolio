@@ -437,6 +437,18 @@ if (!class_exists('STUDIOGRAM\Helpers')) :
                 if ($with_spacing && !empty($fields['spacing']) && $fields['spacing'] !== 'none') {
                     $classes[] = 'block--space-' . $fields['spacing'];
                 }
+
+                $borders = is_array($fields['borders'] ?? null) ? $fields['borders'] : [];
+                $has_top = $has_bottom = false;
+                foreach ($borders as $border) {
+                    empty($border['position']) ? $has_bottom = true : $has_top = true;
+                }
+                if ($has_top) {
+                    $classes[] = 'block--border-top';
+                }
+                if ($has_bottom) {
+                    $classes[] = 'block--border-bottom';
+                }
             }
 
             return esc_attr(implode(' ', $classes));

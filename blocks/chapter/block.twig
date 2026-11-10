@@ -1,0 +1,9 @@
+<section {{ block_id }} data-block-type="chapter" data-block-id="{{ block.id }}" class="{{ block_classes(fields) }}">
+	{% include 'views/partials/block/borders.twig' %}
+	<div class="content-grid flex flex-col">
+		{% if fields.eyebrow %}
+			<span class="text-tag bg-medium w-fit rounded-t-xl px-4 py-2 uppercase text-{{ sector_color ? sector_color ~ '-dark' : 'dark' }}!">{{ fields.eyebrow }}</span>
+		{% endif %}
+		<span class="border-dark/15 block border-t" aria-hidden="true"></span>
+	</div>
+</section>

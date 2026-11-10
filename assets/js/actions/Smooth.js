@@ -82,4 +82,12 @@ export function resetSmooth() {
     lenis.scrollTo(0, { immediate: true });
     lenis.resize();
     ScrollTrigger.refresh();
+    requestAnimationFrame(() => {
+        lenis.resize();
+        ScrollTrigger.refresh();
+    });
+    setTimeout(() => {
+        lenis.resize();
+        ScrollTrigger.refresh();
+    }, 400);
 }

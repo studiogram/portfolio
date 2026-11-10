@@ -1,86 +1,180 @@
 {
     "key": "group_6b0projhead0",
-    "title": "Block header-post",
+    "title": "Block header-projet",
     "fields": [
         {
             "key": "field_6b0phimg000",
             "label": "Image (vignette)",
             "name": "header_image",
+            "aria-label": "",
             "type": "image",
             "instructions": "Image affichée à droite de l'en-tête.",
             "required": 0,
-            "wrapper": { "width": "50", "class": "", "id": "" },
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
             "return_format": "id",
             "library": "all",
-            "preview_size": "medium"
+            "preview_size": "medium",
+            "min_width": 0,
+            "min_height": 0,
+            "min_size": 0,
+            "max_width": 0,
+            "max_height": 0,
+            "max_size": 0,
+            "mime_types": ""
         },
         {
             "key": "field_6b0phlogo00",
             "label": "Logo client",
             "name": "client_logo",
+            "aria-label": "",
             "type": "image",
             "instructions": "Logo affiché sur la vignette.",
             "required": 0,
-            "wrapper": { "width": "50", "class": "", "id": "" },
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
             "return_format": "id",
             "library": "all",
-            "preview_size": "medium"
+            "preview_size": "medium",
+            "min_width": 0,
+            "min_height": 0,
+            "min_size": 0,
+            "max_width": 0,
+            "max_height": 0,
+            "max_size": 0,
+            "mime_types": ""
         },
         {
             "key": "field_6b0phtitle0",
             "label": "Titre",
             "name": "title",
+            "aria-label": "",
             "type": "textarea",
             "instructions": "",
             "required": 0,
-            "wrapper": { "width": "", "class": "", "id": "" },
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "rows": 2,
-            "new_lines": ""
+            "new_lines": "",
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": ""
         },
         {
             "key": "field_6b0phintro0",
             "label": "Introduction",
             "name": "intro",
+            "aria-label": "",
             "type": "wysiwyg",
             "instructions": "",
             "required": 0,
-            "wrapper": { "width": "", "class": "", "id": "" },
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "tabs": "all",
             "toolbar": "full",
             "media_upload": 0,
-            "delay": 0
+            "delay": 0,
+            "default_value": ""
         },
         {
             "key": "field_6b0phper000",
             "label": "Période",
             "name": "periode",
+            "aria-label": "",
             "type": "text",
+            "instructions": "",
             "required": 0,
-            "wrapper": { "width": "25", "class": "", "id": "" }
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 1,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_6b0phlieu00",
             "label": "Lieu",
             "name": "lieu",
+            "aria-label": "",
             "type": "text",
+            "instructions": "",
             "required": 0,
-            "wrapper": { "width": "25", "class": "", "id": "" }
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 1,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_6b0phtech00",
             "label": "Technologies",
             "name": "technologies",
+            "aria-label": "",
             "type": "text",
+            "instructions": "",
             "required": 0,
-            "wrapper": { "width": "25", "class": "", "id": "" }
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 1,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_6b0phinter0",
             "label": "Intervention",
             "name": "intervention",
+            "aria-label": "",
             "type": "text",
+            "instructions": "",
             "required": 0,
-            "wrapper": { "width": "25", "class": "", "id": "" }
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 1,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         }
     ],
     "location": [
@@ -88,7 +182,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "studiogram/header-post"
+                "value": "studiogram\/header-post"
             }
         ]
     ],
@@ -101,5 +195,6 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1793895200
+    "display_title": "",
+    "modified": 1794303090
 }

@@ -104,35 +104,6 @@
             "preview_size": "medium"
         },
         {
-            "key": "field_6a1ff6e9e8639",
-            "label": "Fondu de l'image",
-            "name": "multiply",
-            "aria-label": "",
-            "type": "true_false",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_6a577e46e18f2",
-                        "operator": "==",
-                        "value": "text-img"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 1,
-            "allow_in_bindings": 0,
-            "ui_on_text": "",
-            "ui_off_text": "",
-            "ui": 1
-        },
-        {
             "key": "field_6a57805917836",
             "label": "Couleur",
             "name": "color",
@@ -222,7 +193,7 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "<h1><span style=\"text-decoration: underline;\">Titre<\/span><\/h1>\r\n<p class=\"text-l\"><strong>Lorem ipsum<\/strong><\/p>",
+            "default_value": "<h1><span style=\"text-decoration: underline;\">Titre</span></h1>\r\n<p class=\"text-l\"><strong>Lorem ipsum</strong></p>",
             "allow_in_bindings": 0,
             "tabs": "all",
             "toolbar": "full",
@@ -235,7 +206,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "studiogram\/header"
+                "value": "studiogram/header"
             }
         ]
     ],
@@ -249,5 +220,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1786003260
+    "modified": 1794303353
 }

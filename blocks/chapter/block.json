@@ -1,0 +1,19 @@
+{
+    "name": "studiogram/chapter",
+    "title": "Chapitre",
+    "category": "studiogram",
+    "icon": "editor-insertmore",
+    "keywords": ["chapitre", "separateur", "titre"],
+    "acf": {
+        "mode": "preview"
+    },
+    "supports": {
+        "mode": false,
+        "color": {
+            "background": false,
+            "heading": false,
+            "link": false,
+            "text": false
+        }
+    }
+}
