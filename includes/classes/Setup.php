@@ -155,6 +155,18 @@ if (!class_exists('STUDIOGRAM\Setup')) :
             $base_url   = $posts_page ? get_permalink($posts_page) : home_url('/');
             $current    = is_category() ? (int) get_queried_object_id() : 0;
 
+            if (!$current && isset($_GET['secteur'])) {
+                $secteur = sanitize_text_field(wp_unslash($_GET['secteur']));
+                if ($secteur !== '') {
+                    $term = is_numeric($secteur)
+                        ? get_term((int) $secteur, 'category')
+                        : get_term_by('slug', $secteur, 'category');
+                    if ($term && !is_wp_error($term)) {
+                        $current = (int) $term->term_id;
+                    }
+                }
+            }
+
             $field = fn(string $name, string $fallback = '') =>
                 ($posts_page && function_exists('get_field') ? get_field($name, $posts_page) : '') ?: $fallback;
 
