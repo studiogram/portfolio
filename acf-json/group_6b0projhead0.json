@@ -160,7 +160,7 @@
             "label": "Intervention",
             "name": "intervention",
             "aria-label": "",
-            "type": "text",
+            "type": "textarea",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -170,11 +170,8 @@
                 "id": ""
             },
             "default_value": "",
-            "maxlength": "",
-            "allow_in_bindings": 1,
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
+            "new_lines": "",
+            "rows": 3
         }
     ],
     "location": [
@@ -182,7 +179,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "studiogram\/header-post"
+                "value": "studiogram/header-post"
             }
         ]
     ],
@@ -196,5 +193,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1794303090
+    "modified": 1794303353
 }

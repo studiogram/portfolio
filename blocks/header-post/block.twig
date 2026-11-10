@@ -30,9 +30,9 @@
 			{% if fields.periode %}{% set metas = metas|merge([{ heading: 'Période', lines: [fields.periode] }]) %}{% endif %}
 			{% if fields.lieu %}{% set metas = metas|merge([{ heading: 'Lieu', lines: [fields.lieu] }]) %}{% endif %}
 			{% if fields.technologies %}{% set metas = metas|merge([{ heading: 'Technologies', lines: [fields.technologies] }]) %}{% endif %}
-			{% if fields.intervention %}{% set metas = metas|merge([{ heading: 'Intervention', lines: [fields.intervention] }]) %}{% endif %}
+			{% if fields.intervention %}{% set metas = metas|merge([{ heading: 'Intervention', lines: fields.intervention|split('\n') }]) %}{% endif %}
 			{% if metas %}
-				{% include 'views/components/listing/view.twig' with { columns: metas, class: 'grid-cols-2 lg:grid-cols-4' } %}
+				{% include 'views/components/listing/view.twig' with { columns: metas, class: 'grid-cols-2 lg:grid-cols-4', body_gap: 'gap-0' } %}
 			{% endif %}
 
 		</div>
