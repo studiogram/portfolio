@@ -140,6 +140,21 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": ""
+                },
+                {
+                    "key": "field_6b0relttl0",
+                    "label": "Autres projets (titre)",
+                    "name": "other_projects",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "Autres projets"
                 }
             ]
         },
@@ -260,6 +275,21 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": ""
+                },
+                {
+                    "key": "field_6b0relbtn0",
+                    "label": "Afficher tous les projets",
+                    "name": "all_projects",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "Afficher tous les projets"
                 }
             ]
         },
@@ -819,5 +849,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1786103088
+    "modified": 1794303353
 }

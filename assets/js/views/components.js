@@ -12,6 +12,10 @@ const components = [
         load: () => import("../actions/NotesArchive"),
     },
     {
+        name: "related",
+        load: () => import("../actions/Related"),
+    },
+    {
         name: "spline",
         // Heavy WebGL hero — defer to browser idle so it never blocks LCP/TBT.
         defer: true,

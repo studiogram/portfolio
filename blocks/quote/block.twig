@@ -1,13 +1,13 @@
 {% set has_title = fields.quote.title is not empty %}
 
-<section {{ block_id }} data-block-type="image" data-block-id="{{ block.id }}" class="{{ block_classes(fields) }} {% if fields.background %} rounded-4xl overflow-hidden {% endif %}">
+<section {{ block_id }} data-block-type="image" data-block-id="{{ block.id }}" class="{{ block_classes(fields) }} {% if fields.background %} overflow-hidden rounded-4xl {% endif %}">
 	{% include 'views/partials/block/borders.twig' %}
 	<div class="content-grid content-grid--large">
 		<div class="flex flex-col gap-8 lg:flex-row lg:items-{{ fields.image.vertical }} lg:gap-16">
 
-			<div class="quote__content {% if has_title %} quote__content--hastitle {% endif %} | lg:flex-1 py-12 {{ fields.image.horizontal == 'right'  ? 'lg:order-1' : 'lg:order-2' }}">
+			<div class="quote__content {% if has_title %} quote__content--hastitle {% endif %} | py-12 lg:flex-1 {{ fields.image.horizontal == 'right' ? 'lg:order-1' : 'lg:order-2' }}">
 				{% if has_title %}
-					<p class="quote__title | text-md font-bold mb-6">{{ fields.quote.title }}</p>
+					<p class="quote__title | mb-6 text-md font-bold">{{ fields.quote.title }}</p>
 				{% endif %}
 
 				<blockquote class="quote__body">
@@ -33,7 +33,7 @@
 
 					{% if fields.image.legend or fields.image.legend2 %}
 						{% set bg = background(fields.image.background) %}
-						<figcaption class="flex flex-col text-s px-8 py-4 mt-4 rounded-3xl {{ bg.class }} {{ bg.text }}" style="{{ bg.style }}" {% if bg.type %} data-component="gradient" {% endif %}>
+						<figcaption class="text-s mt-4 flex flex-col rounded-3xl px-8 pt-8 pb-4 {{ bg.class }} {{ bg.text }}" style="{{ bg.style }}" {% if bg.type %} data-component="gradient" {% endif %}>
 							{% if fields.image.legend %}
 								<span class="font-bold">{{ fields.image.legend }}</span>
 							{% endif %}

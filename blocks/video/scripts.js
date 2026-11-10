@@ -34,6 +34,18 @@ class Video extends BlockParent {
             if (this.reduced) {
                 this.player.pause();
             }
+            const overlaid = this.element.querySelector(
+                ".plyr__control--overlaid",
+            );
+            if (overlaid && !overlaid.querySelector(".plyr-pause-icon")) {
+                overlaid
+                    .querySelector("svg")
+                    ?.classList.add("plyr-play-icon");
+                overlaid.insertAdjacentHTML(
+                    "beforeend",
+                    '<svg class="plyr-pause-icon" aria-hidden="true" focusable="false"><use xlink:href="#plyr-pause"></use></svg>',
+                );
+            }
         });
 
         if (!this.reduced) {

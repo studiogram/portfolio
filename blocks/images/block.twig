@@ -1,7 +1,7 @@
 <section {{ block_id }} data-block-type="images" data-block-id="{{ block.id }}" class="{{ block_classes(fields) }}">
 	{% include 'views/partials/block/borders.twig' %}
 	<div class="content-grid">
-		<figure class="flex flex-col gap-4">
+		<figure class="flex flex-col gap-12">
 			{% if fields.items %}
 				<div class="images__grid items-start gap-2 lg:gap-4">
 					{% for item in fields.items %}
@@ -11,7 +11,7 @@
 					{% endfor %}
 				</div>
 			{% endif %}
-			{% if fields.caption %}<figcaption class="text-s text-medium-tertiary max-w-[80ch]">{{ fields.caption }}</figcaption>{% endif %}
+			{% if fields.caption %}<figcaption class="text-dark text-s w-full text-center">{{ fields.caption }}</figcaption>{% endif %}
 		</figure>
 	</div>
 </section>

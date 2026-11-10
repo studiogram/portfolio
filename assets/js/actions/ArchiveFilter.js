@@ -225,9 +225,9 @@ export default class ArchiveFilter {
             { yPercent: 100 },
             {
                 yPercent: 0,
-                duration: 0.7,
-                ease: "power3.out",
-                stagger: 0.1,
+                duration: 1.2,
+                ease: "power2.out",
+                stagger: 0.12,
                 onComplete: () => {
                     gsap.set(items, { clearProps: "transform" });
                     ScrollTrigger.refresh();

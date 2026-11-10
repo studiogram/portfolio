@@ -1,0 +1,74 @@
+.project-card {
+    --fold-size: 7rem;
+
+    &:hover,
+    &:focus-within,
+    &.is-hover {
+        .project-fold::after {
+            width: var(--fold-size);
+            height: var(--fold-size);
+        }
+
+        .archive__arrowbox {
+            border-radius: 50%;
+        }
+
+        .archive__arrow {
+            transform: rotate(0deg);
+        }
+    }
+}
+
+.project-fold {
+    &__layer {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+    }
+
+    // While the page leaves, the fold grows to 30rem to cover the card — clip it
+    // back to the card. At rest the figure stays unclipped so the dog-ear corner
+    // can show its sharp outer corner past the rounded image.
+    &.is-folding {
+        overflow: hidden;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: 0;
+        height: 0;
+        background: linear-gradient(
+            135deg,
+            var(--color-medium) 50%,
+            var(--color-light) 50%
+        );
+        box-shadow: -2px -2px 12px rgb(0 0 0 / 0.05);
+        border-top-left-radius: 10px;
+        pointer-events: none;
+        transition:
+            width 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+            height 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+
+        @media (prefers-reduced-motion: reduce) {
+            transition: none;
+        }
+    }
+
+    &--dark::after {
+        background: linear-gradient(
+            135deg,
+            var(--color-medium-tertiary) 50%,
+            var(--color-dark) 50%
+        );
+    }
+
+    &.is-folding::after {
+        width: 30rem !important;
+        height: 30rem !important;
+    }
+}

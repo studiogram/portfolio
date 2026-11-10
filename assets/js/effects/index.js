@@ -3,6 +3,7 @@
 const effects = {
     repeal: () => import("./Repeal"),
     headline: () => import("./Headline"),
+    rise: () => import("./Rise"),
 };
 
 export default effects;

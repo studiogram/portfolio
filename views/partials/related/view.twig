@@ -1,19 +1,26 @@
-{% if posts is not empty %}
-	<section data-block-type="related">
-		<div class="col-span-12 lg:col-span-22 lg:col-start-2">
-			{% if content.texts.more %}
-				<header class="wysiwyg mb-8! text-center">
-					<h3 class="text-md">
-						<u>{{ content.texts.more }}</u>
-					</h3>
-				</header>
-			{% endif %}
+<section data-component="related" class="related bg-dark">
+	<span class="related__dot related__dot--left" aria-hidden="true"></span>
+	<span class="related__dot related__dot--right" aria-hidden="true"></span>
 
-			<ul class="flex flex-wrap justify-center gap-4">
-				{% for post in posts %}
-					<li class="w-full lg:w-[calc((100%-2rem)/3)]">{{ include('views/components/post-card/view.twig', { id: post.id }) }}</li>
+	<div class="grider">
+		<div class="col-content flex flex-col items-center gap-12 lg:gap-16">
+			<h2 data-effect="rise" class="text-xxxl text-center">{{ field('texts', 'custom-content').other_projects ?: 'Autres projets' }}</h2>
+
+			<ul class="related__grid grid w-full grid-cols-2 gap-4 lg:grid-cols-3 lg:gap-8">
+				{% for post in others %}
+					<li class="related__item relative {{ (others|length == 3 and loop.index0 == 1) ? 'hidden lg:block' }}">
+						{% include 'views/components/project-card/view.twig' with { post: post, layout: 'column', fold: 'dark', title_tag: 'h3', title_class: 'text-xl', arrow: false } %}
+					</li>
 				{% endfor %}
 			</ul>
+
+			{{ include('views/components/button/view.twig', { button: {
+				text: field('buttons', 'custom-content').all_projects ?: 'Afficher tous les projets',
+				type: 'interne',
+				interne: function('get_post_type_archive_link', 'post'),
+				variant: 'light',
+				align: 'center'
+			} }) }}
 		</div>
-	</section>
-{% endif %}
+	</div>
+</section>

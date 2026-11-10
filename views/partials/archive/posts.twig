@@ -1,33 +1,5 @@
 {% for post in posts %}
-	{% set term = post.terms('category')|first %}
-	{% set color = term ? (function('get_field', 'color', 'category_' ~ term.id) ?: 'dark') : 'dark' %}
-	{% set custom = function('get_field', 'list_title', post.id) %}
-	{% set primary = function('get_field', 'list_image', post.id) ?: post.thumbnail.id %}
-	{% set layer = function('get_field', 'list_secondary', post.id) %}
-	<article class="archive__item group relative">
-		<a href="{{ post.link }}" data-transition="project" class="flex flex-col gap-6 lg:flex-row lg:gap-16">
-			<figure class="project-fold bg-medium-secondary relative shrink-0 self-start overflow-hidden rounded-3xl lg:w-1/2">
-				{% if primary %}
-					<img class="lazyload block h-auto w-full" {{ responsive_image(primary) }}/>
-				{% else %}
-					<span class="text-dark/30 flex aspect-8/5 w-full items-center justify-center text-[92px]">{{ post.title|slice(0, 1) }}</span>
-				{% endif %}
-				{% if layer %}
-					<img class="project-fold__layer lazyload" data-parallax {{ responsive_image(layer) }} alt="" aria-hidden="true"/>
-				{% endif %}
-			</figure>
-
-			<div class="flex flex-1 flex-col justify-between gap-6 lg:py-2">
-				<div class="flex flex-col">
-					<span class="text-m inline-flex items-center gap-2.5 text-{{ color }}">
-						<span class="size-3 shrink-0 rounded-full bg-{{ color }}"></span>{{ post.title }}
-					</span>
-					<h2 class="text-xxl text-dark">{{ custom ?: post.title }}</h2>
-				</div>
-				<span aria-hidden="true" class="archive__arrowbox flex size-16 items-center justify-center rounded-full bg-{{ color }} lg:ml-auto">
-					<svg class="archive__arrow w-4!" viewBox="0 0 19 14.7279" fill="#fff" xmlns="http://www.w3.org/2000/svg"><path d="M0 7.36396V8.36396H18V7.36396V6.36396H0V7.36396ZM18.7071 8.07107C19.0976 7.68054 19.0976 7.04738 18.7071 6.65685L12.3431 0.292893C11.9526 -0.097631 11.3195 -0.097631 10.9289 0.292893C10.5384 0.683418 10.5384 1.31658 10.9289 1.70711L16.5858 7.36396L10.9289 13.0208C10.5384 13.4113 10.5384 14.0445 10.9289 14.435C11.3195 14.8256 11.9526 14.8256 12.3431 14.435L18.7071 8.07107Z"/></svg>
-				</span>
-			</div>
-		</a>
+	<article class="archive__item relative">
+		{% include 'views/components/project-card/view.twig' with { post: post, layout: 'row', arrow: true, title_class: 'text-xxl' } %}
 	</article>
 {% endfor %}

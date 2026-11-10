@@ -8,7 +8,7 @@ export default class ProjectTransition extends Transition {
         this.wrapper = document.querySelector("[data-taxi]");
         const cover = document.querySelector("[data-cover]");
         const fold = trigger
-            ?.closest?.(".archive__item")
+            ?.closest?.(".archive__item, .related__item")
             ?.querySelector(".project-fold");
 
         if (this.wrapper) {

@@ -23,6 +23,9 @@
         overflow: hidden;
         width: 100%;
         height: 100%;
+        // overflow:hidden + radius on the frame doesn't clip Plyr's transformed
+        // video wrapper, so round the player itself to match the images (1.5rem).
+        border-radius: 1.5rem;
 
         button {
             width: 65px;
@@ -31,13 +34,69 @@
         }
 
         .plyr__control--overlaid {
-            opacity: 1 !important;
+            opacity: 1;
+            visibility: visible;
             color: white !important;
+            transition:
+                opacity 0.3s ease,
+                visibility 0.3s ease;
 
             svg {
                 fill: white !important;
             }
+
+            .plyr-pause-icon {
+                display: none;
+            }
         }
+
+        // While playing, fade the center button out and swap its icon to Plyr's
+        // own pause glyph; fade it back in on hover as a pause affordance.
+        &.plyr--playing .plyr__control--overlaid {
+            opacity: 0 !important;
+            visibility: hidden;
+
+            .plyr-play-icon {
+                display: none;
+            }
+
+            .plyr-pause-icon {
+                display: block;
+            }
+        }
+
+        &.plyr--playing:hover .plyr__control--overlaid,
+        &.plyr--playing.is-hover .plyr__control--overlaid {
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+    }
+
+    // The hardware-composited video layer ignores an ancestor's border-radius +
+    // overflow, so round the video elements directly AND promote the wrapper to
+    // its own layer (translateZ) so it actually clips the video (match images).
+    .plyr__video-wrapper,
+    .plyr__poster,
+    .video__player,
+    .plyr video {
+        border-radius: 1.5rem;
+    }
+
+    .plyr__video-wrapper {
+        overflow: hidden;
+        transform: translateZ(0);
+    }
+
+    .video__player,
+    .plyr video {
+        object-fit: cover;
+    }
+
+    // Plyr nudges the overlaid play triangle right for optical centering; the
+    // symmetric pause glyph must sit dead-centre instead.
+    .plyr__control--overlaid .plyr-pause-icon {
+        position: relative;
+        left: 0 !important;
     }
 
     .plyr--video .plyr__control--overlaid,
