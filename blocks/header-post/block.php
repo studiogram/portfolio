@@ -16,6 +16,10 @@ $context['sector_color'] = ($term && function_exists('get_field'))
     : '';
 $context['sector_name'] = $term ? $term->name : '';
 
+$posts_page = (int) get_option('page_for_posts');
+$archive = $posts_page ? get_permalink($posts_page) : home_url('/');
+$context['sector_url'] = $term ? add_query_arg('secteur', $term->slug, $archive) : '';
+
 $header_image = function_exists('get_field') ? get_field('header_image', $id) : null;
 $context['thumb_id'] = $header_image ?: ($context['post'] && $context['post']->thumbnail ? $context['post']->thumbnail->id : null);
 
