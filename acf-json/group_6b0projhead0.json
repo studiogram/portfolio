@@ -53,6 +53,23 @@
             "mime_types": ""
         },
         {
+            "key": "field_6b0phlogoh",
+            "label": "Hauteur du logo (rem)",
+            "name": "logo_height",
+            "type": "number",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 4.5,
+            "min": 1,
+            "max": 20,
+            "step": 0.25,
+            "append": "rem"
+        },
+        {
             "key": "field_6b0phtitle0",
             "label": "Titre",
             "name": "title",
@@ -157,7 +174,7 @@
         },
         {
             "key": "field_6b0phinter0",
-            "label": "Intervention",
+            "label": "Collaboration",
             "name": "intervention",
             "aria-label": "",
             "type": "textarea",

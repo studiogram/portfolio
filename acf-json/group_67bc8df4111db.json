@@ -155,6 +155,58 @@
                         "id": ""
                     },
                     "default_value": "Autres projets"
+                },
+                {
+                    "key": "field_6b0mhperiod",
+                    "label": "Période",
+                    "name": "periode",
+                    "type": "text",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "Période"
+                },
+                {
+                    "key": "field_6b0mhlieu",
+                    "label": "Lieu",
+                    "name": "lieu",
+                    "type": "text",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "Lieu"
+                },
+                {
+                    "key": "field_6b0mhtechno",
+                    "label": "Technologies",
+                    "name": "technologies",
+                    "type": "text",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "Technologies"
+                },
+                {
+                    "key": "field_6b0mhcollab",
+                    "label": "Collaboration",
+                    "name": "collaboration",
+                    "type": "text",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "Collaboration"
                 }
             ]
         },

@@ -134,10 +134,15 @@
 }
 
 .header-post__logo {
+    --logo-h: 4.5rem;
     display: block;
     width: auto !important;
-    height: 6rem;
+    height: calc(var(--logo-h) * 0.75);
     object-fit: contain;
+
+    @include lg {
+        height: var(--logo-h);
+    }
 }
 
 .content-grid {

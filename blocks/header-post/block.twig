@@ -16,7 +16,7 @@
 					
 					{% if fields.client_logo %}
 						<span class="header-post__notch">
-							<img class="header-post__logo lazyload" {{ responsive_image(fields.client_logo) }} alt=""/>
+							<img class="header-post__logo lazyload"{% if fields.logo_height %} style="--logo-h: {{ fields.logo_height }}rem"{% endif %} {{ responsive_image(fields.client_logo) }} alt=""/>
 						</span>
 					{% endif %}
 				</figure>
@@ -26,13 +26,15 @@
 				{% endif %}
 			</div>
 
-			{% set metas = [] %}
-			{% if fields.periode %}{% set metas = metas|merge([{ heading: 'Période', lines: [fields.periode] }]) %}{% endif %}
-			{% if fields.lieu %}{% set metas = metas|merge([{ heading: 'Lieu', lines: [fields.lieu] }]) %}{% endif %}
-			{% if fields.technologies %}{% set metas = metas|merge([{ heading: 'Technologies', lines: [fields.technologies] }]) %}{% endif %}
-			{% if fields.intervention %}{% set metas = metas|merge([{ heading: 'Intervention', lines: fields.intervention|split('\n') }]) %}{% endif %}
+			{% set t = field('texts', 'custom-content') %}
+				{% set metas = [] %}
+			{% if fields.periode %}{% set metas = metas|merge([{ heading: t.periode ?: 'Période', lines: [fields.periode] }]) %}{% endif %}
+			{% if fields.lieu %}{% set metas = metas|merge([{ heading: t.lieu ?: 'Lieu', lines: [fields.lieu] }]) %}{% endif %}
+			{% if fields.technologies %}{% set metas = metas|merge([{ heading: t.technologies ?: 'Technologies', lines: [fields.technologies] }]) %}{% endif %}
+			{% if fields.intervention %}{% set metas = metas|merge([{ heading: t.collaboration ?: 'Collaboration', lines: fields.intervention|split('\n') }]) %}{% endif %}
 			{% if metas %}
-				{% include 'views/components/listing/view.twig' with { columns: metas, class: 'grid-cols-2 lg:grid-cols-4', body_gap: 'gap-0' } %}
+				{% set grid_cols = { 1: 'lg:grid-cols-1', 2: 'lg:grid-cols-2', 3: 'lg:grid-cols-3', 4: 'lg:grid-cols-4' } %}
+					{% include 'views/components/listing/view.twig' with { columns: metas, class: 'grid-cols-2 ' ~ (grid_cols[metas|length] ?: 'lg:grid-cols-4'), body_gap: 'gap-0' } %}
 			{% endif %}
 
 		</div>
