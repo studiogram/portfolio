@@ -47,7 +47,7 @@
             var(--color-medium) 50%,
             var(--color-light) 50%
         );
-        box-shadow: -2px -2px 12px rgb(0 0 0 / 0.05);
+        box-shadow: -12px -12px 12px rgb(0 0 0 / 0.1);
         border-top-left-radius: 10px;
         pointer-events: none;
         transition:
@@ -64,6 +64,14 @@
             135deg,
             var(--color-medium-tertiary) 50%,
             var(--color-dark) 50%
+        );
+    }
+
+    &--medium-secondary::after {
+        background: linear-gradient(
+            135deg,
+            var(--color-light) 50%,
+            var(--color-medium-secondary) 50%
         );
     }
 

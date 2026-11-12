@@ -110,6 +110,25 @@
             "default_value": ""
         },
         {
+            "key": "field_6b0phbtn00",
+            "label": "Bouton",
+            "name": "button_clone",
+            "type": "clone",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "clone": [
+                "group_67ed2f37472ae"
+            ],
+            "display": "seamless",
+            "layout": "block",
+            "prefix_label": 0,
+            "prefix_name": 0
+        },
+        {
             "key": "field_6b0phper000",
             "label": "Période",
             "name": "periode",
@@ -177,7 +196,7 @@
             "label": "Collaboration",
             "name": "intervention",
             "aria-label": "",
-            "type": "textarea",
+            "type": "wysiwyg",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -187,8 +206,10 @@
                 "id": ""
             },
             "default_value": "",
-            "new_lines": "",
-            "rows": 3
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 0
         }
     ],
     "location": [

@@ -31,8 +31,12 @@ class Video extends BlockParent {
 
         this.player.on("ready", () => {
             this.player.muted = true;
+            // Native autoplay only fires on first parse, not on Taxi SPA swaps,
+            // so trigger playback explicitly (muted → allowed).
             if (this.reduced) {
                 this.player.pause();
+            } else {
+                this.player.play()?.catch(() => {});
             }
             const overlaid = this.element.querySelector(
                 ".plyr__control--overlaid",

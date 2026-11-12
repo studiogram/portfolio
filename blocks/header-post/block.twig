@@ -1,7 +1,7 @@
 <section {{ block_id }} data-block-type="header-post" data-block-id="{{ block.id }}" class="{{ block_classes(fields, true) }} bg-light relative px-0!" data-header-skip>
 	{% include 'views/partials/block/borders.twig' %}
 	<div class="grider pb-12 lg:pb-16">
-		<div class="col-content flex flex-col gap-12 lg:gap-16">
+		<div class="col-content flex flex-col gap-20 lg:gap-24">
 
 			<div class="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-x-16 lg:gap-y-8">
 				<div class="order-1 flex flex-col gap-6 lg:col-start-1 lg:row-start-1 lg:justify-center">
@@ -9,7 +9,7 @@
 					<h1 class="text-xxxl" data-effect="headline">{{ fields.title ?: post.title }}</h1>
 				</div>
 		
-				<figure class="bg-medium-secondary relative order-2 aspect-4/5 rounded-3xl lg:order-0 lg:col-start-2 lg:row-span-2 lg:aspect-auto lg:self-stretch">
+				<figure class="bg-medium-secondary relative order-2 aspect-4/5 rounded-3xl lg:order-0 lg:col-start-2 {{ fields.btn.text ? 'lg:row-span-3' : 'lg:row-span-2' }} lg:aspect-auto lg:self-stretch">
 					{% if fields.header_image %}
 						<img class="absolute inset-0 size-full rounded-3xl object-cover" {{ priority_image(fields.header_image) }} alt=""/>
 					{% endif %}
@@ -24,17 +24,23 @@
 				{% if fields.intro %}
 					<div class="wysiwyg order-3 max-w-[46ch] text-xl lg:col-start-1 lg:row-start-2">{{ fields.intro }}</div>
 				{% endif %}
+
+				{% if fields.btn.text %}
+					<div class="order-4 lg:col-start-1 lg:row-start-3">
+						{{ include('views/components/button/view.twig', { button: fields.btn }) }}
+					</div>
+				{% endif %}
 			</div>
 
 			{% set t = field('texts', 'custom-content') %}
-				{% set metas = [] %}
+			{% set metas = [] %}
 			{% if fields.periode %}{% set metas = metas|merge([{ heading: t.periode ?: 'Période', lines: [fields.periode] }]) %}{% endif %}
 			{% if fields.lieu %}{% set metas = metas|merge([{ heading: t.lieu ?: 'Lieu', lines: [fields.lieu] }]) %}{% endif %}
 			{% if fields.technologies %}{% set metas = metas|merge([{ heading: t.technologies ?: 'Technologies', lines: [fields.technologies] }]) %}{% endif %}
-			{% if fields.intervention %}{% set metas = metas|merge([{ heading: t.collaboration ?: 'Collaboration', lines: fields.intervention|split('\n') }]) %}{% endif %}
+			{% if fields.intervention %}{% set metas = metas|merge([{ heading: t.collaboration ?: 'Collaboration', html: fields.intervention }]) %}{% endif %}
 			{% if metas %}
 				{% set grid_cols = { 1: 'lg:grid-cols-1', 2: 'lg:grid-cols-2', 3: 'lg:grid-cols-3', 4: 'lg:grid-cols-4' } %}
-					{% include 'views/components/listing/view.twig' with { columns: metas, class: 'grid-cols-2 ' ~ (grid_cols[metas|length] ?: 'lg:grid-cols-4'), body_gap: 'gap-0' } %}
+				{% include 'views/components/listing/view.twig' with { columns: metas, class: 'grid-cols-2 ' ~ (grid_cols[metas|length] ?: 'lg:grid-cols-4'), body_gap: 'gap-0' } %}
 			{% endif %}
 
 		</div>

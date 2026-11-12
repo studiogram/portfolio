@@ -16,7 +16,7 @@
 			</div>
 		</div>
 	{% else %}
-		<div class="content-grid content-grid--{{fields.space.large}} | grid items-center gap-8 lg:grid-cols-2 lg:gap-16">
+		<div class="content-grid | grid items-center gap-8 lg:grid-cols-2 lg:gap-16">
 			<div class="wysiwyg {{fields.side ? 'order-1' : 'order-2'}}">{{ fields.text }}</div>
 			{% if fields.image %}
 				<img class="lazyload w-full rounded-3xl object-cover {{ fields.side ? 'order-2' : 'order-1' }}" {{ responsive_image(fields.image) }} alt=""/>

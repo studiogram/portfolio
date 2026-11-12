@@ -87,8 +87,14 @@ export default class ArchiveFilter {
 
     killParallax() {
         this.parallax?.forEach((t) => {
+            // Killing the trigger reverts the scrub tween to its start, jumping
+            // the layer down mid-navigation. Snapshot the current transform and
+            // re-pin it inline so it stays put as the page leaves.
+            const el = t.targets?.()[0];
+            const transform = el ? getComputedStyle(el).transform : null;
             t.scrollTrigger?.kill();
             t.kill();
+            if (el && transform) el.style.transform = transform;
         });
         this.parallax = null;
     }

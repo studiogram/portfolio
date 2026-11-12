@@ -87,11 +87,6 @@
         transform: translateZ(0);
     }
 
-    .video__player,
-    .plyr video {
-        object-fit: cover;
-    }
-
     // Plyr nudges the overlaid play triangle right for optical centering; the
     // symmetric pause glyph must sit dead-centre instead.
     .plyr__control--overlaid .plyr-pause-icon {

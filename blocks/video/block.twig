@@ -4,7 +4,7 @@
 	{% include 'views/partials/block/borders.twig' %}
 	<div class="content-grid content-grid--{{fields.space.large}}">
 		<figure class="relative w-full max-w-4xl justify-self-center text-center">
-			<div class="video__frame rounded-3xl relative aspect-video overflow-hidden">
+			<div class="video__frame rounded-3xl relative overflow-hidden">
 				<video class="video__player" autoplay playsinline muted loop {% if poster_url %} poster="{{ poster_url }}" preload="none" {% endif %}>
 					<source src="{{ fields.video }}" type="video/mp4"/>
 				</video>
