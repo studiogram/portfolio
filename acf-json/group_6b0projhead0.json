@@ -4,13 +4,13 @@
     "fields": [
         {
             "key": "field_6b0phimg000",
-            "label": "Image (vignette)",
+            "label": "Image",
             "name": "header_image",
             "aria-label": "",
             "type": "image",
-            "instructions": "Image affichée à droite de l'en-tête.",
+            "instructions": "",
             "required": 0,
-            "conditional_logic": false,
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "50",
                 "class": "",
@@ -18,24 +18,25 @@
             },
             "return_format": "id",
             "library": "all",
-            "preview_size": "medium",
-            "min_width": 0,
-            "min_height": 0,
-            "min_size": 0,
-            "max_width": 0,
-            "max_height": 0,
-            "max_size": 0,
-            "mime_types": ""
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "allow_in_bindings": 1,
+            "preview_size": "medium"
         },
         {
             "key": "field_6b0phlogo00",
-            "label": "Logo client",
+            "label": "Logo",
             "name": "client_logo",
             "aria-label": "",
             "type": "image",
-            "instructions": "Logo affiché sur la vignette.",
+            "instructions": "",
             "required": 0,
-            "conditional_logic": false,
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "50",
                 "class": "",
@@ -43,14 +44,15 @@
             },
             "return_format": "id",
             "library": "all",
-            "preview_size": "medium",
-            "min_width": 0,
-            "min_height": 0,
-            "min_size": 0,
-            "max_width": 0,
-            "max_height": 0,
-            "max_size": 0,
-            "mime_types": ""
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "allow_in_bindings": 1,
+            "preview_size": "medium"
         },
         {
             "key": "field_6b0phlogoh",
@@ -206,6 +208,7 @@
                 "id": ""
             },
             "default_value": "",
+            "allow_in_bindings": 1,
             "tabs": "all",
             "toolbar": "basic",
             "media_upload": 0,
@@ -231,5 +234,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1794303353
+    "modified": 1794580729
 }

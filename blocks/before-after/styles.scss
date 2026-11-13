@@ -1,0 +1,59 @@
+@use "mixins" as *;
+
+.before-after {
+    touch-action: none;
+    cursor: grab;
+
+    &.is-grabbing,
+    &.is-grabbing * {
+        cursor: grabbing !important;
+    }
+
+    &__after {
+        position: absolute;
+        inset: 0;
+        clip-path: inset(0 0 0 var(--pos));
+    }
+
+    &__line {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: var(--pos);
+        width: 2px;
+        transform: translateX(-50%);
+        background: var(--color-light);
+        pointer-events: none;
+    }
+
+    &__handle {
+        position: absolute;
+        top: 50%;
+        left: var(--pos);
+        transform: translate(-50%, -50%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 4rem;
+        height: 4rem;
+        border-radius: 50%;
+        background: var(--color-dark);
+        color: var(--color-light);
+        cursor: grab;
+
+        @include lg {
+            width: 5rem;
+            height: 5rem;
+        }
+    }
+
+    &__arrows {
+        width: 55%;
+        height: auto;
+    }
+}
+
+// Beat the global `.studiogram button { cursor: pointer }` (higher specificity).
+.before-after .before-after__handle {
+    cursor: grab;
+}

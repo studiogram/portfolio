@@ -1,0 +1,13 @@
+{
+	"key": "group_6b0beforaf0",
+	"title": "Block avant/après",
+	"fields": [
+		{ "key": "field_6b0baimgbef", "label": "Image avant", "name": "before", "type": "image", "required": 0, "wrapper": { "width": "50", "class": "", "id": "" }, "return_format": "id", "library": "all", "preview_size": "medium" },
+		{ "key": "field_6b0baimgaft", "label": "Image après", "name": "after", "type": "image", "required": 0, "wrapper": { "width": "50", "class": "", "id": "" }, "return_format": "id", "library": "all", "preview_size": "medium" },
+		{ "key": "field_6b0balblbef", "label": "Texte avant", "name": "label_before", "type": "text", "required": 0, "wrapper": { "width": "50", "class": "", "id": "" }, "default_value": "Avant" },
+		{ "key": "field_6b0balblaft", "label": "Texte après", "name": "label_after", "type": "text", "required": 0, "wrapper": { "width": "50", "class": "", "id": "" }, "default_value": "Après" }
+	],
+	"location": [ [ { "param": "block", "operator": "==", "value": "studiogram/before-after" } ] ],
+	"menu_order": 0, "position": "normal", "style": "default", "label_placement": "top", "instruction_placement": "label",
+	"hide_on_screen": "", "active": true, "description": "", "show_in_rest": 0, "modified": 1794303353
+}

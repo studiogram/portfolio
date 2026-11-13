@@ -2,7 +2,7 @@
 	{% include 'views/partials/block/borders.twig' %}
 	<div class="content-grid content-grid--{{fields.space.large}}">
 		{% if fields.image %}
-			{{ include('views/components/reveal-image/view.twig', { image: fields.image, class: '' }) }}
+			<img class="lazyload block w-full rounded-3xl" {{ responsive_image(fields.image) }} alt=""/>
 		{% endif %}
 	</div>
 </section>
