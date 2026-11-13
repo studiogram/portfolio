@@ -4,11 +4,13 @@
     --space-bottom: calc(var(--block-space) * 2);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    html.js .single-project h2 {
-        visibility: hidden;
-    }
-}
+// Temporarily disabled with the single-project h2 headline effect (reads too
+// close to the EntreAutre site). Re-enable both together.
+// @media (prefers-reduced-motion: no-preference) {
+//     html.js .single-project h2 {
+//         visibility: hidden;
+//     }
+// }
 
 .related {
     --block-space: clamp(3rem, 7vw, 7rem);

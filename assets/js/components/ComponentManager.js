@@ -50,11 +50,13 @@ function initEffects(root) {
     root.querySelectorAll("h1:not([data-effect])").forEach((h1) => {
         h1.dataset.effect = "headline";
     });
-    root.querySelectorAll(".single-project h2:not([data-effect])").forEach(
-        (h2) => {
-            h2.dataset.effect = "headline";
-        },
-    );
+    // Temporarily disabled — the staggered h2 reveal reads too close to the
+    // EntreAutre site. Re-enable to animate single-project headings again.
+    // root.querySelectorAll(".single-project h2:not([data-effect])").forEach(
+    //     (h2) => {
+    //         h2.dataset.effect = "headline";
+    //     },
+    // );
     [...root.querySelectorAll("[data-effect]")]
         .filter((el) => !instances.has(el))
         .forEach((el) => instances.set(el, new Effect(el)));
