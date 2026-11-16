@@ -22,10 +22,13 @@
 	</div>
 
 	<div class="flex flex-1 flex-col {{ arrow ? 'justify-between' : 'gap-1' }} gap-6 {{ layout == 'row' ? 'lg:py-2' }}">
-		<div class="flex flex-col {{ not arrow ? 'gap-1' }}">
-			<span class="text-m inline-flex items-center gap-2.5 text-{{ color }}">
-				<span class="size-3 shrink-0 rounded-full bg-{{ color }}"></span>{{ post.title }}
-			</span>
+		<div class="flex flex-col gap-2">
+			<div class="flex justify-start gap-2">
+				<span class="text-s inline-flex items-center gap-2.5 uppercase opacity-60">{{ post.title }}</span>
+				<span class="text-s inline-flex items-center gap-2.5 text-{{ color }}-dark">
+					<span class="size-3 shrink-0 rounded-full bg-{{ color }}"></span>{{ term.name }}
+				</span>
+			</div>
 			<{{ tag }} class="{{ title_class ?: 'text-xxl' }}">{{ custom ?: post.title }}</{{ tag }}>
 		</div>
 

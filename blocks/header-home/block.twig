@@ -1,5 +1,5 @@
 <section {{ block_id }} data-block-type="header-home" data-block-id="{{ block.id }}" class="{{ block_classes(fields, true) }}">
-	<div class="cartouche grider gap-y-8! overflow-hidden rounded-4xl content-grid content-grid--full lg:gap-y-12!">
+	<div class="grider gap-y-8! overflow-hidden rounded-4xl content-grid content-grid--full lg:gap-y-12!">
 		{% if fields.title %}<h1 class="col-span-12 text-center md:px-6! md:text-left lg:col-span-20 lg:col-start-2 lg:pt-12! lg:pl-12! xxl:col-span-18" data-effect="headline">{{ fields.title }}</h1>{% endif %}
 		<div class="col-span-12 flex flex-col gap-6 px-6! lg:col-span-9 lg:col-start-2! lg:gap-12 lg:pb-20 lg:pl-12! xl:col-span-11 xxl:col-span-10">
 			{% if fields.intro %} <div class="wysiwyg text-soft-light text-center md:text-left lg:max-w-100">{{ fields.intro }}</div>{% endif %}
