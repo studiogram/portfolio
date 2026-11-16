@@ -9,9 +9,9 @@
 					<h1 class="text-xxxl" data-effect="headline">{{ fields.title ?: post.title }}</h1>
 				</div>
 		
-				<figure class="bg-medium-secondary relative order-2 aspect-4/5 rounded-3xl lg:order-0 lg:col-start-2 {{ fields.btn.text ? 'lg:row-span-3' : 'lg:row-span-2' }} lg:aspect-auto lg:self-stretch">
+				<figure class="relative order-2 self-start rounded-3xl lg:order-0 lg:col-start-2 {{ fields.btn.text ? 'lg:row-span-3' : 'lg:row-span-2' }}">
 					{% if fields.header_image %}
-						<img class="absolute inset-0 size-full rounded-3xl object-cover" {{ priority_image(fields.header_image) }} alt=""/>
+						<img class="block h-auto w-full rounded-3xl" {{ priority_image(fields.header_image) }} alt=""/>
 					{% endif %}
 					
 					{% if fields.client_logo %}
