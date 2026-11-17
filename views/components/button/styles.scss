@@ -13,7 +13,7 @@
     align-self: flex-start; // never stretch in a flex/grid parent
     justify-self: start;
     width: fit-content;
-    min-height: 44px;
+    min-height: 38px;
     padding: 0 0.75rem 0 2rem;
     border-radius: 8px;
     background: var(--btn-bg);
@@ -28,10 +28,10 @@
         position: absolute;
         top: 50%;
         left: 17.5px;
-        width: 12px;
-        padding-bottom: 12px;
+        width: 10px;
+        padding-bottom: 10px;
         border-radius: 50%;
-        background: var(--wp--preset--color--soft);
+        background: var(--btn-dot);
         transform: translate(-50%, -50%);
         z-index: 0;
         transition: 0.5s 0.1s;

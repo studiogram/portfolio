@@ -64,14 +64,16 @@ class Panel extends BlockParent {
                 scrollTrigger: {
                     trigger: item,
                     start: "top bottom",
-                    end: "bottom top",
+                    end: "bottom center",
                     scrub: true,
                     invalidateOnRefresh: true,
                 },
             });
-            tl.fromTo(item, { opacity: 0 }, { opacity: 1, duration: 1, ease: "none" })
-                .to(item, { opacity: 1, duration: 0.6, ease: "none" })
-                .to(item, { opacity: 0, duration: 1, ease: "none" });
+            tl.fromTo(
+                item,
+                { opacity: 0 },
+                { opacity: 1, duration: 1, ease: "none" },
+            ).to(item, { opacity: 1, duration: 0.6, ease: "none" });
             return tl;
         });
 
@@ -102,10 +104,12 @@ class Panel extends BlockParent {
     }
 
     destroy() {
-        [this.tween, this.wheelTween, ...(this.itemTweens || [])].forEach((t) => {
-            t?.scrollTrigger?.kill();
-            t?.kill();
-        });
+        [this.tween, this.wheelTween, ...(this.itemTweens || [])].forEach(
+            (t) => {
+                t?.scrollTrigger?.kill();
+                t?.kill();
+            },
+        );
         this.tween = null;
         this.wheelTween = null;
         this.itemTweens = null;

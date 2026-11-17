@@ -11,8 +11,6 @@ $cart-fg: (
 
 .archive-hero {
     &__cartouche {
-        background: var(--color-dark);
-        color: var(--color-light);
         transition:
             background-color 0.4s ease,
             color 0.4s ease;

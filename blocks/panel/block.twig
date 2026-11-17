@@ -1,6 +1,6 @@
 <section {{ block_id }} data-block-type="panel" data-block-id="{{ block.id }}" class="{{ block_classes(fields, false, false) }}">
 	{% include 'views/partials/block/borders.twig' %}
-	<div class="panel content-grid content-grid--full grider">
+	<div class="panel grider content-grid content-grid--full">
 		<div class="panel__head col-start-2 col-end-12 lg:col-end-13">
 			{% if fields.title %}<h2 class="panel__title | text-xxxl">{{ fields.title|nl2br }}</h2>{% endif %}
 		</div>
@@ -13,7 +13,7 @@
 						{% if fields.numbered %}<span class="panel__num">{{ loop.index }}</span>{% endif %}
 						<div class="panel__content">
 							{% if item.title %}<h3 class="panel__item-title | text-xxl">{{ item.title }}</h3>{% endif %}
-							{% if item.text %}<p class="panel__item-text">{{ item.text }}</p>{% endif %}
+							{% if item.text %}<p class="panel__item-text | text-soft-light">{{ item.text }}</p>{% endif %}
 						</div>
 					</li>
 				{% endfor %}

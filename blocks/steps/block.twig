@@ -1,9 +1,9 @@
-<section {{ block_id }} data-block-type="steps" data-block-id="{{ block.id }}" class="{{ block_classes(fields) }} steps relative text-light">
+<section {{ block_id }} data-block-type="steps" data-block-id="{{ block.id }}" class="{{ block_classes(fields) }} steps text-light relative">
 	{% include 'views/partials/block/borders.twig' %}
 
-	<div class="pointer-events-none absolute inset-x-0 bottom-0 top-[14%] z-0" data-header-dark aria-hidden="true"></div>
+	<div class="pointer-events-none absolute inset-x-0 top-[14%] bottom-0 z-0" data-header-dark aria-hidden="true"></div>
 
-	<div class="pointer-events-none absolute -left-[5%] -top-[5%] z-0 w-[64%] lg:w-[42%]" aria-hidden="true">
+	<div class="pointer-events-none absolute -top-[5%] -left-[5%] z-0 w-[64%] lg:w-[42%]" aria-hidden="true">
 		{{ include('views/svg/approche-blobs.twig') }}
 	</div>
 
@@ -18,7 +18,7 @@
 			<ol class="grid gap-x-10 gap-y-12 lg:grid-cols-2 lg:gap-x-20 lg:gap-y-20">
 				{% for step in fields.steps %}
 					<li class="flex gap-5 lg:gap-8">
-						<span class="flex size-11 shrink-0 items-center justify-center rounded-full bg-medium text-l text-dark">{{ loop.index }}</span>
+						<span class="bg-medium text-l text-dark flex size-11 shrink-0 items-center justify-center rounded-full">{{ loop.index }}</span>
 						<div class="flex flex-col gap-5 lg:gap-8">
 							{% if step.title %}<h3 class="text-xxl">{{ step.title }}</h3>{% endif %}
 							{% if step.text %}<p class="text-soft-light">{{ step.text }}</p>{% endif %}
@@ -28,14 +28,14 @@
 			</ol>
 		{% endif %}
 
-		{% if fields.closing %}<p class="mx-auto max-w-[55ch] text-center text-soft-light">{{ fields.closing }}</p>{% endif %}
+		{% if fields.closing %}<p class="text-soft-light text-l mx-auto max-w-[55ch] text-center whitespace-pre-line">{{ fields.closing }}</p>{% endif %}
 
 		{% if fields.card_title or fields.card_text %}
 			<div class="mx-auto w-full max-w-200">
-				<div data-scroll="perspective" class="relative rounded-m bg-light px-6 py-12 text-center text-dark lg:px-20 lg:py-16">
-					<span class="absolute left-5 top-5 size-4 rounded-full bg-dark lg:left-8 lg:top-8 lg:size-5" aria-hidden="true"></span>
-					<span class="absolute right-5 top-5 size-4 rounded-full bg-dark lg:right-8 lg:top-8 lg:size-5" aria-hidden="true"></span>
-					{% if fields.card_title %}<h3 class="text-xxl mb-6 lg:mb-10">{{ fields.card_title }}</h3>{% endif %}
+				<div data-scroll="perspective" class="rounded-m bg-light text-dark relative px-6 py-12 text-center lg:px-20 lg:py-16">
+					<span class="bg-dark absolute top-5 left-5 size-4 rounded-full lg:top-8 lg:left-8 lg:size-5" aria-hidden="true"></span>
+					<span class="bg-dark absolute top-5 right-5 size-4 rounded-full lg:top-8 lg:right-8 lg:size-5" aria-hidden="true"></span>
+					{% if fields.card_title %}<h3 class="text-xxl mb-6 lg:mb-10!">{{ fields.card_title }}</h3>{% endif %}
 					{% if fields.card_text %}<div class="wysiwyg mx-auto max-w-[66ch]">{{ fields.card_text }}</div>{% endif %}
 				</div>
 			</div>

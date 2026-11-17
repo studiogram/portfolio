@@ -1,8 +1,8 @@
 <hr class="header__scrim" aria-hidden="true"/>
-<header class="header is-on-dark | grider fixed inset-x-0">
+<header class="header {{ theme == 'dark' ? 'is-on-dark' : '' }} | grider fixed inset-x-0">
 
 	<div class="relative col-start-2 col-end-12 flex items-center justify-between py-2 lg:col-end-24">
-		<a href="{{ home }}" class="header__logo | py-4" aria-label="{{ site.name }}">
+		<a href="{{ home }}" class="header__logo | py-4" aria-label="{{ site.name }}" data-header-ctx="{{ theme_for(home) }}">
 			{{ include('views/svg/logo-gram.twig') }}
 		</a>
 
@@ -15,7 +15,7 @@
 			<nav id="header-nav" class="header__nav" aria-label="{{ site.name }}">
 				<ul class="flex flex-col gap-6">
 					{% for item in header.pages %}
-						<li><a class="header__link {{ item.current ? 'is-current' : '' }} text-m" href="{{ item.page }}">{{ item.text }}</a></li>
+						<li><a class="header__link {{ item.current ? 'is-current' : '' }} text-m" href="{{ item.page }}" data-header-ctx="{{ theme_for(item.page) }}">{{ item.text }}</a></li>
 					{% endfor %}
 					<li>{{ include('views/components/button/view.twig', {button: header.btn}) }}</li>
 				</ul>

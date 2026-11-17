@@ -28,8 +28,33 @@
 
     z-index: 99;
 
+    &.is-switching {
+        .header__logo svg,
+        .burger,
+        .header__nav {
+            transition-duration: 0s;
+        }
+    }
+
     &.is-on-dark {
         --header-fg: var(--color-light);
+
+        .burger {
+            background: color-mix(in srgb, var(--color-light) 14%, transparent);
+        }
+
+        @include lg {
+            .header__nav {
+                color: var(--color-soft-light);
+                background: var(--color-dark);
+
+                .btn--primary {
+                    --btn-bg: var(--color-medium-secondary);
+                    --btn-text: var(--color-dark);
+                    --btn-dot: var(--color-dark);
+                }
+            }
+        }
     }
 
     &__logo svg {
@@ -88,6 +113,8 @@
     }
 
     &__nav {
+        transition: 0.35s;
+
         @include lg {
             background: var(--color-medium);
             color: var(--color-dark);
@@ -110,8 +137,10 @@
         padding: 0.75rem 1rem;
         border-radius: 0.5rem;
         background: var(--color-medium);
-        color: var(--color-dark);
-        transition: color 0.7s ease-in-out;
+        color: var(--header-fg);
+        transition:
+            color 0.7s ease-in-out,
+            background 0.7s ease-in-out;
 
         @include lg {
             display: none;

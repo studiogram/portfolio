@@ -1,6 +1,6 @@
 {% if sector.name %}
 	{% set tag = sector.url ? 'a' : 'span' %}
 	<{{ tag }} class="sector text-tag inline-flex items-center gap-2.5 text-{{ sector.color }}-dark!{{ sector.url ? ' transition hover:opacity-70' }}"{% if sector.url %} href="{{ sector.url }}"{% endif %}>
-		<span{% if sector.pastille %} data-pastille{% endif %} class="size-3.5 shrink-0 rounded-full bg-{{ sector.color }}"></span>{{ sector.name }}
+	<span{% if sector.pastille %} data-pastille{% endif %} class="size-3 shrink-0 rounded-full bg-{{ sector.color }}"></span>{{ sector.name }}
 	</{{ tag }}>
 {% endif %}

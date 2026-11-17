@@ -6,14 +6,21 @@ export default class Header {
         this.burger = element.querySelector(".burger");
         this.label = element.querySelector(".burger__label");
         this.nav = element.querySelector(".header__nav");
-        this.links = this.nav ? [...this.nav.querySelectorAll("a")] : [];
+        this.links = [...element.querySelectorAll("a")];
 
         element
             .querySelectorAll(".header__link")
             .forEach((a) => this.splitLink(a));
 
         this.onBurger = () => this.toggle();
-        this.onLink = () => this.close();
+        this.onLink = (e) => {
+            this.close();
+            const hint = e.currentTarget.dataset.headerCtx;
+            if (hint) {
+                this.el.classList.add("is-switching");
+                this.applyContext(hint);
+            }
+        };
         this.onKey = (e) => { if (e.key === "Escape") this.close(); };
         this.onResize = () => {
             if (window.innerWidth >= DESKTOP) this.close();
@@ -37,9 +44,16 @@ export default class Header {
             });
         };
         addEventListener("scroll", this.onContrast, { passive: true });
-        this.onNavigated = () => this.updateContrast();
+        this.onNavigated = () => {
+            this.el.classList.remove("is-switching");
+            this.updateContrast();
+        };
         document.addEventListener("app:navigated", this.onNavigated);
+        this.el.classList.add("is-switching");
         this.updateContrast();
+        requestAnimationFrame(() =>
+            this.el.classList.remove("is-switching"),
+        );
     }
 
     crosses(selector, band) {
@@ -57,8 +71,11 @@ export default class Header {
             window.innerWidth < DESKTOP
                 ? ".cartouche, .bg-dark, .panel__list, [data-header-dark]"
                 : ".cartouche, .bg-dark, [data-header-dark]";
-        const dark = this.crosses(darkSel, band);
-        this.el.classList.toggle("is-on-dark", dark);
+        this.applyContext(this.crosses(darkSel, band) ? "dark" : "light");
+    }
+
+    applyContext(ctx) {
+        this.el.classList.toggle("is-on-dark", ctx === "dark");
     }
 
     splitLink(a) {

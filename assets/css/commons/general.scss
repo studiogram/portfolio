@@ -143,6 +143,10 @@
     }
 }
 
+.headline__word {
+    white-space: nowrap;
+}
+
 .header-post__logo {
     --logo-h: 4.5rem;
     display: block;

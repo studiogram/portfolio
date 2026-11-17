@@ -9,9 +9,9 @@
 			{% for col in fields.columns %}
 				{% set cols = cols|merge([{ heading: col.heading, lines: col.items|split('\n') }]) %}
 			{% endfor %}
-			{% include 'views/components/listing/view.twig' with { columns: cols, class: 'listing--rule w-full grid-cols-2 text-left sm:grid-cols-3 lg:grid-cols-5' } %}
+			{% include 'views/components/listing/view.twig' with { columns: cols, class: 'listing--rule w-full grid-cols-2 text-left sm:grid-cols-3 lg:grid-cols-5', body_gap: 'gap-0' } %}
 		{% endif %}
 
-		{% if fields.footer %}<p class="max-w-[40ch] text-xl">{{ fields.footer }}</p>{% endif %}
+		{% if fields.footer %}<p class="mt-32! max-w-[40ch] text-xl">{{ fields.footer }}</p>{% endif %}
 	</div>
 </section>

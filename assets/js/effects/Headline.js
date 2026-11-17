@@ -40,6 +40,7 @@ export default class Headline {
             type: "lines,words,chars",
             mask: "lines",
             linesClass: "headline__line",
+            wordsClass: "headline__word",
         });
         this.st.lines.forEach((line) => {
             const mask = line.parentNode;
