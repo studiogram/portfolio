@@ -8,7 +8,7 @@
             "name": "hero_title",
             "aria-label": "",
             "type": "text",
-            "instructions": "Titre affiché dans le cartouche de l'en-tête (défaut : Projets).",
+            "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -18,10 +18,10 @@
             },
             "default_value": "Projets",
             "maxlength": "",
+            "allow_in_bindings": 0,
             "placeholder": "Projets",
             "prepend": "",
-            "append": "",
-            "allow_in_bindings": 0
+            "append": ""
         },
         {
             "key": "field_6b0pa0003label",
@@ -29,7 +29,7 @@
             "name": "filter_label",
             "aria-label": "",
             "type": "text",
-            "instructions": "Texte précédant les filtres par secteur.",
+            "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -39,10 +39,10 @@
             },
             "default_value": "Filtrer par secteur :",
             "maxlength": "",
+            "allow_in_bindings": 0,
             "placeholder": "Filtrer par secteur :",
             "prepend": "",
-            "append": "",
-            "allow_in_bindings": 0
+            "append": ""
         },
         {
             "key": "field_6b0pa0002sub",
@@ -50,7 +50,7 @@
             "name": "hero_subtitle",
             "aria-label": "",
             "type": "textarea",
-            "instructions": "Texte d'introduction affiché à droite du titre.",
+            "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -60,10 +60,10 @@
             },
             "default_value": "",
             "maxlength": "",
+            "allow_in_bindings": 0,
             "rows": 2,
             "placeholder": "",
-            "new_lines": "",
-            "allow_in_bindings": 0
+            "new_lines": ""
         }
     ],
     "location": [
@@ -76,14 +76,28 @@
         ]
     ],
     "menu_order": 0,
-    "position": "normal",
+    "position": "acf_after_title",
     "style": "default",
     "label_placement": "top",
     "instruction_placement": "label",
-    "hide_on_screen": "",
+    "hide_on_screen": [
+        "the_content",
+        "excerpt",
+        "discussion",
+        "comments",
+        "revisions",
+        "slug",
+        "author",
+        "format",
+        "page_attributes",
+        "featured_image",
+        "categories",
+        "tags",
+        "send-trackbacks"
+    ],
     "active": true,
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1793616112
+    "modified": 1794915767
 }

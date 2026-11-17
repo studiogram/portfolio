@@ -1,86 +1,145 @@
 {
-	"key": "group_6b00panels000",
-	"title": "Block panels",
-	"fields": [
-		{
-			"key": "field_6b0panitems0",
-			"label": "Panneaux",
-			"name": "items",
-			"type": "repeater",
-			"instructions": "",
-			"required": 0,
-			"wrapper": { "width": "", "class": "", "id": "" },
-			"layout": "block",
-			"min": 0,
-			"max": 0,
-			"button_label": "Ajouter un panneau",
-			"sub_fields": [
-				{
-					"key": "field_6b0panthm01",
-					"label": "Thème",
-					"name": "theme",
-					"type": "select",
-					"instructions": "",
-					"required": 0,
-					"wrapper": { "width": "33", "class": "", "id": "" },
-					"choices": { "light": "Clair", "dark": "Sombre" },
-					"default_value": "light",
-					"return_format": "value",
-					"allow_null": 0,
-					"multiple": 0,
-					"ui": 0
-				},
-				{
-					"key": "field_6b0pantit01",
-					"label": "Titre",
-					"name": "title",
-					"type": "text",
-					"instructions": "",
-					"required": 0,
-					"wrapper": { "width": "67", "class": "", "id": "" },
-					"default_value": "",
-					"placeholder": ""
-				},
-				{
-					"key": "field_6b0pantxt01",
-					"label": "Texte",
-					"name": "text",
-					"type": "textarea",
-					"instructions": "",
-					"required": 0,
-					"wrapper": { "width": "67", "class": "", "id": "" },
-					"default_value": "",
-					"rows": 4,
-					"new_lines": "wpautop"
-				},
-				{
-					"key": "field_6b0panimg01",
-					"label": "Image",
-					"name": "image",
-					"type": "image",
-					"instructions": "Optionnelle",
-					"required": 0,
-					"wrapper": { "width": "33", "class": "", "id": "" },
-					"return_format": "id",
-					"library": "all",
-					"preview_size": "medium"
-				}
-			]
-		}
-	],
-	"location": [
-		[
-			{ "param": "block", "operator": "==", "value": "studiogram/panels" }
-		]
-	],
-	"menu_order": 0,
-	"position": "normal",
-	"style": "default",
-	"label_placement": "top",
-	"instruction_placement": "label",
-	"hide_on_screen": "",
-	"active": true,
-	"description": "",
-	"show_in_rest": 0,
-	"modified": 1793279111
+    "key": "group_6b00panels000",
+    "title": "Block panels",
+    "fields": [
+        {
+            "key": "field_6b0panitems0",
+            "label": "Panneaux",
+            "name": "items",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "min": 0,
+            "max": 0,
+            "button_label": "Ajouter un panneau",
+            "rows_per_page": 20,
+            "collapsed": "",
+            "sub_fields": [
+                {
+                    "key": "field_6b0panthm01",
+                    "label": "Thème",
+                    "name": "theme",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "light": "Clair",
+                        "dark": "Sombre"
+                    },
+                    "default_value": "light",
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "allow_in_bindings": 1,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0,
+                    "parent_repeater": "field_6b0panitems0"
+                },
+                {
+                    "key": "field_6afc56c0f1a83",
+                    "label": "Date",
+                    "name": "date",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_6b0panitems0"
+                },
+                {
+                    "key": "field_6b0pantit01",
+                    "label": "Titre",
+                    "name": "title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 1,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_6b0panitems0"
+                },
+                {
+                    "key": "field_6b0pantxt01",
+                    "label": "Texte",
+                    "name": "text",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 1,
+                    "rows": 4,
+                    "placeholder": "",
+                    "new_lines": "wpautop",
+                    "parent_repeater": "field_6b0panitems0"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "studiogram\/panels"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "display_title": "",
+    "modified": 1794922183
 }

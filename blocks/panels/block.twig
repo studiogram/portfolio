@@ -10,14 +10,15 @@
 			{% for item in fields.items %}
 				<article class="panels__panel panels__panel--{{ item.theme ?: 'light' }}" data-panels-panel style="z-index: {{ loop.index }}">
 					<div class="panels__content">
-						{% if item.title %}<h3 class="panels__title | text-xxl">{{ item.title }}</h3>{% endif %}
-						{% if item.text %}<p class="panels__text">{{ item.text }}</p>{% endif %}
+						
+							
+						{% if item.title %}<h3 class="panels__title | text-xxxl">{{ item.title }}</h3>{% endif %}
+						
+						<div class="flex flex-col gap-2">
+							<p class="text-soft text-l">{{ item.date }}</p>
+							{% if item.text %}<div class="panels__text max-w-200">{{ item.text }}</div>{% endif %}
+						</div>
 					</div>
-					{% if item.image %}
-						<figure class="panels__media">
-							<img class="panels__img lazyload" {{ responsive_image(item.image) }} alt=""/>
-						</figure>
-					{% endif %}
 				</article>
 			{% endfor %}
 		</div>

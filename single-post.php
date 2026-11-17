@@ -18,13 +18,10 @@ $i = array_search($current, $all, true);
 $ids = [];
 
 if ($n > 1 && $i !== false) {
-    // DESC order: newer = lower index. left=previous (older), center=second next,
-    // right=next (newer). Wrap around so edges still yield distinct projects.
-    $previous    = $all[($i + 1) % $n];
-    $next        = $all[($i - 1 + $n) % $n];
-    $second_next = $all[($i - 2 + $n) % $n];
+    $previous = $all[($i + 1) % $n];
+    $next     = $all[($i - 1 + $n) % $n];
 
-    foreach ([$previous, $second_next, $next] as $id) {
+    foreach ([$previous, $next] as $id) {
         if ($id !== $current && !in_array($id, $ids, true)) {
             $ids[] = $id;
         }

@@ -57,7 +57,8 @@ if (!class_exists('STUDIOGRAM\Setup')) :
                 $blog_id = (int) get_option('page_for_posts');
                 if ($blog_id) $theme_source_id = $blog_id;
             }
-            $context['theme'] = ($theme_source_id && get_post_meta($theme_source_id, 'theme', true)) ? 'light' : 'dark';
+            $is_front = $theme_source_id && (int) get_option('page_on_front') === (int) $theme_source_id;
+            $context['theme'] = (!$is_front && $theme_source_id && get_post_meta($theme_source_id, 'theme', true)) ? 'light' : 'dark';
 
             $context['header'] = $menus['header'] ?: null;
             $context['contact'] = $menus['contact'] ?: null;

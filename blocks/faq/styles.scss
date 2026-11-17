@@ -53,6 +53,7 @@
 
         &__question {
             cursor: pointer;
+            transition: color 0.4s;
 
             svg {
                 width: 100%;
@@ -69,9 +70,8 @@
         &__answer {
             height: 0;
             opacity: 0;
-            p {
-                padding-top: 0.5em;
-            }
+            overflow: hidden;
+            will-change: height;
         }
 
         &[data-open="true"] {
@@ -81,6 +81,10 @@
                     var(--wp--preset--color--primary) 15%,
                     transparent
                 );
+
+            .faq__question {
+                color: var(--wp--preset--color--medium-tertiary);
+            }
 
             .faq-icon__v {
                 transform: scaleY(0);

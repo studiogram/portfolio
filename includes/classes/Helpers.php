@@ -60,6 +60,7 @@ if (!class_exists('STUDIOGRAM\Helpers')) :
                 }
             }
             if (!$id) return 'light';
+            if ($id === (int) get_option('page_on_front')) return 'dark';
             return get_post_meta($id, 'theme', true) ? 'light' : 'dark';
         }
 

@@ -14,6 +14,7 @@ if (!class_exists('STUDIOGRAM\PostTypes')) :
             add_action('after_switch_theme', 'flush_rewrite_rules');
             add_filter('custom_menu_order', '__return_true');
             add_filter('menu_order', [$this, 'reorder_menu']);
+            add_filter('post_link', [$this, 'post_permalink'], 10, 2);
         }
 
         public function register()
@@ -22,6 +23,15 @@ if (!class_exists('STUDIOGRAM\PostTypes')) :
             $this->rename_post_type('Pages', 'Page', 'dashicons-format-aside', false, 'page');
             unregister_taxonomy_for_object_type('post_tag', 'post');
             $this->register_cpt('notes', 'Notes', 'Note', 'dashicons-editor-paste-text', false, 22, false);
+
+            add_rewrite_rule('^projets/([^/]+)/?$', 'index.php?post_type=post&name=$matches[1]', 'top');
+        }
+
+        public function post_permalink($url, $post)
+        {
+            return $post->post_type === 'post'
+                ? home_url('/projets/' . $post->post_name . '/')
+                : $url;
         }
 
         /**

@@ -70,7 +70,7 @@ class FAQ extends BlockParent {
 
         // Height changes here → recompute ScrollTrigger positions so scroll
         // animations (from-left, …) on items below stay in sync.
-        gsap.delayedCall(0.95, () =>
+        gsap.delayedCall(0.65, () =>
             document.dispatchEvent(new Event("scroll-refresh")),
         );
 
@@ -79,8 +79,8 @@ class FAQ extends BlockParent {
             gsap.to(content, {
                 height: isOpen ? 0 : "auto",
                 opacity: isOpen ? 0 : 1,
-                duration: 0.9,
-                ease: "power2.inOut",
+                duration: 0.6,
+                ease: "power2.out",
             });
             li.dataset.open = !isOpen;
             return;

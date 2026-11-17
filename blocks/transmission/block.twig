@@ -1,15 +1,12 @@
-<section {{ block_id }} data-block-type="transmission" data-block-id="{{ block.id }}" class="{{ block_classes(fields) }} transmission colors-transition">
+<section {{ block_id }} data-block-type="transmission" data-block-id="{{ block.id }}" class="{{ block_classes(fields) }} transmission" data-header-dark>
 	{% include 'views/partials/block/borders.twig' %}
-	<div class="transmission__bg" aria-hidden="true">
-		{{ include('views/svg/transmission.twig', { class: 'transmission__circles' }) }}
-	</div>
 
 	<div class="transmission__inner content-grid content-grid--center">
-		{% if fields.title %}<h2 class="transmission__title | text-xxl" data-scroll="fade">{{ fields.title }}</h2>{% endif %}
-		{% if fields.text %}<div class="wysiwyg transmission__text" data-scroll="fade">{{ fields.text }}</div>{% endif %}
+		{% if fields.title %}<h2 class="transmission__title | text-xxl">{{ fields.title }}</h2>{% endif %}
+		{% if fields.text %}<div class="wysiwyg transmission__text">{{ fields.text }}</div>{% endif %}
 
 		{% if fields.stat_value %}
-			<div class="transmission__stat" data-scroll="perspective">
+			<div class="transmission__stat">
 				<span class="transmission__stat-value | text-xxl">{{ fields.stat_value }}</span>
 				{% if fields.stat_label %}<span class="transmission__stat-label">{{ fields.stat_label }}</span>{% endif %}
 			</div>

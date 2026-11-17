@@ -1,160 +1,160 @@
 @use "mixins" as *;
 
 .panels {
-	position: relative;
+    position: relative;
 
-	&__bg {
-		position: absolute;
-		inset: 0;
-		z-index: 0;
-		pointer-events: none;
-	}
+    &__bg {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+    }
 
-	&__blobs {
-		position: absolute;
-		inset: 0;
-		width: 100%;
-		height: 100%;
-	}
+    &__blobs {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+    }
 
-	&__stage {
-		position: relative;
-		z-index: 1;
-		display: flex;
-		flex-direction: column;
-		gap: clamp(1.5rem, 4vw, 3rem);
-		padding-block: clamp(2rem, 6vw, 5rem);
-	}
+    &__stage {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        gap: clamp(1.5rem, 4vw, 3rem);
+        padding-block: clamp(2rem, 6vw, 5rem);
+    }
 
-	&__panel {
-		position: relative;
-		width: 83.333%;
-		margin-inline: auto;
-		min-height: 60vh;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		gap: clamp(1.5rem, 4vw, 3rem);
-		padding: clamp(2rem, 6vw, 5rem);
-		border-radius: 3rem;
-		overflow: hidden;
+    &__panel {
+        position: relative;
+        width: 83.333%;
+        margin-inline: auto;
+        min-height: 60vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: clamp(1.5rem, 4vw, 3rem);
+        padding: clamp(2rem, 6vw, 5rem);
+        border-radius: 3rem;
+        overflow: hidden;
 
-		@include lg {
-			width: 91.667%;
-			flex-direction: row;
-			align-items: center;
-		}
+        @include lg {
+            width: 91.667%;
+            flex-direction: row;
+            align-items: center;
+        }
 
-		&::before,
-		&::after {
-			content: "";
-			position: absolute;
-			left: 1rem;
-			width: 16px;
-			height: 16px;
-			border-radius: 50%;
-			background: var(--wp--preset--color--medium);
-			z-index: 2;
+        &::before,
+        &::after {
+            content: "";
+            position: absolute;
+            left: 1rem;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--wp--preset--color--medium);
+            z-index: 2;
 
-			@include lg {
-				left: 2rem;
-				width: 22px;
-				height: 22px;
-			}
-		}
+            @include lg {
+                left: 2rem;
+                width: 22px;
+                height: 22px;
+            }
+        }
 
-		&::before {
-			top: 1rem;
+        &::before {
+            top: 1rem;
 
-			@include lg {
-				top: 2rem;
-			}
-		}
-		&::after {
-			bottom: 1rem;
+            @include lg {
+                top: 2rem;
+            }
+        }
+        &::after {
+            bottom: 1rem;
 
-			@include lg {
-				bottom: 2rem;
-			}
-		}
+            @include lg {
+                bottom: 2rem;
+            }
+        }
 
-		&--dark {
-			background: var(--wp--preset--color--dark);
-			color: var(--wp--preset--color--light);
-		}
+        &--dark {
+            background: var(--wp--preset--color--dark);
+            color: var(--wp--preset--color--light);
+        }
 
-		&--light {
-			background: var(--wp--preset--color--light);
-			color: var(--wp--preset--color--dark);
+        &--light {
+            background: var(--wp--preset--color--light);
+            color: var(--wp--preset--color--dark);
 
-			&::before,
-			&::after {
-				background: var(--wp--preset--color--dark);
-			}
-		}
-	}
+            &::before,
+            &::after {
+                background: var(--wp--preset--color--dark);
+            }
+        }
+    }
 
-	&__content {
-		flex: 1;
-		display: flex;
-		flex-direction: column;
-		gap: clamp(1rem, 2vw, 1.5rem);
-	}
+    &__content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+    }
 
-	&__title {
-		margin: 0;
-	}
+    &__title {
+        margin: 0;
+    }
 
-	&__media {
-		flex: 1;
-	}
+    &__media {
+        flex: 1;
+    }
 
-	&__img {
-		width: 100%;
-		height: auto;
-		border-radius: 1.5rem;
-	}
+    &__img {
+        width: 100%;
+        height: auto;
+        border-radius: 1.5rem;
+    }
 
-	&__pin {
-		grid-column: 1 / -1;
-		position: relative;
-	}
+    &__pin {
+        grid-column: 1 / -1;
+        position: relative;
+    }
 
-	&.is-pinned {
-		padding-block: 0 !important;
+    &.is-pinned {
+        padding-block: 0 !important;
 
-		.panels__pin {
-			height: 100dvh;
-			margin-block: 3rem;
-		}
+        .panels__pin {
+            height: 100dvh;
+            margin-block: 3rem;
+        }
 
-		.panels__bg {
-			top: -3rem;
-			bottom: -3rem;
-		}
+        .panels__bg {
+            top: -3rem;
+            bottom: -3rem;
+        }
 
-		.panels__stage {
-			display: block;
-			height: 100%;
-			padding: 0;
-			overflow: hidden;
-		}
+        .panels__stage {
+            display: block;
+            height: 100%;
+            padding: 0;
+            overflow: hidden;
+        }
 
-		.panels__panel {
-			position: absolute;
-			top: 50%;
-			translate: 0 -50%;
-			left: 8.333%;
-			width: 83.333%;
-			height: min(82dvh, 46rem);
-			min-height: 0;
-			margin: 0;
+        .panels__panel {
+            position: absolute;
+            top: 50%;
+            translate: 0 -50%;
+            left: 8.333%;
+            width: 83.333%;
+            height: min(82dvh, 46rem);
+            min-height: 0;
+            margin: 0;
 
-			@include lg {
-				left: 4.167%;
-				width: 91.667%;
-				height: min(70dvh, 40rem);
-			}
-		}
-	}
+            @include lg {
+                left: 4.167%;
+                width: 91.667%;
+                height: min(70dvh, 40rem);
+            }
+        }
+    }
 }

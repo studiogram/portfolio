@@ -188,7 +188,12 @@ export default class Scrolls {
                 gsap.fromTo(
                     fade,
                     { autoAlpha: 0 },
-                    { autoAlpha: 1, ...this.enterVars(fade) },
+                    {
+                        autoAlpha: 1,
+                        ...this.enterVars(fade, {
+                            end: "top 75%",
+                        }),
+                    },
                 );
             });
         }

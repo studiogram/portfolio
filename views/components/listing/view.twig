@@ -2,7 +2,7 @@
 	<dl class="listing {{ class }} gap-y-4">
 		{% for col in columns %}
 			<div class="listing__col">
-				<dt class="listing__head text-tag text-medium-tertiary border-medium border-b pb-4 text-xs uppercase">{{ col.heading }}</dt>
+				<dt class="listing__head text-tag border-medium-secondary text-medium-tertiary border-b pb-4 text-xs uppercase">{{ col.heading }}</dt>
 				<dd class="listing__body flex flex-col pe-4 text-xs {{ body_gap ?? 'gap-2' }}">
 					{% if col.html %}{{ col.html|raw }}{% else %}{% for line in col.lines %}{% if line|trim %}<span>{{ line|trim }}</span>{% endif %}{% endfor %}{% endif %}
 				</dd>

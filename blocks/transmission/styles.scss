@@ -3,22 +3,14 @@
 .transmission {
     position: relative;
     overflow: hidden;
+    // background: color-mix(
+    //     in srgb,
+    //     var(--wp--preset--color--dark) 90%,
+    //     var(--wp--preset--color--light)
+    // );
     background: var(--wp--preset--color--dark);
     color: var(--wp--preset--color--light);
     padding-block: clamp(4rem, 10vw, 9rem);
-
-    &__bg {
-        position: absolute;
-        inset: 0;
-        pointer-events: none;
-    }
-
-    &__circles {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-    }
 
     &__inner {
         position: relative;

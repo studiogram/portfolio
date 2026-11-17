@@ -1,6 +1,6 @@
 @use "mixins" as *;
 
-.single-project > [data-block-type].block:last-of-type {
+.single-project > [data-block-type].block:not(:has(~ [data-block-type])) {
     --space-bottom: calc(var(--block-space) * 2);
 }
 

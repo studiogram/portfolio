@@ -82,6 +82,10 @@
         grid-template-rows: subgrid;
     }
 
+    &__body p {
+        font-size: inherit;
+    }
+
     &__body a {
         text-decoration: underline dotted;
         text-underline-offset: 3px;

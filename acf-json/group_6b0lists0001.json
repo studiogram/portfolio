@@ -6,22 +6,31 @@
             "key": "field_6b0lsttit00",
             "label": "Titre",
             "name": "title",
+            "aria-label": "",
             "type": "text",
+            "instructions": "",
             "required": 0,
+            "conditional_logic": false,
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
             "default_value": "",
-            "placeholder": ""
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_6b0lstcols0",
             "label": "Colonnes",
             "name": "columns",
+            "aria-label": "",
             "type": "repeater",
+            "instructions": "",
             "required": 0,
+            "conditional_logic": false,
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -31,35 +40,52 @@
             "min": 0,
             "max": 0,
             "button_label": "Ajouter une colonne",
+            "rows_per_page": 20,
+            "collapsed": "",
             "sub_fields": [
                 {
                     "key": "field_6b0lstclhd0",
                     "label": "Intitulé",
                     "name": "heading",
+                    "aria-label": "",
                     "type": "text",
+                    "instructions": "",
                     "required": 0,
+                    "conditional_logic": 0,
                     "wrapper": {
-                        "width": "40",
+                        "width": "",
                         "class": "",
                         "id": ""
                     },
                     "default_value": "",
-                    "placeholder": ""
+                    "maxlength": "",
+                    "allow_in_bindings": 1,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_6b0lstcols0"
                 },
                 {
                     "key": "field_6b0lstclit0",
-                    "label": "Éléments (un par ligne)",
+                    "label": "Éléments",
                     "name": "items",
+                    "aria-label": "",
                     "type": "textarea",
+                    "instructions": "",
                     "required": 0,
+                    "conditional_logic": 0,
                     "wrapper": {
-                        "width": "60",
+                        "width": "",
                         "class": "",
                         "id": ""
                     },
                     "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 1,
                     "rows": 5,
-                    "new_lines": ""
+                    "placeholder": "",
+                    "new_lines": "",
+                    "parent_repeater": "field_6b0lstcols0"
                 }
             ]
         },
@@ -67,15 +93,21 @@
             "key": "field_6b0lstfoot0",
             "label": "Texte de conclusion",
             "name": "footer",
+            "aria-label": "",
             "type": "text",
+            "instructions": "",
             "required": 0,
+            "conditional_logic": false,
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
             "default_value": "",
-            "placeholder": ""
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
         }
     ],
     "location": [
@@ -83,7 +115,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "studiogram/lists"
+                "value": "studiogram\/lists"
             }
         ]
     ],
@@ -96,5 +128,6 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1793353741
+    "display_title": "",
+    "modified": 1794918444
 }

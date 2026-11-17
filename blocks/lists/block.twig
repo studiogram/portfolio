@@ -1,9 +1,7 @@
 <section {{ block_id }} data-block-type="lists" data-block-id="{{ block.id }}" class="{{ block_classes(fields) }} lists relative">
 	{% include 'views/partials/block/borders.twig' %}
 
-	<div class="col-span-12 flex flex-col items-center gap-12 px-6! text-center lg:col-span-20 lg:col-start-3 lg:gap-20 lg:px-0!">
-		{% if fields.title %}<h2 class="text-xxl max-w-[16ch]">{{ fields.title }}</h2>{% endif %}
-
+	<div class="col-span-12 flex flex-col items-start gap-12 px-6! text-center lg:col-span-22 lg:col-start-2 lg:gap-20 lg:px-0!">
 		{% if fields.columns %}
 			{% set cols = [] %}
 			{% for col in fields.columns %}
@@ -11,7 +9,6 @@
 			{% endfor %}
 			{% include 'views/components/listing/view.twig' with { columns: cols, class: 'listing--rule w-full grid-cols-2 text-left sm:grid-cols-3 lg:grid-cols-5', body_gap: 'gap-0' } %}
 		{% endif %}
-
-		{% if fields.footer %}<p class="mt-32! max-w-[40ch] text-xl">{{ fields.footer }}</p>{% endif %}
+		{# {% if fields.footer %}<h2 class="text-m mt-24 text-start">{{ fields.footer }}</h2>{% endif %} #}
 	</div>
 </section>
