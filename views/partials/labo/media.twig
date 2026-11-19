@@ -1,0 +1,9 @@
+{% if m.type == 'video' and m.video %}
+	{% set vid_id = function('attachment_url_to_postid', m.video) %}
+	{% set vmeta = vid_id ? function('wp_get_attachment_metadata', vid_id) : null %}
+	<video class="labo-project__asset labo-project__video" playsinline muted loop preload="none"{% if vmeta.width and vmeta.height %} style="aspect-ratio: {{ vmeta.width }} / {{ vmeta.height }}"{% endif %}>
+		<source data-src="{{ m.video }}" type="video/mp4"/>
+	</video>
+{% elseif m.image %}
+	<img class="labo-project__asset lazyload" {{ responsive_image(m.image) }} alt=""/>
+{% endif %}

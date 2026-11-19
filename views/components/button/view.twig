@@ -8,7 +8,7 @@
 	} %}
 	{% set type = types[button.type] %}
 	{% if type %}
-		<a class="btn{{ button.variant ? ' btn--' ~ button.variant }}{{ button.align and button.align != 'left' ? ' btn--' ~ button.align }}{{ button.class ? ' ' ~ button.class }}" href="{{ type.href }}"{{ type.target ? ' target="' ~ type.target ~ '"' }}{{ type.download ? ' download' }}>
+		<a class="btn{{ button.variant ? ' btn--' ~ button.variant }}{{ button.align and button.align != 'left' ? ' btn--' ~ button.align }}{{ button.class ? ' ' ~ button.class }}" href="{{ type.href }}"{{ type.target ? ' target="' ~ type.target ~ '"' }}{{ type.download ? ' download' }}{{ button.ctx ? ' data-header-ctx="' ~ button.ctx ~ '"' }}>
 			<span>{{ button.text }}</span>
 		</a>
 	{% endif %}

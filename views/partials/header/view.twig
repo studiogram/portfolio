@@ -15,9 +15,9 @@
 			<nav id="header-nav" class="header__nav" aria-label="{{ site.name }}">
 				<ul class="flex flex-col gap-6">
 					{% for item in header.pages %}
-						<li><a class="header__link {{ item.current ? 'is-current' : '' }} text-m" href="{{ item.page }}" data-header-ctx="{{ theme_for(item.page) }}">{{ item.text }}</a></li>
+						<li><a class="header__link {{ item.current ? 'is-current' : '' }} text-s" href="{{ item.page }}" data-header-ctx="{{ theme_for(item.page) }}">{{ item.text }}</a></li>
 					{% endfor %}
-					<li>{{ include('views/components/button/view.twig', {button: header.btn}) }}</li>
+					<li>{{ include('views/components/button/view.twig', {button: header.btn|merge({ ctx: theme_for(header.btn.interne) })}) }}</li>
 				</ul>
 			</nav>
 		{% endif %}

@@ -1,47 +1,57 @@
-<section {{ block_id }} data-block-type="labo-project" data-block-id="{{ block.id }}" class="{{ block_classes(fields) }} labo-project{{ fields.flip ? ' labo-project--flip' }}">
+<section {{ block_id }} data-block-type="labo-project" data-block-id="{{ block.id }}" class="{{ block_classes(fields) }} labo-project">
 	{% include 'views/partials/block/borders.twig' %}
 
-	<div class="labo-project__grid grider">
-		<div class="labo-project__head | col-span-12 col-start-1 lg:col-start-2 lg:col-end-24">
-			{% if fields.title %}
-				<h2 class="labo-project__title">
-					<span class="labo-project__dot bg-{{ fields.dot ?: 'lightblue' }}"></span>{{ fields.title }}
-				</h2>
-			{% endif %}
-		</div>
+	<div class="grider">
+		<div class="col-start-2 col-end-12 lg:col-start-2 lg:col-end-24">
+			<div class="labo-project__wrap mx-auto max-w-375">
+				<div class="labo-project__aside">
+					<div class="labo-project__intro">
+						{% if fields.title or fields.subtitle %}
+							<div class="labo-project__head">
+								{% if fields.title %}
+									<span class="labo-project__eyebrow text-xs uppercase">
+										<span class="labo-project__dot bg-lightblue"></span>
+										<span class="text-lightblue-dark">{{ fields.title }}</span>
+									</span>
+								{% endif %}
+								{% if fields.subtitle %}<h2 class="labo-project__heading" data-effect="headline">{{ fields.subtitle }}</h2>{% endif %}
+							</div>
+						{% endif %}
 
-		<div class="labo-project__card | col-span-12 col-start-1 {{ fields.flip ? 'lg:col-start-17 lg:col-end-24' : 'lg:col-start-2 lg:col-end-9' }}">
-			{% if fields.description %}<div class="wysiwyg labo-project__desc">{{ fields.description }}</div>{% endif %}
+						{% if fields.description %}<div class="wysiwyg labo-project__desc">{{ fields.description }}</div>{% endif %}
+						{% if fields.tags %}<p class="labo-project__tags text-lightblue-dark text-s">{{ fields.tags }}</p>{% endif %}
 
-			{% if fields.btn.text %}{{ include('views/components/button/view.twig', { button: fields.btn }) }}{% endif %}
 
-			{% if fields.tags %}
-				<ul class="labo-project__tags text-s">
-					{% for t in fields.tags %}{% if t.label %}<li class="labo-project__tag">{{ t.label }}</li>{% endif %}{% endfor %}
-				</ul>
-			{% endif %}
+						{% if fields.btn.text %}{{ include('views/components/button/view.twig', { button: fields.btn }) }}{% endif %}
 
-			{% if fields.client_project %}
-				<a href="{{ function('get_permalink', fields.client_project) }}" class="labo-project__case" data-taxi-ignore>
-					<span class="labo-project__case-arrow" aria-hidden="true">
-						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
-					</span>
-					<span class="labo-project__case-label">{{ fields.client_label ?: 'Décliné pour un cas client :' }}</span>
-					<span class="labo-project__case-go" aria-hidden="true">
-						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-					</span>
-				</a>
-			{% endif %}
-		</div>
+						{% if fields.client_project %}
+							<div class="labo-project__case | bg-medium-secondary">
+								<span class="labo-project__case-arrow" aria-hidden="true">
+									<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 6v6a2 2 0 0 0 2 2h9M14 10l4 4-4 4"/></svg>
+								</span>
+								{% if fields.client_label %}<p class="labo-project__case-text">{{ fields.client_label }}</p>{% endif %}
+								<a href="{{ function('get_permalink', fields.client_project) }}" class="btn btn--secondary labo-project__case-btn" data-taxi-ignore>
+									<span>Voir le cas client {{ function('get_the_title', fields.client_project) }}</span>
+								</a>
+							</div>
+						{% endif %}
 
-		<div class="labo-project__cluster | col-span-12 col-start-1 {{ fields.flip ? 'lg:col-start-2 lg:col-end-16' : 'lg:col-start-10 lg:col-end-24' }}">
-			{% for item in fields.images %}
-				{% if item.image %}
-					<figure class="labo-project__tile" data-labo-tile>
-						<img class="lazyload size-full object-cover" {{ responsive_image(item.image) }} alt=""/>
-					</figure>
-				{% endif %}
-			{% endfor %}
+					</div>
+				</div>
+
+				<div class="labo-project__media">
+					{% if fields.intro_media.image or fields.intro_media.video %}
+						<figure class="labo-project__tile">{% include 'views/partials/labo/media.twig' with { m: fields.intro_media } only %}</figure>
+					{% endif %}
+					{% for sec in fields.sections %}
+						{% for it in sec.items %}
+							{% if it.image or it.video %}
+								<figure class="labo-project__tile">{% include 'views/partials/labo/media.twig' with { m: it } only %}</figure>
+							{% endif %}
+						{% endfor %}
+					{% endfor %}
+				</div>
+			</div>
 		</div>
 	</div>
 </section>

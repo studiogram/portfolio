@@ -3,75 +3,203 @@
     "title": "Block labo projet",
     "fields": [
         {
-            "key": "field_6b0lpdot000",
-            "label": "Couleur pastille",
-            "name": "dot",
-            "type": "color_palette",
-            "required": 0,
-            "wrapper": { "width": "50", "class": "", "id": "" },
-            "allowed_colors": ["dark", "red", "green", "lightblue", "pink", "blue"],
-            "default_value": "lightblue",
-            "allow_null": 0,
-            "allow_in_bindings": 0
-        },
-        {
-            "key": "field_6b0lpflip00",
-            "label": "Inverser (images à gauche)",
-            "name": "flip",
-            "type": "true_false",
-            "required": 0,
-            "wrapper": { "width": "50", "class": "", "id": "" },
-            "ui": 1,
-            "default_value": 0
-        },
-        {
             "key": "field_6b0lptitle0",
             "label": "Titre",
             "name": "title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_6b0lpsubtit0",
+            "label": "Titre secondaire",
+            "name": "subtitle",
             "type": "text",
             "required": 0,
-            "wrapper": { "width": "", "class": "", "id": "" },
-            "default_value": ""
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_6b0lpdesc00",
             "label": "Description",
             "name": "description",
+            "aria-label": "",
             "type": "wysiwyg",
+            "instructions": "",
             "required": 0,
-            "wrapper": { "width": "", "class": "", "id": "" },
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "allow_in_bindings": 1,
             "tabs": "all",
-            "toolbar": "basic",
+            "toolbar": "full",
             "media_upload": 0,
             "delay": 0
+        },
+        {
+            "key": "field_6b0lpintromedia",
+            "label": "Média d'intro",
+            "name": "intro_media",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_6b0lpintrotype",
+                    "label": "Type",
+                    "name": "type",
+                    "aria-label": "",
+                    "type": "button_group",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "image": "Image",
+                        "video": "Vidéo"
+                    },
+                    "default_value": "image",
+                    "allow_null": 0,
+                    "parent_repeater": "",
+                    "return_format": "value",
+                    "layout": "horizontal"
+                },
+                {
+                    "key": "field_6b0lpintroimg",
+                    "label": "Image",
+                    "name": "image",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "",
+                    "required": false,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6b0lpintrotype",
+                                "operator": "==",
+                                "value": "image"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "id",
+                    "preview_size": "medium",
+                    "library": "all",
+                    "min_width": 0,
+                    "min_height": 0,
+                    "min_size": 0,
+                    "max_width": 0,
+                    "max_height": 0,
+                    "max_size": 0,
+                    "mime_types": ""
+                },
+                {
+                    "key": "field_6b0lpintrovid",
+                    "label": "Vidéo (mp4)",
+                    "name": "video",
+                    "aria-label": "",
+                    "type": "file",
+                    "instructions": "",
+                    "required": false,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6b0lpintrotype",
+                                "operator": "==",
+                                "value": "video"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "url",
+                    "library": "all",
+                    "mime_types": "mp4",
+                    "min_size": 0,
+                    "max_size": 0
+                }
+            ]
         },
         {
             "key": "field_6b0lptags00",
             "label": "Technologies",
             "name": "tags",
-            "type": "repeater",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Séparées par des virgules",
             "required": 0,
-            "wrapper": { "width": "", "class": "", "id": "" },
-            "layout": "table",
-            "button_label": "Ajouter",
-            "sub_fields": [
-                {
-                    "key": "field_6b0lptaglbl",
-                    "label": "Label",
-                    "name": "label",
-                    "type": "text",
-                    "parent_repeater": "field_6b0lptags00"
-                }
-            ]
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_6b0lpbtn000",
             "label": "Bouton",
             "name": "",
+            "aria-label": "",
             "type": "clone",
+            "instructions": "",
             "required": 0,
-            "wrapper": { "width": "", "class": "", "id": "" },
-            "clone": ["group_67ed2f37472ae"],
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "clone": [
+                "group_67ed2f37472ae"
+            ],
             "display": "seamless",
             "layout": "block",
             "prefix_label": 0,
@@ -81,56 +209,196 @@
             "key": "field_6b0lpccproj",
             "label": "Décliné pour un cas client (projet)",
             "name": "client_project",
+            "aria-label": "",
             "type": "post_object",
-            "instructions": "Optionnel — affiche la pastille « Décliné pour un cas client » liée à ce projet.",
+            "instructions": "Optionnel — affiche la pastille « Décliné pour un cas client » liée à ce projet.",
             "required": 0,
-            "wrapper": { "width": "", "class": "", "id": "" },
-            "post_type": ["post"],
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "post"
+            ],
             "return_format": "id",
             "multiple": 0,
             "allow_null": 1,
-            "ui": 1
+            "ui": 1,
+            "taxonomy": [],
+            "bidirectional_target": []
         },
         {
             "key": "field_6b0lpcclbl0",
             "label": "Texte du cas client",
             "name": "client_label",
+            "aria-label": "",
             "type": "text",
+            "instructions": "",
             "required": 0,
-            "wrapper": { "width": "", "class": "", "id": "" },
-            "default_value": "Décliné pour un cas client :",
             "conditional_logic": [
                 [
-                    { "field": "field_6b0lpccproj", "operator": "!=empty" }
+                    {
+                        "field": "field_6b0lpccproj",
+                        "operator": "!=empty"
+                    }
                 ]
-            ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Décliné pour un cas client :",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         },
         {
-            "key": "field_6b0lpimgs00",
-            "label": "Images",
-            "name": "images",
+            "key": "field_6b0lpsections",
+            "label": "Sections",
+            "name": "sections",
+            "aria-label": "",
             "type": "repeater",
+            "instructions": "",
             "required": 0,
-            "wrapper": { "width": "", "class": "", "id": "" },
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "layout": "block",
-            "button_label": "Ajouter une image",
+            "button_label": "Ajouter une section",
+            "min": 0,
+            "max": 0,
+            "rows_per_page": 20,
+            "collapsed": "",
             "sub_fields": [
                 {
-                    "key": "field_6b0lpimg001",
-                    "label": "Image",
-                    "name": "image",
-                    "type": "image",
-                    "return_format": "id",
-                    "preview_size": "medium",
-                    "library": "all",
-                    "parent_repeater": "field_6b0lpimgs00"
+                    "key": "field_6b0lpitems00",
+                    "label": "Éléments",
+                    "name": "items",
+                    "aria-label": "",
+                    "type": "repeater",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "block",
+                    "button_label": "Ajouter un élément",
+                    "parent_repeater": "field_6b0lpsections",
+                    "min": 0,
+                    "max": 0,
+                    "rows_per_page": 20,
+                    "collapsed": "",
+                    "sub_fields": [
+                        {
+                            "key": "field_6b0lpitemtype",
+                            "label": "Type",
+                            "name": "type",
+                            "aria-label": "",
+                            "type": "button_group",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "image": "Image",
+                                "video": "Vidéo"
+                            },
+                            "default_value": "image",
+                            "return_format": "value",
+                            "allow_null": 0,
+                            "allow_in_bindings": 1,
+                            "layout": "horizontal",
+                            "parent_repeater": "field_6b0lpitems00"
+                        },
+                        {
+                            "key": "field_6b0lpitemimg0",
+                            "label": "Image",
+                            "name": "image",
+                            "aria-label": "",
+                            "type": "image",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_6b0lpitemtype",
+                                        "operator": "==",
+                                        "value": "image"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "id",
+                            "preview_size": "medium",
+                            "library": "all",
+                            "parent_repeater": "field_6b0lpitems00",
+                            "min_width": 0,
+                            "min_height": 0,
+                            "min_size": 0,
+                            "max_width": 0,
+                            "max_height": 0,
+                            "max_size": 0,
+                            "mime_types": ""
+                        },
+                        {
+                            "key": "field_6b0lpitemvid0",
+                            "label": "Vidéo (mp4)",
+                            "name": "video",
+                            "aria-label": "",
+                            "type": "file",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_6b0lpitemtype",
+                                        "operator": "==",
+                                        "value": "video"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "url",
+                            "library": "all",
+                            "mime_types": "mp4",
+                            "parent_repeater": "field_6b0lpitems00",
+                            "min_size": 0,
+                            "max_size": 0
+                        }
+                    ]
                 }
             ]
         }
     ],
     "location": [
         [
-            { "param": "block", "operator": "==", "value": "studiogram/labo-project" }
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "studiogram/labo-project"
+            }
         ]
     ],
     "menu_order": 0,
@@ -142,5 +410,6 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1793704012
+    "display_title": "",
+    "modified": 1795106960
 }

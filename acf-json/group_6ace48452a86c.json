@@ -180,6 +180,11 @@
                 "param": "block",
                 "operator": "!=",
                 "value": "studiogram/header-contact"
+            },
+            {
+                "param": "block",
+                "operator": "!=",
+                "value": "studiogram/labo-project"
             }
         ]
     ],
@@ -193,5 +198,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1793709502
+    "modified": 1795103348
 }

@@ -15,16 +15,16 @@ class HeaderLabo extends BlockParent {
 
     init() {
         const admin = document.body.classList.contains("wp-admin");
-        if (!this.blobs || this.reduced || admin) return;
+        if (this.reduced || admin) return;
 
-        gsap.set(this.blobs, { autoAlpha: 0, yPercent: -12 });
+        if (!this.blobs) return;
+        gsap.set(this.blobs, { autoAlpha: 0 });
+
         this.play = () => {
             gsap.to(this.blobs, {
                 autoAlpha: 1,
-                yPercent: 0,
                 duration: 1.1,
-                ease: "power3.out",
-                onComplete: () => gsap.set(this.blobs, { clearProps: "transform" }),
+                ease: "power2.out",
             });
         };
 

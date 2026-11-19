@@ -1,3 +1,4 @@
+import "./styles.scss";
 import BlockParent from "../../assets/js/blocks/BlockParent";
 import BlockEvents from "../../assets/js/blocks/BlockEvents";
 import { gsap, ScrollTrigger } from "gsap/all";
@@ -70,8 +71,14 @@ class HeaderHome extends BlockParent {
 
     onClick(e) {
         e.preventDefault();
-        const a = e.currentTarget;
-        const href = a.getAttribute("href") || a.href?.baseVal;
+        const t = e.currentTarget;
+        let href = t.getAttribute("href") || t.href?.baseVal;
+        if (!href) {
+            const sector = t.getAttribute("data-sector");
+            href = this.element
+                .querySelector(`a[data-sector="${sector}"]`)
+                ?.getAttribute("href");
+        }
         if (!href) return;
         if (window.taxi?.navigateTo) window.taxi.navigateTo(href);
         else location.href = href;

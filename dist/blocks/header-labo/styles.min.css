@@ -1,1 +1,1 @@
-[data-block-type=header-labo] .header-labo__content{z-index:1}@media(prefers-reduced-motion:no-preference){html.js [data-block-type=header-labo] .header-labo__blobs{visibility:hidden}}
+[data-block-type=header-labo]{position:relative;z-index:2}[data-block-type=header-labo] .header-labo{padding-bottom:2rem}@media(min-width:992px){[data-block-type=header-labo] .header-labo{padding-bottom:4rem}}[data-block-type=header-labo] .header-labo__content{z-index:1}@media(prefers-reduced-motion:no-preference){html.js [data-block-type=header-labo] .header-labo__blobs{visibility:hidden}}

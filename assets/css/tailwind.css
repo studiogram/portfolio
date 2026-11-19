@@ -2,7 +2,7 @@
 @source "../../views/**/*.twig";
 @source "../../blocks/**/*.twig";
 @source inline(
-    "{hover:,group-hover:,}{bg,text,stroke,fill,border}-{light,dark,soft,red,red-dark,green,green-dark,lightblue,pink,pink-dark,blue,blue-dark,medium,medium-secondary,medium-tertiary}{!,}"
+    "{hover:,group-hover:,}{bg,text,stroke,fill,border}-{light,dark,soft,red,red-dark,green,green-dark,lightblue,lightblue-dark,pink,pink-dark,blue,blue-dark,medium,medium-secondary,medium-tertiary}{!,}"
 );
 
 @theme {
@@ -22,6 +22,7 @@
     --color-green: #52b584;
     --color-green-dark: #037b51;
     --color-lightblue: #95bbe6;
+    --color-lightblue-dark: #3e6898;
     --color-pink: #e18ba6;
     --color-pink-dark: #a94d6b;
     --color-blue: #5681db;

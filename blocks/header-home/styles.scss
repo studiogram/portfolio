@@ -1,0 +1,16 @@
+[data-block-type="header-home"] {
+    svg [data-sector] {
+        cursor: pointer;
+    }
+
+    a[data-sector] > span:last-child {
+        transition: opacity 0.5s ease;
+    }
+
+    @each $c in "dark", "red", "green", "lightblue", "pink", "blue" {
+        &:has([data-sector="#{$c}"]:hover)
+            a[data-sector]:not([data-sector="#{$c}"]) {
+            opacity: 0.2;
+        }
+    }
+}

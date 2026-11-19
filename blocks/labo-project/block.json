@@ -2,7 +2,7 @@
     "name": "studiogram/labo-project",
     "title": "Labo projet",
     "category": "studiogram",
-    "icon": "screenoptions",
+    "icon": "smiley",
     "keywords": ["labo", "projet", "experimentation"],
     "style": "file:../../dist/blocks/labo-project/styles.min.css",
     "script": "file:../../dist/blocks/labo-project/scripts.min.js",

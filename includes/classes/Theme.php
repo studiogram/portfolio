@@ -16,6 +16,8 @@ if (!class_exists('STUDIOGRAM\Theme')) :
             add_action('wp_enqueue_scripts', [$this, 'force_gravity_forms_scripts'], 20);
             add_filter('gform_field_content', [$this, 'delegend_choice_label'], 10, 5);
             add_filter('gform_field_container', [$this, 'label_choice_fieldset'], 10, 3);
+            add_filter('gform_submit_button', [$this, 'btn_submit'], 10, 2);
+            add_filter('gform_field_content', [$this, 'optional_label'], 10, 5);
             add_action('enqueue_block_editor_assets', [$this, 'enqueue_editor_styles_and_scripts']);
             add_action('enqueue_block_assets', [$this, 'enqueue_canvas_styles']);
             add_filter('script_loader_tag', [$this, 'add_module_type'], 10, 3);
@@ -107,6 +109,42 @@ if (!class_exists('STUDIOGRAM\Theme')) :
                 '<fieldset aria-labelledby="' . esc_attr($label_id) . '"',
                 $container,
                 1
+            );
+        }
+
+        public function optional_label($content, $field, $value = null, $lead_id = 0, $form_id = 0)
+        {
+            if (is_admin() || !empty($field->isRequired)) {
+                return $content;
+            }
+
+            $types = ['text', 'email', 'textarea', 'phone', 'name', 'website'];
+            if (!in_array($field->get_input_type(), $types, true)) {
+                return $content;
+            }
+
+            return preg_replace(
+                '/(<label[^>]*gfield_label[^>]*>)(.*?)(<\/label>)/s',
+                '$1$2 <span class="gfield_optional">(facultatif)</span>$3',
+                $content,
+                1
+            );
+        }
+
+        public function btn_submit($button, $form)
+        {
+            if (is_admin()) {
+                return $button;
+            }
+
+            $id = (int) rgar($form, 'id');
+            preg_match('/value=([\'"])(.*?)\1/', $button, $m);
+            $text = isset($m[2]) ? $m[2] : 'Envoyer';
+
+            return sprintf(
+                '<button type="submit" id="gform_submit_button_%1$d" class="btn gform-theme-no-framework" onclick="gform.submission.handleButtonClick(this);" data-submission-type="submit"><span>%2$s</span></button>',
+                $id,
+                esc_html($text)
             );
         }
 

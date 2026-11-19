@@ -1,6 +1,6 @@
 <section {{ block_id }} data-block-type="header-contact" data-block-id="{{ block.id }}" class="{{ block_classes(fields, true) }} header-contact relative" data-header-skip>
 
-	<div class="header-contact__card | relative col-span-12 self-start overflow-hidden rounded-[2rem] bg-dark text-light px-6! py-12 lg:col-span-15 lg:min-h-224 lg:px-16! lg:py-20 lg:pr-32">
+	<div class="header-contact__card | relative col-start-2 col-end-12 self-start overflow-hidden rounded-[2rem] bg-dark text-light px-6! py-12 lg:col-start-2 lg:col-end-14 lg:min-h-224 lg:px-16! lg:py-20 lg:pr-32">
 		<div class="pointer-events-none absolute left-6 top-8 w-20 text-soft lg:left-16 lg:w-28" aria-hidden="true">
 			{{ include('views/svg/contact-dots.twig', { class: 'block h-auto w-full' }) }}
 		</div>
@@ -25,7 +25,7 @@
 	</div>
 
 	{% if form %}
-		<div class="header-contact__form | relative z-10 col-span-12 self-start rounded-[2rem] bg-light p-6! text-dark lg:col-span-9 lg:col-start-16 lg:-ml-24 lg:self-center lg:p-10!">
+		<div class="header-contact__form | relative z-10 col-start-2 col-end-12 self-start rounded-[2rem] bg-light p-6! text-dark lg:col-start-14 lg:col-end-22 lg:-ml-24 lg:self-center lg:p-10!">
 			{{ form|raw }}
 		</div>
 	{% endif %}

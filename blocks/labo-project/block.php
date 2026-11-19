@@ -2,6 +2,8 @@
 
 use Timber\Timber;
 
+$fields['background'] = 'medium';
+
 $context['block'] = $block;
 $context['fields'] = $fields;
 

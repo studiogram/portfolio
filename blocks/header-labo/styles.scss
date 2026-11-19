@@ -1,6 +1,17 @@
 @use "mixins" as *;
 
 [data-block-type="header-labo"] {
+    position: relative;
+    z-index: 2;
+
+    .header-labo {
+        padding-bottom: 2rem;
+
+        @include lg {
+            padding-bottom: 4rem;
+        }
+    }
+
     .header-labo__content {
         z-index: 1;
     }

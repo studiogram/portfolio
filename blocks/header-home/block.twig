@@ -7,7 +7,7 @@
 				<ul class="-ml-3! flex flex-col gap-0.5 lg:gap-1.5 lg:pb-12 xl:flex-row xl:flex-nowrap">
 					{% for cat in categories %}
 						<li class="shrink-0">
-							<a href="{{ cat.url }}" class="text-m text-light! hover:bg-soft/20! flex items-center gap-3 rounded-xl px-3 transition-colors duration-500 lg:py-2">
+							<a href="{{ cat.url }}" data-sector="{{ cat.color }}" class="text-m text-light! hover:bg-soft/20! flex items-center gap-3 rounded-xl px-3 transition-[background-color,opacity] duration-500 lg:py-2">
 								<span class="size-2.5 shrink-0 rounded-full bg-{{ cat.color }}"></span>
 								<span class="shrink-0">{{ cat.title }}</span>
 							</a>
