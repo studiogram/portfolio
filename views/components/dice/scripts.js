@@ -182,6 +182,7 @@ export default class Dice {
     }
 
     finish(url) {
+        // return; // DEBUG: freeze landed dice (skip reveal) to screenshot it; re-comment to resume the transition
         this.timer = setTimeout(() => this.reveal(url), R.pause);
     }
 

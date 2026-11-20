@@ -12,8 +12,8 @@
     &__btn {
         position: relative;
         display: block;
-        width: 90px;
-        height: 90px;
+        width: 165px;
+        height: 165px;
         padding: 0;
         border: 0;
         background: none;
@@ -27,30 +27,14 @@
 
     &__cube {
         display: block;
-        width: 90px;
-        height: 90px;
-        border-radius: 18px;
-        background: #f7f5f2;
-        box-shadow: 0 10px 24px rgba(21, 10, 41, 0.18);
-        position: relative;
-        transform: rotate(12deg);
+        width: 165px;
+        height: auto;
         transition: transform 0.45s cubic-bezier(0.3, 1.5, 0.5, 1);
-
-        &::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            margin: auto;
-            width: 53%;
-            height: 53%;
-            border-radius: 50%;
-            background: var(--color-soft);
-        }
     }
 
     &__btn:hover &__cube,
     &__btn:focus-visible &__cube {
-        transform: rotate(4deg) translateY(-3px);
+        transform: translateY(-3px);
     }
 
     &__bulle {
