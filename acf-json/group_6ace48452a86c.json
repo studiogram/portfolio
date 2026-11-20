@@ -3,6 +3,27 @@
     "title": "Block",
     "fields": [
         {
+            "key": "field_6ace48idanchor00",
+            "label": "Identifiant",
+            "name": "identifiant",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_6ace491813db6",
             "label": "Couleur de fond",
             "name": "background",
@@ -159,32 +180,32 @@
             {
                 "param": "block",
                 "operator": "!=",
-                "value": "studiogram/header"
+                "value": "studiogram\/header"
             },
             {
                 "param": "block",
                 "operator": "!=",
-                "value": "studiogram/header-home"
+                "value": "studiogram\/header-home"
             },
             {
                 "param": "block",
                 "operator": "!=",
-                "value": "studiogram/header-post"
+                "value": "studiogram\/header-post"
             },
             {
                 "param": "block",
                 "operator": "!=",
-                "value": "studiogram/header-approche"
+                "value": "studiogram\/header-approche"
             },
             {
                 "param": "block",
                 "operator": "!=",
-                "value": "studiogram/header-contact"
+                "value": "studiogram\/header-contact"
             },
             {
                 "param": "block",
                 "operator": "!=",
-                "value": "studiogram/labo-project"
+                "value": "studiogram\/labo-project"
             }
         ]
     ],
@@ -198,5 +219,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1795103348
+    "modified": 1795177293
 }

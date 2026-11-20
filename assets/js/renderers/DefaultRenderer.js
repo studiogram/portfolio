@@ -4,7 +4,7 @@ import BlockEvents from "../blocks/BlockEvents";
 import { ensureBlocks } from "../blocks/BlockLoader";
 import { syncComponents, destroyIn } from "../components/ComponentManager";
 import Scrolls from "../actions/Scrolls";
-import { getSmooth, resetSmooth } from "../actions/Smooth";
+import { getSmooth, resetSmooth, scrollToHash } from "../actions/Smooth";
 import sendView from "../actions/TrackView";
 
 let scrolls = null;
@@ -40,6 +40,11 @@ export default class DefaultRenderer extends Renderer {
         // Blocks/components just mounted — recompute scroll positions and land
         // at the top now that final page height is known.
         resetSmooth();
+        if (location.hash) {
+            const hash = location.hash;
+            requestAnimationFrame(() => scrollToHash(hash));
+            setTimeout(() => scrollToHash(hash), 450);
+        }
         document.dispatchEvent(new Event("app:navigated"));
         this.syncActiveMenu();
         sendView(this.content);

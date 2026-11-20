@@ -8,7 +8,7 @@ import "lazysizes";
 import { gsap } from "gsap";
 import { Core } from "@unseenco/taxi";
 import partials from "./views/partials";
-import { initSmooth, getSmooth } from "./actions/Smooth";
+import { initSmooth, getSmooth, scrollToHash } from "./actions/Smooth";
 import { syncComponents } from "./components/ComponentManager";
 import DefaultRenderer from "./renderers/DefaultRenderer";
 import DefaultTransition from "./transitions/DefaultTransition";
@@ -30,7 +30,13 @@ class Main {
     }
 
     scrollTopNoHash() {
-        if (location.hash) return;
+        if (location.hash) {
+            const hash = location.hash;
+            const go = () => scrollToHash(hash, { immediate: true });
+            addEventListener("load", () => requestAnimationFrame(go));
+            setTimeout(go, 700);
+            return;
+        }
         const toTop = () => {
             getSmooth()?.scrollTo(0, { immediate: true });
             window.scrollTo(0, 0);

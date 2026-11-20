@@ -131,7 +131,8 @@ if (!class_exists('STUDIOGRAM\Gutemberg')) :
             }
 
             $fields = $this->fields_with_defaults($block);
-            $context['block_id'] = !empty($fields['has_id']) && !empty($fields['identifiant']) ? 'id="' . esc_attr($fields['identifiant']) . '"' : '';
+            $anchor = !empty($fields['identifiant']) ? sanitize_title($fields['identifiant']) : '';
+            $context['block_id'] = $anchor ? 'id="' . esc_attr($anchor) . '"' : '';
 
             if ($file) {
                 extract($block);

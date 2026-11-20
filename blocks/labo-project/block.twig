@@ -1,4 +1,4 @@
-<section {{ block_id }} data-block-type="labo-project" data-block-id="{{ block.id }}" class="{{ block_classes(fields) }} labo-project">
+<section {{ block_id }} data-block-type="labo-project" data-block-id="{{ block.id }}" class="{{ block_classes(fields) }} labo-project{{ fields.flip ? ' labo-project--flip' : '' }}">
 	{% include 'views/partials/block/borders.twig' %}
 
 	<div class="grider">
@@ -9,17 +9,17 @@
 						{% if fields.title or fields.subtitle %}
 							<div class="labo-project__head">
 								{% if fields.title %}
-									<span class="labo-project__eyebrow text-xs uppercase">
-										<span class="labo-project__dot bg-lightblue"></span>
-										<span class="text-lightblue-dark">{{ fields.title }}</span>
-									</span>
+									<div class="labo-project__eyebrow flex flex-col">
+										<span class="text-tag bg-lightblue text-dark! w-fit rounded-t-xl px-4 py-2 uppercase">{{ fields.title }}</span>
+										<span class="border-lightblue block border-t" aria-hidden="true"></span>
+									</div>
 								{% endif %}
 								{% if fields.subtitle %}<h2 class="labo-project__heading" data-effect="headline">{{ fields.subtitle }}</h2>{% endif %}
 							</div>
 						{% endif %}
 
 						{% if fields.description %}<div class="wysiwyg labo-project__desc">{{ fields.description }}</div>{% endif %}
-						{% if fields.tags %}<p class="labo-project__tags text-lightblue-dark text-s">{{ fields.tags }}</p>{% endif %}
+						{% if fields.tags %}<p class="labo-project__tags text-medium-teriary text-s opacity-60">{{ fields.tags }}</p>{% endif %}
 
 
 						{% if fields.btn.text %}{{ include('views/components/button/view.twig', { button: fields.btn }) }}{% endif %}
@@ -31,7 +31,7 @@
 								</span>
 								{% if fields.client_label %}<p class="labo-project__case-text">{{ fields.client_label }}</p>{% endif %}
 								<a href="{{ function('get_permalink', fields.client_project) }}" class="btn btn--secondary labo-project__case-btn" data-taxi-ignore>
-									<span>Voir le cas client {{ function('get_the_title', fields.client_project) }}</span>
+									<span>Voir {{ function('get_the_title', fields.client_project) }}</span>
 								</a>
 							</div>
 						{% endif %}

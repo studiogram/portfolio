@@ -76,6 +76,24 @@ export function getSmooth() {
     return lenis;
 }
 
+export function scrollToHash(hash, opts = {}) {
+    if (!hash || hash === "#") return false;
+    let el;
+    try {
+        el = document.querySelector(hash);
+    } catch {
+        return false;
+    }
+    if (!el) return false;
+    const offset = -100;
+    if (lenis) {
+        lenis.scrollTo(el, { offset, immediate: !!opts.immediate });
+    } else {
+        el.scrollIntoView();
+    }
+    return true;
+}
+
 // Jump to top and recompute trigger positions after a Taxi content swap.
 export function resetSmooth() {
     if (!lenis) return;
