@@ -207,7 +207,7 @@ export default class Dice {
         try { hash = new URL(url, location.href).hash.slice(1); } catch { hash = ""; }
         if (hash) {
             const el = document.getElementById(hash);
-            if (el) return el.querySelector("[data-pastille]") || el;
+            return el?.querySelector("[data-pastille]") || null;
         }
         return document.querySelector("[data-pastille]");
     }
@@ -239,17 +239,18 @@ export default class Dice {
         this.lock(false);
         let hash = "";
         try { hash = new URL(url, location.href).hash.slice(1); } catch { hash = ""; }
+        const anchor = hash ? document.getElementById(hash) : null;
+        if (anchor) {
+            if (window.lenis?.scrollTo) window.lenis.scrollTo(anchor, { immediate: true });
+            else anchor.scrollIntoView({ block: "center" });
+        } else if (window.lenis?.scrollTo) {
+            window.lenis.scrollTo(0, { immediate: true });
+        } else {
+            scrollTo(0, 0);
+        }
+        await new Promise((ok) => requestAnimationFrame(ok));
         const target = this.pastilleTarget(url);
         if (target) {
-            if (hash) {
-                if (window.lenis?.scrollTo) window.lenis.scrollTo(target, { immediate: true });
-                else target.scrollIntoView({ block: "center" });
-            } else if (window.lenis?.scrollTo) {
-                window.lenis.scrollTo(0, { immediate: true });
-            } else {
-                scrollTo(0, 0);
-            }
-            await new Promise((ok) => requestAnimationFrame(ok));
             const b = target.getBoundingClientRect();
             const tx = b.left + b.width / 2, ty = b.top + b.height / 2, tr = Math.max(4, b.width / 2);
             await this.animer(700, (e) => {

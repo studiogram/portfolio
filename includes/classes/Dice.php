@@ -66,13 +66,9 @@ if (!class_exists('STUDIOGRAM\Dice')) :
         {
             $anchors = [];
             foreach (parse_blocks($labo->post_content) as $b) {
-                if (!in_array($b['blockName'] ?? '', ['acf/studiogram-labo', 'studiogram/labo'], true)) continue;
-                $data = $b['attrs']['data'] ?? [];
-                $count = (int) ($data['items'] ?? 0);
-                for ($i = 0; $i < $count; $i++) {
-                    $title = $data["items_{$i}_title"] ?? '';
-                    if ($title) $anchors[] = $url . '#' . sanitize_title($title);
-                }
+                if (!in_array($b['blockName'] ?? '', ['acf/studiogram-labo-project', 'studiogram/labo-project'], true)) continue;
+                $title = $b['attrs']['data']['title'] ?? '';
+                if ($title) $anchors[] = $url . '#' . sanitize_title($title);
             }
             return $anchors;
         }
