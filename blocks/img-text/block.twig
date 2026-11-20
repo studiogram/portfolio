@@ -13,11 +13,15 @@
 
 			<div data-split="right" class="bg-light text-dark relative z-0 order-2 flex flex-col justify-center gap-6 rounded-b-[2rem] px-8! py-12 lg:rounded-b-none lg:px-12! lg:py-16 {{ fields.side ? 'lg:order-1 lg:rounded-l-[2rem]' : 'lg:order-2 lg:rounded-r-[2rem]' }}">
 				{% if fields.text %}<div class="wysiwyg text-soft">{{ fields.text }}</div>{% endif %}
+				{% if fields.btn.text %}{{ include('views/components/button/view.twig', { button: fields.btn }) }}{% endif %}
 			</div>
 		</div>
 	{% else %}
 		<div class="content-grid | grid items-center gap-8 lg:grid-cols-2 lg:gap-16">
-			<div class="wysiwyg {{fields.side ? 'order-1' : 'order-2'}}">{{ fields.text }}</div>
+			<div class="flex flex-col gap-6 {{fields.side ? 'order-1' : 'order-2'}}">
+				<div class="wysiwyg">{{ fields.text }}</div>
+				{% if fields.btn.text %}{{ include('views/components/button/view.twig', { button: fields.btn }) }}{% endif %}
+			</div>
 			{% if fields.image %}
 				<img class="lazyload w-full rounded-3xl object-cover {{ fields.side ? 'order-2' : 'order-1' }}" {{ responsive_image(fields.image) }} alt=""/>
 			{% endif %}
