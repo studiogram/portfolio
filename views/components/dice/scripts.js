@@ -6,7 +6,7 @@ import { getSmooth } from "../../../assets/js/actions/Smooth";
 import { motionQuery } from "../../../assets/js/utils/motion";
 
 const R = {
-    H: 40, fov: 24, taille: 0.2, arrondi: 0.045, rugosite: 0.79, cercle: 0.53,
+    H: 62, fov: 16, taille: 0.2, arrondi: 0.045, rugosite: 0.79, cercle: 0.53,
     lumiere: 0.66, ambiante: 0.51, appoint: 0, lumiereX: -0.3, lumiereZ: -0.45, lampe: 1.6,
     ombre: 0.3, flou: 3, flouHauteur: 1.5, ombreFondu: 0.25, tache: 0.3, tacheTaille: 1, tacheFondu: 0.5,
     iconeLacet: 12, iconeRemplissage: 0.8, pause: 400,
@@ -84,8 +84,18 @@ export default class Dice {
         this.cubeKey = key;
     }
 
+    countClick() {
+        const l = window.localize;
+        if (!l?.ajaxurl || !l?.nonce) return;
+        const body = new FormData();
+        body.append("action", "dice_click");
+        body.append("nonce", l.nonce);
+        fetch(l.ajaxurl, { method: "POST", body, credentials: "same-origin" }).catch(() => {});
+    }
+
     onClick() {
         if (this.busy) return;
+        this.countClick();
         const face = this.pickCategory();
         if (!face) return;
         const url = this.pickUrl(face);

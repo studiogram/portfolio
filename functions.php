@@ -21,6 +21,7 @@ new \STUDIOGRAM\PostTypes();
 new \STUDIOGRAM\Theme();
 new \STUDIOGRAM\Users();
 new \STUDIOGRAM\Analytics();
+new \STUDIOGRAM\Dice();
 new \STUDIOGRAM\Seo();
 new \STUDIOGRAM\Performance();
 

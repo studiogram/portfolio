@@ -8,6 +8,39 @@ if (!class_exists('STUDIOGRAM\Dice')) :
     class Dice
     {
         const SOFT = '#51648A';
+        const OPTION = 'studiogram_dice_clicks';
+
+        public function __construct()
+        {
+            add_action('wp_ajax_nopriv_dice_click', [$this, 'count_click']);
+            add_action('wp_ajax_dice_click', [$this, 'count_click']);
+            add_action('wp_dashboard_setup', [$this, 'dashboard_widget']);
+        }
+
+        public function count_click()
+        {
+            if (!check_ajax_referer('ajax-nonce', 'nonce', false)) {
+                wp_send_json_error('bad nonce', 403);
+            }
+            $count = (int) get_option(self::OPTION, 0) + 1;
+            update_option(self::OPTION, $count, false);
+            wp_send_json_success($count);
+        }
+
+        public function dashboard_widget()
+        {
+            wp_add_dashboard_widget(
+                'studiogram_dice_clicks',
+                'Lancers du dé',
+                [$this, 'render_widget']
+            );
+        }
+
+        public function render_widget()
+        {
+            $count = (int) get_option(self::OPTION, 0);
+            require STUDIOGRAM_THEME_DIR . '/includes/admin/dice-widget.php';
+        }
 
         public static function data()
         {

@@ -6,7 +6,7 @@
 		{% if fields.text %}<div class="wysiwyg transmission__text">{{ fields.text }}</div>{% endif %}
 
 		{% if fields.stat_value %}
-			<div class="transmission__stat">
+			<div data-scroll="perspective" class="transmission__stat">
 				<span class="transmission__stat-value | text-xxl">{{ fields.stat_value }}</span>
 				{% if fields.stat_label %}<span class="transmission__stat-label">{{ fields.stat_label }}</span>{% endif %}
 			</div>

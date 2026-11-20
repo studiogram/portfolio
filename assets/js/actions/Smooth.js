@@ -85,9 +85,8 @@ export function scrollToHash(hash, opts = {}) {
         return false;
     }
     if (!el) return false;
-    const offset = -100;
     if (lenis) {
-        lenis.scrollTo(el, { offset, immediate: !!opts.immediate });
+        lenis.scrollTo(el, { immediate: true });
     } else {
         el.scrollIntoView();
     }
