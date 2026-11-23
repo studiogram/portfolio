@@ -84,8 +84,8 @@ if (!class_exists('STUDIOGRAM\Setup')) :
             $query = $this->notes_query(1);
 
             return [
-                'title'       => $page_id ? get_the_title($page_id) : '',
-                'description' => ($page_id && function_exists('get_field') ? (string) get_field('notes_description', $page_id) : '') ?: '',
+                'title'       => (string) get_field('notes_title', $page_id),
+                'description' => (string) get_field('notes_description', $page_id),
                 'url'         => $page_id ? get_permalink($page_id) : '',
                 'notes'       => $this->note_rows($query),
                 'pages'       => (int) $query->max_num_pages,
@@ -98,8 +98,7 @@ if (!class_exists('STUDIOGRAM\Setup')) :
             return new \WP_Query([
                 'post_type'      => 'notes',
                 'post_status'    => 'publish',
-                'posts_per_page' => self::NOTES_PER_PAGE,
-                'paged'          => max(1, $paged),
+                'posts_per_page' => -1,
             ]);
         }
 
@@ -107,20 +106,12 @@ if (!class_exists('STUDIOGRAM\Setup')) :
         {
             $rows = [];
             foreach ($query->posts as $post) {
-                $pid     = function_exists('get_field') ? (int) get_field('related_project', $post->ID) : 0;
-                $project = null;
-                if ($pid && ($p = get_post($pid))) {
-                    $terms = get_the_terms($pid, 'category');
-                    $term  = (!is_wp_error($terms) && $terms) ? $terms[0] : null;
-                    $color = $term && function_exists('get_field')
-                        ? (get_field('color', 'category_' . $term->term_id) ?: 'dark')
-                        : 'dark';
-                    $project = ['label' => get_the_title($p), 'color' => $color];
-                }
+                $terms    = get_the_terms($post->ID, 'note_category');
+                $category = (!is_wp_error($terms) && $terms) ? $terms[0]->name : '';
                 $rows[] = [
-                    'title'   => get_the_title($post),
-                    'url'     => get_permalink($post),
-                    'project' => $project,
+                    'title'    => get_the_title($post),
+                    'url'      => get_permalink($post),
+                    'category' => $category,
                 ];
             }
             return $rows;

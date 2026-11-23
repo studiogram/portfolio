@@ -25,7 +25,8 @@
             "allow_null": 1,
             "bidirectional": 0,
             "ui": 1,
-            "allow_in_bindings": 0
+            "allow_in_bindings": 0,
+            "bidirectional_target": []
         },
         {
             "key": "field_6b0notebody",
@@ -59,13 +60,28 @@
         ]
     ],
     "menu_order": 0,
-    "position": "normal",
+    "position": "acf_after_title",
     "style": "default",
     "label_placement": "top",
     "instruction_placement": "label",
-    "hide_on_screen": "",
+    "hide_on_screen": [
+        "the_content",
+        "excerpt",
+        "discussion",
+        "comments",
+        "revisions",
+        "slug",
+        "author",
+        "format",
+        "page_attributes",
+        "featured_image",
+        "categories",
+        "tags",
+        "send-trackbacks"
+    ],
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1793629922
+    "display_title": "",
+    "modified": 1795436033
 }

@@ -3,26 +3,30 @@
 {% block content %}
 	{% set col = 'col-start-2 col-end-12 lg:col-start-3 lg:col-end-23' %}
 	<article class="note bg-medium">
-		<header class="note__grid note__hero">
-			<div class="{{ col }}">
-				{% if note.project %}
-					<a href="{{ note.project.url }}" class="note__tag text-s inline-flex items-center gap-2.5 uppercase text-{{ note.project.color }}">
-						<span class="size-2.5 shrink-0 rounded-full bg-{{ note.project.color }}"></span>{{ note.project.title }}
+		<div class="note__grid note__wrap">
+			<div class="note__sheet {{ col }}">
+				<div class="note__main">
+					<header class="note__hero">
+						{% if note.category %}<span class="note__tag text-medium-tertiary text-xs uppercase">{{ note.category }}</span>{% endif %}
+						<h1 class="note__title text-dark mt-4">{{ post.title }}</h1>
+					</header>
+
+					<div class="note__content">{{ note.body }}</div>
+
+					{% if note.next %}<p class="note__next-label text-s">À lire ensuite :</p>{% endif %}
+				</div>
+
+				{% if note.next %}
+					<a href="{{ note.next.url }}" class="note__next">
+						<span class="note__next-main">
+							{% if note.next.category %}<span class="note__next-cat text-dark text-xs uppercase opacity-70">{{ note.next.category }}</span>{% endif %}
+							<span class="note__next-title">{{ note.next.title }}</span>
+						</span>
+						<span class="note__arrow" aria-hidden="true">
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+						</span>
 					</a>
 				{% endif %}
-				<h1 class="note__title mt-5 text-dark">{{ post.title }}</h1>
-			</div>
-		</header>
-
-		<div class="note__grid note__body">
-			<div class="note__sheet {{ col }}">
-				<div class="note__content">{{ note.body }}</div>
-				<a href="{{ note.back_url }}" class="note__back">
-					<span class="note__back-ico" aria-hidden="true">
-						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
-					</span>
-					<span>Retour aux notes</span>
-				</a>
 			</div>
 		</div>
 	</article>

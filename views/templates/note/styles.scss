@@ -12,13 +12,36 @@
         }
     }
 
-    &__hero {
+    &__wrap {
         padding-top: 8rem;
-        padding-bottom: 3.5rem;
+        padding-bottom: 6rem;
+    }
+
+    &__sheet {
+        position: relative;
+        overflow: hidden;
+        background: var(--color-light);
+        border-radius: 0 0 1.5rem 1.5rem;
+    }
+
+    &__main {
+        position: relative;
+        padding: clamp(2rem, 4vw, 3.5rem) clamp(1.5rem, 4vw, 3.5rem)
+            clamp(2rem, 4vw, 3rem) 5rem;
 
         @include lg {
-            padding-top: 10rem;
-            padding-bottom: 5rem;
+            padding-left: 7rem;
+        }
+
+        &::before {
+            @include note-pastilles(
+                $left: clamp(1.5rem, 3vw, 2.75rem),
+                $top: calc(clamp(2rem, 4vw, 3.5rem) - 3px),
+                $bottom: 0,
+                $center: 12px,
+                $radius: 10px,
+                $spacing: 100px
+            );
         }
     }
 
@@ -26,49 +49,16 @@
         line-height: 1;
     }
 
-    &__body {
-        padding-bottom: 6rem;
-
-        @include lg {
-            padding-bottom: 8rem;
-        }
-    }
-
-    &__sheet {
-        position: relative;
-        background: var(--color-light);
-        padding: clamp(1.75rem, 5vw, 4rem);
-    }
-
     &__content {
-        position: relative;
         max-width: 48rem;
-        padding-left: 4.5rem;
+        margin-top: clamp(2.5rem, 5vw, 4rem);
         font-size: 1.125rem;
         line-height: 1.6;
         color: var(--color-dark);
 
-        &::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 0.3em;
-            bottom: 0.3em;
-            width: 28px;
-            background-image: radial-gradient(
-                circle at center,
-                var(--color-medium) 0 14px,
-                transparent 15px
-            );
-            background-size: 28px 84px;
-            background-repeat: repeat-y;
-            background-position: left top;
-        }
-
         > :first-child {
             margin-top: 0;
         }
-
         > :last-child {
             margin-bottom: 0;
         }
@@ -105,30 +95,58 @@
         }
     }
 
-    &__back {
-        position: absolute;
-        left: 0;
-        top: 100%;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.65rem;
-        padding: 0.6rem 1.15rem;
-        border-radius: 0 0 0.5rem 0.5rem;
-        background: var(--color-medium-tertiary);
-        color: var(--color-light);
-        transition:
-            gap 0.3s ease,
-            padding-right 0.3s ease;
+    &__next-label {
+        width: fit-content;
+        margin-top: clamp(2.5rem, 5vw, 4rem);
+        padding-bottom: 0.35rem;
+        border-bottom: 1px solid var(--color-dark);
+    }
 
-        &-ico svg {
-            display: block;
+    &__next {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 2rem;
+        padding: clamp(1.75rem, 4vw, 2.5rem) clamp(1.5rem, 4vw, 3.5rem)
+            clamp(1.75rem, 4vw, 2.5rem) 5rem;
+        background: var(--color-medium-secondary);
+
+        @include lg {
+            padding-left: 7rem;
+        }
+    }
+
+    &__next-main {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    &__next-title {
+        font-size: 1.875rem;
+        line-height: 1.2;
+        color: var(--color-dark);
+    }
+
+    &__arrow {
+        flex: none;
+        display: grid;
+        place-items: center;
+        width: 2.75rem;
+        height: 2.75rem;
+        border-radius: 50%;
+        background: var(--color-light);
+        color: var(--color-dark);
+        transition: 0.3s ease;
+
+        svg {
             width: 1.1rem;
             height: 1.1rem;
         }
+    }
 
-        &:hover {
-            gap: 1rem;
-            padding-right: 1.5rem;
-        }
+    &__next:hover &__arrow {
+        background: var(--color-dark);
+        color: var(--color-light);
     }
 }

@@ -271,6 +271,9 @@
     }
 
     .wysiwyg {
+        max-width: 72rem;
+        margin-inline: auto;
+
         li {
             margin-bottom: 0.25rem;
             list-style: none;

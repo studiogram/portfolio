@@ -74,3 +74,44 @@ $screen-xxxl-min: 1800px;
     @content;
   }
 }
+
+@mixin note-pastilles(
+  $top: 1.5rem,
+  $bottom: 1.5rem,
+  $center: 14px,
+  $radius: 10px,
+  $spacing: 72px,
+  $left: 0
+) {
+  content: "";
+  position: absolute;
+  left: $left;
+  top: $top;
+  bottom: $bottom;
+  width: 28px;
+  background-image: radial-gradient(
+    circle at #{$center} #{$center},
+    var(--color-medium) 0 #{$radius},
+    transparent #{$radius}
+  );
+  background-size: 28px #{$spacing};
+  background-repeat: repeat-y;
+  background-position: left top;
+}
+
+@mixin note-arrow($size: 2.75rem) {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: $size;
+  height: $size;
+  border-radius: 50%;
+  border: 1px solid rgb(32 23 46 / 0.2);
+  color: var(--color-dark);
+  transition: 0.3s ease;
+
+  svg {
+    width: 1.1rem;
+    height: 1.1rem;
+  }
+}

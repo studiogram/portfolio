@@ -23,6 +23,7 @@ if (!class_exists('STUDIOGRAM\PostTypes')) :
             $this->rename_post_type('Pages', 'Page', 'dashicons-format-aside', false, 'page');
             unregister_taxonomy_for_object_type('post_tag', 'post');
             $this->register_cpt('notes', 'Notes', 'Note', 'dashicons-editor-paste-text', false, 22, false);
+            $this->register_tax('note_category', 'notes', 'Catégories', 'Catégorie', 'note-categorie');
 
             add_rewrite_rule('^projets/([^/]+)/?$', 'index.php?post_type=post&name=$matches[1]', 'top');
         }
@@ -80,8 +81,29 @@ if (!class_exists('STUDIOGRAM\PostTypes')) :
                 'show_in_rest' => true,
                 'menu_icon' => $icon,
                 'menu_position' => $position,
-                'supports' => ['title', 'thumbnail', 'excerpt', 'revisions'],
+                'supports' => ['title', 'revisions'],
                 'rewrite' => ['slug' => $slug, 'with_front' => false],
+            ]);
+        }
+
+        public function register_tax($slug, $object_type, $plural, $singular, $rewrite = null)
+        {
+            register_taxonomy($slug, $object_type, [
+                'labels' => [
+                    'name' => $plural,
+                    'singular_name' => $singular,
+                    'menu_name' => $plural,
+                    'all_items' => "Toutes les {$plural}",
+                    'edit_item' => "Modifier",
+                    'add_new_item' => "Ajouter",
+                    'new_item_name' => "Nouvelle {$singular}",
+                    'search_items' => "Rechercher",
+                ],
+                'public' => true,
+                'hierarchical' => true,
+                'show_admin_column' => true,
+                'show_in_rest' => true,
+                'rewrite' => ['slug' => $rewrite ?: $slug, 'with_front' => false],
             ]);
         }
 
