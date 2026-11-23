@@ -142,7 +142,7 @@ if (!class_exists('STUDIOGRAM\Theme')) :
             $text = isset($m[2]) ? $m[2] : 'Envoyer';
 
             return sprintf(
-                '<button type="submit" id="gform_submit_button_%1$d" class="btn gform-theme-no-framework" onclick="gform.submission.handleButtonClick(this);" data-submission-type="submit"><span>%2$s</span></button>',
+                '<button type="submit" id="gform_submit_button_%1$d" class="btn btn--primary gform-theme-no-framework" onclick="gform.submission.handleButtonClick(this);" data-submission-type="submit"><span>%2$s</span></button>',
                 $id,
                 esc_html($text)
             );

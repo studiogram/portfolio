@@ -4,6 +4,7 @@
     "category": "headers",
     "icon": "block-default",
     "keywords": ["en-tête", "header", "contact"],
+    "script": "file:../../dist/blocks/header-contact/scripts.min.js",
     "acf": {
         "mode": "preview"
     },

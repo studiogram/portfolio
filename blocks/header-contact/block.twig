@@ -1,22 +1,22 @@
-<section {{ block_id }} data-block-type="header-contact" data-block-id="{{ block.id }}" class="{{ block_classes(fields, true) }} header-contact relative" data-header-skip>
+<section {{ block_id }} data-block-type="header-contact" data-block-id="{{ block.id }}" class="{{ block_classes(fields, true) }} header-contact relative px-0!" data-header-skip>
 
-	<div class="header-contact__card | relative col-start-2 col-end-12 self-start overflow-hidden rounded-[2rem] bg-dark text-light px-6! py-12 lg:col-start-2 lg:col-end-14 lg:min-h-224 lg:px-16! lg:py-20 lg:pr-32">
-		<div class="pointer-events-none absolute left-6 top-8 w-20 text-soft lg:left-16 lg:w-28" aria-hidden="true">
+	<div class="header-contact__card | bg-dark text-light relative col-start-2 col-end-12 self-start overflow-hidden rounded-[2rem] px-6! py-12 lg:col-start-2 lg:col-end-16 lg:px-16! lg:py-20 lg:pr-32">
+		<div class="text-soft pointer-events-none absolute top-12 left-6 w-20 lg:left-16 lg:w-28" aria-hidden="true">
 			{{ include('views/svg/contact-dots.twig', { class: 'block h-auto w-full' }) }}
 		</div>
-		<div class="relative flex flex-col gap-10 pt-24 lg:gap-14 lg:pt-32">
+		<div class="relative flex flex-col gap-10 pt-24 lg:gap-12 lg:pt-28">
 			{% if fields.title %}<h1>{{ fields.title|nl2br }}</h1>{% endif %}
 			{% if fields.intro %}<p class="text-soft-light max-w-105">{{ fields.intro }}</p>{% endif %}
 			{% if fields.btn.text %}{{ include('views/components/button/view.twig', { button: fields.btn }) }}{% endif %}
 
-			<div class="flex flex-col gap-4 text-m">
+			<div class="text-m flex flex-col gap-4">
 				{% if fields.email %}
-					<a href="mailto:{{ fields.email }}" class="hover:text-soft-light flex items-center gap-4 text-soft-light transition-colors">
+					<a href="mailto:{{ fields.email }}" class="hover:text-soft-light text-soft-light flex items-center gap-4 transition-colors">
 						<span class="text-soft w-6 shrink-0">@</span>{{ fields.email }}
 					</a>
 				{% endif %}
 				{% if fields.linkedin %}
-					<a href="{{ fields.linkedin }}" target="_blank" rel="noopener" class="hover:text-soft-light flex items-center gap-4 text-soft-light transition-colors">
+					<a href="{{ fields.linkedin }}" target="_blank" rel="noopener" class="hover:text-soft-light text-soft-light flex items-center gap-4 transition-colors">
 						<span class="w-6 shrink-0">{{ include('views/svg/linkedin.twig') }}</span>LinkedIn
 					</a>
 				{% endif %}
@@ -25,7 +25,7 @@
 	</div>
 
 	{% if form %}
-		<div class="header-contact__form | relative z-10 col-start-2 col-end-12 self-start rounded-[2rem] bg-light p-6! text-dark lg:col-start-14 lg:col-end-22 lg:-ml-24 lg:self-center lg:p-10!">
+		<div class="header-contact__form | bg-light text-dark relative z-10 col-start-2 col-end-12 self-start rounded-[2rem] p-6! lg:col-start-16 lg:col-end-24 lg:-ml-20 lg:self-center lg:px-14! lg:py-12!">
 			{{ form|raw }}
 		</div>
 	{% endif %}

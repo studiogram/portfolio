@@ -378,8 +378,23 @@ html:not(.js) .page-cover {
         gap: 0.75rem !important;
     }
 
+    input,
+    textarea,
+    select {
+        &:focus {
+            outline: none !important;
+            box-shadow: none !important;
+            border-color: var(--color-dark);
+        }
+    }
+
     .gfield {
         margin: 0 !important;
+    }
+
+    textarea {
+        min-height: 7rem !important;
+        height: 7rem !important;
     }
 
     .gfield_label {
@@ -389,6 +404,19 @@ html:not(.js) .page-cover {
     .gform_footer {
         margin: 1rem 0 0 !important;
         padding: 0 !important;
+
+        .btn {
+            position: relative !important;
+            cursor: pointer;
+            display: inline-flex !important;
+            align-items: center !important;
+            overflow: hidden !important;
+            width: fit-content;
+            min-height: 38px;
+            padding: 0 0.75rem 0 2rem !important;
+            background: var(--btn-bg) !important;
+            border-radius: 8px !important;
+        }
     }
 
     .gfield_required {
@@ -396,6 +424,6 @@ html:not(.js) .page-cover {
     }
 
     .gfield_optional {
-        color: var(--color-medium-secondary);
+        color: var(--color-soft);
     }
 }

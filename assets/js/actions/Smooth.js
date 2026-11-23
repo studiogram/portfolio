@@ -96,6 +96,7 @@ export function scrollToHash(hash, opts = {}) {
 // Jump to top and recompute trigger positions after a Taxi content swap.
 export function resetSmooth() {
     if (!lenis) return;
+    lenis.isStopped = false;
     lenis.scrollTo(0, { immediate: true });
     lenis.resize();
     ScrollTrigger.refresh();
