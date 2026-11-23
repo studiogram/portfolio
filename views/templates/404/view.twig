@@ -1,12 +1,16 @@
 {% extends 'views/layouts/base.twig' %}
 {% block content %}
-	<main data-template="404" class="relative flex min-h-screen items-center justify-center overflow-hidden bg-dark">
-		<div class="relative z-10 flex flex-col justify-center gap-10 text-center text-white px-8">
-			<h1 data-effect="headline" class="text-xld font-bold">404</h1>
-			<p class="text-l">{{ __('Page introuvable', 'studiogram') }}</p>
-			<footer class="text-center">
-				<a class="a" href="{{ home }}">{{ __('Retour à l’accueil', 'studiogram') }}</a>
-			</footer>
+	<main data-template="404" class="bg-dark text-light relative flex min-h-[80vh] flex-col items-center justify-center gap-10 overflow-hidden px-8 pt-40 pb-20 text-center">
+		<div class="width-limit w-full max-w-5xl">
+			{{ include('views/svg/404.twig') }}
 		</div>
+
+		{% if error.text_1 %}<p class="text-xxl">{{ error.text_1 }}</p>{% endif %}
+
+		{% if error.button.text %}
+			<div class="flex w-full justify-center">
+				{{ include('views/components/button/view.twig', { button: error.button }) }}
+			</div>
+		{% endif %}
 	</main>
 {% endblock %}

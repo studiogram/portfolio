@@ -176,6 +176,67 @@
                     "default_value": "Afficher tous les projets"
                 }
             ]
+        },
+        {
+            "key": "field_tab_404",
+            "label": "404",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_group_404",
+            "label": "",
+            "name": "error_404",
+            "type": "group",
+            "layout": "block",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "sub_fields": [
+                {
+                    "key": "field_404_t1",
+                    "label": "Texte",
+                    "name": "text_1",
+                    "type": "text",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "allow_in_bindings": 0
+                },
+                {
+                    "key": "field_404_btn",
+                    "label": "Bouton",
+                    "name": "",
+                    "type": "clone",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "clone": [
+                        "group_67ed2f37472ae"
+                    ],
+                    "display": "seamless",
+                    "layout": "block",
+                    "prefix_label": 0,
+                    "prefix_name": 0
+                }
+            ]
         }
     ],
     "location": [
@@ -197,5 +258,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1794303353
+    "modified": 1795447084
 }

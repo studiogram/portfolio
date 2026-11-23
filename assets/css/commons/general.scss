@@ -65,6 +65,10 @@
     }
 }
 
+html.js .width-limit circle {
+    opacity: 0;
+}
+
 .col-content {
     grid-column: 2 / span 10;
 
@@ -270,14 +274,14 @@
         overflow: hidden;
     }
 
-    .content-grid--center {
-        .wysiwyg {
-            margin-inline: auto;
-        }
-    }
+    // .content-grid--center {
+    //     .wysiwyg {
+    //         margin-inline: auto;
+    //     }
+    // }
 
     .wysiwyg {
-        max-width: 72rem;
+        // max-width: 72rem;
 
         li {
             margin-bottom: 0.25rem;

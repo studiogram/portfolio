@@ -19,10 +19,3 @@ html.js {
     opacity: 0;
     transition: background-color 0.45s ease;
 }
-
-body:has([data-template="404"]) {
-    .header,
-    .footer {
-        display: none;
-    }
-}
