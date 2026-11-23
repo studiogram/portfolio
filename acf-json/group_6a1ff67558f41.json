@@ -3,11 +3,11 @@
     "title": "Block header page",
     "fields": [
         {
-            "key": "field_6a577e46e18f2",
-            "label": "Type d'en-tête",
-            "name": "header_type",
+            "key": "field_6a1ff_title",
+            "label": "Titre",
+            "name": "title",
             "aria-label": "",
-            "type": "select",
+            "type": "textarea",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -16,189 +16,12 @@
                 "class": "",
                 "id": ""
             },
-            "choices": {
-                "text": "Texte",
-                "text-img": "Texte et Image",
-                "text-shape": "Texte et Forme",
-                "solution": "Solution"
-            },
-            "default_value": false,
-            "return_format": "value",
-            "multiple": 0,
-            "allow_null": 0,
-            "allow_in_bindings": 0,
-            "ui": 0,
-            "ajax": 0,
+            "default_value": "",
+            "maxlength": "",
+            "rows": 2,
             "placeholder": "",
-            "create_options": 0,
-            "save_options": 0
-        },
-        {
-            "key": "field_6a71cb928ba58",
-            "label": "Espace vertical",
-            "name": "spacing",
-            "aria-label": "",
-            "type": "true_false",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_6a577e46e18f2",
-                        "operator": "==",
-                        "value": "text"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 1,
-            "allow_in_bindings": 0,
-            "ui_on_text": "",
-            "ui_off_text": "",
-            "ui": 1
-        },
-        {
-            "key": "field_6a1ff685e8638",
-            "label": "Image",
-            "name": "image",
-            "aria-label": "",
-            "type": "image",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_6a577e46e18f2",
-                        "operator": "==",
-                        "value": "text-img"
-                    }
-                ],
-                [
-                    {
-                        "field": "field_6a577e46e18f2",
-                        "operator": "==",
-                        "value": "solution"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "return_format": "id",
-            "library": "all",
-            "min_width": "",
-            "min_height": "",
-            "min_size": "",
-            "max_width": "",
-            "max_height": "",
-            "max_size": "",
-            "mime_types": "",
-            "allow_in_bindings": 0,
-            "preview_size": "medium"
-        },
-        {
-            "key": "field_6a57805917836",
-            "label": "Couleur",
-            "name": "color",
-            "aria-label": "",
-            "type": "color_palette",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_6a577e46e18f2",
-                        "operator": "==",
-                        "value": "text-shape"
-                    }
-                ],
-                [
-                    {
-                        "field": "field_6a577e46e18f2",
-                        "operator": "==",
-                        "value": "solution"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "allow_null": 0,
-            "allowed_colors": [
-                "blue",
-                "purple",
-                "orange",
-                "green"
-            ],
-            "default_value": "green",
+            "new_lines": "",
             "allow_in_bindings": 0
-        },
-        {
-            "key": "field_6a577e90e18f3",
-            "label": "",
-            "name": "forme",
-            "aria-label": "",
-            "type": "clone",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_6a577e46e18f2",
-                        "operator": "==",
-                        "value": "text-shape"
-                    }
-                ],
-                [
-                    {
-                        "field": "field_6a577e46e18f2",
-                        "operator": "==",
-                        "value": "solution"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "clone": [
-                "group_6a1e969f9412c"
-            ],
-            "display": "group",
-            "layout": "block",
-            "prefix_label": 0,
-            "prefix_name": 0
-        },
-        {
-            "key": "field_6a1ff6755a100",
-            "label": "Texte",
-            "name": "text",
-            "aria-label": "",
-            "type": "wysiwyg",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "<h1><span style=\"text-decoration: underline;\">Titre</span></h1>\r\n<p class=\"text-l\"><strong>Lorem ipsum</strong></p>",
-            "allow_in_bindings": 0,
-            "tabs": "all",
-            "toolbar": "full",
-            "media_upload": 0,
-            "delay": 0
         }
     ],
     "location": [
@@ -220,5 +43,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1794303353
+    "modified": 1795427653
 }

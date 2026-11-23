@@ -1,3 +1,11 @@
-<section {{ block_id }} data-block-type="text" data-block-id="{{ block.id }}" class="{{ block_classes(fields, true) }}">
-	<div class="wysiwyg content-grid content-grid--{{fields.space.large}}">{{ fields.text }}</div>
+<section {{ block_id }} data-block-type="header" data-block-id="{{ block.id }}" class="{{ block_classes(fields, true) }} relative px-0!" data-header-skip>
+	<div class="bg-medium grider rounded-b-l pt-28 pb-12 lg:pb-16">
+		<div class="col-content flex flex-col gap-6">
+			{% if fields.title %}<h1 class="text-dark">{{ fields.title|nl2br }}</h1>{% endif %}
+			<p class="text-s flex items-center gap-4">
+				<span class="text-medium-tertiary">Dernière mise à jour :</span>
+				<span class="text-dark">{{ function('get_the_modified_date', 'd/m/Y') }}</span>
+			</p>
+		</div>
+	</div>
 </section>
