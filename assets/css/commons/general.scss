@@ -270,9 +270,14 @@
         overflow: hidden;
     }
 
+    .content-grid--center {
+        .wysiwyg {
+            margin-inline: auto;
+        }
+    }
+
     .wysiwyg {
         max-width: 72rem;
-        margin-inline: auto;
 
         li {
             margin-bottom: 0.25rem;

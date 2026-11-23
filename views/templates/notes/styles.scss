@@ -109,11 +109,6 @@
         line-height: 1;
     }
 
-    &__rowtitle {
-        font-size: 1.875rem;
-        line-height: 1.25;
-    }
-
     &__arrow {
         @include note-arrow(44px);
     }

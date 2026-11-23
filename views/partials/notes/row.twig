@@ -1,0 +1,11 @@
+<a href="{{ note.url }}" class="notes__row">
+	<span class="notes__rowmain">
+		{% if note.category %}
+			<span class="notes__tag text-medium-tertiary text-xxs uppercase">{{ note.category }}</span>
+		{% endif %}
+		<span class="notes__rowtitle text-xl">{{ note.title }}</span>
+	</span>
+	<span class="notes__arrow" aria-hidden="true">
+		<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+	</span>
+</a>

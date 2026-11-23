@@ -1,7 +1,7 @@
 @use "sass:math";
 
 @function rem($px, $base: 16) {
-  @return math.div($px, $base) * 1rem;
+    @return math.div($px, $base) * 1rem;
 }
 
 $screen-sm-min: 576px;
@@ -12,106 +12,106 @@ $screen-xxl-min: 1400px;
 $screen-xxxl-min: 1800px;
 
 @mixin sm {
-  @media (min-width: #{$screen-sm-min}) {
-    @content;
-  }
+    @media (min-width: #{$screen-sm-min}) {
+        @content;
+    }
 }
 @mixin only-mobile {
-  @media (max-width: #{$screen-lg-min}) {
-    @content;
-  }
+    @media (max-width: #{$screen-lg-min}) {
+        @content;
+    }
 }
 
 @mixin max-lg {
-  @media (max-width: #{$screen-lg-min}) {
-    @content;
-  }
+    @media (max-width: #{$screen-lg-min}) {
+        @content;
+    }
 }
 
 @mixin md {
-  @media (min-width: #{$screen-md-min}) {
-    @content;
-  }
+    @media (min-width: #{$screen-md-min}) {
+        @content;
+    }
 }
 
 @mixin under-md {
-  @media (max-width: #{$screen-lg-min}) {
-    @content;
-  }
+    @media (max-width: #{$screen-lg-min}) {
+        @content;
+    }
 }
 
 @mixin lg {
-  @media (min-width: #{$screen-lg-min}) {
-    @content;
-  }
+    @media (min-width: #{$screen-lg-min}) {
+        @content;
+    }
 }
 
 @mixin under-lg {
-  @media (max-width: #{$screen-xl-min}) {
-    @content;
-  }
+    @media (max-width: #{$screen-xl-min}) {
+        @content;
+    }
 }
 
 @mixin xl {
-  @media (min-width: #{$screen-xl-min}) {
-    @content;
-  }
+    @media (min-width: #{$screen-xl-min}) {
+        @content;
+    }
 }
 
 @mixin under-xl {
-  @media (max-width: #{$screen-xxl-min}) {
-    @content;
-  }
+    @media (max-width: #{$screen-xxl-min}) {
+        @content;
+    }
 }
 
 @mixin xxl {
-  @media (min-width: #{$screen-xxl-min}) {
-    @content;
-  }
+    @media (min-width: #{$screen-xxl-min}) {
+        @content;
+    }
 }
 @mixin xxxl {
-  @media (min-width: #{$screen-xxxl-min}) {
-    @content;
-  }
+    @media (min-width: #{$screen-xxxl-min}) {
+        @content;
+    }
 }
 
 @mixin note-pastilles(
-  $top: 1.5rem,
-  $bottom: 1.5rem,
-  $center: 14px,
-  $radius: 10px,
-  $spacing: 72px,
-  $left: 0
+    $top: 1.5rem,
+    $bottom: 1.5rem,
+    $center: 14px,
+    $radius: 10px,
+    $spacing: 72px,
+    $left: 0
 ) {
-  content: "";
-  position: absolute;
-  left: $left;
-  top: $top;
-  bottom: $bottom;
-  width: 28px;
-  background-image: radial-gradient(
-    circle at #{$center} #{$center},
-    var(--color-medium) 0 #{$radius},
-    transparent #{$radius}
-  );
-  background-size: 28px #{$spacing};
-  background-repeat: repeat-y;
-  background-position: left top;
+    content: "";
+    position: absolute;
+    left: $left;
+    top: $top;
+    bottom: $bottom;
+    width: 28px;
+    background-image: radial-gradient(
+        circle at #{$center} #{$center},
+        var(--color-medium) 0 #{$radius},
+        transparent #{$radius}
+    );
+    background-size: 28px #{$spacing};
+    background-repeat: repeat-y;
+    background-position: left top;
 }
 
 @mixin note-arrow($size: 2.75rem) {
-  flex: none;
-  display: grid;
-  place-items: center;
-  width: $size;
-  height: $size;
-  border-radius: 50%;
-  border: 1px solid rgb(32 23 46 / 0.2);
-  color: var(--color-dark);
-  transition: 0.3s ease;
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: $size;
+    height: $size;
+    border-radius: 50%;
+    background: var(--color-medium);
+    color: var(--color-dark);
+    transition: 0.3s ease;
 
-  svg {
-    width: 1.1rem;
-    height: 1.1rem;
-  }
+    svg {
+        width: 1.1rem;
+        height: 1.1rem;
+    }
 }

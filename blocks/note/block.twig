@@ -1,4 +1,12 @@
-<section {{ block_id }} data-block-type="text" data-block-id="{{ block.id }}" class="{{ block_classes(fields) }}">
+<section {{ block_id }} data-block-type="note" data-block-id="{{ block.id }}" class="{{ block_classes(fields) }}">
 	{% include 'views/partials/block/borders.twig' %}
-	<div class="wysiwyg content-grid content-grid--{{fields.space.large}}">{{ fields.text }}</div>
+	{% if fields.note %}
+		<div class="content-grid">
+			<div class="notes__sheet rounded-3xl">
+				<div class="notes__list">
+					{% include 'views/partials/notes/row.twig' with { note: fields.note } only %}
+				</div>
+			</div>
+		</div>
+	{% endif %}
 </section>

@@ -2,8 +2,8 @@
     "name": "studiogram/note",
     "title": "Note",
     "category": "studiogram",
-    "icon": "excerpt-view",
-    "keywords": ["note"],
+    "icon": "editor-paste-text",
+    "keywords": ["note", "chantier"],
     "acf": {
         "mode": "preview"
     },
