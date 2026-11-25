@@ -1,10 +1,10 @@
 <section {{ block_id }} data-block-type="header-contact" data-block-id="{{ block.id }}" class="{{ block_classes(fields, true) }} header-contact relative px-0!" data-header-skip>
 
-	<div class="header-contact__card | bg-dark text-light relative col-start-2 col-end-12 self-start overflow-hidden rounded-[2rem] px-6! py-12 lg:col-start-2 lg:col-end-16 lg:px-16! lg:py-20 lg:pr-32">
-		<div class="text-soft pointer-events-none absolute top-12 left-6 w-20 lg:left-16 lg:w-28" aria-hidden="true">
+	<div class="header-contact__card | bg-dark text-light relative col-start-2 col-end-12 self-start overflow-hidden rounded-[2rem] px-6! pt-12 pb-20 lg:col-start-2 lg:col-end-16 lg:px-16! lg:py-20 lg:pr-32">
+		<div class="text-soft pointer-events-none absolute top-8 left-9 w-16 pb-12 lg:top-12 lg:left-16 lg:w-28 lg:pb-0" aria-hidden="true">
 			{{ include('views/svg/contact-dots.twig', { class: 'block h-auto w-full' }) }}
 		</div>
-		<div class="relative flex flex-col gap-10 pt-24 lg:gap-12 lg:pt-28">
+		<div class="relative mx-auto flex max-w-xs flex-col gap-10 pt-20 lg:mx-0 lg:max-w-none lg:gap-12 lg:pt-28">
 			{% if fields.title %}<h1>{{ fields.title|nl2br }}</h1>{% endif %}
 			{% if fields.intro %}<p class="text-soft-light max-w-105">{{ fields.intro }}</p>{% endif %}
 			{% if fields.btn.text %}{{ include('views/components/button/view.twig', { button: fields.btn }) }}{% endif %}
@@ -25,7 +25,7 @@
 	</div>
 
 	{% if form %}
-		<div class="header-contact__form | bg-light text-dark relative z-10 col-start-2 col-end-12 self-start rounded-[2rem] p-6! lg:col-start-16 lg:col-end-24 lg:-ml-20 lg:self-center lg:px-14! lg:py-12!">
+		<div class="header-contact__form | bg-light text-dark relative z-10 col-start-2 col-end-12 mx-5 -mt-12 self-start rounded-[2rem] p-6! lg:col-start-16 lg:col-end-24 lg:mx-0 lg:mt-0 lg:-ml-20 lg:self-center lg:px-14! lg:py-12!">
 			{{ form|raw }}
 		</div>
 	{% endif %}

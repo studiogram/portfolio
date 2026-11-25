@@ -9,19 +9,18 @@
 	{% endif %}
 
 	{% if fields.intro.introduction %}
-		<div class="col-span-12 col-start-1 {% if fields.dynamic %} lg:col-span-20 lg:col-start-3 {% else %} lg:col-start-6 lg:col-span-14{% endif %} ">
+		<div class="col-span-12 col-start-1 lg:col-span-14 lg:col-start-6">
 			{{ include('views/components/introduction/view.twig', { intro: fields.intro.introduction }) }}
 		</div>
 	{% endif %}
 
-	<ul class="col-span-12 col-start-1 mt-6! {% if fields.dynamic %} lg:col-span-20 lg:col-start-3 {% else %} lg:col-start-6 lg:col-span-14{% endif %} flex min-w-0 flex-col gap-4" {% if fields.dynamic %} data-dynamic="true" {% endif %}>
+	<ul class="col-span-10 col-start-2 mt-6! flex min-w-0 flex-col gap-4 lg:col-span-14 lg:col-start-6" {% if fields.dynamic %} data-dynamic="true" {% endif %}>
 		{% for faq in fields.questions %}
-			{# data-scroll="fade"  #}
 			<li class="faq | bg-light text-dark relative max-w-full overflow-hidden rounded-lg shadow-[0_4px_16px_0_rgb(32_23_46/0.08)]">
 				<span class="faq__bg | bg-light rounded-lg"></span>
-				<p class="faq__question | text-cta flex cursor-pointer items-center justify-between gap-6 px-6 py-5">
+				<p class="faq__question | flex cursor-pointer items-center justify-between gap-6 px-6 py-3 lg:py-5">
 					<span class="pl-2">{{ faq.question }}</span>
-					<span class="bg-medium text-dark flex size-12 shrink-0 items-center justify-center rounded-full">
+					<span class="bg-medium text-dark flex size-10 shrink-0 items-center justify-center rounded-full lg:size-12">
 						<span class="block w-3">{% include 'views/svg/faq.twig' %}</span>
 					</span>
 				</p>

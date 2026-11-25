@@ -1,3 +1,5 @@
+@use "mixins" as *;
+
 [data-block-type="faq"] {
     .faq__bg {
         display: none;
@@ -54,6 +56,13 @@
         &__question {
             cursor: pointer;
             transition: color 0.4s;
+
+            font-size: 1rem !important;
+            line-height: 1.25 !important;
+
+            @include lg {
+                font-size: 1.125rem !important;
+            }
 
             svg {
                 width: 100%;
