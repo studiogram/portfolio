@@ -1,0 +1,56 @@
+@use "mixins" as *;
+
+.home {
+    .text-home {
+        font-size: 1.5rem !important;
+        line-height: 1.25 !important;
+
+        @each $c in (red, green, lightblue, pink, blue) {
+            .text-#{$c} {
+                --sector: var(--color-#{$c});
+                --sector-dark: var(--color-#{$c}-dark);
+                color: inherit !important;
+            }
+        }
+
+        span {
+            display: block;
+            padding-top: 0.15rem;
+        }
+
+        a {
+            display: flex;
+            width: 100%;
+            align-items: baseline;
+            gap: 0.4em;
+            transition: color 0.4s ease;
+
+            &:hover {
+                color: var(--sector-dark);
+            }
+        }
+
+        .pastille {
+            flex: 0 0 auto;
+            color: var(--sector);
+        }
+
+        @include lg {
+            font-size: 3rem !important;
+
+            span {
+                display: inline;
+            }
+
+            a {
+                display: inline;
+                width: auto;
+                color: inherit;
+            }
+
+            .pastille {
+                flex: initial;
+            }
+        }
+    }
+}

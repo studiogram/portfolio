@@ -145,6 +145,14 @@ $bg-fg: (
         padding-inline: 1rem;
     }
 
+    [data-block-type="spacer"] {
+        height: var(--sp-h-m);
+
+        @include lg {
+            height: var(--sp-h);
+        }
+    }
+
     [data-block-type="steps"] {
         overflow: visible;
         isolation: isolate;

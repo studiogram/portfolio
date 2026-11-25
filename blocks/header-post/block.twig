@@ -4,12 +4,12 @@
 		<div class="col-content flex flex-col gap-20 lg:gap-24">
 
 			<div class="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-x-16 lg:gap-y-8">
-				<div class="order-1 flex flex-col gap-6 lg:col-start-1 lg:row-start-1 lg:justify-center">
+				<div class="order-2 flex flex-col gap-6 lg:col-start-1 lg:row-start-1 lg:justify-center">
 					{% include 'views/components/sector/view.twig' with { sector: { name: sector_name, color: sector_color, pastille: true, url: sector_url } } %}
 					<h1 class="text-xxxl" data-effect="headline">{{ fields.title ?: post.title }}</h1>
 				</div>
 		
-				<figure class="relative order-2 self-start rounded-3xl lg:order-0 lg:col-start-2 {{ fields.btn.text ? 'lg:row-span-3' : 'lg:row-span-2' }}">
+				<figure class="relative order-1 self-start rounded-3xl lg:order-0 lg:col-start-2 {{ fields.btn.text ? 'lg:row-span-3' : 'lg:row-span-2' }}">
 					{% if fields.header_image %}
 						<img class="block h-auto w-full rounded-3xl" {{ priority_image(fields.header_image) }} alt=""/>
 					{% endif %}

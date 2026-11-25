@@ -1,8 +1,15 @@
+@use "mixins" as *;
+
 .dice {
     position: absolute;
-    right: 3.5rem;
-    bottom: 2.5rem;
+    right: 0.5rem;
+    bottom: 0rem;
     z-index: 10;
+
+    @include lg {
+        right: 3.5rem;
+        bottom: 2.5rem;
+    }
 
     &.is-rolling &__cube,
     &.is-rolling &__bulle {

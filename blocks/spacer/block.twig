@@ -1,3 +1,3 @@
-<div {{ block_id }} data-block-type="spacer" data-block-id="{{ block.id }}" class="{{ block_classes(fields, false, false) }} spacer mb-0! border-0 hidden! lg:block!" style="height: {{ fields.height|default(75) }}px">
+<div {{ block_id }} data-block-type="spacer" data-block-id="{{ block.id }}" class="{{ block_classes(fields, false, false) }} spacer mb-0! border-0" style="--sp-h: {{ fields.height|default(75) }}px; --sp-h-m: {{ fields.height_mobile|default(40) }}px">
 	{% include 'views/partials/block/borders.twig' %}
 </div>
