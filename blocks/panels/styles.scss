@@ -20,8 +20,8 @@
     &__stage {
         position: relative;
         z-index: 1;
-        display: flex;
-        flex-direction: column;
+        display: grid;
+        grid-auto-rows: 1fr;
         gap: clamp(1.5rem, 4vw, 3rem);
         padding-block: clamp(2rem, 6vw, 5rem);
     }
@@ -30,7 +30,7 @@
         position: relative;
         width: 83.333%;
         margin-inline: auto;
-        min-height: 60vh;
+        min-height: 0;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -43,23 +43,17 @@
             width: 91.667%;
             flex-direction: row;
             align-items: center;
-        }
 
-        &::before,
-        &::after {
-            content: "";
-            position: absolute;
-            left: 1rem;
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            background: var(--wp--preset--color--medium);
-            z-index: 2;
-
-            @include lg {
+            &::before,
+            &::after {
+                content: "";
+                position: absolute;
                 left: 2rem;
                 width: 22px;
                 height: 22px;
+                border-radius: 50%;
+                background: var(--wp--preset--color--medium);
+                z-index: 2;
             }
         }
 
@@ -146,7 +140,7 @@
             translate: 0 -50%;
             left: 8.333%;
             width: 83.333%;
-            height: min(82dvh, 46rem);
+            height: min(var(--panel-h, 46rem), 82dvh);
             min-height: 0;
             margin: 0;
 

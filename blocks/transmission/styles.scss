@@ -3,11 +3,6 @@
 .transmission {
     position: relative;
     overflow: hidden;
-    // background: color-mix(
-    //     in srgb,
-    //     var(--wp--preset--color--dark) 90%,
-    //     var(--wp--preset--color--light)
-    // );
     background: var(--wp--preset--color--dark);
     color: var(--wp--preset--color--light);
     padding-block: clamp(4rem, 10vw, 9rem);

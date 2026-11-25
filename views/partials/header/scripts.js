@@ -21,7 +21,11 @@ export default class Header {
                 this.applyContext(hint);
             }
         };
-        this.onKey = (e) => { if (e.key === "Escape") this.close(); };
+        this.onKey = (e) => {
+            if (!this.el.classList.contains("is-menu-open")) return;
+            if (e.key === "Escape") return this.close();
+            if (e.key === "Tab") this.trapTab(e);
+        };
         this.onResize = () => {
             if (window.innerWidth >= DESKTOP) this.close();
             this.updateContrast();
@@ -106,14 +110,40 @@ export default class Header {
         this.burger?.setAttribute("aria-expanded", "true");
         this.burger?.setAttribute("aria-label", "Fermer");
         if (this.label) this.label.textContent = "Fermer";
+        this.focusables()[0]?.focus();
     }
 
     close() {
+        const wasOpen = this.el.classList.contains("is-menu-open");
         this.el.classList.remove("is-menu-open");
         this.burger?.setAttribute("data-isopen", "false");
         this.burger?.setAttribute("aria-expanded", "false");
         this.burger?.setAttribute("aria-label", "Menu");
         if (this.label) this.label.textContent = "Menu";
+        if (wasOpen && this.burger?.offsetParent !== null) this.burger.focus();
+    }
+
+    focusables() {
+        if (!this.nav) return [];
+        return [
+            ...this.nav.querySelectorAll(
+                'a[href], button:not([disabled]), input, [tabindex]:not([tabindex="-1"])',
+            ),
+        ].filter((el) => el.offsetParent !== null);
+    }
+
+    trapTab(e) {
+        const f = this.focusables();
+        if (!f.length) return;
+        const first = f[0];
+        const last = f[f.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+        }
     }
 
     destroy() {

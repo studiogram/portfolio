@@ -77,6 +77,10 @@ html.js .width-limit circle {
     }
 }
 
+.bg-medium .listing__head {
+    border-color: var(--color-medium-tertiary);
+}
+
 .listing {
     display: grid;
 

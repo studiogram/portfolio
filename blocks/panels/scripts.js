@@ -23,6 +23,7 @@ class Panels extends BlockParent {
 
     build() {
         this.teardown();
+        this.measure();
         this.element.classList.add("is-pinned");
 
         const slides = this.panels.slice(1);
@@ -38,6 +39,7 @@ class Panels extends BlockParent {
                 pin: pin,
                 scrub: true,
                 invalidateOnRefresh: true,
+                onRefresh: () => this.measure(),
             },
         });
 
@@ -46,11 +48,26 @@ class Panels extends BlockParent {
         });
     }
 
+    measure() {
+        let max = 0;
+        this.panels.forEach((p) => {
+            const cs = getComputedStyle(p);
+            const padY =
+                parseFloat(cs.paddingTop) + parseFloat(cs.paddingBottom);
+            const c = p.querySelector(".panels__content");
+            const h = (c ? c.scrollHeight : 0) + padY;
+            if (h > max) max = h;
+        });
+        if (max > 0)
+            this.element.style.setProperty("--panel-h", Math.ceil(max) + "px");
+    }
+
     teardown() {
         this.tl?.scrollTrigger?.kill();
         this.tl?.kill();
         this.tl = null;
         this.element.classList.remove("is-pinned");
+        this.element.style.removeProperty("--panel-h");
         if (this.panels) gsap.set(this.panels, { clearProps: "transform" });
     }
 

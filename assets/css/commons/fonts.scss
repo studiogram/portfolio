@@ -71,8 +71,12 @@
 
     h4,
     .text-l {
-        font-size: rem(28) !important;
+        font-size: rem(24) !important;
         line-height: 1.2 !important;
+
+        @include lg {
+            font-size: rem(28) !important;
+        }
     }
 
     h5,

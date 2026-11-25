@@ -70,10 +70,10 @@ $bg-fg: (
             pointer-events: none;
 
             &--top {
-                top: 0;
+                top: -1px;
             }
             &--bottom {
-                bottom: 0;
+                bottom: -1px;
             }
             &--round-top {
                 border-radius: 3rem 3rem 0 0;
@@ -85,7 +85,7 @@ $bg-fg: (
     }
 
     [data-block-type] {
-        overflow: hidden;
+        // overflow: hidden;
 
         .cartouche {
             position: relative;
