@@ -3,6 +3,7 @@
 namespace STUDIOGRAM;
 
 use Twig\TwigFunction;
+use Twig\TwigFilter;
 use Timber\PostQuery;
 use WP_Query;
 
@@ -22,6 +23,7 @@ if (!class_exists('STUDIOGRAM\Helpers')) :
          */
         public function add_to_twig($twig)
         {
+            $twig->addFilter(new TwigFilter('antispam', [$this, 'antispam']));
             $twig->addFunction(new TwigFunction('block_class', [$this, 'block_class']));
             $twig->addFunction(new TwigFunction('image_info', [$this, 'image_info']));
             $twig->addFunction(new TwigFunction('image_dimensions', [$this, 'image_dimensions']));
@@ -44,6 +46,11 @@ if (!class_exists('STUDIOGRAM\Helpers')) :
             $twig->addFunction(new TwigFunction('apple_touch_href', [$this, 'apple_touch_href']));
 
             return $twig;
+        }
+
+        public function antispam($email): string
+        {
+            return \antispambot((string) $email);
         }
 
         public function theme_for($ref): string

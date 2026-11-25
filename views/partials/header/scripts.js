@@ -97,7 +97,10 @@ export default class Header {
             frag.appendChild(c);
         });
         a.textContent = "";
-        a.appendChild(frag);
+        const inner = document.createElement("span");
+        inner.className = "header__link__inner";
+        inner.appendChild(frag);
+        a.appendChild(inner);
     }
 
     toggle() {

@@ -5,3 +5,5 @@
 docs
 /mockups
 /.playwright-mcp
+
+*_conflict_*

@@ -19,6 +19,15 @@
 					{% endfor %}
 					<li>{{ include('views/components/button/view.twig', {button: header.btn|merge({ ctx: theme_for(header.btn.interne) })}) }}</li>
 				</ul>
+
+				{% if header.email or header.text %}
+					<div class="header__contact | mt-12 flex flex-col gap-3 lg:hidden">
+						{% if header.email %}
+							<a href="mailto:{{ header.email|antispam }}" class="text-soft-light text-l">{{ header.email|antispam }}</a>
+						{% endif %}
+						{% if header.text %}<div class="wysiwyg text-soft text-s">{{ header.text }}</div>{% endif %}
+					</div>
+				{% endif %}
 			</nav>
 		{% endif %}
 	</div>

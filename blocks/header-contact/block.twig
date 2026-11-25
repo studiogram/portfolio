@@ -11,8 +11,8 @@
 
 			<div class="text-m flex flex-col gap-4">
 				{% if fields.email %}
-					<a href="mailto:{{ fields.email }}" class="hover:text-soft-light text-soft-light flex items-center gap-4 transition-colors">
-						<span class="text-soft w-6 shrink-0">@</span>{{ fields.email }}
+					<a href="mailto:{{ fields.email|antispam }}" class="hover:text-soft-light text-soft-light flex items-center gap-4 transition-colors">
+						<span class="text-soft w-6 shrink-0">@</span>{{ fields.email|antispam }}
 					</a>
 				{% endif %}
 				{% if fields.linkedin %}

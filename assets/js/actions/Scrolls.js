@@ -427,7 +427,7 @@ export default class Scrolls {
                 if (window.innerWidth < 992) {
                     tl.from(
                         right,
-                        { yPercent: 40, autoAlpha: 0, ease: "none" },
+                        { yPercent: -40, autoAlpha: 0, ease: "none" },
                         0,
                     );
                 } else {
