@@ -38,22 +38,26 @@ $cart-fg: (
         position: relative;
         z-index: 20;
         display: flex;
-        justify-content: flex-end;
+        justify-content: space-between;
         align-items: flex-start;
         gap: 0.5rem;
-        padding: 0 1.25rem;
+        padding: 0 1.5rem;
+        font-size: 0.75rem !important;
 
         @include lg {
             padding: 0 2rem;
+            justify-content: flex-end;
+            font-size: 1rem !important;
         }
     }
 
     &__filterlabel {
-        display: none;
+        display: inline;
+        align-self: start;
+        justify-content: flex-end;
 
         @include lg {
-            display: inline;
-            align-self: center;
+            align-self: flex-end;
             margin-right: 0.5rem;
         }
     }
