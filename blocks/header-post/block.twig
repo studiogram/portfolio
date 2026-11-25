@@ -40,7 +40,7 @@
 			{% if fields.intervention %}{% set metas = metas|merge([{ heading: t.collaboration ?: 'Collaboration', html: fields.intervention }]) %}{% endif %}
 			{% if metas %}
 				{% set grid_cols = { 1: 'lg:grid-cols-1', 2: 'lg:grid-cols-2', 3: 'lg:grid-cols-3', 4: 'lg:grid-cols-4' } %}
-				{% include 'views/components/listing/view.twig' with { columns: metas, class: 'grid-cols-2 ' ~ (grid_cols[metas|length] ?: 'lg:grid-cols-4'), body_gap: 'gap-0' } %}
+				{% include 'views/components/listing/view.twig' with { columns: metas, class: 'grid-cols-1 ' ~ (grid_cols[metas|length] ?: 'lg:grid-cols-4'), body_gap: 'gap-0' } %}
 			{% endif %}
 
 		</div>
