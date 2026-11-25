@@ -1,0 +1,106 @@
+name: Deploy theme
+
+on:
+    push:
+        branches:
+            - main
+            - preprod
+
+concurrency:
+    group: deploy-${{ github.ref }}
+    cancel-in-progress: true
+
+permissions:
+    contents: read
+
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+
+            - name: Setup PHP + Composer
+              uses: shivammathur/setup-php@v2
+              with:
+                  php-version: "8.2"
+                  tools: composer
+
+            - name: Composer install (autoloader)
+              run: composer install --no-interaction --no-dev --optimize-autoloader
+
+            - name: Check FTP vars
+              id: guard
+              run: |
+                  if [ "${{ github.ref_name }}" = "main" ]; then
+                    SRV="${{ vars.FTP_PROD_SERVER }}"
+                  else
+                    SRV="${{ vars.FTP_PREPROD_SERVER }}"
+                  fi
+                  if [ -n "$SRV" ]; then
+                    echo "go=true" >> "$GITHUB_OUTPUT"
+                  else
+                    echo "::notice::No FTP vars for '${{ github.ref_name }}' — build OK, deploy skipped."
+                    echo "go=false" >> "$GITHUB_OUTPUT"
+                  fi
+
+            - name: Select environment
+              if: steps.guard.outputs.go == 'true'
+              id: env
+              run: |
+                  if [ "${{ github.ref_name }}" = "main" ]; then
+                    echo "server=${{ vars.FTP_PROD_SERVER }}"     >> "$GITHUB_OUTPUT"
+                    echo "username=${{ vars.FTP_PROD_USERNAME }}" >> "$GITHUB_OUTPUT"
+                    echo "server_dir=${{ vars.FTP_PROD_DIR }}"    >> "$GITHUB_OUTPUT"
+                    echo "name=production"                        >> "$GITHUB_OUTPUT"
+                  else
+                    echo "server=${{ vars.FTP_PREPROD_SERVER }}"     >> "$GITHUB_OUTPUT"
+                    echo "username=${{ vars.FTP_PREPROD_USERNAME }}" >> "$GITHUB_OUTPUT"
+                    echo "server_dir=${{ vars.FTP_PREPROD_DIR }}"    >> "$GITHUB_OUTPUT"
+                    echo "name=preprod"                              >> "$GITHUB_OUTPUT"
+                  fi
+
+            - name: Deploy (${{ steps.env.outputs.name }}) — attempt 1
+              id: deploy1
+              if: steps.guard.outputs.go == 'true'
+              continue-on-error: true
+              uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+              with: &ftp_deploy
+                  server: ${{ steps.env.outputs.server }}
+                  username: ${{ steps.env.outputs.username }}
+                  password: ${{ github.ref_name == 'main' && secrets.FTP_PROD_PASSWORD || secrets.FTP_PREPROD_PASSWORD }}
+                  protocol: ftps
+                  port: 21
+                  timeout: 600000
+                  local-dir: ./
+                  server-dir: ${{ steps.env.outputs.server_dir }}
+                  exclude: |
+                      **/.git*
+                      **/.git*/**
+                      **/.github/**
+                      **/.claude/**
+                      **/.vscode/**
+                      **/.playwright-mcp/**
+                      **/node_modules/**
+                      **/mockups/**
+                      **/.DS_Store
+                      **/*.md
+                      **/*.pdf
+                      **/*_conflict_*
+                      **/bs-config.cjs
+                      **/vite.config.js
+                      **/postcss.config.js
+                      **/tailwind.config.js
+                      **/package.json
+                      **/package-lock.json
+                      **/composer.json
+                      **/composer.lock
+                      **/.prettier*
+                      **/.editorconfig
+                      **/.nvmrc
+                      **/.gitignore
+
+            - name: Deploy (${{ steps.env.outputs.name }}) — retry
+              if: steps.guard.outputs.go == 'true' && steps.deploy1.outcome == 'failure'
+              uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+              with: *ftp_deploy
