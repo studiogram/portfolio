@@ -21,7 +21,7 @@ export default defineConfig({
         outDir: "dist",
         emptyOutDir: false,
         copyPublicDir: false,
-        sourcemap: false,
+        sourcemap: true,
         rollupOptions: {
             input: {
                 "js/main": "assets/js/main.js",

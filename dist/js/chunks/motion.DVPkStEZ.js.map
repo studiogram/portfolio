@@ -1,0 +1,1 @@
+{"version":3,"file":"motion.DVPkStEZ.js","sources":["../../../assets/js/utils/motion.js"],"sourcesContent":["export const motionQuery = window.matchMedia(\"(prefers-reduced-motion: reduce)\");\n\nexport const reducedMotion = () => motionQuery.matches;\n"],"names":["motionQuery","reducedMotion"],"mappings":"AAAY,MAACA,EAAc,OAAO,WAAW,kCAAkC,EAElEC,EAAgB,IAAMD,EAAY"}
