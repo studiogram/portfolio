@@ -25,6 +25,7 @@
 							data-taxi-ignore
 							style="--pill: var(--color-medium); --pill-text: var(--color-dark);"
 							class="archive__cat{{ archive.current_cat ? '' : ' is-active' }}"
+							{{ archive.current_cat ? '' : 'aria-current="true"' }}
 						>Tous</a>
 					</li>
 					{% for cat in archive.categories %}
@@ -36,6 +37,7 @@
 								data-taxi-ignore
 								style="--pill: var(--color-{{ cat.color }}); --pill-text: var(--color-{{ cat.text_color }});"
 								class="archive__cat{{ cat.id == archive.current_cat ? ' is-active' : '' }}"
+								{{ cat.id == archive.current_cat ? 'aria-current="true"' : '' }}
 							>{{ cat.title }}</a>
 						</li>
 					{% endfor %}

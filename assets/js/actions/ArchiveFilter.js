@@ -135,9 +135,12 @@ export default class ArchiveFilter {
     }
 
     setActive(cat) {
-        this.cats.forEach((a) =>
-            a.classList.toggle("is-active", (a.dataset.cat || "0") === cat),
-        );
+        this.cats.forEach((a) => {
+            const active = (a.dataset.cat || "0") === cat;
+            a.classList.toggle("is-active", active);
+            if (active) a.setAttribute("aria-current", "true");
+            else a.removeAttribute("aria-current");
+        });
         if (this.select) this.select.value = cat;
     }
 
