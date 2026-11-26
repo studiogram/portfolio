@@ -194,6 +194,10 @@ if (!class_exists('STUDIOGRAM\Security')) :
          */
         public function remove_version_query($src)
         {
+            if (strpos($src, get_stylesheet_directory_uri()) !== false) {
+                return $src;
+            }
+
             if (strpos($src, 'ver=')) {
                 $src = remove_query_arg('ver', $src);
             }
