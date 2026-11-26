@@ -1,5 +1,9 @@
 @use "mixins" as *;
 
+html {
+    -webkit-tap-highlight-color: transparent;
+}
+
 .studiogram:not(.is-scroll-ready) {
     [data-scroll="fade"],
     [data-scroll="letters"],
