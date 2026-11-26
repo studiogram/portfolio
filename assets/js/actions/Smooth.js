@@ -12,6 +12,8 @@ export function initSmooth() {
     // Lenis's html/body height overrides break it.
     if (document.body.classList.contains("wp-admin")) return;
 
+    ScrollTrigger.config({ ignoreMobileResize: true });
+
     lenis = window.lenis = new Lenis({ lerp: 0.1 });
 
     // Drive Lenis from GSAP's ticker so scrub animations and the scroll share
