@@ -65,10 +65,12 @@
             }
         }
 
-        &.plyr--playing:hover .plyr__control--overlaid,
-        &.plyr--playing.is-hover .plyr__control--overlaid {
-            opacity: 1 !important;
-            visibility: visible !important;
+        @media (hover: hover) and (pointer: fine) {
+            &.plyr--playing:hover .plyr__control--overlaid,
+            &.plyr--playing.is-hover .plyr__control--overlaid {
+                opacity: 1 !important;
+                visibility: visible !important;
+            }
         }
     }
 
