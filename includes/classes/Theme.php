@@ -18,6 +18,9 @@ if (!class_exists('STUDIOGRAM\Theme')) :
             add_filter('gform_field_container', [$this, 'label_choice_fieldset'], 10, 3);
             add_filter('gform_submit_button', [$this, 'btn_submit'], 10, 2);
             add_filter('gform_field_content', [$this, 'optional_label'], 10, 5);
+            add_filter('gform_field_content', [$this, 'add_autocomplete'], 10, 5);
+            add_filter('gettext', [$this, 'translate_gf_required'], 10, 3);
+            add_filter('gform_disable_css', '__return_true');
             add_action('enqueue_block_editor_assets', [$this, 'enqueue_editor_styles_and_scripts']);
             add_action('enqueue_block_assets', [$this, 'enqueue_canvas_styles']);
             add_filter('script_loader_tag', [$this, 'add_module_type'], 10, 3);
@@ -129,6 +132,46 @@ if (!class_exists('STUDIOGRAM\Theme')) :
                 $content,
                 1
             );
+        }
+
+        public function add_autocomplete($content, $field, $value = null, $lead_id = 0, $form_id = 0)
+        {
+            if (is_admin()) {
+                return $content;
+            }
+
+            $auto = null;
+            if ($field->get_input_type() === 'email') {
+                $auto = 'email';
+            } else {
+                $label = function_exists('mb_strtolower') ? mb_strtolower($field->label) : strtolower($field->label);
+                if (strpos($label, 'structure') !== false || strpos($label, 'organis') !== false) {
+                    $auto = 'organization';
+                } elseif (strpos($label, 'nom') !== false) {
+                    $auto = 'name';
+                }
+            }
+
+            if (!$auto || strpos($content, 'autocomplete=') !== false) {
+                return $content;
+            }
+
+            return preg_replace('/<input\b/', '<input autocomplete="' . $auto . '"', $content, 1);
+        }
+
+        public function translate_gf_required($translated, $text, $domain)
+        {
+            if ($domain !== 'gravityforms') {
+                return $translated;
+            }
+
+            $map = [
+                '%s (Required)'  => '%s (obligatoire)',
+                '(Required)'     => '(obligatoire)',
+                'Required'       => 'obligatoire',
+            ];
+
+            return $map[$text] ?? $translated;
         }
 
         public function btn_submit($button, $form)

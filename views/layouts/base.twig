@@ -17,10 +17,11 @@
     </head>
 
     <body class="{{ body_class }} bg-light">
+        <a href="#main" class="skip-link">Aller au contenu</a>
         <div data-cover class="page-cover" aria-hidden="true"></div>
         {% include 'partials/header/view.twig' %}
         <div data-taxi>
-            <div data-taxi-view {% if post and post.post_type in ['post', 'page'] %} data-post-id="{{ post.id }}" {% endif %}>
+            <div id="main" tabindex="-1" data-taxi-view {% if post and post.post_type in ['post', 'page'] %} data-post-id="{{ post.id }}" {% endif %}>
                 {% block content %} Sorry, no content {% endblock %}
                 {% include 'partials/contact/view.twig' %}
             </div>
