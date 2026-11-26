@@ -1,7 +1,7 @@
 {% if dice and dice.faces|length %}
 	<div class="dice" data-component="dice">
 		<button class="dice__btn" type="button" aria-label="Voir un projet au hasard">
-			<img class="dice__cube" src="{{ function('get_theme_file_uri', 'dist/img/dice.png') }}" alt="" aria-hidden="true"/>
+			<img class="dice__cube" src="{{ function('get_theme_file_uri', 'dist/img/dice.svg') }}" alt="" aria-hidden="true"/>
 			<span class="dice__bulle" aria-hidden="true">Au hasard</span>
 			<span class="sr-only">Lancer le dé</span>
 		</button>
