@@ -7,15 +7,15 @@
 
 <a href="{{ post.link }}" data-transition="project" class="project-card group relative flex {{ layout == 'row' ? 'flex-col gap-6 lg:flex-row lg:gap-16' : 'flex-col gap-5' }}">
 	<div class="overflow-hidden {{ layout == 'row' ? 'shrink-0 self-start lg:w-1/2' }}">
-		<figure class="project-fold  project-fold--{{ fold }} relative rounded-3xl">
+		<figure class="project-fold project-fold--{{ fold }} relative rounded-3xl">
 			<div class="relative overflow-hidden rounded-3xl">
 				{% if primary %}
-					<img class="lazyload block h-auto w-full rounded-3xl" {{ responsive_image(primary) }} alt=""/>
+					<img class="block h-auto w-full rounded-3xl" {{ responsive_image(primary) }} alt=""/>
 				{% else %}
 					<span class="flex aspect-8/5 w-full items-center justify-center text-[92px] text-current/30">{{ post.title|slice(0, 1) }}</span>
 				{% endif %}
 				{% if layer %}
-					<img class="project-fold__layer lazyload" data-parallax {{ responsive_image(layer) }} alt="" aria-hidden="true"/>
+					<img class="project-fold__layer" data-parallax {{ responsive_image(layer) }} alt="" aria-hidden="true"/>
 				{% endif %}
 			</div>
 		</figure>

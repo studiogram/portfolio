@@ -4,7 +4,6 @@ import "swiper/css/navigation";
 import "plyr/dist/plyr.css";
 import "lenis/dist/lenis.css";
 import "../css/main.scss";
-import "lazysizes";
 import { gsap } from "gsap";
 import { Core } from "@unseenco/taxi";
 import partials from "./views/partials";

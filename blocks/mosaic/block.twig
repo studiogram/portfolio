@@ -6,7 +6,7 @@
 				{% for media in column.medias %}
 					{% if media.image %}
 						<figure class="mosaic__media">
-							<img class="mosaic__asset lazyload" {{ responsive_image(media.image) }} alt=""/>
+							<img class="mosaic__asset" {{ responsive_image(media.image) }} alt=""/>
 						</figure>
 					{% endif %}
 				{% endfor %}

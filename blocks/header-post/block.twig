@@ -16,7 +16,7 @@
 					
 					{% if fields.client_logo %}
 						<span class="header-post__notch">
-							<img class="header-post__logo lazyload"{% if fields.logo_height %} style="--logo-h: {{ fields.logo_height }}rem"{% endif %} {{ responsive_image(fields.client_logo) }} alt=""/>
+							<img class="header-post__logo"{% if fields.logo_height %} style="--logo-h: {{ fields.logo_height }}rem"{% endif %} {{ responsive_image(fields.client_logo) }} alt=""/>
 						</span>
 					{% endif %}
 				</figure>

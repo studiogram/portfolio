@@ -1,5 +1,4 @@
 import "../css/editor.scss";
-import "lazysizes";
 import { syncComponents } from "./components/ComponentManager";
 
 class Editor {

@@ -574,17 +574,14 @@ if (!class_exists('STUDIOGRAM\Helpers')) :
                 echo
                 'width="' . (int) $dims[0] . '" height="' . (int) $dims[1] . '"
                 alt="' . $image['alt_text'] . '"
+                loading="lazy"
+                decoding="async"
                 src="' . $image['sm'] . '"
-                data-sizes="(max-width: 500px) 100vw,
-                            (max-width: 1000px) 100vw, 
-                            (max-width: 1500px) 100vw, 
-                            (max-width: 2000px) 100vw, 
-                            2000px" 
-                data-src="' . $image['sm'] . '" 
-                data-srcset="' . $image['sm'] . ' 500w, 
-                             ' . $image['md'] . ' 1000w, 
-                             ' . $image['lg'] . ' 1500w, 
-                             ' . $image['xl'] . ' 2000w"';
+                sizes="100vw"
+                srcset="' . $image['sm'] . ' 500w,
+                        ' . $image['md'] . ' 1000w,
+                        ' . $image['lg'] . ' 1500w,
+                        ' . $image['xl'] . ' 2000w"';
             }
         }
 
@@ -600,10 +597,14 @@ if (!class_exists('STUDIOGRAM\Helpers')) :
                 echo
                 'width="' . (int) $dims[0] . '" height="' . (int) $dims[1] . '"
                 alt="' . $image['alt_text'] . '"
+                loading="eager"
+                fetchpriority="high"
+                decoding="async"
                 src="' . $image['sm'] . '"
+                sizes="100vw"
                 srcset="' . $image['sm'] . ' 500w,
-                        ' . $image['md'] . ' 1000w, 
-                        ' . $image['lg'] . ' 1500w, 
+                        ' . $image['md'] . ' 1000w,
+                        ' . $image['lg'] . ' 1500w,
                         ' . $image['xl'] . ' 2000w"';
             }
         }

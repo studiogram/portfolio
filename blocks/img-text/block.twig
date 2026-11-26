@@ -7,7 +7,7 @@
 				<figure data-split="left" class="bg-light relative z-10 order-1 overflow-hidden rounded-t-[2rem] lg:rounded-t-none {{ fields.side ? 'lg:order-2 lg:rounded-r-[2rem]' : 'lg:order-1 lg:rounded-l-[2rem]' }}">
 					<span class="bg-medium absolute top-4 left-4 z-10 size-4 rounded-full lg:top-6 lg:left-6 lg:size-5" aria-hidden="true"></span>
 					<span class="bg-medium absolute top-4 right-4 z-10 size-4 rounded-full lg:top-auto lg:right-auto lg:bottom-6 lg:left-6 lg:size-5" aria-hidden="true"></span>
-					<img class="lazyload block h-full min-h-72 w-full rounded-[2rem] object-cover" {{ responsive_image(fields.image) }} alt=""/>
+					<img class="block h-full min-h-72 w-full rounded-[2rem] object-cover" {{ responsive_image(fields.image) }} alt=""/>
 				</figure>
 			{% endif %}
 
@@ -23,7 +23,7 @@
 				{% if fields.btn.text %}{{ include('views/components/button/view.twig', { button: fields.btn }) }}{% endif %}
 			</div>
 			{% if fields.image %}
-				<img class="lazyload w-full rounded-3xl object-cover {{ fields.side ? 'order-2' : 'order-1' }}" {{ responsive_image(fields.image) }} alt=""/>
+				<img class="w-full rounded-3xl object-cover {{ fields.side ? 'order-2' : 'order-1' }}" {{ responsive_image(fields.image) }} alt=""/>
 			{% endif %}
 		</div>
 	{% endif %}

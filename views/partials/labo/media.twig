@@ -5,5 +5,5 @@
 		<source data-src="{{ m.video }}" type="video/mp4"/>
 	</video>
 {% elseif m.image %}
-	<img class="labo-project__asset lazyload" {{ responsive_image(m.image) }} alt=""/>
+	<img class="labo-project__asset" {{ responsive_image(m.image) }} alt=""/>
 {% endif %}

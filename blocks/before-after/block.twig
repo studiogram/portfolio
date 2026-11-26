@@ -11,12 +11,12 @@
 
 			<div class="before-after relative overflow-hidden rounded-3xl select-none" style="--pos: 50%">
 				{% if fields.before %}
-					<img class="lazyload block w-full" {{ responsive_image(fields.before) }} alt="{{ fields.label_before }}"/>
+					<img class="block w-full" {{ responsive_image(fields.before) }} alt="{{ fields.label_before }}"/>
 				{% endif %}
 
 				{% if fields.after %}
 					<div class="before-after__after">
-						<img class="lazyload block size-full object-cover" {{ responsive_image(fields.after) }} alt="{{ fields.label_after }}"/>
+						<img class="block size-full object-cover" {{ responsive_image(fields.after) }} alt="{{ fields.label_after }}"/>
 					</div>
 				{% endif %}
 

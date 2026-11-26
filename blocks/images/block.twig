@@ -6,7 +6,7 @@
 				<div class="images__grid items-start gap-2 lg:gap-4">
 					{% for item in fields.items %}
 						{% if item.image %}
-							<img class="images__item lazyload w-full rounded-3xl" style="--cm:{{ item.cols_mobile ?: 6 }};--cd:{{ item.cols ?: 3 }}" {{ responsive_image(item.image) }} alt=""/>
+							<img class="images__item w-full rounded-3xl" style="--cm:{{ item.cols_mobile ?: 6 }};--cd:{{ item.cols ?: 3 }}" {{ responsive_image(item.image) }} alt=""/>
 						{% endif %}
 					{% endfor %}
 				</div>
